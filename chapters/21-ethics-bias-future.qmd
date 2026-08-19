@@ -1,4 +1,4 @@
-# Ethics, Bias, Safety & The Future
+# Ethics, Bias, Safety & The Future {#sec-ethics-future}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*

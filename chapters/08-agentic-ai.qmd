@@ -1,0 +1,59 @@
+# Agentic AI in Medical Imaging {#sec-agentic-ai}
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- The harness chapter: how LLM-driven agents with tools actually work, and what
+     they change in imaging. Referenced by "The agentic outlook" section in every
+     modality chapter. -->
+
+## What is an agent?
+
+<!-- Model vs. harness: an LLM plus tools, memory, planning, and an environment.
+     Agent vs. workflow vs. copilot. Levels of autonomy. -->
+
+## Anatomy of a harness
+
+<!-- Tool schemas and function calling; context management; the Model Context
+     Protocol (MCP) as the emerging standard for tool access; sandboxing and
+     permissioning; audit logging of every tool call. -->
+
+## Tools an imaging agent calls
+
+<!-- The hospital as a toolbox: DICOMweb queries as tools, segmentation and
+     detection models as tools, measurement/analytics endpoints, report
+     generators, the EHR via FHIR. Structured outputs as the glue. -->
+
+## Orchestration patterns
+
+<!-- Single agent + tools; planner–executor; multi-agent (triage agent, reader
+     agent, QA agent); human-in-the-loop gates and when they are non-negotiable. -->
+
+## Agents as readers: machine-readable medical knowledge
+
+<!-- Why this book is written for agents too: plain-markdown chapters, living
+     tables as CSVs, llms.txt. How an agent should consume a modality chapter:
+     the finding taxonomy, the dataset/model/product tables, the workflow
+     description — each maps to a decision the agent makes. -->
+
+## Evaluating agentic systems
+
+<!-- Task-completion benchmarks vs. step-level correctness; safety evals;
+     trajectory audits; why single-model metrics (AUROC, Dice) don't compose
+     into system-level guarantees. -->
+
+## Safety, liability and the regulatory frontier
+
+<!-- No FDA framework yet fits a tool-calling agent; predetermined change
+     control plans; the audit-trail imperative. Bridge to @sec-model-to-product. -->
+
+## Doing this in MedAI OS {.unnumbered}
+
+<!-- MedAI OS ships an agentic layer: agentic workflows architecture, the
+     agentic_skills registry, the triage agent, and the "Ask MedAI" RAG chat --
+     each maps to a section above. Walk through one end-to-end agentic loop:
+     study arrives -> triage agent scores it -> suite auto-detection routes it ->
+     detection model runs -> report drafted -> audit chain records every step. -->
+
+## Further reading

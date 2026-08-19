@@ -1,4 +1,4 @@
-# Building an Imaging AI Platform: MedAI OS as a Case Study
+# Building an Imaging AI Platform: MedAI OS as a Case Study {#sec-platform}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*

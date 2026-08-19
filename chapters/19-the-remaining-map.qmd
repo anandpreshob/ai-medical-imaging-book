@@ -1,4 +1,4 @@
-# The Remaining Map
+# The Remaining Map {#sec-remaining-map}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*
@@ -16,3 +16,7 @@
 ## ECG as an image
 
 ## Emerging modalities
+
+## The agentic outlook
+
+<!-- Cross-modality: the long tail of imaging is where generalist agents beat per-modality products — one harness, many tools. -->

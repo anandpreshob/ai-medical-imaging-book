@@ -1,4 +1,4 @@
-# Ophthalmic Imaging: Fundus & OCT
+# Ophthalmic Imaging: Fundus & OCT {#sec-ophthalmic-imaging}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*
@@ -33,6 +33,11 @@
 <!-- Living table filtered from data/fda-products.csv (modality == "ophtho"). -->
 
 ## Open challenges
+
+## The agentic outlook
+
+<!-- How agent harnesses change this modality's workflow. Seed ideas:
+Autonomous screening at the point of care is already FDA-cleared here; the agentic step is closing the loop — scheduling ophthalmology referrals, tracking whether patients attend, and re-screening on schedule without human dispatch. -->
 
 ## Doing this in MedAI OS {.unnumbered}
 

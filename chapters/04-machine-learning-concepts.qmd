@@ -1,4 +1,4 @@
-# Machine Learning: The Concepts
+# Machine Learning: The Concepts {#sec-ml-concepts}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*

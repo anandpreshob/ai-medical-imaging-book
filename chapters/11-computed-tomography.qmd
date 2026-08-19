@@ -1,4 +1,4 @@
-# Computed Tomography (CT)
+# Computed Tomography (CT) {#sec-computed-tomography}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*
@@ -33,6 +33,11 @@
 <!-- Living table filtered from data/fda-products.csv (modality == "ct"). -->
 
 ## Open challenges
+
+## The agentic outlook
+
+<!-- How agent harnesses change this modality's workflow. Seed ideas:
+Agents that protocol the scan from the order text, monitor acquisition for repeat-worthy artifacts, trigger the right segmentation models per body part, assemble volumetric comparisons across timepoints, and draft structured oncologic response assessments (RECIST) automatically. -->
 
 ## Doing this in MedAI OS {.unnumbered}
 

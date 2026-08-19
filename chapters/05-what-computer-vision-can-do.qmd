@@ -1,4 +1,4 @@
-# What Computer Vision Can Do
+# What Computer Vision Can Do {#sec-cv-tasks}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*

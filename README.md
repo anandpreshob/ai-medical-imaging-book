@@ -1,6 +1,6 @@
 # AI in Medical Imaging: From Pixels to Practice
 
-An open, in-progress textbook on AI in medical imaging — written for clinicians and ML engineers at the same time.
+An open, in-progress textbook on AI in medical imaging — written for clinicians, ML engineers, and AI agents at the same time. Human readers get dual-track explanations; agents get a fixed chapter structure, machine-readable CSV fact tables in [`data/`](data/), plain-markdown source, and an `llms.txt`.
 
 **Read it:**
 - 🌐 https://www.anandpreshob.com/book/

@@ -1,4 +1,4 @@
-# How Images Live in a Hospital
+# How Images Live in a Hospital {#sec-images-in-the-hospital}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*

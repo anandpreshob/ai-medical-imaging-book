@@ -1,4 +1,4 @@
-# Introduction: Why AI in Medical Imaging
+# Introduction: Why AI in Medical Imaging {#sec-introduction}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*

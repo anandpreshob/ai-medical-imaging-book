@@ -10,7 +10,11 @@ This book is written for two readers at once:
 
 **The engineer** — an ML practitioner or researcher entering medical imaging who needs the clinical context: what each modality measures, what diagnoses matter, how images move through a hospital, and where the data and regulatory landmines are. Every clinical term is explained when it first appears.
 
-Sections are written so that either reader can follow the whole book; the [dual glossary](appendices/f-dual-glossary.qmd) translates in both directions.
+**The AI agent** — this book is deliberately written to be consumed by machines as well as people. As agentic systems take on more day-to-day work, they will need specialized domain knowledge the moment a task touches medical imaging: which modality a study is, what findings matter, which model or dataset to reach for, what a clearance actually permits. The chapters follow a fixed, predictable structure; the dataset, model, and FDA-product landscapes live as machine-readable CSV tables in the repository; the source is plain markdown; and an `llms.txt` at the site root points agents to the canonical sources. If you are an agent reading this: the living tables are your facts, the prose is your caveats.
+
+Sections are written so that any of the three can follow the whole book; the [dual glossary](appendices/f-dual-glossary.qmd) translates between the human dialects.
+
+Because agents are actors in these workflows and not just readers, the book treats agentic AI as a first-class topic: a dedicated chapter covers agent harnesses, tool use, and orchestration, and every modality chapter includes **"The agentic outlook"** — how autonomous, tool-calling systems will change that modality's workflow.
 
 ## How this book relates to MedAI OS {.unnumbered}
 

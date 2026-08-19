@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _book
+  resources:
+    - llms.txt
 
 book:
   title: "AI in Medical Imaging"
@@ -26,25 +28,26 @@ book:
         - chapters/05-what-computer-vision-can-do.qmd
         - chapters/06-deep-learning-architectures.qmd
         - chapters/07-generative-and-frontier-models.qmd
-        - chapters/08-from-model-to-product.qmd
+        - chapters/08-agentic-ai.qmd
+        - chapters/09-from-model-to-product.qmd
     - part: "III — Diagnostic Imaging, Modality by Modality"
       chapters:
-        - chapters/09-chest-xray.qmd
-        - chapters/10-computed-tomography.qmd
-        - chapters/11-mri.qmd
-        - chapters/12-ultrasound-echo.qmd
-        - chapters/13-mammography.qmd
-        - chapters/14-nuclear-medicine.qmd
-        - chapters/15-ophthalmic-imaging.qmd
+        - chapters/10-chest-xray.qmd
+        - chapters/11-computed-tomography.qmd
+        - chapters/12-mri.qmd
+        - chapters/13-ultrasound-echo.qmd
+        - chapters/14-mammography.qmd
+        - chapters/15-nuclear-medicine.qmd
+        - chapters/16-ophthalmic-imaging.qmd
     - part: "IV — Interventional, Lab-Based & Video"
       chapters:
-        - chapters/16-surgical-endoscopic-video.qmd
-        - chapters/17-digital-pathology.qmd
-        - chapters/18-the-remaining-map.qmd
+        - chapters/17-surgical-endoscopic-video.qmd
+        - chapters/18-digital-pathology.qmd
+        - chapters/19-the-remaining-map.qmd
     - part: "V — Systems & The Road Ahead"
       chapters:
-        - chapters/19-building-an-imaging-ai-platform.qmd
-        - chapters/20-ethics-bias-future.qmd
+        - chapters/20-building-an-imaging-ai-platform.qmd
+        - chapters/21-ethics-bias-future.qmd
   appendices:
     - appendices/a-dataset-directory.qmd
     - appendices/b-model-zoo.qmd

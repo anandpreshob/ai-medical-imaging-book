@@ -1,4 +1,4 @@
-# Nuclear Medicine: PET & SPECT
+# Nuclear Medicine: PET & SPECT {#sec-nuclear-medicine}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*
@@ -33,6 +33,11 @@
 <!-- Living table filtered from data/fda-products.csv (modality == "nm"). -->
 
 ## Open challenges
+
+## The agentic outlook
+
+<!-- How agent harnesses change this modality's workflow. Seed ideas:
+Agents that reconcile PET findings with the CT anatomy automatically, compute SUV deltas across studies, and draft response assessments against trial criteria — the most quantification-heavy modality benefits most from agents that never miss a measurement. -->
 
 ## Doing this in MedAI OS {.unnumbered}
 

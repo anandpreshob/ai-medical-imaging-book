@@ -1,4 +1,4 @@
-# Deep Learning Architectures
+# Deep Learning Architectures {#sec-architectures}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*

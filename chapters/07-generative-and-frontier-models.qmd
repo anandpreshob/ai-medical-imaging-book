@@ -1,4 +1,4 @@
-# Generative & Frontier Models
+# Generative & Frontier Models {#sec-frontier-models}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*
