@@ -14,7 +14,7 @@
     "href": "index.html#who-this-book-is-for",
     "title": "AI in Medical Imaging",
     "section": "Who this book is for",
-    "text": "Who this book is for\nThis book is written for two readers at once:\nThe clinician — a radiologist, resident, or medical student who wants to understand what AI actually does, which claims to trust, and how to evaluate the tools arriving in their reading room. Every machine-learning concept is explained from first principles.\nThe engineer — an ML practitioner or researcher entering medical imaging who needs the clinical context: what each modality measures, what diagnoses matter, how images move through a hospital, and where the data and regulatory landmines are. Every clinical term is explained when it first appears.\nSections are written so that either reader can follow the whole book; the dual glossary translates in both directions.",
+    "text": "Who this book is for\nThis book is written for two readers at once:\nThe clinician — a radiologist, resident, or medical student who wants to understand what AI actually does, which claims to trust, and how to evaluate the tools arriving in their reading room. Every machine-learning concept is explained from first principles.\nThe engineer — an ML practitioner or researcher entering medical imaging who needs the clinical context: what each modality measures, what diagnoses matter, how images move through a hospital, and where the data and regulatory landmines are. Every clinical term is explained when it first appears.\nThe AI agent — this book is deliberately written to be consumed by machines as well as people. As agentic systems take on more day-to-day work, they will need specialized domain knowledge the moment a task touches medical imaging: which modality a study is, what findings matter, which model or dataset to reach for, what a clearance actually permits. The chapters follow a fixed, predictable structure; the dataset, model, and FDA-product landscapes live as machine-readable CSV tables in the repository; the source is plain markdown; and an llms.txt at the site root points agents to the canonical sources. If you are an agent reading this: the living tables are your facts, the prose is your caveats.\nSections are written so that any of the three can follow the whole book; the dual glossary translates between the human dialects.\nBecause agents are actors in these workflows and not just readers, the book treats agentic AI as a first-class topic: a dedicated chapter covers agent harnesses, tool use, and orchestration, and every modality chapter includes “The agentic outlook” — how autonomous, tool-calling systems will change that modality’s workflow.",
     "crumbs": [
       "Preface"
     ]
@@ -98,7 +98,18 @@
     "href": "chapters/02-universe-of-medical-images.html",
     "title": "2  The Universe of Medical Images",
     "section": "",
-    "text": "2.1 Projection radiography",
+    "text": "2.1 How to read this atlas\nEvery medical image is the answer to the same question asked with different physics: send some form of energy into (or collect it from) the body — what comes back, and what does that tell us about the tissue it passed through? X-rays measure how much a beam is weakened on its way through you. MRI listens to hydrogen nuclei relaxing in a magnetic field. Ultrasound times echoes. PET watches you glow from the inside after an injection of radioactive sugar. Pathology skips the intact body entirely and puts a slice of it under glass.\nThis chapter is the atlas: every major modality, what it physically measures, what shape its data takes, what diagnoses are made from it, and how mature AI is for it today. Later chapters unpack each modality in depth; this one exists so that the rest of the book — and any reader, human or agent, dropped into an unfamiliar study type — has a map.\nEach family below gets four things: the signal (what physical quantity is measured), the shape (dimensionality and typical data size), the diagnoses (what clinical questions it answers), and the AI status (how far along the field is). The chapter closes with a master reference table, the engineer’s tensor cheat-sheet, and — because routing a study to the right expertise is the first thing an autonomous system must do — the agentic outlook.",
+    "crumbs": [
+      "I — The Landscape of Medical Imaging",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-universe-of-medical-images.html#projection-radiography",
+    "href": "chapters/02-universe-of-medical-images.html#projection-radiography",
+    "title": "2  The Universe of Medical Images",
+    "section": "2.2 Projection radiography",
+    "text": "2.2 Projection radiography\nThe oldest family, and still the highest-volume. A beam of X-ray photons passes through the body onto a detector; dense tissue (bone, metal, calcium) absorbs more, air absorbs almost nothing. The result is a two-dimensional projection: every structure along each ray is superimposed into one pixel. That superposition is the family’s defining limitation — a nodule can hide behind a rib — and the reason cross-sectional imaging was invented.\n\n2.2.1 Radiography (X-ray)\nSignal: X-ray attenuation, integrated along each ray. Shape: 2D, single channel, typically 2000–4000 pixels per side at 10–14 bits. Diagnoses: the chest X-ray alone screens for pneumonia, pneumothorax, effusions, cardiomegaly, nodules, tuberculosis, and line/tube placement; skeletal radiographs cover fractures, arthritis, and bone lesions; abdominal films catch obstruction and free air. It is the most-performed imaging exam on Earth — billions annually — which is why it anchors both the public-dataset landscape and the FDA-cleared product market, and why it gets this book’s flagship treatment in Chapter 10.\nAI status: the most mature of any modality. Large labeled datasets exist, multi-finding classifiers are commodity, and cleared triage products are deployed at scale.\n\n\n2.2.2 Mammography and digital breast tomosynthesis\nSignal: low-energy X-ray attenuation through compressed breast tissue, tuned to maximize soft-tissue contrast — the differences that matter (a mass, a cluster of microcalcifications) are subtle. Shape: 2D at very high resolution (~4000 × 5000, 70–100 µm pixels); digital breast tomosynthesis (DBT) adds a limited sweep of angles reconstructed into a pseudo-3D stack of ~50–80 slices. Diagnoses: breast-cancer screening and diagnosis, reported in the standardized BI-RADS vocabulary.\nMammography is unusual: it is a population screening modality, read in enormous volumes with a low prevalence of disease. That makes sensitivity/specificity trade-offs, double-reading economics, and risk-stratified screening intervals central — and it is why mammography hosts some of the strongest reader-study evidence for AI anywhere in medicine (Chapter 14).\n\n\n2.2.3 Fluoroscopy and angiography\nSignal: the same X-ray attenuation, but continuous — a live 2D+time video, usually with injected contrast tracing vessels or the GI tract. Shape: 2D+t, 512–1024 pixels per side, up to 30 frames/s. Uses: guiding interventions (catheters, stents, pacemaker leads), barium studies, joint injections. AI here is largely intra-procedural: vessel segmentation, device tracking, and radiation-dose reduction, sharing more DNA with the surgical-video world of Chapter 17 than with static radiography.\n\n\n2.2.4 DEXA\nSignal: attenuation at two X-ray energies, which lets the scanner separate bone from soft tissue and output a number — bone mineral density — rather than primarily a picture. Diagnoses: osteoporosis and fracture risk. DEXA earns its place in the atlas as the purest example of imaging-as-measurement, and because opportunistic screening — AI mining bone density or body composition from CT scans acquired for other reasons — is quietly becoming one of imaging AI’s most cost-effective applications (Chapter 19).",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
@@ -108,8 +119,8 @@
     "objectID": "chapters/02-universe-of-medical-images.html#cross-sectional-imaging",
     "href": "chapters/02-universe-of-medical-images.html#cross-sectional-imaging",
     "title": "2  The Universe of Medical Images",
-    "section": "2.2 Cross-sectional imaging",
-    "text": "2.2 Cross-sectional imaging",
+    "section": "2.3 Cross-sectional imaging",
+    "text": "2.3 Cross-sectional imaging\nThe superposition problem is solved by acquiring many views and reconstructing a volume: instead of one shadow, a stack of slices. Cross-sectional modalities produce true 3D data, and with it the volumetric measurement, 3D segmentation, and multi-planar reconstruction that dominate modern imaging AI.\n\n2.3.1 Computed tomography (CT)\nSignal: X-ray attenuation again — but measured from hundreds of angles as the tube spins around the patient, then reconstructed into a volume where every voxel carries a calibrated Hounsfield unit (HU): water is 0, air is −1000, bone is +400 to +2000. That calibration is a gift to machine learning; a liver is roughly the same HU in Boston and Bangalore.\nShape: 3D, canonically 512 × 512 in-plane with sub-millimeter voxels and anywhere from 40 to 2000+ slices; cardiac and perfusion protocols add time (4D). Intravenous contrast creates phases (arterial, venous, delayed) — effectively a temporal channel axis that an AI system ignores at its peril: the same lesion looks different in every phase.\nDiagnoses: the emergency workhorse — stroke, hemorrhage, pulmonary embolism, trauma, appendicitis — plus cancer detection, staging and response assessment, lung-cancer screening, coronary imaging, and surgical planning. AI status: very mature. Triage products for hemorrhage, stroke and PE are the commercial heart of radiology AI, and whole-body anatomical segmentation is now open-source commodity infrastructure (Chapter 11).\n\n\n2.3.2 Magnetic resonance imaging (MRI)\nSignal: no ionizing radiation at all. The patient lies in a strong magnetic field; hydrogen nuclei are tipped by radio-frequency pulses, and the scanner measures how they relax back — at rates that depend exquisitely on the tissue they sit in. By reordering the pulses — the sequence — the same anatomy renders with entirely different contrast: T1-weighted (anatomy, fat bright), T2-weighted (fluid bright), FLAIR (fluid suppressed, lesions conspicuous), diffusion-weighted (water mobility — the sequence that lights up acute stroke within minutes), gradient-echo (blood products), and dynamic contrast-enhanced series watching gadolinium wash in and out.\nShape: a study is a set of 3D volumes, one per sequence — think 4–12 misaligned, differently-contrasted, differently-resolved channels, often anisotropic (e.g., 0.5 mm in-plane but 5 mm between slices). Unlike CT, voxel intensities are not calibrated across scanners or even visits — the single most important fact about MRI for an ML practitioner, and the root of the domain-shift problems in Chapter 4.\nDiagnoses: the definitive modality for brain and spine (tumors, MS, dementia workup, stroke characterization), musculoskeletal soft tissue, prostate (PI-RADS), liver lesions, cardiac function and scar, and high-risk breast screening. AI status: strong in research, harder in deployment — sequence variability across vendors and sites is the great confounder. MRI also hosts imaging AI’s most distinctive success: reconstruction — using learned priors to produce diagnostic images from far less raw data, cutting scan times dramatically (Chapter 12).\n\n\n2.3.3 Nuclear medicine: PET and SPECT\nSignal: emission rather than transmission. A radioactive tracer is injected and accumulates where its target biology is active; the scanner detects the photons the patient emits. The archetype is FDG-PET — fluorine-18-labeled glucose — which maps metabolic activity: most cancers, being metabolically greedy, glow. Voxels are quantitative (SUV, standardized uptake value), making PET a measurement instrument like DEXA, but in 3D.\nShape: 3D but low-resolution (~4–6 mm voxels, 128–256 per side) and almost never alone: PET/CT and PET/MR acquire an anatomical volume in the same session, so the data is intrinsically multi-modal — a functional channel registered to an anatomical one. Diagnoses: cancer staging and treatment response above all; also cardiac viability, infection, and neurodegeneration (amyloid and tau imaging in dementia). SPECT, PET’s cheaper single-photon cousin, dominates cardiac perfusion. AI status: growing fast — lesion detection across whole-body PET, automated SUV quantification for trial endpoints, and dose/time-reduction reconstruction (Chapter 15).",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
@@ -119,8 +130,8 @@
     "objectID": "chapters/02-universe-of-medical-images.html#real-time-imaging",
     "href": "chapters/02-universe-of-medical-images.html#real-time-imaging",
     "title": "2  The Universe of Medical Images",
-    "section": "2.3 Real-time imaging",
-    "text": "2.3 Real-time imaging",
+    "section": "2.4 Real-time imaging",
+    "text": "2.4 Real-time imaging\nEverything so far produces a study to be read after acquisition. This family is interpreted live, while the probe or scope is still in hand — which changes everything about how AI must integrate: the model’s user is the person acquiring the images, the latency budget is milliseconds, and acquisition quality itself becomes an AI target.\n\n2.4.1 Ultrasound and echocardiography\nSignal: high-frequency sound pulses; the machine times and weighs the echoes returning from tissue boundaries. Doppler processing adds a velocity channel — blood flow, in color. Shape: 2D+t video (~30–60 fps) from a hand-held probe whose position and angle are unrecorded and entirely operator-dependent; 3D/4D probes exist (obstetric and cardiac). The operator dependence is the field’s defining ML challenge: two sonographers produce different images of the same heart, and the “right” frame is a skill, not a coordinate.\nDiagnoses: ubiquitous — obstetric growth and anomaly screening, abdominal organs, thyroid, vascular flow, and above all echocardiography: chamber sizes, ejection fraction, and valve function, medicine’s front-line cardiac exam. Point-of-care ultrasound (POCUS) is pushing probes into ambulances, ERs, and low-resource settings — often into the hands of non-experts, which is exactly where AI guidance (coaching the operator to the right view, auto-measuring once there) earned one of its landmark FDA authorizations (Chapter 13).\n\n\n2.4.2 Endoscopy\nSignal: ordinary visible light, from a camera inside the GI tract (or airway, bladder, joint). Shape: 2D+t high-definition video. Diagnoses: colorectal-cancer screening via polyp detection and removal, upper-GI lesions, bleeding sources. Real-time polyp detection was among the first cleared live-video AI products in medicine, and the adenoma-detection-rate literature around it is some of the best evidence that imaging AI changes hard clinical outcomes.\n\n\n2.4.3 Surgical and interventional video\nSignal: the laparoscope or robotic camera — visible light again, but now the video documents an activity, not just anatomy. Shape: 2D+t (sometimes stereo), hours long: a single case can exceed 100 GB, and “labels” are events in time (phases, instrument appearances, critical safety views) rather than regions in space. AI targets: workflow phase recognition, tool detection, safety-checkpoint verification, skill assessment, and automated documentation — the subject of Chapter 17, and the family closest to mainstream video understanding in computer vision.",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
@@ -130,41 +141,52 @@
     "objectID": "chapters/02-universe-of-medical-images.html#ophthalmic-imaging",
     "href": "chapters/02-universe-of-medical-images.html#ophthalmic-imaging",
     "title": "2  The Universe of Medical Images",
-    "section": "2.4 Ophthalmic imaging",
-    "text": "2.4 Ophthalmic imaging",
+    "section": "2.5 Ophthalmic imaging",
+    "text": "2.5 Ophthalmic imaging\nThe eye is the only place in the body where the microvasculature and central-nervous-system tissue can be photographed directly through a transparent window — which makes ophthalmic imaging disproportionately important to AI, historically and clinically.\n\n2.5.1 Fundus photography\nSignal: a visible-light color photograph of the retina. Shape: 2D RGB, ~2000–4000 pixels per side — the only major modality that looks like a natural image, which is why ImageNet-pretrained networks transferred so easily and why diabetic-retinopathy grading became deep learning’s first great medical success story. Diagnoses: diabetic retinopathy screening above all (the first autonomous — no-physician-in-the-loop — FDA authorization in medicine), plus glaucoma and macular degeneration. The emerging field of oculomics reads systemic health — cardiovascular risk, anemia, kidney disease — from the same photographs.\n\n\n2.5.2 Optical coherence tomography (OCT)\nSignal: low-coherence interferometry — light’s analog of ultrasound — resolving retinal depth at micron scale. Shape: 3D, a stack of cross-sectional B-scans revealing every retinal layer; OCT-angiography derives flow maps without dye. Diagnoses: macular degeneration and diabetic macular edema management (it gates injection therapy), glaucoma progression. OCT is the highest-volume 3D scan in all of medicine by study count — ophthalmology clinics run them like vital signs (Chapter 16).",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
     ]
   },
   {
-    "objectID": "chapters/02-universe-of-medical-images.html#microscopy-based-imaging",
-    "href": "chapters/02-universe-of-medical-images.html#microscopy-based-imaging",
+    "objectID": "chapters/02-universe-of-medical-images.html#microscopy-the-laboratory-image",
+    "href": "chapters/02-universe-of-medical-images.html#microscopy-the-laboratory-image",
     "title": "2  The Universe of Medical Images",
-    "section": "2.5 Microscopy-based imaging",
-    "text": "2.5 Microscopy-based imaging",
+    "section": "2.6 Microscopy: the laboratory image",
+    "text": "2.6 Microscopy: the laboratory image\nRadiology images the intact patient; pathology images extracted tissue — and pathology’s verdict is usually the diagnosis of record against which every other modality’s suspicion is confirmed. Its digitization is the youngest and, by pixel count, the largest frontier in medical imaging.\n\n2.6.1 Histopathology and whole-slide imaging\nSignal: transmitted visible light through micron-thin, chemically stained tissue sections. H&E is the universal stain; immunohistochemistry (IHC) adds targeted molecular markers; special stains flag organisms and deposits. Shape: a scanned whole-slide image (WSI) is a pyramidal gigapixel file — 100,000 pixels per side at full resolution, several GB per slide, far too large for any network to ingest whole. The standard paradigm is tiling plus multiple-instance learning: the slide has one label, the hundreds of thousands of tiles do not — a weak-supervision structure that shaped an entire subfield and now underpins pathology’s powerful slide-level foundation models (Chapter 18).\nDiagnoses: cancer — its presence, type, grade, margins, and biomarkers — plus inflammatory, infectious, and degenerative disease across every organ.\n\n\n2.6.2 Cytology and hematology\nIndividual cells rather than tissue architecture: Pap smears (cervical-cancer screening — home of some of the oldest automated-screening systems in medicine), fine-needle aspirates, and peripheral blood smears, where automated cell-classification is routine in modern hematology analyzers.",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
     ]
   },
   {
-    "objectID": "chapters/02-universe-of-medical-images.html#dermatology-dental-maxillofacial",
-    "href": "chapters/02-universe-of-medical-images.html#dermatology-dental-maxillofacial",
+    "objectID": "chapters/02-universe-of-medical-images.html#dermatology-dental-and-maxillofacial",
+    "href": "chapters/02-universe-of-medical-images.html#dermatology-dental-and-maxillofacial",
     "title": "2  The Universe of Medical Images",
-    "section": "2.6 Dermatology, dental & maxillofacial",
-    "text": "2.6 Dermatology, dental & maxillofacial",
+    "section": "2.7 Dermatology, dental and maxillofacial",
+    "text": "2.7 Dermatology, dental and maxillofacial\nDermatology: clinical photographs and dermoscopy (polarized close-up imaging of skin lesions) — 2D RGB natural images, screening for melanoma against a benign-lesion background. Consumer-facing apps make this the modality where regulation, bias across skin tones, and dataset ethics collide most publicly. Dental: intraoral radiographs and panoramic X-rays (caries, periodontal bone loss — high-volume, well-suited to detection AI) plus CBCT, a compact cone-beam CT for implant planning and endodontics. Both get their template treatment in Chapter 19.",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
     ]
   },
   {
-    "objectID": "chapters/02-universe-of-medical-images.html#emerging-modalities",
-    "href": "chapters/02-universe-of-medical-images.html#emerging-modalities",
+    "objectID": "chapters/02-universe-of-medical-images.html#emerging-and-adjacent",
+    "href": "chapters/02-universe-of-medical-images.html#emerging-and-adjacent",
     "title": "2  The Universe of Medical Images",
-    "section": "2.7 Emerging modalities",
-    "text": "2.7 Emerging modalities",
+    "section": "2.8 Emerging and adjacent",
+    "text": "2.8 Emerging and adjacent\nThe atlas keeps growing. Photon-counting CT resolves the energy of individual X-ray photons, promising sharper images at lower dose with material decomposition. Portable low-field MRI wheels the magnet to the bedside, trading resolution for access — and leaning on AI reconstruction to close the quality gap. Photoacoustic imaging fires laser pulses and listens to the ultrasound that tissue emits in response. Hyperspectral and fluorescence-guided surgery give the operating camera channels human eyes lack. And at the boundary of the definition, waveform data like ECG is routinely rendered and analyzed as images — a reminder that “medical imaging” is a convention about tensors and clinical context as much as physics.",
+    "crumbs": [
+      "I — The Landscape of Medical Imaging",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-universe-of-medical-images.html#dimensions-tensors-and-files",
+    "href": "chapters/02-universe-of-medical-images.html#dimensions-tensors-and-files",
+    "title": "2  The Universe of Medical Images",
+    "section": "2.9 Dimensions, tensors, and files",
+    "text": "2.9 Dimensions, tensors, and files\n\n\n\n\n\n\nTipFor the engineer — the cheat sheet\n\n\n\n\n\n\n\n\n\n\n\n\nModality\nTypical tensor\nValue semantics\nTypical study size\n\n\n\n\nRadiograph (CR/DX)\n1 × ~3000²\nRelative attenuation\n10–30 MB\n\n\nMammogram / DBT\n1 × ~4000×5000 (× ~60 slices)\nRelative attenuation\n50 MB–3 GB\n\n\nCT\n512² × 40–2000 (+phases)\nCalibrated (HU)\n30 MB–2 GB\n\n\nMRI\n4–12 sequences × ~256³, misaligned\nUncalibrated\n100 MB–1 GB\n\n\nPET(/CT)\n~200³ + CT volume\nCalibrated (SUV)\n100–500 MB\n\n\nUltrasound / echo\n~50–200 clips × 2D+t (+Doppler)\nRelative echo intensity\n100 MB–1 GB\n\n\nEndoscopy / surgery video\n2D+t, minutes–hours\nRGB\n1–100+ GB\n\n\nFundus\nRGB ~3000²\nRGB\n5–20 MB\n\n\nOCT\n~100–500 B-scans × 500–1000²\nRelative reflectance\n50 MB–1 GB\n\n\nPathology WSI\npyramidal ~100,000² RGB\nStain-dependent RGB\n0.5–5 GB/slide\n\n\n\nThree recurring axes deserve respect: calibration (HU and SUV mean something; MRI and ultrasound intensities do not), anisotropy (voxels are rarely cubes), and channels-that-aren’t-channels (MRI sequences and CT contrast phases are semantically channels but arrive misaligned and optional — real pipelines must handle missing ones).",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
@@ -174,8 +196,41 @@
     "objectID": "chapters/02-universe-of-medical-images.html#the-master-modality-diagnosis-table",
     "href": "chapters/02-universe-of-medical-images.html#the-master-modality-diagnosis-table",
     "title": "2  The Universe of Medical Images",
-    "section": "2.8 The master modality × diagnosis table",
-    "text": "2.8 The master modality × diagnosis table",
+    "section": "2.10 The master modality × diagnosis table",
+    "text": "2.10 The master modality × diagnosis table\n\n\n\n\n\n\n\n\n\n\nModality\nPhysical signal\nShape\nFlagship diagnoses\nAI maturity\n\n\n\n\nRadiography\nX-ray transmission\n2D\nPneumonia, pneumothorax, fractures, TB, lines/tubes\n●●●●○ deployed at scale\n\n\nMammography/DBT\nLow-energy X-ray\n2D/pseudo-3D\nBreast cancer screening\n●●●●○ strong reader evidence\n\n\nFluoroscopy\nX-ray video\n2D+t\nProcedure guidance\n●●○○○ intra-procedural aids\n\n\nDEXA\nDual-energy X-ray\nQuantitative 2D\nOsteoporosis\n●●○○○ + opportunistic CT\n\n\nCT\nReconstructed attenuation\n3D/4D\nStroke, PE, hemorrhage, trauma, cancer staging, lung screening\n●●●●● commercial core\n\n\nMRI\nNuclear relaxation\nMulti-sequence 3D\nBrain/spine disease, MSK, prostate, cardiac\n●●●○○ recon is the star\n\n\nPET/SPECT\nTracer emission\n3D + anatomy\nCancer staging/response, perfusion, dementia\n●●●○○ quantification-led\n\n\nUltrasound/echo\nAcoustic echoes\n2D+t (+Doppler)\nCardiac function, obstetrics, vascular\n●●●○○ guidance + automeasure\n\n\nEndoscopy\nOptical video\n2D+t\nPolyp/lesion detection\n●●●●○ cleared live CADe\n\n\nSurgical video\nOptical video\n2D+t\nPhase/safety/skill analysis\n●●○○○ research→product\n\n\nFundus\nOptical photo\n2D RGB\nDiabetic retinopathy, glaucoma\n●●●●● first autonomous clearance\n\n\nOCT\nInterferometry\n3D\nAMD, DME, glaucoma\n●●●●○ layer analysis routine\n\n\nPathology WSI\nStained-light microscopy\nGigapixel 2D\nCancer diagnosis of record, grading, biomarkers\n●●●○○ foundation-model era\n\n\nDermoscopy\nOptical photo\n2D RGB\nMelanoma vs. benign\n●●●○○ consumer-facing tension\n\n\nDental/CBCT\nX-ray / cone-beam\n2D / 3D\nCaries, implants\n●●●○○ fast-growing",
+    "crumbs": [
+      "I — The Landscape of Medical Imaging",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-universe-of-medical-images.html#the-agentic-outlook",
+    "href": "chapters/02-universe-of-medical-images.html#the-agentic-outlook",
+    "title": "2  The Universe of Medical Images",
+    "section": "2.11 The agentic outlook",
+    "text": "2.11 The agentic outlook\nFor an autonomous system, this chapter is not background — it is a routing table. The first decision any imaging agent makes about a study is what am I looking at, and everything downstream (which models to call, which measurements matter, which report template applies, which findings are urgent) hangs off that answer. In principle the DICOM header answers it — modality, body part, protocol — but real-world metadata is famously dirty: mislabeled body parts, free-text study descriptions, protocol names that differ at every site. Robust agents therefore combine metadata with the image content itself, exactly the modality-and-anatomy scoring described throughout this atlas.\nThis is also the first place theory meets running code: MedAI OS’s suite auto-detection does precisely this routing — weighing DICOM modality, body part, and description keywords to select a clinical suite (a chest X-ray study routes to the Chest X-Ray Suite, an RTSTRUCT to radiotherapy) before any model runs. An agent that has internalized this chapter can extend that logic: recognize a contrast-phase mismatch, notice a missing MRI sequence before wasting an inference call, or refuse to run a 2D chest model on a CT scout view. Modality literacy is to imaging agents what anatomy is to medical students — the prerequisite everything else assumes.",
+    "crumbs": [
+      "I — The Landscape of Medical Imaging",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-universe-of-medical-images.html#doing-this-in-medai-os",
+    "href": "chapters/02-universe-of-medical-images.html#doing-this-in-medai-os",
+    "title": "2  The Universe of Medical Images",
+    "section": "Doing this in MedAI OS",
+    "text": "Doing this in MedAI OS\nThe fastest way to make this atlas concrete is to load one study from each family and feel the differences:\n\nGet sample data. From the medai-os repo, ./scripts/download-sample-data.sh fetches public studies spanning several modalities (add --upload to push them into a running Orthanc PACS).\nLoad a radiograph vs. a CT. Drag a chest X-ray into the viewer: one 2D frame, window/level is nearly all the interaction there is. Now load a CT: scroll the stack, switch to multi-planar reconstruction, and re-window between lung/soft-tissue/bone presets — calibrated Hounsfield units at work.\nLoad an MRI study. Note that it arrives as multiple series — the sequences of this chapter — and that intensity windows that suit T1 make FLAIR unreadable: uncalibrated values, experienced firsthand.\nWatch the router. Load studies of different types and watch the Suite Selector auto-detect and switch — the agentic outlook’s routing table, running live on DICOM metadata.\nFormats: the viewer’s local loaders accept DICOM, NIfTI, NRRD, MHA, and TIFF — a working tour of the format landscape coming up in Chapter 3.",
+    "crumbs": [
+      "I — The Landscape of Medical Imaging",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/02-universe-of-medical-images.html#further-reading",
+    "href": "chapters/02-universe-of-medical-images.html#further-reading",
+    "title": "2  The Universe of Medical Images",
+    "section": "2.12 Further reading",
+    "text": "2.12 Further reading\n\nThe DICOM standard’s modality definitions (dicom.nema.org) — the controlled vocabulary behind every “CT”, “MR”, “US” in this chapter.\nSuetens, Fundamentals of Medical Imaging — the physics one level deeper.\nThe modality-by-modality chapters of Parts III–IV of this book, which unpack every section above.",
     "crumbs": [
       "I — The Landscape of Medical Imaging",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Universe of Medical Images</span>"
@@ -578,1235 +633,1444 @@
     ]
   },
   {
-    "objectID": "chapters/08-from-model-to-product.html",
-    "href": "chapters/08-from-model-to-product.html",
-    "title": "8  From Model to Product: Evaluation, Regulation, Deployment",
+    "objectID": "chapters/08-agentic-ai.html",
+    "href": "chapters/08-agentic-ai.html",
+    "title": "8  Agentic AI in Medical Imaging",
     "section": "",
-    "text": "8.1 Benchmark performance vs. clinical validation",
+    "text": "8.1 What is an agent?",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/08-from-model-to-product.html#regulatory-pathways-in-plain-language",
-    "href": "chapters/08-from-model-to-product.html#regulatory-pathways-in-plain-language",
-    "title": "8  From Model to Product: Evaluation, Regulation, Deployment",
-    "section": "8.2 Regulatory pathways in plain language",
-    "text": "8.2 Regulatory pathways in plain language",
+    "objectID": "chapters/08-agentic-ai.html#anatomy-of-a-harness",
+    "href": "chapters/08-agentic-ai.html#anatomy-of-a-harness",
+    "title": "8  Agentic AI in Medical Imaging",
+    "section": "8.2 Anatomy of a harness",
+    "text": "8.2 Anatomy of a harness",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/08-from-model-to-product.html#post-market-surveillance-and-audit-trails",
-    "href": "chapters/08-from-model-to-product.html#post-market-surveillance-and-audit-trails",
-    "title": "8  From Model to Product: Evaluation, Regulation, Deployment",
-    "section": "8.3 Post-market surveillance and audit trails",
-    "text": "8.3 Post-market surveillance and audit trails",
+    "objectID": "chapters/08-agentic-ai.html#tools-an-imaging-agent-calls",
+    "href": "chapters/08-agentic-ai.html#tools-an-imaging-agent-calls",
+    "title": "8  Agentic AI in Medical Imaging",
+    "section": "8.3 Tools an imaging agent calls",
+    "text": "8.3 Tools an imaging agent calls",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/08-from-model-to-product.html#mlops-for-hospitals",
-    "href": "chapters/08-from-model-to-product.html#mlops-for-hospitals",
-    "title": "8  From Model to Product: Evaluation, Regulation, Deployment",
-    "section": "8.4 MLOps for hospitals",
-    "text": "8.4 MLOps for hospitals",
+    "objectID": "chapters/08-agentic-ai.html#orchestration-patterns",
+    "href": "chapters/08-agentic-ai.html#orchestration-patterns",
+    "title": "8  Agentic AI in Medical Imaging",
+    "section": "8.4 Orchestration patterns",
+    "text": "8.4 Orchestration patterns",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/08-from-model-to-product.html#doing-this-in-medai-os",
-    "href": "chapters/08-from-model-to-product.html#doing-this-in-medai-os",
-    "title": "8  From Model to Product: Evaluation, Regulation, Deployment",
+    "objectID": "chapters/08-agentic-ai.html#agents-as-readers-machine-readable-medical-knowledge",
+    "href": "chapters/08-agentic-ai.html#agents-as-readers-machine-readable-medical-knowledge",
+    "title": "8  Agentic AI in Medical Imaging",
+    "section": "8.5 Agents as readers: machine-readable medical knowledge",
+    "text": "8.5 Agents as readers: machine-readable medical knowledge",
+    "crumbs": [
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-agentic-ai.html#evaluating-agentic-systems",
+    "href": "chapters/08-agentic-ai.html#evaluating-agentic-systems",
+    "title": "8  Agentic AI in Medical Imaging",
+    "section": "8.6 Evaluating agentic systems",
+    "text": "8.6 Evaluating agentic systems",
+    "crumbs": [
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-agentic-ai.html#safety-liability-and-the-regulatory-frontier",
+    "href": "chapters/08-agentic-ai.html#safety-liability-and-the-regulatory-frontier",
+    "title": "8  Agentic AI in Medical Imaging",
+    "section": "8.7 Safety, liability and the regulatory frontier",
+    "text": "8.7 Safety, liability and the regulatory frontier",
+    "crumbs": [
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-agentic-ai.html#doing-this-in-medai-os",
+    "href": "chapters/08-agentic-ai.html#doing-this-in-medai-os",
+    "title": "8  Agentic AI in Medical Imaging",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/09-chest-xray.html",
-    "href": "chapters/09-chest-xray.html",
-    "title": "9  Chest X-ray",
+    "objectID": "chapters/08-agentic-ai.html#further-reading",
+    "href": "chapters/08-agentic-ai.html#further-reading",
+    "title": "8  Agentic AI in Medical Imaging",
+    "section": "8.8 Further reading",
+    "text": "8.8 Further reading",
+    "crumbs": [
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-from-model-to-product.html",
+    "href": "chapters/09-from-model-to-product.html",
+    "title": "9  From Model to Product: Evaluation, Regulation, Deployment",
     "section": "",
-    "text": "9.1 What is a chest X-ray?",
+    "text": "9.1 Benchmark performance vs. clinical validation",
     "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
     ]
   },
   {
-    "objectID": "chapters/09-chest-xray.html#why-and-when-its-ordered",
-    "href": "chapters/09-chest-xray.html#why-and-when-its-ordered",
-    "title": "9  Chest X-ray",
-    "section": "9.2 Why and when it’s ordered",
-    "text": "9.2 Why and when it’s ordered",
+    "objectID": "chapters/09-from-model-to-product.html#regulatory-pathways-in-plain-language",
+    "href": "chapters/09-from-model-to-product.html#regulatory-pathways-in-plain-language",
+    "title": "9  From Model to Product: Evaluation, Regulation, Deployment",
+    "section": "9.2 Regulatory pathways in plain language",
+    "text": "9.2 Regulatory pathways in plain language",
     "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
     ]
   },
   {
-    "objectID": "chapters/09-chest-xray.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/09-chest-xray.html#what-diagnoses-are-made-from-it",
-    "title": "9  Chest X-ray",
-    "section": "9.3 What diagnoses are made from it",
-    "text": "9.3 What diagnoses are made from it",
+    "objectID": "chapters/09-from-model-to-product.html#post-market-surveillance-and-audit-trails",
+    "href": "chapters/09-from-model-to-product.html#post-market-surveillance-and-audit-trails",
+    "title": "9  From Model to Product: Evaluation, Regulation, Deployment",
+    "section": "9.3 Post-market surveillance and audit trails",
+    "text": "9.3 Post-market surveillance and audit trails",
     "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
     ]
   },
   {
-    "objectID": "chapters/09-chest-xray.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/09-chest-xray.html#how-it-works-in-a-modern-hospital",
-    "title": "9  Chest X-ray",
-    "section": "9.4 How it works in a modern hospital",
-    "text": "9.4 How it works in a modern hospital",
+    "objectID": "chapters/09-from-model-to-product.html#mlops-for-hospitals",
+    "href": "chapters/09-from-model-to-product.html#mlops-for-hospitals",
+    "title": "9  From Model to Product: Evaluation, Regulation, Deployment",
+    "section": "9.4 MLOps for hospitals",
+    "text": "9.4 MLOps for hospitals",
     "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
     ]
   },
   {
-    "objectID": "chapters/09-chest-xray.html#the-data-landscape",
-    "href": "chapters/09-chest-xray.html#the-data-landscape",
-    "title": "9  Chest X-ray",
-    "section": "9.5 The data landscape",
-    "text": "9.5 The data landscape",
-    "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/09-chest-xray.html#the-model-landscape",
-    "href": "chapters/09-chest-xray.html#the-model-landscape",
-    "title": "9  Chest X-ray",
-    "section": "9.6 The model landscape",
-    "text": "9.6 The model landscape",
-    "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/09-chest-xray.html#fda-cleared-ai-products",
-    "href": "chapters/09-chest-xray.html#fda-cleared-ai-products",
-    "title": "9  Chest X-ray",
-    "section": "9.7 FDA-cleared AI products",
-    "text": "9.7 FDA-cleared AI products",
-    "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/09-chest-xray.html#open-challenges",
-    "href": "chapters/09-chest-xray.html#open-challenges",
-    "title": "9  Chest X-ray",
-    "section": "9.8 Open challenges",
-    "text": "9.8 Open challenges",
-    "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/09-chest-xray.html#doing-this-in-medai-os",
-    "href": "chapters/09-chest-xray.html#doing-this-in-medai-os",
-    "title": "9  Chest X-ray",
+    "objectID": "chapters/09-from-model-to-product.html#doing-this-in-medai-os",
+    "href": "chapters/09-from-model-to-product.html#doing-this-in-medai-os",
+    "title": "9  From Model to Product: Evaluation, Regulation, Deployment",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
     ]
   },
   {
-    "objectID": "chapters/09-chest-xray.html#further-reading",
-    "href": "chapters/09-chest-xray.html#further-reading",
-    "title": "9  Chest X-ray",
-    "section": "9.9 Further reading",
-    "text": "9.9 Further reading",
-    "crumbs": [
-      "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Chest X-ray</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/10-computed-tomography.html",
-    "href": "chapters/10-computed-tomography.html",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html",
+    "href": "chapters/10-chest-xray.html",
+    "title": "10  Chest X-ray",
     "section": "",
-    "text": "10.1 What is CT?",
+    "text": "10.1 What is a chest X-ray?",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#why-and-when-its-ordered",
-    "href": "chapters/10-computed-tomography.html#why-and-when-its-ordered",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#why-and-when-its-ordered",
+    "href": "chapters/10-chest-xray.html#why-and-when-its-ordered",
+    "title": "10  Chest X-ray",
     "section": "10.2 Why and when it’s ordered",
     "text": "10.2 Why and when it’s ordered",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/10-computed-tomography.html#what-diagnoses-are-made-from-it",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/10-chest-xray.html#what-diagnoses-are-made-from-it",
+    "title": "10  Chest X-ray",
     "section": "10.3 What diagnoses are made from it",
     "text": "10.3 What diagnoses are made from it",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/10-computed-tomography.html#how-it-works-in-a-modern-hospital",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/10-chest-xray.html#how-it-works-in-a-modern-hospital",
+    "title": "10  Chest X-ray",
     "section": "10.4 How it works in a modern hospital",
     "text": "10.4 How it works in a modern hospital",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#the-data-landscape",
-    "href": "chapters/10-computed-tomography.html#the-data-landscape",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#the-data-landscape",
+    "href": "chapters/10-chest-xray.html#the-data-landscape",
+    "title": "10  Chest X-ray",
     "section": "10.5 The data landscape",
     "text": "10.5 The data landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#the-model-landscape",
-    "href": "chapters/10-computed-tomography.html#the-model-landscape",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#the-model-landscape",
+    "href": "chapters/10-chest-xray.html#the-model-landscape",
+    "title": "10  Chest X-ray",
     "section": "10.6 The model landscape",
     "text": "10.6 The model landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#fda-cleared-ai-products",
-    "href": "chapters/10-computed-tomography.html#fda-cleared-ai-products",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#fda-cleared-ai-products",
+    "href": "chapters/10-chest-xray.html#fda-cleared-ai-products",
+    "title": "10  Chest X-ray",
     "section": "10.7 FDA-cleared AI products",
     "text": "10.7 FDA-cleared AI products",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#open-challenges",
-    "href": "chapters/10-computed-tomography.html#open-challenges",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#open-challenges",
+    "href": "chapters/10-chest-xray.html#open-challenges",
+    "title": "10  Chest X-ray",
     "section": "10.8 Open challenges",
     "text": "10.8 Open challenges",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#doing-this-in-medai-os",
-    "href": "chapters/10-computed-tomography.html#doing-this-in-medai-os",
-    "title": "10  Computed Tomography (CT)",
+    "objectID": "chapters/10-chest-xray.html#the-agentic-outlook",
+    "href": "chapters/10-chest-xray.html#the-agentic-outlook",
+    "title": "10  Chest X-ray",
+    "section": "10.9 The agentic outlook",
+    "text": "10.9 The agentic outlook",
+    "crumbs": [
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-chest-xray.html#doing-this-in-medai-os",
+    "href": "chapters/10-chest-xray.html#doing-this-in-medai-os",
+    "title": "10  Chest X-ray",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/10-computed-tomography.html#further-reading",
-    "href": "chapters/10-computed-tomography.html#further-reading",
-    "title": "10  Computed Tomography (CT)",
-    "section": "10.9 Further reading",
-    "text": "10.9 Further reading",
+    "objectID": "chapters/10-chest-xray.html#further-reading",
+    "href": "chapters/10-chest-xray.html#further-reading",
+    "title": "10  Chest X-ray",
+    "section": "10.10 Further reading",
+    "text": "10.10 Further reading",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Chest X-ray</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html",
-    "href": "chapters/11-mri.html",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html",
+    "href": "chapters/11-computed-tomography.html",
+    "title": "11  Computed Tomography (CT)",
     "section": "",
-    "text": "11.1 What is MRI?",
+    "text": "11.1 What is CT?",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#why-and-when-its-ordered",
-    "href": "chapters/11-mri.html#why-and-when-its-ordered",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#why-and-when-its-ordered",
+    "href": "chapters/11-computed-tomography.html#why-and-when-its-ordered",
+    "title": "11  Computed Tomography (CT)",
     "section": "11.2 Why and when it’s ordered",
     "text": "11.2 Why and when it’s ordered",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/11-mri.html#what-diagnoses-are-made-from-it",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/11-computed-tomography.html#what-diagnoses-are-made-from-it",
+    "title": "11  Computed Tomography (CT)",
     "section": "11.3 What diagnoses are made from it",
     "text": "11.3 What diagnoses are made from it",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/11-mri.html#how-it-works-in-a-modern-hospital",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/11-computed-tomography.html#how-it-works-in-a-modern-hospital",
+    "title": "11  Computed Tomography (CT)",
     "section": "11.4 How it works in a modern hospital",
     "text": "11.4 How it works in a modern hospital",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#the-data-landscape",
-    "href": "chapters/11-mri.html#the-data-landscape",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#the-data-landscape",
+    "href": "chapters/11-computed-tomography.html#the-data-landscape",
+    "title": "11  Computed Tomography (CT)",
     "section": "11.5 The data landscape",
     "text": "11.5 The data landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#the-model-landscape",
-    "href": "chapters/11-mri.html#the-model-landscape",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#the-model-landscape",
+    "href": "chapters/11-computed-tomography.html#the-model-landscape",
+    "title": "11  Computed Tomography (CT)",
     "section": "11.6 The model landscape",
     "text": "11.6 The model landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#fda-cleared-ai-products",
-    "href": "chapters/11-mri.html#fda-cleared-ai-products",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#fda-cleared-ai-products",
+    "href": "chapters/11-computed-tomography.html#fda-cleared-ai-products",
+    "title": "11  Computed Tomography (CT)",
     "section": "11.7 FDA-cleared AI products",
     "text": "11.7 FDA-cleared AI products",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#open-challenges",
-    "href": "chapters/11-mri.html#open-challenges",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#open-challenges",
+    "href": "chapters/11-computed-tomography.html#open-challenges",
+    "title": "11  Computed Tomography (CT)",
     "section": "11.8 Open challenges",
     "text": "11.8 Open challenges",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#doing-this-in-medai-os",
-    "href": "chapters/11-mri.html#doing-this-in-medai-os",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
+    "objectID": "chapters/11-computed-tomography.html#the-agentic-outlook",
+    "href": "chapters/11-computed-tomography.html#the-agentic-outlook",
+    "title": "11  Computed Tomography (CT)",
+    "section": "11.9 The agentic outlook",
+    "text": "11.9 The agentic outlook",
+    "crumbs": [
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/11-computed-tomography.html#doing-this-in-medai-os",
+    "href": "chapters/11-computed-tomography.html#doing-this-in-medai-os",
+    "title": "11  Computed Tomography (CT)",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/11-mri.html#further-reading",
-    "href": "chapters/11-mri.html#further-reading",
-    "title": "11  Magnetic Resonance Imaging (MRI)",
-    "section": "11.9 Further reading",
-    "text": "11.9 Further reading",
+    "objectID": "chapters/11-computed-tomography.html#further-reading",
+    "href": "chapters/11-computed-tomography.html#further-reading",
+    "title": "11  Computed Tomography (CT)",
+    "section": "11.10 Further reading",
+    "text": "11.10 Further reading",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Computed Tomography (CT)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html",
-    "href": "chapters/12-ultrasound-echo.html",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html",
+    "href": "chapters/12-mri.html",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "",
-    "text": "12.1 What is ultrasound?",
+    "text": "12.1 What is MRI?",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#why-and-when-its-ordered",
-    "href": "chapters/12-ultrasound-echo.html#why-and-when-its-ordered",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#why-and-when-its-ordered",
+    "href": "chapters/12-mri.html#why-and-when-its-ordered",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "12.2 Why and when it’s ordered",
     "text": "12.2 Why and when it’s ordered",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/12-ultrasound-echo.html#what-diagnoses-are-made-from-it",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/12-mri.html#what-diagnoses-are-made-from-it",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "12.3 What diagnoses are made from it",
     "text": "12.3 What diagnoses are made from it",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/12-ultrasound-echo.html#how-it-works-in-a-modern-hospital",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/12-mri.html#how-it-works-in-a-modern-hospital",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "12.4 How it works in a modern hospital",
     "text": "12.4 How it works in a modern hospital",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#the-data-landscape",
-    "href": "chapters/12-ultrasound-echo.html#the-data-landscape",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#the-data-landscape",
+    "href": "chapters/12-mri.html#the-data-landscape",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "12.5 The data landscape",
     "text": "12.5 The data landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#the-model-landscape",
-    "href": "chapters/12-ultrasound-echo.html#the-model-landscape",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#the-model-landscape",
+    "href": "chapters/12-mri.html#the-model-landscape",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "12.6 The model landscape",
     "text": "12.6 The model landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#fda-cleared-ai-products",
-    "href": "chapters/12-ultrasound-echo.html#fda-cleared-ai-products",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#fda-cleared-ai-products",
+    "href": "chapters/12-mri.html#fda-cleared-ai-products",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "12.7 FDA-cleared AI products",
     "text": "12.7 FDA-cleared AI products",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#open-challenges",
-    "href": "chapters/12-ultrasound-echo.html#open-challenges",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#open-challenges",
+    "href": "chapters/12-mri.html#open-challenges",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "12.8 Open challenges",
     "text": "12.8 Open challenges",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#doing-this-in-medai-os",
-    "href": "chapters/12-ultrasound-echo.html#doing-this-in-medai-os",
-    "title": "12  Ultrasound & Echocardiography",
+    "objectID": "chapters/12-mri.html#the-agentic-outlook",
+    "href": "chapters/12-mri.html#the-agentic-outlook",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
+    "section": "12.9 The agentic outlook",
+    "text": "12.9 The agentic outlook",
+    "crumbs": [
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/12-mri.html#doing-this-in-medai-os",
+    "href": "chapters/12-mri.html#doing-this-in-medai-os",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/12-ultrasound-echo.html#further-reading",
-    "href": "chapters/12-ultrasound-echo.html#further-reading",
-    "title": "12  Ultrasound & Echocardiography",
-    "section": "12.9 Further reading",
-    "text": "12.9 Further reading",
+    "objectID": "chapters/12-mri.html#further-reading",
+    "href": "chapters/12-mri.html#further-reading",
+    "title": "12  Magnetic Resonance Imaging (MRI)",
+    "section": "12.10 Further reading",
+    "text": "12.10 Further reading",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Magnetic Resonance Imaging (MRI)</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html",
-    "href": "chapters/13-mammography.html",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html",
+    "href": "chapters/13-ultrasound-echo.html",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "",
-    "text": "13.1 What is mammography?",
+    "text": "13.1 What is ultrasound?",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#why-and-when-its-ordered",
-    "href": "chapters/13-mammography.html#why-and-when-its-ordered",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#why-and-when-its-ordered",
+    "href": "chapters/13-ultrasound-echo.html#why-and-when-its-ordered",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "13.2 Why and when it’s ordered",
     "text": "13.2 Why and when it’s ordered",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/13-mammography.html#what-diagnoses-are-made-from-it",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/13-ultrasound-echo.html#what-diagnoses-are-made-from-it",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "13.3 What diagnoses are made from it",
     "text": "13.3 What diagnoses are made from it",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/13-mammography.html#how-it-works-in-a-modern-hospital",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/13-ultrasound-echo.html#how-it-works-in-a-modern-hospital",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "13.4 How it works in a modern hospital",
     "text": "13.4 How it works in a modern hospital",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#the-data-landscape",
-    "href": "chapters/13-mammography.html#the-data-landscape",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#the-data-landscape",
+    "href": "chapters/13-ultrasound-echo.html#the-data-landscape",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "13.5 The data landscape",
     "text": "13.5 The data landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#the-model-landscape",
-    "href": "chapters/13-mammography.html#the-model-landscape",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#the-model-landscape",
+    "href": "chapters/13-ultrasound-echo.html#the-model-landscape",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "13.6 The model landscape",
     "text": "13.6 The model landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#fda-cleared-ai-products",
-    "href": "chapters/13-mammography.html#fda-cleared-ai-products",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#fda-cleared-ai-products",
+    "href": "chapters/13-ultrasound-echo.html#fda-cleared-ai-products",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "13.7 FDA-cleared AI products",
     "text": "13.7 FDA-cleared AI products",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#open-challenges",
-    "href": "chapters/13-mammography.html#open-challenges",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#open-challenges",
+    "href": "chapters/13-ultrasound-echo.html#open-challenges",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "13.8 Open challenges",
     "text": "13.8 Open challenges",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#doing-this-in-medai-os",
-    "href": "chapters/13-mammography.html#doing-this-in-medai-os",
-    "title": "13  Mammography & Breast Imaging",
+    "objectID": "chapters/13-ultrasound-echo.html#the-agentic-outlook",
+    "href": "chapters/13-ultrasound-echo.html#the-agentic-outlook",
+    "title": "13  Ultrasound & Echocardiography",
+    "section": "13.9 The agentic outlook",
+    "text": "13.9 The agentic outlook",
+    "crumbs": [
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/13-ultrasound-echo.html#doing-this-in-medai-os",
+    "href": "chapters/13-ultrasound-echo.html#doing-this-in-medai-os",
+    "title": "13  Ultrasound & Echocardiography",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/13-mammography.html#further-reading",
-    "href": "chapters/13-mammography.html#further-reading",
-    "title": "13  Mammography & Breast Imaging",
-    "section": "13.9 Further reading",
-    "text": "13.9 Further reading",
+    "objectID": "chapters/13-ultrasound-echo.html#further-reading",
+    "href": "chapters/13-ultrasound-echo.html#further-reading",
+    "title": "13  Ultrasound & Echocardiography",
+    "section": "13.10 Further reading",
+    "text": "13.10 Further reading",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Ultrasound & Echocardiography</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html",
-    "href": "chapters/14-nuclear-medicine.html",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html",
+    "href": "chapters/14-mammography.html",
+    "title": "14  Mammography & Breast Imaging",
     "section": "",
-    "text": "14.1 What is PET/SPECT?",
+    "text": "14.1 What is mammography?",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#why-and-when-its-ordered",
-    "href": "chapters/14-nuclear-medicine.html#why-and-when-its-ordered",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#why-and-when-its-ordered",
+    "href": "chapters/14-mammography.html#why-and-when-its-ordered",
+    "title": "14  Mammography & Breast Imaging",
     "section": "14.2 Why and when it’s ordered",
     "text": "14.2 Why and when it’s ordered",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/14-nuclear-medicine.html#what-diagnoses-are-made-from-it",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/14-mammography.html#what-diagnoses-are-made-from-it",
+    "title": "14  Mammography & Breast Imaging",
     "section": "14.3 What diagnoses are made from it",
     "text": "14.3 What diagnoses are made from it",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/14-nuclear-medicine.html#how-it-works-in-a-modern-hospital",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/14-mammography.html#how-it-works-in-a-modern-hospital",
+    "title": "14  Mammography & Breast Imaging",
     "section": "14.4 How it works in a modern hospital",
     "text": "14.4 How it works in a modern hospital",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#the-data-landscape",
-    "href": "chapters/14-nuclear-medicine.html#the-data-landscape",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#the-data-landscape",
+    "href": "chapters/14-mammography.html#the-data-landscape",
+    "title": "14  Mammography & Breast Imaging",
     "section": "14.5 The data landscape",
     "text": "14.5 The data landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#the-model-landscape",
-    "href": "chapters/14-nuclear-medicine.html#the-model-landscape",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#the-model-landscape",
+    "href": "chapters/14-mammography.html#the-model-landscape",
+    "title": "14  Mammography & Breast Imaging",
     "section": "14.6 The model landscape",
     "text": "14.6 The model landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#fda-cleared-ai-products",
-    "href": "chapters/14-nuclear-medicine.html#fda-cleared-ai-products",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#fda-cleared-ai-products",
+    "href": "chapters/14-mammography.html#fda-cleared-ai-products",
+    "title": "14  Mammography & Breast Imaging",
     "section": "14.7 FDA-cleared AI products",
     "text": "14.7 FDA-cleared AI products",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#open-challenges",
-    "href": "chapters/14-nuclear-medicine.html#open-challenges",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#open-challenges",
+    "href": "chapters/14-mammography.html#open-challenges",
+    "title": "14  Mammography & Breast Imaging",
     "section": "14.8 Open challenges",
     "text": "14.8 Open challenges",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#doing-this-in-medai-os",
-    "href": "chapters/14-nuclear-medicine.html#doing-this-in-medai-os",
-    "title": "14  Nuclear Medicine: PET & SPECT",
+    "objectID": "chapters/14-mammography.html#the-agentic-outlook",
+    "href": "chapters/14-mammography.html#the-agentic-outlook",
+    "title": "14  Mammography & Breast Imaging",
+    "section": "14.9 The agentic outlook",
+    "text": "14.9 The agentic outlook",
+    "crumbs": [
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/14-mammography.html#doing-this-in-medai-os",
+    "href": "chapters/14-mammography.html#doing-this-in-medai-os",
+    "title": "14  Mammography & Breast Imaging",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/14-nuclear-medicine.html#further-reading",
-    "href": "chapters/14-nuclear-medicine.html#further-reading",
-    "title": "14  Nuclear Medicine: PET & SPECT",
-    "section": "14.9 Further reading",
-    "text": "14.9 Further reading",
+    "objectID": "chapters/14-mammography.html#further-reading",
+    "href": "chapters/14-mammography.html#further-reading",
+    "title": "14  Mammography & Breast Imaging",
+    "section": "14.10 Further reading",
+    "text": "14.10 Further reading",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Mammography & Breast Imaging</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html",
-    "href": "chapters/15-ophthalmic-imaging.html",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html",
+    "href": "chapters/15-nuclear-medicine.html",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "",
-    "text": "15.1 What is fundus photography and OCT?",
+    "text": "15.1 What is PET/SPECT?",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#why-and-when-its-ordered",
-    "href": "chapters/15-ophthalmic-imaging.html#why-and-when-its-ordered",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#why-and-when-its-ordered",
+    "href": "chapters/15-nuclear-medicine.html#why-and-when-its-ordered",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "15.2 Why and when it’s ordered",
     "text": "15.2 Why and when it’s ordered",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/15-ophthalmic-imaging.html#what-diagnoses-are-made-from-it",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/15-nuclear-medicine.html#what-diagnoses-are-made-from-it",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "15.3 What diagnoses are made from it",
     "text": "15.3 What diagnoses are made from it",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/15-ophthalmic-imaging.html#how-it-works-in-a-modern-hospital",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/15-nuclear-medicine.html#how-it-works-in-a-modern-hospital",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "15.4 How it works in a modern hospital",
     "text": "15.4 How it works in a modern hospital",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#the-data-landscape",
-    "href": "chapters/15-ophthalmic-imaging.html#the-data-landscape",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#the-data-landscape",
+    "href": "chapters/15-nuclear-medicine.html#the-data-landscape",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "15.5 The data landscape",
     "text": "15.5 The data landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#the-model-landscape",
-    "href": "chapters/15-ophthalmic-imaging.html#the-model-landscape",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#the-model-landscape",
+    "href": "chapters/15-nuclear-medicine.html#the-model-landscape",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "15.6 The model landscape",
     "text": "15.6 The model landscape",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#fda-cleared-ai-products",
-    "href": "chapters/15-ophthalmic-imaging.html#fda-cleared-ai-products",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#fda-cleared-ai-products",
+    "href": "chapters/15-nuclear-medicine.html#fda-cleared-ai-products",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "15.7 FDA-cleared AI products",
     "text": "15.7 FDA-cleared AI products",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#open-challenges",
-    "href": "chapters/15-ophthalmic-imaging.html#open-challenges",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#open-challenges",
+    "href": "chapters/15-nuclear-medicine.html#open-challenges",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "15.8 Open challenges",
     "text": "15.8 Open challenges",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#doing-this-in-medai-os",
-    "href": "chapters/15-ophthalmic-imaging.html#doing-this-in-medai-os",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
+    "objectID": "chapters/15-nuclear-medicine.html#the-agentic-outlook",
+    "href": "chapters/15-nuclear-medicine.html#the-agentic-outlook",
+    "title": "15  Nuclear Medicine: PET & SPECT",
+    "section": "15.9 The agentic outlook",
+    "text": "15.9 The agentic outlook",
+    "crumbs": [
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/15-nuclear-medicine.html#doing-this-in-medai-os",
+    "href": "chapters/15-nuclear-medicine.html#doing-this-in-medai-os",
+    "title": "15  Nuclear Medicine: PET & SPECT",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/15-ophthalmic-imaging.html#further-reading",
-    "href": "chapters/15-ophthalmic-imaging.html#further-reading",
-    "title": "15  Ophthalmic Imaging: Fundus & OCT",
-    "section": "15.9 Further reading",
-    "text": "15.9 Further reading",
+    "objectID": "chapters/15-nuclear-medicine.html#further-reading",
+    "href": "chapters/15-nuclear-medicine.html#further-reading",
+    "title": "15  Nuclear Medicine: PET & SPECT",
+    "section": "15.10 Further reading",
+    "text": "15.10 Further reading",
     "crumbs": [
       "III — Diagnostic Imaging, Modality by Modality",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Nuclear Medicine: PET & SPECT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html",
-    "href": "chapters/16-surgical-endoscopic-video.html",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html",
+    "href": "chapters/16-ophthalmic-imaging.html",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "",
-    "text": "16.1 What is surgical and endoscopic video?",
+    "text": "16.1 What is fundus photography and OCT?",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#why-and-when-its-ordered",
-    "href": "chapters/16-surgical-endoscopic-video.html#why-and-when-its-ordered",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#why-and-when-its-ordered",
+    "href": "chapters/16-ophthalmic-imaging.html#why-and-when-its-ordered",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "16.2 Why and when it’s ordered",
     "text": "16.2 Why and when it’s ordered",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/16-surgical-endoscopic-video.html#what-diagnoses-are-made-from-it",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/16-ophthalmic-imaging.html#what-diagnoses-are-made-from-it",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "16.3 What diagnoses are made from it",
     "text": "16.3 What diagnoses are made from it",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/16-surgical-endoscopic-video.html#how-it-works-in-a-modern-hospital",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/16-ophthalmic-imaging.html#how-it-works-in-a-modern-hospital",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "16.4 How it works in a modern hospital",
     "text": "16.4 How it works in a modern hospital",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#the-data-landscape",
-    "href": "chapters/16-surgical-endoscopic-video.html#the-data-landscape",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#the-data-landscape",
+    "href": "chapters/16-ophthalmic-imaging.html#the-data-landscape",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "16.5 The data landscape",
     "text": "16.5 The data landscape",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#the-model-landscape",
-    "href": "chapters/16-surgical-endoscopic-video.html#the-model-landscape",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#the-model-landscape",
+    "href": "chapters/16-ophthalmic-imaging.html#the-model-landscape",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "16.6 The model landscape",
     "text": "16.6 The model landscape",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#fda-cleared-ai-products",
-    "href": "chapters/16-surgical-endoscopic-video.html#fda-cleared-ai-products",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#fda-cleared-ai-products",
+    "href": "chapters/16-ophthalmic-imaging.html#fda-cleared-ai-products",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "16.7 FDA-cleared AI products",
     "text": "16.7 FDA-cleared AI products",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#open-challenges",
-    "href": "chapters/16-surgical-endoscopic-video.html#open-challenges",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#open-challenges",
+    "href": "chapters/16-ophthalmic-imaging.html#open-challenges",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "16.8 Open challenges",
     "text": "16.8 Open challenges",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#doing-this-in-medai-os",
-    "href": "chapters/16-surgical-endoscopic-video.html#doing-this-in-medai-os",
-    "title": "16  Surgical & Endoscopic Video",
+    "objectID": "chapters/16-ophthalmic-imaging.html#the-agentic-outlook",
+    "href": "chapters/16-ophthalmic-imaging.html#the-agentic-outlook",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
+    "section": "16.9 The agentic outlook",
+    "text": "16.9 The agentic outlook",
+    "crumbs": [
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/16-ophthalmic-imaging.html#doing-this-in-medai-os",
+    "href": "chapters/16-ophthalmic-imaging.html#doing-this-in-medai-os",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/16-surgical-endoscopic-video.html#further-reading",
-    "href": "chapters/16-surgical-endoscopic-video.html#further-reading",
-    "title": "16  Surgical & Endoscopic Video",
-    "section": "16.9 Further reading",
-    "text": "16.9 Further reading",
+    "objectID": "chapters/16-ophthalmic-imaging.html#further-reading",
+    "href": "chapters/16-ophthalmic-imaging.html#further-reading",
+    "title": "16  Ophthalmic Imaging: Fundus & OCT",
+    "section": "16.10 Further reading",
+    "text": "16.10 Further reading",
     "crumbs": [
-      "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+      "III — Diagnostic Imaging, Modality by Modality",
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Ophthalmic Imaging: Fundus & OCT</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html",
-    "href": "chapters/17-digital-pathology.html",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html",
+    "href": "chapters/17-surgical-endoscopic-video.html",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "",
-    "text": "17.1 What is whole-slide imaging?",
+    "text": "17.1 What is surgical and endoscopic video?",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#why-and-when-its-ordered",
-    "href": "chapters/17-digital-pathology.html#why-and-when-its-ordered",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#why-and-when-its-ordered",
+    "href": "chapters/17-surgical-endoscopic-video.html#why-and-when-its-ordered",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "17.2 Why and when it’s ordered",
     "text": "17.2 Why and when it’s ordered",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#what-diagnoses-are-made-from-it",
-    "href": "chapters/17-digital-pathology.html#what-diagnoses-are-made-from-it",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/17-surgical-endoscopic-video.html#what-diagnoses-are-made-from-it",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "17.3 What diagnoses are made from it",
     "text": "17.3 What diagnoses are made from it",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#how-it-works-in-a-modern-hospital",
-    "href": "chapters/17-digital-pathology.html#how-it-works-in-a-modern-hospital",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/17-surgical-endoscopic-video.html#how-it-works-in-a-modern-hospital",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "17.4 How it works in a modern hospital",
     "text": "17.4 How it works in a modern hospital",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#the-data-landscape",
-    "href": "chapters/17-digital-pathology.html#the-data-landscape",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#the-data-landscape",
+    "href": "chapters/17-surgical-endoscopic-video.html#the-data-landscape",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "17.5 The data landscape",
     "text": "17.5 The data landscape",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#the-model-landscape",
-    "href": "chapters/17-digital-pathology.html#the-model-landscape",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#the-model-landscape",
+    "href": "chapters/17-surgical-endoscopic-video.html#the-model-landscape",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "17.6 The model landscape",
     "text": "17.6 The model landscape",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#fda-cleared-ai-products",
-    "href": "chapters/17-digital-pathology.html#fda-cleared-ai-products",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#fda-cleared-ai-products",
+    "href": "chapters/17-surgical-endoscopic-video.html#fda-cleared-ai-products",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "17.7 FDA-cleared AI products",
     "text": "17.7 FDA-cleared AI products",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#open-challenges",
-    "href": "chapters/17-digital-pathology.html#open-challenges",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#open-challenges",
+    "href": "chapters/17-surgical-endoscopic-video.html#open-challenges",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "17.8 Open challenges",
     "text": "17.8 Open challenges",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#doing-this-in-medai-os",
-    "href": "chapters/17-digital-pathology.html#doing-this-in-medai-os",
-    "title": "17  Digital Pathology & Histology",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#the-agentic-outlook",
+    "href": "chapters/17-surgical-endoscopic-video.html#the-agentic-outlook",
+    "title": "17  Surgical & Endoscopic Video",
+    "section": "17.9 The agentic outlook",
+    "text": "17.9 The agentic outlook",
+    "crumbs": [
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/17-surgical-endoscopic-video.html#doing-this-in-medai-os",
+    "href": "chapters/17-surgical-endoscopic-video.html#doing-this-in-medai-os",
+    "title": "17  Surgical & Endoscopic Video",
     "section": "Doing this in MedAI OS",
     "text": "Doing this in MedAI OS",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/17-digital-pathology.html#further-reading",
-    "href": "chapters/17-digital-pathology.html#further-reading",
-    "title": "17  Digital Pathology & Histology",
-    "section": "17.9 Further reading",
-    "text": "17.9 Further reading",
+    "objectID": "chapters/17-surgical-endoscopic-video.html#further-reading",
+    "href": "chapters/17-surgical-endoscopic-video.html#further-reading",
+    "title": "17  Surgical & Endoscopic Video",
+    "section": "17.10 Further reading",
+    "text": "17.10 Further reading",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Surgical & Endoscopic Video</span>"
     ]
   },
   {
-    "objectID": "chapters/18-the-remaining-map.html",
-    "href": "chapters/18-the-remaining-map.html",
-    "title": "18  The Remaining Map",
+    "objectID": "chapters/18-digital-pathology.html",
+    "href": "chapters/18-digital-pathology.html",
+    "title": "18  Digital Pathology & Histology",
     "section": "",
-    "text": "18.1 Dermatology imaging",
+    "text": "18.1 What is whole-slide imaging?",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>The Remaining Map</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
     ]
   },
   {
-    "objectID": "chapters/18-the-remaining-map.html#dental-cbct",
-    "href": "chapters/18-the-remaining-map.html#dental-cbct",
-    "title": "18  The Remaining Map",
-    "section": "18.2 Dental & CBCT",
-    "text": "18.2 Dental & CBCT",
+    "objectID": "chapters/18-digital-pathology.html#why-and-when-its-ordered",
+    "href": "chapters/18-digital-pathology.html#why-and-when-its-ordered",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.2 Why and when it’s ordered",
+    "text": "18.2 Why and when it’s ordered",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>The Remaining Map</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
     ]
   },
   {
-    "objectID": "chapters/18-the-remaining-map.html#dexa-and-opportunistic-screening",
-    "href": "chapters/18-the-remaining-map.html#dexa-and-opportunistic-screening",
-    "title": "18  The Remaining Map",
-    "section": "18.3 DEXA and opportunistic screening",
-    "text": "18.3 DEXA and opportunistic screening",
+    "objectID": "chapters/18-digital-pathology.html#what-diagnoses-are-made-from-it",
+    "href": "chapters/18-digital-pathology.html#what-diagnoses-are-made-from-it",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.3 What diagnoses are made from it",
+    "text": "18.3 What diagnoses are made from it",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>The Remaining Map</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
     ]
   },
   {
-    "objectID": "chapters/18-the-remaining-map.html#ecg-as-an-image",
-    "href": "chapters/18-the-remaining-map.html#ecg-as-an-image",
-    "title": "18  The Remaining Map",
-    "section": "18.4 ECG as an image",
-    "text": "18.4 ECG as an image",
+    "objectID": "chapters/18-digital-pathology.html#how-it-works-in-a-modern-hospital",
+    "href": "chapters/18-digital-pathology.html#how-it-works-in-a-modern-hospital",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.4 How it works in a modern hospital",
+    "text": "18.4 How it works in a modern hospital",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>The Remaining Map</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
     ]
   },
   {
-    "objectID": "chapters/18-the-remaining-map.html#emerging-modalities",
-    "href": "chapters/18-the-remaining-map.html#emerging-modalities",
-    "title": "18  The Remaining Map",
-    "section": "18.5 Emerging modalities",
-    "text": "18.5 Emerging modalities",
+    "objectID": "chapters/18-digital-pathology.html#the-data-landscape",
+    "href": "chapters/18-digital-pathology.html#the-data-landscape",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.5 The data landscape",
+    "text": "18.5 The data landscape",
     "crumbs": [
       "IV — Interventional, Lab-Based & Video",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>The Remaining Map</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
     ]
   },
   {
-    "objectID": "chapters/19-building-an-imaging-ai-platform.html",
-    "href": "chapters/19-building-an-imaging-ai-platform.html",
-    "title": "19  Building an Imaging AI Platform: MedAI OS as a Case Study",
+    "objectID": "chapters/18-digital-pathology.html#the-model-landscape",
+    "href": "chapters/18-digital-pathology.html#the-model-landscape",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.6 The model landscape",
+    "text": "18.6 The model landscape",
+    "crumbs": [
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-digital-pathology.html#fda-cleared-ai-products",
+    "href": "chapters/18-digital-pathology.html#fda-cleared-ai-products",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.7 FDA-cleared AI products",
+    "text": "18.7 FDA-cleared AI products",
+    "crumbs": [
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-digital-pathology.html#open-challenges",
+    "href": "chapters/18-digital-pathology.html#open-challenges",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.8 Open challenges",
+    "text": "18.8 Open challenges",
+    "crumbs": [
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-digital-pathology.html#the-agentic-outlook",
+    "href": "chapters/18-digital-pathology.html#the-agentic-outlook",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.9 The agentic outlook",
+    "text": "18.9 The agentic outlook",
+    "crumbs": [
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-digital-pathology.html#doing-this-in-medai-os",
+    "href": "chapters/18-digital-pathology.html#doing-this-in-medai-os",
+    "title": "18  Digital Pathology & Histology",
+    "section": "Doing this in MedAI OS",
+    "text": "Doing this in MedAI OS",
+    "crumbs": [
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/18-digital-pathology.html#further-reading",
+    "href": "chapters/18-digital-pathology.html#further-reading",
+    "title": "18  Digital Pathology & Histology",
+    "section": "18.10 Further reading",
+    "text": "18.10 Further reading",
+    "crumbs": [
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Digital Pathology & Histology</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/19-the-remaining-map.html",
+    "href": "chapters/19-the-remaining-map.html",
+    "title": "19  The Remaining Map",
     "section": "",
-    "text": "19.1 Anatomy of a web-based viewer",
+    "text": "19.1 Dermatology imaging",
     "crumbs": [
-      "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>The Remaining Map</span>"
     ]
   },
   {
-    "objectID": "chapters/19-building-an-imaging-ai-platform.html#feature-flags-and-suites",
-    "href": "chapters/19-building-an-imaging-ai-platform.html#feature-flags-and-suites",
-    "title": "19  Building an Imaging AI Platform: MedAI OS as a Case Study",
-    "section": "19.2 Feature flags and suites",
-    "text": "19.2 Feature flags and suites",
+    "objectID": "chapters/19-the-remaining-map.html#dental-cbct",
+    "href": "chapters/19-the-remaining-map.html#dental-cbct",
+    "title": "19  The Remaining Map",
+    "section": "19.2 Dental & CBCT",
+    "text": "19.2 Dental & CBCT",
     "crumbs": [
-      "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>The Remaining Map</span>"
     ]
   },
   {
-    "objectID": "chapters/19-building-an-imaging-ai-platform.html#talking-to-a-pacs",
-    "href": "chapters/19-building-an-imaging-ai-platform.html#talking-to-a-pacs",
-    "title": "19  Building an Imaging AI Platform: MedAI OS as a Case Study",
-    "section": "19.3 Talking to a PACS",
-    "text": "19.3 Talking to a PACS",
+    "objectID": "chapters/19-the-remaining-map.html#dexa-and-opportunistic-screening",
+    "href": "chapters/19-the-remaining-map.html#dexa-and-opportunistic-screening",
+    "title": "19  The Remaining Map",
+    "section": "19.3 DEXA and opportunistic screening",
+    "text": "19.3 DEXA and opportunistic screening",
     "crumbs": [
-      "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>The Remaining Map</span>"
     ]
   },
   {
-    "objectID": "chapters/19-building-an-imaging-ai-platform.html#serving-models",
-    "href": "chapters/19-building-an-imaging-ai-platform.html#serving-models",
-    "title": "19  Building an Imaging AI Platform: MedAI OS as a Case Study",
-    "section": "19.4 Serving models",
-    "text": "19.4 Serving models",
+    "objectID": "chapters/19-the-remaining-map.html#ecg-as-an-image",
+    "href": "chapters/19-the-remaining-map.html#ecg-as-an-image",
+    "title": "19  The Remaining Map",
+    "section": "19.4 ECG as an image",
+    "text": "19.4 ECG as an image",
     "crumbs": [
-      "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>The Remaining Map</span>"
     ]
   },
   {
-    "objectID": "chapters/19-building-an-imaging-ai-platform.html#adding-your-own-model",
-    "href": "chapters/19-building-an-imaging-ai-platform.html#adding-your-own-model",
-    "title": "19  Building an Imaging AI Platform: MedAI OS as a Case Study",
-    "section": "19.5 Adding your own model",
-    "text": "19.5 Adding your own model",
+    "objectID": "chapters/19-the-remaining-map.html#emerging-modalities",
+    "href": "chapters/19-the-remaining-map.html#emerging-modalities",
+    "title": "19  The Remaining Map",
+    "section": "19.5 Emerging modalities",
+    "text": "19.5 Emerging modalities",
     "crumbs": [
-      "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>The Remaining Map</span>"
     ]
   },
   {
-    "objectID": "chapters/19-building-an-imaging-ai-platform.html#lessons-learned",
-    "href": "chapters/19-building-an-imaging-ai-platform.html#lessons-learned",
-    "title": "19  Building an Imaging AI Platform: MedAI OS as a Case Study",
-    "section": "19.6 Lessons learned",
-    "text": "19.6 Lessons learned",
+    "objectID": "chapters/19-the-remaining-map.html#the-agentic-outlook",
+    "href": "chapters/19-the-remaining-map.html#the-agentic-outlook",
+    "title": "19  The Remaining Map",
+    "section": "19.6 The agentic outlook",
+    "text": "19.6 The agentic outlook",
     "crumbs": [
-      "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
+      "IV — Interventional, Lab-Based & Video",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>The Remaining Map</span>"
     ]
   },
   {
-    "objectID": "chapters/20-ethics-bias-future.html",
-    "href": "chapters/20-ethics-bias-future.html",
-    "title": "20  Ethics, Bias, Safety & The Future",
+    "objectID": "chapters/20-building-an-imaging-ai-platform.html",
+    "href": "chapters/20-building-an-imaging-ai-platform.html",
+    "title": "20  Building an Imaging AI Platform: MedAI OS as a Case Study",
     "section": "",
-    "text": "20.1 Fairness across populations",
+    "text": "20.1 Anatomy of a web-based viewer",
     "crumbs": [
       "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
     ]
   },
   {
-    "objectID": "chapters/20-ethics-bias-future.html#automation-bias-and-humanai-teaming",
-    "href": "chapters/20-ethics-bias-future.html#automation-bias-and-humanai-teaming",
-    "title": "20  Ethics, Bias, Safety & The Future",
-    "section": "20.2 Automation bias and human–AI teaming",
-    "text": "20.2 Automation bias and human–AI teaming",
+    "objectID": "chapters/20-building-an-imaging-ai-platform.html#feature-flags-and-suites",
+    "href": "chapters/20-building-an-imaging-ai-platform.html#feature-flags-and-suites",
+    "title": "20  Building an Imaging AI Platform: MedAI OS as a Case Study",
+    "section": "20.2 Feature flags and suites",
+    "text": "20.2 Feature flags and suites",
     "crumbs": [
       "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
     ]
   },
   {
-    "objectID": "chapters/20-ethics-bias-future.html#liability-and-accountability",
-    "href": "chapters/20-ethics-bias-future.html#liability-and-accountability",
-    "title": "20  Ethics, Bias, Safety & The Future",
-    "section": "20.3 Liability and accountability",
-    "text": "20.3 Liability and accountability",
+    "objectID": "chapters/20-building-an-imaging-ai-platform.html#talking-to-a-pacs",
+    "href": "chapters/20-building-an-imaging-ai-platform.html#talking-to-a-pacs",
+    "title": "20  Building an Imaging AI Platform: MedAI OS as a Case Study",
+    "section": "20.3 Talking to a PACS",
+    "text": "20.3 Talking to a PACS",
     "crumbs": [
       "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
     ]
   },
   {
-    "objectID": "chapters/20-ethics-bias-future.html#the-economics-and-sustainability-of-imaging-ai",
-    "href": "chapters/20-ethics-bias-future.html#the-economics-and-sustainability-of-imaging-ai",
-    "title": "20  Ethics, Bias, Safety & The Future",
-    "section": "20.4 The economics and sustainability of imaging AI",
-    "text": "20.4 The economics and sustainability of imaging AI",
+    "objectID": "chapters/20-building-an-imaging-ai-platform.html#serving-models",
+    "href": "chapters/20-building-an-imaging-ai-platform.html#serving-models",
+    "title": "20  Building an Imaging AI Platform: MedAI OS as a Case Study",
+    "section": "20.4 Serving models",
+    "text": "20.4 Serving models",
     "crumbs": [
       "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
     ]
   },
   {
-    "objectID": "chapters/20-ethics-bias-future.html#foundation-model-consolidation-and-agentic-radiology",
-    "href": "chapters/20-ethics-bias-future.html#foundation-model-consolidation-and-agentic-radiology",
-    "title": "20  Ethics, Bias, Safety & The Future",
-    "section": "20.5 Foundation-model consolidation and agentic radiology",
-    "text": "20.5 Foundation-model consolidation and agentic radiology",
+    "objectID": "chapters/20-building-an-imaging-ai-platform.html#adding-your-own-model",
+    "href": "chapters/20-building-an-imaging-ai-platform.html#adding-your-own-model",
+    "title": "20  Building an Imaging AI Platform: MedAI OS as a Case Study",
+    "section": "20.5 Adding your own model",
+    "text": "20.5 Adding your own model",
     "crumbs": [
       "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
     ]
   },
   {
-    "objectID": "chapters/20-ethics-bias-future.html#what-to-watch-next",
-    "href": "chapters/20-ethics-bias-future.html#what-to-watch-next",
-    "title": "20  Ethics, Bias, Safety & The Future",
-    "section": "20.6 What to watch next",
-    "text": "20.6 What to watch next",
+    "objectID": "chapters/20-building-an-imaging-ai-platform.html#lessons-learned",
+    "href": "chapters/20-building-an-imaging-ai-platform.html#lessons-learned",
+    "title": "20  Building an Imaging AI Platform: MedAI OS as a Case Study",
+    "section": "20.6 Lessons learned",
+    "text": "20.6 Lessons learned",
     "crumbs": [
       "V — Systems & The Road Ahead",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Building an Imaging AI Platform: MedAI OS as a Case Study</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/21-ethics-bias-future.html",
+    "href": "chapters/21-ethics-bias-future.html",
+    "title": "21  Ethics, Bias, Safety & The Future",
+    "section": "",
+    "text": "21.1 Fairness across populations",
+    "crumbs": [
+      "V — Systems & The Road Ahead",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/21-ethics-bias-future.html#automation-bias-and-humanai-teaming",
+    "href": "chapters/21-ethics-bias-future.html#automation-bias-and-humanai-teaming",
+    "title": "21  Ethics, Bias, Safety & The Future",
+    "section": "21.2 Automation bias and human–AI teaming",
+    "text": "21.2 Automation bias and human–AI teaming",
+    "crumbs": [
+      "V — Systems & The Road Ahead",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/21-ethics-bias-future.html#liability-and-accountability",
+    "href": "chapters/21-ethics-bias-future.html#liability-and-accountability",
+    "title": "21  Ethics, Bias, Safety & The Future",
+    "section": "21.3 Liability and accountability",
+    "text": "21.3 Liability and accountability",
+    "crumbs": [
+      "V — Systems & The Road Ahead",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/21-ethics-bias-future.html#the-economics-and-sustainability-of-imaging-ai",
+    "href": "chapters/21-ethics-bias-future.html#the-economics-and-sustainability-of-imaging-ai",
+    "title": "21  Ethics, Bias, Safety & The Future",
+    "section": "21.4 The economics and sustainability of imaging AI",
+    "text": "21.4 The economics and sustainability of imaging AI",
+    "crumbs": [
+      "V — Systems & The Road Ahead",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/21-ethics-bias-future.html#foundation-model-consolidation-and-agentic-radiology",
+    "href": "chapters/21-ethics-bias-future.html#foundation-model-consolidation-and-agentic-radiology",
+    "title": "21  Ethics, Bias, Safety & The Future",
+    "section": "21.5 Foundation-model consolidation and agentic radiology",
+    "text": "21.5 Foundation-model consolidation and agentic radiology",
+    "crumbs": [
+      "V — Systems & The Road Ahead",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/21-ethics-bias-future.html#what-to-watch-next",
+    "href": "chapters/21-ethics-bias-future.html#what-to-watch-next",
+    "title": "21  Ethics, Bias, Safety & The Future",
+    "section": "21.6 What to watch next",
+    "text": "21.6 What to watch next",
+    "crumbs": [
+      "V — Systems & The Road Ahead",
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Ethics, Bias, Safety & The Future</span>"
     ]
   },
   {

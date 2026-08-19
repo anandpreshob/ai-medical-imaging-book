@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Generative &amp; Frontier Models – AI in Medical Imaging</title>
+<title>14&nbsp; Mammography &amp; Breast Imaging – AI in Medical Imaging</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/08-agentic-ai.html" rel="next">
-<link href="../chapters/06-deep-learning-architectures.html" rel="prev">
+<link href="../chapters/15-nuclear-medicine.html" rel="next">
+<link href="../chapters/13-ultrasound-echo.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/07-generative-and-frontier-models.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/10-chest-xray.html">III — Diagnostic Imaging, Modality by Modality</a></li><li class="breadcrumb-item"><a href="../chapters/14-mammography.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -347,7 +347,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/07-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/07-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
   </div>
 </li>
@@ -400,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14-mammography.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/14-mammography.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
   </div>
 </li>
@@ -527,23 +527,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#diffusion-models" id="toc-diffusion-models" class="nav-link active" data-scroll-target="#diffusion-models"><span class="header-section-number">7.1</span> Diffusion models</a></li>
-  <li><a href="#gans-history-and-remaining-niches" id="toc-gans-history-and-remaining-niches" class="nav-link" data-scroll-target="#gans-history-and-remaining-niches"><span class="header-section-number">7.2</span> GANs: history and remaining niches</a></li>
-  <li><a href="#vision-language-models" id="toc-vision-language-models" class="nav-link" data-scroll-target="#vision-language-models"><span class="header-section-number">7.3</span> Vision-language models</a></li>
-  <li><a href="#llms-in-imaging" id="toc-llms-in-imaging" class="nav-link" data-scroll-target="#llms-in-imaging"><span class="header-section-number">7.4</span> LLMs in imaging</a></li>
-  <li><a href="#medical-foundation-models" id="toc-medical-foundation-models" class="nav-link" data-scroll-target="#medical-foundation-models"><span class="header-section-number">7.5</span> Medical foundation models</a></li>
-  <li><a href="#agentic-workflows" id="toc-agentic-workflows" class="nav-link" data-scroll-target="#agentic-workflows"><span class="header-section-number">7.6</span> Agentic workflows</a></li>
+  <li><a href="#what-is-mammography" id="toc-what-is-mammography" class="nav-link active" data-scroll-target="#what-is-mammography"><span class="header-section-number">14.1</span> What is mammography?</a></li>
+  <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">14.2</span> Why and when it’s ordered</a></li>
+  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">14.3</span> What diagnoses are made from it</a></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">14.4</span> How it works in a modern hospital</a></li>
+  <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">14.5</span> The data landscape</a></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">14.6</span> The model landscape</a></li>
+  <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">14.7</span> FDA-cleared AI products</a></li>
+  <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">14.8</span> Open challenges</a></li>
+  <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">14.9</span> The agentic outlook</a></li>
   <li><a href="#doing-this-in-medai-os" id="toc-doing-this-in-medai-os" class="nav-link" data-scroll-target="#doing-this-in-medai-os">Doing this in MedAI OS</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">14.10</span> Further reading</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/07-generative-and-frontier-models.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/14-mammography.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/07-generative-and-frontier-models.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/10-chest-xray.html">III — Diagnostic Imaging, Modality by Modality</a></li><li class="breadcrumb-item"><a href="../chapters/14-mammography.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-frontier-models" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></h1>
+<h1 class="title"><span id="sec-mammography" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></h1>
 </div>
 
 
@@ -573,30 +577,48 @@ Note
 <p><em>Draft chapter — outline only. Content coming soon.</em></p>
 </div>
 </div>
-<section id="diffusion-models" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="diffusion-models"><span class="header-section-number">7.1</span> Diffusion models</h2>
+<section id="what-is-mammography" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="what-is-mammography"><span class="header-section-number">14.1</span> What is mammography?</h2>
+<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
 </section>
-<section id="gans-history-and-remaining-niches" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="gans-history-and-remaining-niches"><span class="header-section-number">7.2</span> GANs: history and remaining niches</h2>
+<section id="why-and-when-its-ordered" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">14.2</span> Why and when it’s ordered</h2>
+<!-- Clinical indications; where this sits in the diagnostic pathway. -->
 </section>
-<section id="vision-language-models" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="vision-language-models"><span class="header-section-number">7.3</span> Vision-language models</h2>
+<section id="what-diagnoses-are-made-from-it" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">14.3</span> What diagnoses are made from it</h2>
+<!-- The finding taxonomy a model would need to learn. -->
 </section>
-<section id="llms-in-imaging" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="llms-in-imaging"><span class="header-section-number">7.4</span> LLMs in imaging</h2>
-<!-- Report generation, RAG assistants; RLHF and reasoning models. -->
+<section id="how-it-works-in-a-modern-hospital" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">14.4</span> How it works in a modern hospital</h2>
+<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
 </section>
-<section id="medical-foundation-models" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="medical-foundation-models"><span class="header-section-number">7.5</span> Medical foundation models</h2>
-<!-- MedSAM, BiomedParse, CheXagent, MedGemma, TotalSegmentator as model-as-infrastructure. -->
+<section id="the-data-landscape" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">14.5</span> The data landscape</h2>
+<!-- Living table filtered from data/datasets.csv (modality == "mammo"). -->
 </section>
-<section id="agentic-workflows" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="agentic-workflows"><span class="header-section-number">7.6</span> Agentic workflows</h2>
+<section id="the-model-landscape" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">14.6</span> The model landscape</h2>
+<!-- Living table filtered from data/models.csv (modality == "mammo"); open vs. closed. -->
+</section>
+<section id="fda-cleared-ai-products" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">14.7</span> FDA-cleared AI products</h2>
+<!-- Living table filtered from data/fda-products.csv (modality == "mammo"). -->
+</section>
+<section id="open-challenges" class="level2" data-number="14.8">
+<h2 data-number="14.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">14.8</span> Open challenges</h2>
+</section>
+<section id="the-agentic-outlook" class="level2" data-number="14.9">
+<h2 data-number="14.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">14.9</span> The agentic outlook</h2>
+<!-- How agent harnesses change this modality's workflow. Seed ideas:
+Screening-population agents: managing recall workflows, combining current AI scores with prior exams and risk models to personalize screening intervals, and drafting BI-RADS-structured results letters. -->
 </section>
 <section id="doing-this-in-medai-os" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="doing-this-in-medai-os">Doing this in MedAI OS</h2>
-<!-- Nearly every model in this chapter ships in MedAI OS: BiomedParse text-prompted
-     segmentation, CheXagent, the RAG chat assistant, agentic workflows. -->
+<!-- Breast DCE-MRI nnU-Net segmentation and BI-RADS reporting integration. -->
+</section>
+<section id="further-reading" class="level2" data-number="14.10">
+<h2 data-number="14.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">14.10</span> Further reading</h2>
 
 
 </section>
@@ -1022,13 +1044,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/06-deep-learning-architectures.html" class="pagination-link" aria-label="Deep Learning Architectures">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span>
+      <a href="../chapters/13-ultrasound-echo.html" class="pagination-link" aria-label="Ultrasound &amp; Echocardiography">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/08-agentic-ai.html" class="pagination-link" aria-label="Agentic AI in Medical Imaging">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/15-nuclear-medicine.html" class="pagination-link" aria-label="Nuclear Medicine: PET &amp; SPECT">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1040,7 +1062,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/07-generative-and-frontier-models.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/14-mammography.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Companion project: <a href="https://github.com/anandpreshob/medai-os">MedAI OS</a> · <a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
 </div>

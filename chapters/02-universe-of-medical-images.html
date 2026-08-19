@@ -80,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -353,8 +382,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/08-from-model-to-product.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
+  <a href="../chapters/08-agentic-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-from-model-to-product.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
   </div>
 </li>
       </ul>
@@ -370,44 +405,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-chest-xray.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
+  <a href="../chapters/10-chest-xray.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10-computed-tomography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
+  <a href="../chapters/11-computed-tomography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11-mri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
+  <a href="../chapters/12-mri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
+  <a href="../chapters/13-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13-mammography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
+  <a href="../chapters/14-mammography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
+  <a href="../chapters/15-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+  <a href="../chapters/16-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
   </div>
 </li>
       </ul>
@@ -423,20 +458,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
+  <a href="../chapters/17-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/17-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+  <a href="../chapters/18-digital-pathology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/18-the-remaining-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
+  <a href="../chapters/19-the-remaining-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -452,14 +487,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/19-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform: MedAI OS as a Case Study</span></span></a>
+  <a href="../chapters/20-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform: MedAI OS as a Case Study</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/20-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
+  <a href="../chapters/21-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
   </div>
 </li>
       </ul>
@@ -521,14 +556,43 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#projection-radiography" id="toc-projection-radiography" class="nav-link active" data-scroll-target="#projection-radiography"><span class="header-section-number">2.1</span> Projection radiography</a></li>
-  <li><a href="#cross-sectional-imaging" id="toc-cross-sectional-imaging" class="nav-link" data-scroll-target="#cross-sectional-imaging"><span class="header-section-number">2.2</span> Cross-sectional imaging</a></li>
-  <li><a href="#real-time-imaging" id="toc-real-time-imaging" class="nav-link" data-scroll-target="#real-time-imaging"><span class="header-section-number">2.3</span> Real-time imaging</a></li>
-  <li><a href="#ophthalmic-imaging" id="toc-ophthalmic-imaging" class="nav-link" data-scroll-target="#ophthalmic-imaging"><span class="header-section-number">2.4</span> Ophthalmic imaging</a></li>
-  <li><a href="#microscopy-based-imaging" id="toc-microscopy-based-imaging" class="nav-link" data-scroll-target="#microscopy-based-imaging"><span class="header-section-number">2.5</span> Microscopy-based imaging</a></li>
-  <li><a href="#dermatology-dental-maxillofacial" id="toc-dermatology-dental-maxillofacial" class="nav-link" data-scroll-target="#dermatology-dental-maxillofacial"><span class="header-section-number">2.6</span> Dermatology, dental &amp; maxillofacial</a></li>
-  <li><a href="#emerging-modalities" id="toc-emerging-modalities" class="nav-link" data-scroll-target="#emerging-modalities"><span class="header-section-number">2.7</span> Emerging modalities</a></li>
-  <li><a href="#the-master-modality-diagnosis-table" id="toc-the-master-modality-diagnosis-table" class="nav-link" data-scroll-target="#the-master-modality-diagnosis-table"><span class="header-section-number">2.8</span> The master modality × diagnosis table</a></li>
+  <li><a href="#how-to-read-this-atlas" id="toc-how-to-read-this-atlas" class="nav-link active" data-scroll-target="#how-to-read-this-atlas"><span class="header-section-number">2.1</span> How to read this atlas</a></li>
+  <li><a href="#projection-radiography" id="toc-projection-radiography" class="nav-link" data-scroll-target="#projection-radiography"><span class="header-section-number">2.2</span> Projection radiography</a>
+  <ul class="collapse">
+  <li><a href="#radiography-x-ray" id="toc-radiography-x-ray" class="nav-link" data-scroll-target="#radiography-x-ray"><span class="header-section-number">2.2.1</span> Radiography (X-ray)</a></li>
+  <li><a href="#mammography-and-digital-breast-tomosynthesis" id="toc-mammography-and-digital-breast-tomosynthesis" class="nav-link" data-scroll-target="#mammography-and-digital-breast-tomosynthesis"><span class="header-section-number">2.2.2</span> Mammography and digital breast tomosynthesis</a></li>
+  <li><a href="#fluoroscopy-and-angiography" id="toc-fluoroscopy-and-angiography" class="nav-link" data-scroll-target="#fluoroscopy-and-angiography"><span class="header-section-number">2.2.3</span> Fluoroscopy and angiography</a></li>
+  <li><a href="#dexa" id="toc-dexa" class="nav-link" data-scroll-target="#dexa"><span class="header-section-number">2.2.4</span> DEXA</a></li>
+  </ul></li>
+  <li><a href="#cross-sectional-imaging" id="toc-cross-sectional-imaging" class="nav-link" data-scroll-target="#cross-sectional-imaging"><span class="header-section-number">2.3</span> Cross-sectional imaging</a>
+  <ul class="collapse">
+  <li><a href="#computed-tomography-ct" id="toc-computed-tomography-ct" class="nav-link" data-scroll-target="#computed-tomography-ct"><span class="header-section-number">2.3.1</span> Computed tomography (CT)</a></li>
+  <li><a href="#magnetic-resonance-imaging-mri" id="toc-magnetic-resonance-imaging-mri" class="nav-link" data-scroll-target="#magnetic-resonance-imaging-mri"><span class="header-section-number">2.3.2</span> Magnetic resonance imaging (MRI)</a></li>
+  <li><a href="#nuclear-medicine-pet-and-spect" id="toc-nuclear-medicine-pet-and-spect" class="nav-link" data-scroll-target="#nuclear-medicine-pet-and-spect"><span class="header-section-number">2.3.3</span> Nuclear medicine: PET and SPECT</a></li>
+  </ul></li>
+  <li><a href="#real-time-imaging" id="toc-real-time-imaging" class="nav-link" data-scroll-target="#real-time-imaging"><span class="header-section-number">2.4</span> Real-time imaging</a>
+  <ul class="collapse">
+  <li><a href="#ultrasound-and-echocardiography" id="toc-ultrasound-and-echocardiography" class="nav-link" data-scroll-target="#ultrasound-and-echocardiography"><span class="header-section-number">2.4.1</span> Ultrasound and echocardiography</a></li>
+  <li><a href="#endoscopy" id="toc-endoscopy" class="nav-link" data-scroll-target="#endoscopy"><span class="header-section-number">2.4.2</span> Endoscopy</a></li>
+  <li><a href="#surgical-and-interventional-video" id="toc-surgical-and-interventional-video" class="nav-link" data-scroll-target="#surgical-and-interventional-video"><span class="header-section-number">2.4.3</span> Surgical and interventional video</a></li>
+  </ul></li>
+  <li><a href="#ophthalmic-imaging" id="toc-ophthalmic-imaging" class="nav-link" data-scroll-target="#ophthalmic-imaging"><span class="header-section-number">2.5</span> Ophthalmic imaging</a>
+  <ul class="collapse">
+  <li><a href="#fundus-photography" id="toc-fundus-photography" class="nav-link" data-scroll-target="#fundus-photography"><span class="header-section-number">2.5.1</span> Fundus photography</a></li>
+  <li><a href="#optical-coherence-tomography-oct" id="toc-optical-coherence-tomography-oct" class="nav-link" data-scroll-target="#optical-coherence-tomography-oct"><span class="header-section-number">2.5.2</span> Optical coherence tomography (OCT)</a></li>
+  </ul></li>
+  <li><a href="#microscopy-the-laboratory-image" id="toc-microscopy-the-laboratory-image" class="nav-link" data-scroll-target="#microscopy-the-laboratory-image"><span class="header-section-number">2.6</span> Microscopy: the laboratory image</a>
+  <ul class="collapse">
+  <li><a href="#histopathology-and-whole-slide-imaging" id="toc-histopathology-and-whole-slide-imaging" class="nav-link" data-scroll-target="#histopathology-and-whole-slide-imaging"><span class="header-section-number">2.6.1</span> Histopathology and whole-slide imaging</a></li>
+  <li><a href="#cytology-and-hematology" id="toc-cytology-and-hematology" class="nav-link" data-scroll-target="#cytology-and-hematology"><span class="header-section-number">2.6.2</span> Cytology and hematology</a></li>
+  </ul></li>
+  <li><a href="#dermatology-dental-and-maxillofacial" id="toc-dermatology-dental-and-maxillofacial" class="nav-link" data-scroll-target="#dermatology-dental-and-maxillofacial"><span class="header-section-number">2.7</span> Dermatology, dental and maxillofacial</a></li>
+  <li><a href="#emerging-and-adjacent" id="toc-emerging-and-adjacent" class="nav-link" data-scroll-target="#emerging-and-adjacent"><span class="header-section-number">2.8</span> Emerging and adjacent</a></li>
+  <li><a href="#dimensions-tensors-and-files" id="toc-dimensions-tensors-and-files" class="nav-link" data-scroll-target="#dimensions-tensors-and-files"><span class="header-section-number">2.9</span> Dimensions, tensors, and files</a></li>
+  <li><a href="#the-master-modality-diagnosis-table" id="toc-the-master-modality-diagnosis-table" class="nav-link" data-scroll-target="#the-master-modality-diagnosis-table"><span class="header-section-number">2.10</span> The master modality × diagnosis table</a></li>
+  <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">2.11</span> The agentic outlook</a></li>
+  <li><a href="#doing-this-in-medai-os" id="toc-doing-this-in-medai-os" class="nav-link" data-scroll-target="#doing-this-in-medai-os">Doing this in MedAI OS</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">2.12</span> Further reading</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/02-universe-of-medical-images.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -538,7 +602,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-introduction.html">I — The Landscape of Medical Imaging</a></li><li class="breadcrumb-item"><a href="../chapters/02-universe-of-medical-images.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Universe of Medical Images</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Universe of Medical Images</span></h1>
+<h1 class="title"><span id="sec-universe" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Universe of Medical Images</span></span></h1>
 </div>
 
 
@@ -555,50 +619,376 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Every medical image is the answer to the same question asked with different physics: <em>send some form of energy into (or collect it from) the body — what comes back, and what does that tell us about the tissue it passed through?</em> X-rays measure how much a beam is weakened on its way through you. MRI listens to hydrogen nuclei relaxing in a magnetic field. Ultrasound times echoes. PET watches you glow from the inside after an injection of radioactive sugar. Pathology skips the intact body entirely and puts a slice of it under glass.</p>
+<p>This chapter is the atlas: every major modality, what it physically measures, what shape its data takes, what diagnoses are made from it, and how mature AI is for it today. Later chapters unpack each modality in depth; this one exists so that the rest of the book — and any reader, human or agent, dropped into an unfamiliar study type — has a map.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the engineer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Think of each modality as defining a tensor. A chest X-ray is a single-channel 2D array, roughly <span class="math inline">\(3000 \times 3000\)</span>. A CT study is a 3D volume, <span class="math inline">\(512 \times 512 \times 300\)</span> or more, where voxel <em>values</em> are physically calibrated. An MRI study is a <em>set</em> of 3D volumes — sequences — that behave like non-aligned, differently-contrasted channels. An echocardiogram is 2D+time. A pathology slide is a <span class="math inline">\(100{,}000 \times 100{,}000\)</span> gigapixel pyramid. The tensor shape, the meaning of the values, and the metadata that travels with them (<a href="03-images-in-the-hospital.html" class="quarto-xref"><span>Chapter 3</span></a>) determine which architectures and preprocessing apply — much of <a href="06-deep-learning-architectures.html" class="quarto-xref"><span>Chapter 6</span></a> follows directly from this chapter.</p>
 </div>
 </div>
-<!-- The complete modality atlas. For each family: what it measures,
-     dimensionality (2D / 3D / 2D+t / 3D+t), typical diagnoses. -->
-<section id="projection-radiography" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="projection-radiography"><span class="header-section-number">2.1</span> Projection radiography</h2>
-<!-- X-ray, mammography, fluoroscopy, DEXA. -->
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the clinician
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You already know these modalities clinically. What this chapter adds is the framing an AI system sees: which properties of each modality (dimensionality, calibration, operator dependence, acquisition variability) make it easy or hard for machine learning, and why AI progress has been so uneven across them.</p>
+</div>
+</div>
+<section id="how-to-read-this-atlas" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="how-to-read-this-atlas"><span class="header-section-number">2.1</span> How to read this atlas</h2>
+<p>Each family below gets four things: <strong>the signal</strong> (what physical quantity is measured), <strong>the shape</strong> (dimensionality and typical data size), <strong>the diagnoses</strong> (what clinical questions it answers), and <strong>the AI status</strong> (how far along the field is). The chapter closes with a master reference table, the engineer’s tensor cheat-sheet, and — because routing a study to the right expertise is the first thing an autonomous system must do — the agentic outlook.</p>
 </section>
-<section id="cross-sectional-imaging" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="cross-sectional-imaging"><span class="header-section-number">2.2</span> Cross-sectional imaging</h2>
-<!-- CT; MRI and its sequences; PET/SPECT and hybrids. -->
+<section id="projection-radiography" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="projection-radiography"><span class="header-section-number">2.2</span> Projection radiography</h2>
+<p>The oldest family, and still the highest-volume. A beam of X-ray photons passes through the body onto a detector; dense tissue (bone, metal, calcium) absorbs more, air absorbs almost nothing. The result is a two-dimensional <em>projection</em>: every structure along each ray is superimposed into one pixel. That superposition is the family’s defining limitation — a nodule can hide behind a rib — and the reason cross-sectional imaging was invented.</p>
+<section id="radiography-x-ray" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="radiography-x-ray"><span class="header-section-number">2.2.1</span> Radiography (X-ray)</h3>
+<p><strong>Signal:</strong> X-ray attenuation, integrated along each ray. <strong>Shape:</strong> 2D, single channel, typically 2000–4000 pixels per side at 10–14 bits. <strong>Diagnoses:</strong> the chest X-ray alone screens for pneumonia, pneumothorax, effusions, cardiomegaly, nodules, tuberculosis, and line/tube placement; skeletal radiographs cover fractures, arthritis, and bone lesions; abdominal films catch obstruction and free air. It is the most-performed imaging exam on Earth — billions annually — which is why it anchors both the public-dataset landscape and the FDA-cleared product market, and why it gets this book’s flagship treatment in <a href="10-chest-xray.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
+<p><strong>AI status:</strong> the most mature of any modality. Large labeled datasets exist, multi-finding classifiers are commodity, and cleared triage products are deployed at scale.</p>
 </section>
-<section id="real-time-imaging" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="real-time-imaging"><span class="header-section-number">2.3</span> Real-time imaging</h2>
-<!-- Ultrasound incl. echo and Doppler; endoscopy; surgical video. -->
+<section id="mammography-and-digital-breast-tomosynthesis" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="mammography-and-digital-breast-tomosynthesis"><span class="header-section-number">2.2.2</span> Mammography and digital breast tomosynthesis</h3>
+<p><strong>Signal:</strong> low-energy X-ray attenuation through compressed breast tissue, tuned to maximize soft-tissue contrast — the differences that matter (a mass, a cluster of microcalcifications) are subtle. <strong>Shape:</strong> 2D at very high resolution (~4000 × 5000, 70–100 µm pixels); digital breast tomosynthesis (DBT) adds a limited sweep of angles reconstructed into a pseudo-3D stack of ~50–80 slices. <strong>Diagnoses:</strong> breast-cancer screening and diagnosis, reported in the standardized BI-RADS vocabulary.</p>
+<p>Mammography is unusual: it is a <em>population screening</em> modality, read in enormous volumes with a low prevalence of disease. That makes sensitivity/specificity trade-offs, double-reading economics, and risk-stratified screening intervals central — and it is why mammography hosts some of the strongest reader-study evidence for AI anywhere in medicine (<a href="14-mammography.html" class="quarto-xref"><span>Chapter 14</span></a>).</p>
 </section>
-<section id="ophthalmic-imaging" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="ophthalmic-imaging"><span class="header-section-number">2.4</span> Ophthalmic imaging</h2>
-<!-- Fundus photography, OCT, OCT-A. -->
+<section id="fluoroscopy-and-angiography" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="fluoroscopy-and-angiography"><span class="header-section-number">2.2.3</span> Fluoroscopy and angiography</h3>
+<p><strong>Signal:</strong> the same X-ray attenuation, but continuous — a live 2D+time video, usually with injected contrast tracing vessels or the GI tract. <strong>Shape:</strong> 2D+t, 512–1024 pixels per side, up to 30 frames/s. <strong>Uses:</strong> guiding interventions (catheters, stents, pacemaker leads), barium studies, joint injections. AI here is largely <em>intra-procedural</em>: vessel segmentation, device tracking, and radiation-dose reduction, sharing more DNA with the surgical-video world of <a href="17-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 17</span></a> than with static radiography.</p>
 </section>
-<section id="microscopy-based-imaging" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="microscopy-based-imaging"><span class="header-section-number">2.5</span> Microscopy-based imaging</h2>
-<!-- Pathology/histology whole-slide imaging, cytology, hematology. -->
+<section id="dexa" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="dexa"><span class="header-section-number">2.2.4</span> DEXA</h3>
+<p><strong>Signal:</strong> attenuation at <em>two</em> X-ray energies, which lets the scanner separate bone from soft tissue and output a number — bone mineral density — rather than primarily a picture. <strong>Diagnoses:</strong> osteoporosis and fracture risk. DEXA earns its place in the atlas as the purest example of imaging-as-measurement, and because <em>opportunistic screening</em> — AI mining bone density or body composition from CT scans acquired for other reasons — is quietly becoming one of imaging AI’s most cost-effective applications (<a href="19-the-remaining-map.html" class="quarto-xref"><span>Chapter 19</span></a>).</p>
 </section>
-<section id="dermatology-dental-maxillofacial" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="dermatology-dental-maxillofacial"><span class="header-section-number">2.6</span> Dermatology, dental &amp; maxillofacial</h2>
-<!-- Dermoscopy; OPG, CBCT. -->
 </section>
-<section id="emerging-modalities" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="emerging-modalities"><span class="header-section-number">2.7</span> Emerging modalities</h2>
+<section id="cross-sectional-imaging" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="cross-sectional-imaging"><span class="header-section-number">2.3</span> Cross-sectional imaging</h2>
+<p>The superposition problem is solved by acquiring many views and reconstructing a volume: instead of one shadow, a stack of slices. Cross-sectional modalities produce true 3D data, and with it the volumetric measurement, 3D segmentation, and multi-planar reconstruction that dominate modern imaging AI.</p>
+<section id="computed-tomography-ct" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="computed-tomography-ct"><span class="header-section-number">2.3.1</span> Computed tomography (CT)</h3>
+<p><strong>Signal:</strong> X-ray attenuation again — but measured from hundreds of angles as the tube spins around the patient, then reconstructed into a volume where every voxel carries a calibrated <strong>Hounsfield unit</strong> (HU): water is 0, air is −1000, bone is +400 to +2000. That calibration is a gift to machine learning; a liver is roughly the same HU in Boston and Bangalore.</p>
+<p><strong>Shape:</strong> 3D, canonically 512 × 512 in-plane with sub-millimeter voxels and anywhere from 40 to 2000+ slices; cardiac and perfusion protocols add time (4D). Intravenous contrast creates <em>phases</em> (arterial, venous, delayed) — effectively a temporal channel axis that an AI system ignores at its peril: the same lesion looks different in every phase.</p>
+<p><strong>Diagnoses:</strong> the emergency workhorse — stroke, hemorrhage, pulmonary embolism, trauma, appendicitis — plus cancer detection, staging and response assessment, lung-cancer screening, coronary imaging, and surgical planning. <strong>AI status:</strong> very mature. Triage products for hemorrhage, stroke and PE are the commercial heart of radiology AI, and whole-body anatomical segmentation is now open-source commodity infrastructure (<a href="11-computed-tomography.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
 </section>
-<section id="the-master-modality-diagnosis-table" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="the-master-modality-diagnosis-table"><span class="header-section-number">2.8</span> The master modality × diagnosis table</h2>
+<section id="magnetic-resonance-imaging-mri" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="magnetic-resonance-imaging-mri"><span class="header-section-number">2.3.2</span> Magnetic resonance imaging (MRI)</h3>
+<p><strong>Signal:</strong> no ionizing radiation at all. The patient lies in a strong magnetic field; hydrogen nuclei are tipped by radio-frequency pulses, and the scanner measures how they <em>relax</em> back — at rates that depend exquisitely on the tissue they sit in. By reordering the pulses — the <strong>sequence</strong> — the same anatomy renders with entirely different contrast: T1-weighted (anatomy, fat bright), T2-weighted (fluid bright), FLAIR (fluid suppressed, lesions conspicuous), diffusion-weighted (water mobility — the sequence that lights up acute stroke within minutes), gradient-echo (blood products), and dynamic contrast-enhanced series watching gadolinium wash in and out.</p>
+<p><strong>Shape:</strong> a <em>study</em> is a set of 3D volumes, one per sequence — think 4–12 misaligned, differently-contrasted, differently-resolved channels, often anisotropic (e.g., 0.5 mm in-plane but 5 mm between slices). Unlike CT, voxel intensities are <strong>not</strong> calibrated across scanners or even visits — the single most important fact about MRI for an ML practitioner, and the root of the domain-shift problems in <a href="04-machine-learning-concepts.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
+<p><strong>Diagnoses:</strong> the definitive modality for brain and spine (tumors, MS, dementia workup, stroke characterization), musculoskeletal soft tissue, prostate (PI-RADS), liver lesions, cardiac function and scar, and high-risk breast screening. <strong>AI status:</strong> strong in research, harder in deployment — sequence variability across vendors and sites is the great confounder. MRI also hosts imaging AI’s most distinctive success: <em>reconstruction</em> — using learned priors to produce diagnostic images from far less raw data, cutting scan times dramatically (<a href="12-mri.html" class="quarto-xref"><span>Chapter 12</span></a>).</p>
+</section>
+<section id="nuclear-medicine-pet-and-spect" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="nuclear-medicine-pet-and-spect"><span class="header-section-number">2.3.3</span> Nuclear medicine: PET and SPECT</h3>
+<p><strong>Signal:</strong> emission rather than transmission. A radioactive tracer is injected and accumulates where its target biology is active; the scanner detects the photons the patient emits. The archetype is FDG-PET — fluorine-18-labeled glucose — which maps metabolic activity: most cancers, being metabolically greedy, glow. Voxels are quantitative (<strong>SUV</strong>, standardized uptake value), making PET a measurement instrument like DEXA, but in 3D.</p>
+<p><strong>Shape:</strong> 3D but low-resolution (~4–6 mm voxels, 128–256 per side) and almost never alone: PET/CT and PET/MR acquire an anatomical volume in the same session, so the data is intrinsically <strong>multi-modal</strong> — a functional channel registered to an anatomical one. <strong>Diagnoses:</strong> cancer staging and treatment response above all; also cardiac viability, infection, and neurodegeneration (amyloid and tau imaging in dementia). SPECT, PET’s cheaper single-photon cousin, dominates cardiac perfusion. <strong>AI status:</strong> growing fast — lesion detection across whole-body PET, automated SUV quantification for trial endpoints, and dose/time-reduction reconstruction (<a href="15-nuclear-medicine.html" class="quarto-xref"><span>Chapter 15</span></a>).</p>
+</section>
+</section>
+<section id="real-time-imaging" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="real-time-imaging"><span class="header-section-number">2.4</span> Real-time imaging</h2>
+<p>Everything so far produces a study to be read <em>after</em> acquisition. This family is interpreted live, while the probe or scope is still in hand — which changes everything about how AI must integrate: the model’s user is the person acquiring the images, the latency budget is milliseconds, and <em>acquisition quality itself</em> becomes an AI target.</p>
+<section id="ultrasound-and-echocardiography" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="ultrasound-and-echocardiography"><span class="header-section-number">2.4.1</span> Ultrasound and echocardiography</h3>
+<p><strong>Signal:</strong> high-frequency sound pulses; the machine times and weighs the echoes returning from tissue boundaries. Doppler processing adds a velocity channel — blood flow, in color. <strong>Shape:</strong> 2D+t video (~30–60 fps) from a hand-held probe whose position and angle are unrecorded and entirely operator-dependent; 3D/4D probes exist (obstetric and cardiac). The operator dependence is the field’s defining ML challenge: two sonographers produce different images of the same heart, and the “right” frame is a skill, not a coordinate.</p>
+<p><strong>Diagnoses:</strong> ubiquitous — obstetric growth and anomaly screening, abdominal organs, thyroid, vascular flow, and above all <strong>echocardiography</strong>: chamber sizes, ejection fraction, and valve function, medicine’s front-line cardiac exam. Point-of-care ultrasound (POCUS) is pushing probes into ambulances, ERs, and low-resource settings — often into the hands of non-experts, which is exactly where AI guidance (coaching the operator to the right view, auto-measuring once there) earned one of its landmark FDA authorizations (<a href="13-ultrasound-echo.html" class="quarto-xref"><span>Chapter 13</span></a>).</p>
+</section>
+<section id="endoscopy" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="endoscopy"><span class="header-section-number">2.4.2</span> Endoscopy</h3>
+<p><strong>Signal:</strong> ordinary visible light, from a camera inside the GI tract (or airway, bladder, joint). <strong>Shape:</strong> 2D+t high-definition video. <strong>Diagnoses:</strong> colorectal-cancer screening via polyp detection and removal, upper-GI lesions, bleeding sources. Real-time polyp detection was among the first cleared <em>live-video</em> AI products in medicine, and the adenoma-detection-rate literature around it is some of the best evidence that imaging AI changes hard clinical outcomes.</p>
+</section>
+<section id="surgical-and-interventional-video" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="surgical-and-interventional-video"><span class="header-section-number">2.4.3</span> Surgical and interventional video</h3>
+<p><strong>Signal:</strong> the laparoscope or robotic camera — visible light again, but now the video documents an <em>activity</em>, not just anatomy. <strong>Shape:</strong> 2D+t (sometimes stereo), hours long: a single case can exceed 100 GB, and “labels” are events in time (phases, instrument appearances, critical safety views) rather than regions in space. <strong>AI targets:</strong> workflow phase recognition, tool detection, safety-checkpoint verification, skill assessment, and automated documentation — the subject of <a href="17-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 17</span></a>, and the family closest to mainstream video understanding in computer vision.</p>
+</section>
+</section>
+<section id="ophthalmic-imaging" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="ophthalmic-imaging"><span class="header-section-number">2.5</span> Ophthalmic imaging</h2>
+<p>The eye is the only place in the body where the microvasculature and central-nervous-system tissue can be photographed directly through a transparent window — which makes ophthalmic imaging disproportionately important to AI, historically and clinically.</p>
+<section id="fundus-photography" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="fundus-photography"><span class="header-section-number">2.5.1</span> Fundus photography</h3>
+<p><strong>Signal:</strong> a visible-light color photograph of the retina. <strong>Shape:</strong> 2D RGB, ~2000–4000 pixels per side — the only major modality that looks like a natural image, which is why ImageNet-pretrained networks transferred so easily and why diabetic-retinopathy grading became deep learning’s first great medical success story. <strong>Diagnoses:</strong> diabetic retinopathy screening above all (the first <em>autonomous</em> — no-physician-in-the-loop — FDA authorization in medicine), plus glaucoma and macular degeneration. The emerging field of <strong>oculomics</strong> reads systemic health — cardiovascular risk, anemia, kidney disease — from the same photographs.</p>
+</section>
+<section id="optical-coherence-tomography-oct" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="optical-coherence-tomography-oct"><span class="header-section-number">2.5.2</span> Optical coherence tomography (OCT)</h3>
+<p><strong>Signal:</strong> low-coherence interferometry — light’s analog of ultrasound — resolving retinal <em>depth</em> at micron scale. <strong>Shape:</strong> 3D, a stack of cross-sectional B-scans revealing every retinal layer; OCT-angiography derives flow maps without dye. <strong>Diagnoses:</strong> macular degeneration and diabetic macular edema management (it gates injection therapy), glaucoma progression. OCT is the highest-volume 3D scan in all of medicine by study count — ophthalmology clinics run them like vital signs (<a href="16-ophthalmic-imaging.html" class="quarto-xref"><span>Chapter 16</span></a>).</p>
+</section>
+</section>
+<section id="microscopy-the-laboratory-image" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="microscopy-the-laboratory-image"><span class="header-section-number">2.6</span> Microscopy: the laboratory image</h2>
+<p>Radiology images the intact patient; pathology images extracted tissue — and pathology’s verdict is usually the <em>diagnosis of record</em> against which every other modality’s suspicion is confirmed. Its digitization is the youngest and, by pixel count, the largest frontier in medical imaging.</p>
+<section id="histopathology-and-whole-slide-imaging" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="histopathology-and-whole-slide-imaging"><span class="header-section-number">2.6.1</span> Histopathology and whole-slide imaging</h3>
+<p><strong>Signal:</strong> transmitted visible light through micron-thin, chemically stained tissue sections. H&amp;E is the universal stain; immunohistochemistry (IHC) adds targeted molecular markers; special stains flag organisms and deposits. <strong>Shape:</strong> a scanned <strong>whole-slide image (WSI)</strong> is a pyramidal gigapixel file — 100,000 pixels per side at full resolution, several GB per slide, far too large for any network to ingest whole. The standard paradigm is tiling plus <strong>multiple-instance learning</strong>: the slide has one label, the hundreds of thousands of tiles do not — a weak-supervision structure that shaped an entire subfield and now underpins pathology’s powerful slide-level foundation models (<a href="18-digital-pathology.html" class="quarto-xref"><span>Chapter 18</span></a>).</p>
+<p><strong>Diagnoses:</strong> cancer — its presence, type, grade, margins, and biomarkers — plus inflammatory, infectious, and degenerative disease across every organ.</p>
+</section>
+<section id="cytology-and-hematology" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="cytology-and-hematology"><span class="header-section-number">2.6.2</span> Cytology and hematology</h3>
+<p>Individual cells rather than tissue architecture: Pap smears (cervical-cancer screening — home of some of the oldest automated-screening systems in medicine), fine-needle aspirates, and peripheral blood smears, where automated cell-classification is routine in modern hematology analyzers.</p>
+</section>
+</section>
+<section id="dermatology-dental-and-maxillofacial" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="dermatology-dental-and-maxillofacial"><span class="header-section-number">2.7</span> Dermatology, dental and maxillofacial</h2>
+<p><strong>Dermatology:</strong> clinical photographs and <strong>dermoscopy</strong> (polarized close-up imaging of skin lesions) — 2D RGB natural images, screening for melanoma against a benign-lesion background. Consumer-facing apps make this the modality where regulation, bias across skin tones, and dataset ethics collide most publicly. <strong>Dental:</strong> intraoral radiographs and panoramic X-rays (caries, periodontal bone loss — high-volume, well-suited to detection AI) plus <strong>CBCT</strong>, a compact cone-beam CT for implant planning and endodontics. Both get their template treatment in <a href="19-the-remaining-map.html" class="quarto-xref"><span>Chapter 19</span></a>.</p>
+</section>
+<section id="emerging-and-adjacent" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="emerging-and-adjacent"><span class="header-section-number">2.8</span> Emerging and adjacent</h2>
+<p>The atlas keeps growing. <strong>Photon-counting CT</strong> resolves the energy of individual X-ray photons, promising sharper images at lower dose with material decomposition. <strong>Portable low-field MRI</strong> wheels the magnet to the bedside, trading resolution for access — and leaning on AI reconstruction to close the quality gap. <strong>Photoacoustic imaging</strong> fires laser pulses and listens to the ultrasound that tissue emits in response. <strong>Hyperspectral and fluorescence-guided surgery</strong> give the operating camera channels human eyes lack. And at the boundary of the definition, waveform data like <strong>ECG</strong> is routinely rendered and analyzed as images — a reminder that “medical imaging” is a convention about tensors and clinical context as much as physics.</p>
+</section>
+<section id="dimensions-tensors-and-files" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="dimensions-tensors-and-files"><span class="header-section-number">2.9</span> Dimensions, tensors, and files</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer — the cheat sheet">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer — the cheat sheet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modality</th>
+<th>Typical tensor</th>
+<th>Value semantics</th>
+<th>Typical study size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Radiograph (CR/DX)</td>
+<td>1 × ~3000²</td>
+<td>Relative attenuation</td>
+<td>10–30 MB</td>
+</tr>
+<tr class="even">
+<td>Mammogram / DBT</td>
+<td>1 × ~4000×5000 (× ~60 slices)</td>
+<td>Relative attenuation</td>
+<td>50 MB–3 GB</td>
+</tr>
+<tr class="odd">
+<td>CT</td>
+<td>512² × 40–2000 (+phases)</td>
+<td>Calibrated (HU)</td>
+<td>30 MB–2 GB</td>
+</tr>
+<tr class="even">
+<td>MRI</td>
+<td>4–12 sequences × ~256³, misaligned</td>
+<td><strong>Uncalibrated</strong></td>
+<td>100 MB–1 GB</td>
+</tr>
+<tr class="odd">
+<td>PET(/CT)</td>
+<td>~200³ + CT volume</td>
+<td>Calibrated (SUV)</td>
+<td>100–500 MB</td>
+</tr>
+<tr class="even">
+<td>Ultrasound / echo</td>
+<td>~50–200 clips × 2D+t (+Doppler)</td>
+<td>Relative echo intensity</td>
+<td>100 MB–1 GB</td>
+</tr>
+<tr class="odd">
+<td>Endoscopy / surgery video</td>
+<td>2D+t, minutes–hours</td>
+<td>RGB</td>
+<td>1–100+ GB</td>
+</tr>
+<tr class="even">
+<td>Fundus</td>
+<td>RGB ~3000²</td>
+<td>RGB</td>
+<td>5–20 MB</td>
+</tr>
+<tr class="odd">
+<td>OCT</td>
+<td>~100–500 B-scans × 500–1000²</td>
+<td>Relative reflectance</td>
+<td>50 MB–1 GB</td>
+</tr>
+<tr class="even">
+<td>Pathology WSI</td>
+<td>pyramidal ~100,000² RGB</td>
+<td>Stain-dependent RGB</td>
+<td>0.5–5 GB/slide</td>
+</tr>
+</tbody>
+</table>
+<p>Three recurring axes deserve respect: <strong>calibration</strong> (HU and SUV mean something; MRI and ultrasound intensities do not), <strong>anisotropy</strong> (voxels are rarely cubes), and <strong>channels-that-aren’t-channels</strong> (MRI sequences and CT contrast phases are semantically channels but arrive misaligned and optional — real pipelines must handle missing ones).</p>
+</div>
+</div>
+</section>
+<section id="the-master-modality-diagnosis-table" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="the-master-modality-diagnosis-table"><span class="header-section-number">2.10</span> The master modality × diagnosis table</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Modality</th>
+<th>Physical signal</th>
+<th>Shape</th>
+<th>Flagship diagnoses</th>
+<th>AI maturity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Radiography</td>
+<td>X-ray transmission</td>
+<td>2D</td>
+<td>Pneumonia, pneumothorax, fractures, TB, lines/tubes</td>
+<td>●●●●○ deployed at scale</td>
+</tr>
+<tr class="even">
+<td>Mammography/DBT</td>
+<td>Low-energy X-ray</td>
+<td>2D/pseudo-3D</td>
+<td>Breast cancer screening</td>
+<td>●●●●○ strong reader evidence</td>
+</tr>
+<tr class="odd">
+<td>Fluoroscopy</td>
+<td>X-ray video</td>
+<td>2D+t</td>
+<td>Procedure guidance</td>
+<td>●●○○○ intra-procedural aids</td>
+</tr>
+<tr class="even">
+<td>DEXA</td>
+<td>Dual-energy X-ray</td>
+<td>Quantitative 2D</td>
+<td>Osteoporosis</td>
+<td>●●○○○ + opportunistic CT</td>
+</tr>
+<tr class="odd">
+<td>CT</td>
+<td>Reconstructed attenuation</td>
+<td>3D/4D</td>
+<td>Stroke, PE, hemorrhage, trauma, cancer staging, lung screening</td>
+<td>●●●●● commercial core</td>
+</tr>
+<tr class="even">
+<td>MRI</td>
+<td>Nuclear relaxation</td>
+<td>Multi-sequence 3D</td>
+<td>Brain/spine disease, MSK, prostate, cardiac</td>
+<td>●●●○○ recon is the star</td>
+</tr>
+<tr class="odd">
+<td>PET/SPECT</td>
+<td>Tracer emission</td>
+<td>3D + anatomy</td>
+<td>Cancer staging/response, perfusion, dementia</td>
+<td>●●●○○ quantification-led</td>
+</tr>
+<tr class="even">
+<td>Ultrasound/echo</td>
+<td>Acoustic echoes</td>
+<td>2D+t (+Doppler)</td>
+<td>Cardiac function, obstetrics, vascular</td>
+<td>●●●○○ guidance + automeasure</td>
+</tr>
+<tr class="odd">
+<td>Endoscopy</td>
+<td>Optical video</td>
+<td>2D+t</td>
+<td>Polyp/lesion detection</td>
+<td>●●●●○ cleared live CADe</td>
+</tr>
+<tr class="even">
+<td>Surgical video</td>
+<td>Optical video</td>
+<td>2D+t</td>
+<td>Phase/safety/skill analysis</td>
+<td>●●○○○ research→product</td>
+</tr>
+<tr class="odd">
+<td>Fundus</td>
+<td>Optical photo</td>
+<td>2D RGB</td>
+<td>Diabetic retinopathy, glaucoma</td>
+<td>●●●●● first autonomous clearance</td>
+</tr>
+<tr class="even">
+<td>OCT</td>
+<td>Interferometry</td>
+<td>3D</td>
+<td>AMD, DME, glaucoma</td>
+<td>●●●●○ layer analysis routine</td>
+</tr>
+<tr class="odd">
+<td>Pathology WSI</td>
+<td>Stained-light microscopy</td>
+<td>Gigapixel 2D</td>
+<td>Cancer diagnosis of record, grading, biomarkers</td>
+<td>●●●○○ foundation-model era</td>
+</tr>
+<tr class="even">
+<td>Dermoscopy</td>
+<td>Optical photo</td>
+<td>2D RGB</td>
+<td>Melanoma vs.&nbsp;benign</td>
+<td>●●●○○ consumer-facing tension</td>
+</tr>
+<tr class="odd">
+<td>Dental/CBCT</td>
+<td>X-ray / cone-beam</td>
+<td>2D / 3D</td>
+<td>Caries, implants</td>
+<td>●●●○○ fast-growing</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-agentic-outlook" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">2.11</span> The agentic outlook</h2>
+<p>For an autonomous system, this chapter is not background — it is a <strong>routing table</strong>. The first decision any imaging agent makes about a study is <em>what am I looking at</em>, and everything downstream (which models to call, which measurements matter, which report template applies, which findings are urgent) hangs off that answer. In principle the DICOM header answers it — modality, body part, protocol — but real-world metadata is famously dirty: mislabeled body parts, free-text study descriptions, protocol names that differ at every site. Robust agents therefore combine metadata with the image content itself, exactly the modality-and-anatomy scoring described throughout this atlas.</p>
+<p>This is also the first place theory meets running code: MedAI OS’s suite auto-detection does precisely this routing — weighing DICOM modality, body part, and description keywords to select a clinical suite (a chest X-ray study routes to the Chest X-Ray Suite, an RTSTRUCT to radiotherapy) before any model runs. An agent that has internalized this chapter can extend that logic: recognize a contrast-phase mismatch, notice a missing MRI sequence before wasting an inference call, or refuse to run a 2D chest model on a CT scout view. Modality literacy is to imaging agents what anatomy is to medical students — the prerequisite everything else assumes.</p>
+</section>
+<section id="doing-this-in-medai-os" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="doing-this-in-medai-os">Doing this in MedAI OS</h2>
+<p>The fastest way to make this atlas concrete is to load one study from each family and <em>feel</em> the differences:</p>
+<ol type="1">
+<li><strong>Get sample data.</strong> From the <a href="https://github.com/anandpreshob/medai-os">medai-os repo</a>, <code>./scripts/download-sample-data.sh</code> fetches public studies spanning several modalities (add <code>--upload</code> to push them into a running Orthanc PACS).</li>
+<li><strong>Load a radiograph vs.&nbsp;a CT.</strong> Drag a chest X-ray into the viewer: one 2D frame, window/level is nearly all the interaction there is. Now load a CT: scroll the stack, switch to multi-planar reconstruction, and re-window between lung/soft-tissue/bone presets — calibrated Hounsfield units at work.</li>
+<li><strong>Load an MRI study.</strong> Note that it arrives as <em>multiple series</em> — the sequences of this chapter — and that intensity windows that suit T1 make FLAIR unreadable: uncalibrated values, experienced firsthand.</li>
+<li><strong>Watch the router.</strong> Load studies of different types and watch the Suite Selector auto-detect and switch — the agentic outlook’s routing table, running live on DICOM metadata.</li>
+<li><strong>Formats:</strong> the viewer’s local loaders accept DICOM, NIfTI, NRRD, MHA, and TIFF — a working tour of the format landscape coming up in <a href="03-images-in-the-hospital.html" class="quarto-xref"><span>Chapter 3</span></a>.</li>
+</ol>
+</section>
+<section id="further-reading" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">2.12</span> Further reading</h2>
+<ul>
+<li>The DICOM standard’s modality definitions (dicom.nema.org) — the controlled vocabulary behind every “CT”, “MR”, “US” in this chapter.</li>
+<li>Suetens, <em>Fundamentals of Medical Imaging</em> — the physics one level deeper.</li>
+<li>The modality-by-modality chapters of Parts III–IV of this book, which unpack every section above.</li>
+</ul>
 
 
 </section>

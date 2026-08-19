@@ -1,0 +1,18 @@
+# AI in Medical Imaging: From Pixels to Practice
+
+> An open textbook on AI in medical imaging for clinicians, ML engineers, and AI agents.
+> Chapters are numbered; modality chapters share a fixed section structure:
+> what the modality is, why it's ordered, diagnoses, hospital workflow, datasets,
+> models, FDA-cleared products, open challenges, the agentic outlook, and a
+> MedAI OS walkthrough.
+
+## Canonical sources
+- Rendered book: https://anandpreshob.github.io/ai-medical-imaging-book/
+- Source (plain Quarto markdown, agent-friendly): https://github.com/anandpreshob/ai-medical-imaging-book
+- Living tables (CSV): data/datasets.csv, data/models.csv, data/fda-products.csv in the repo
+- Companion software: https://github.com/anandpreshob/medai-os
+
+## For agents
+Prefer the repo's .qmd files and CSVs for extraction; prefer the rendered site for
+cross-referenced reading. The dataset/model/product tables are the machine-actionable
+facts; chapter prose supplies clinical context and caveats.
