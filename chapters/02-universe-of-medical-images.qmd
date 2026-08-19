@@ -27,7 +27,7 @@ The oldest family, and still the highest-volume. A beam of X-ray photons passes 
 ::: {layout-ncol=2}
 ![How a radiograph is made: the X-ray tube projects a beam through the patient onto a detector — every structure along each ray is superimposed into one 2D shadow.](../figures/ch02/xray-acquisition.png){#fig-xray-acq fig-alt="Illustration of a patient standing between an X-ray tube and a flat detector panel."}
 
-![Representative chest radiograph. Illustrative rendering, not a real patient image.](../figures/ch02/xray-example.png){#fig-xray-ex fig-alt="Representative chest X-ray image."}
+![Representative chest radiograph.](../figures/ch02/xray-example.png){#fig-xray-ex fig-alt="Representative chest X-ray image."}
 :::
 
 **AI status:** the most mature of any modality. Large labeled datasets exist, multi-finding classifiers are commodity, and cleared triage products are deployed at scale.
@@ -39,7 +39,7 @@ The oldest family, and still the highest-volume. A beam of X-ray photons passes 
 ::: {layout-ncol=2}
 ![Mammography compresses the breast between paddles and images it with low-energy X-rays; tomosynthesis sweeps the tube through an arc to build a pseudo-3D stack.](../figures/ch02/mammo-acquisition.png){#fig-mammo-acq fig-alt="Illustration of a patient at a mammography unit with compression paddles and a sweeping X-ray tube."}
 
-![Representative mammogram. Illustrative rendering, not a real patient image.](../figures/ch02/mammo-example.png){#fig-mammo-ex fig-alt="Representative mammography image."}
+![Representative mammogram.](../figures/ch02/mammo-example.png){#fig-mammo-ex fig-alt="Representative mammography image."}
 :::
 
 Mammography is unusual: it is a *population screening* modality, read in enormous volumes with a low prevalence of disease. That makes sensitivity/specificity trade-offs, double-reading economics, and risk-stratified screening intervals central — and it is why mammography hosts some of the strongest reader-study evidence for AI anywhere in medicine (@sec-mammography).
@@ -51,7 +51,7 @@ Mammography is unusual: it is a *population screening* modality, read in enormou
 ::: {layout-ncol=2}
 ![Fluoroscopy is X-ray as live video: a C-arm streams frames while the operator works, contrast dye tracing vessels in real time.](../figures/ch02/fluoro-acquisition.png){#fig-fluoro-acq fig-alt="Illustration of a C-arm fluoroscopy suite with a physician guiding a catheter."}
 
-![Representative digital subtraction angiogram. Illustrative rendering, not a real patient image.](../figures/ch02/fluoro-example.png){#fig-fluoro-ex fig-alt="Representative fluoroscopy angiography image."}
+![Representative digital subtraction angiogram.](../figures/ch02/fluoro-example.png){#fig-fluoro-ex fig-alt="Representative fluoroscopy angiography image."}
 :::
 
 ### DEXA
@@ -61,7 +61,7 @@ Mammography is unusual: it is a *population screening* modality, read in enormou
 ::: {layout-ncol=2}
 ![DEXA measures attenuation at two X-ray energies to compute bone mineral density — imaging as measurement more than picture.](../figures/ch02/dexa-acquisition.png){#fig-dexa-acq fig-alt="Illustration of a patient on an open DEXA table with a scanning arm above the pelvis."}
 
-![Representative DEXA hip image. Illustrative rendering, not a real patient image.](../figures/ch02/dexa-example.png){#fig-dexa-ex fig-alt="Representative DEXA bone-density image."}
+![Representative DEXA hip image.](../figures/ch02/dexa-example.png){#fig-dexa-ex fig-alt="Representative DEXA bone-density image."}
 :::
 
 ## Cross-sectional imaging
@@ -75,7 +75,7 @@ The superposition problem is solved by acquiring many views and reconstructing a
 ::: {layout-ncol=2}
 ![CT spins an X-ray tube and detector around the patient and reconstructs calibrated 3D slices from hundreds of projections.](../figures/ch02/ct-acquisition.png){#fig-ct-acq fig-alt="Cutaway illustration of a CT gantry showing the rotating tube, detector arc, and fan beam."}
 
-![Representative axial chest CT. Illustrative rendering, not a real patient image.](../figures/ch02/ct-example.png){#fig-ct-ex fig-alt="Representative axial chest CT image."}
+![Representative axial chest CT.](../figures/ch02/ct-example.png){#fig-ct-ex fig-alt="Representative axial chest CT image."}
 :::
 
 **Shape:** 3D, canonically 512 × 512 in-plane with sub-millimeter voxels and anywhere from 40 to 2000+ slices; cardiac and perfusion protocols add time (4D). Intravenous contrast creates *phases* (arterial, venous, delayed) — effectively a temporal channel axis that an AI system ignores at its peril: the same lesion looks different in every phase.
@@ -89,7 +89,7 @@ The superposition problem is solved by acquiring many views and reconstructing a
 ::: {layout-ncol=2}
 ![MRI tips hydrogen nuclei in a strong magnetic field and listens to them relax; reordering the pulses — the sequence — renders the same anatomy in entirely different contrasts.](../figures/ch02/mri-acquisition.png){#fig-mri-acq fig-alt="Cutaway illustration of an MRI bore with field lines, a head coil, and floating panels of differently contrasted brain images."}
 
-![Representative axial brain MRI. Illustrative rendering, not a real patient image.](../figures/ch02/mri-example.png){#fig-mri-ex fig-alt="Representative axial T1-weighted brain MRI image."}
+![Representative axial brain MRI.](../figures/ch02/mri-example.png){#fig-mri-ex fig-alt="Representative axial T1-weighted brain MRI image."}
 :::
 
 **Shape:** a *study* is a set of 3D volumes, one per sequence — think 4–12 misaligned, differently-contrasted, differently-resolved channels, often anisotropic (e.g., 0.5 mm in-plane but 5 mm between slices). Unlike CT, voxel intensities are **not** calibrated across scanners or even visits — the single most important fact about MRI for an ML practitioner, and the root of the domain-shift problems in @sec-ml-concepts.
@@ -103,7 +103,7 @@ The superposition problem is solved by acquiring many views and reconstructing a
 ::: {layout-ncol=2}
 ![PET images emission, not transmission: an injected tracer accumulates where its target biology is active, and the ring detects the photons the patient emits.](../figures/ch02/pet-acquisition.png){#fig-pet-acq fig-alt="Illustration of tracer injection and a PET/CT scanner detecting glowing regions inside the patient."}
 
-![Representative FDG-PET and fused PET/CT. Illustrative rendering, not a real patient image.](../figures/ch02/pet-example.png){#fig-pet-ex fig-alt="Representative whole-body FDG-PET and fused PET/CT image."}
+![Representative FDG-PET and fused PET/CT.](../figures/ch02/pet-example.png){#fig-pet-ex fig-alt="Representative whole-body FDG-PET and fused PET/CT image."}
 :::
 
 **Shape:** 3D but low-resolution (~4–6 mm voxels, 128–256 per side) and almost never alone: PET/CT and PET/MR acquire an anatomical volume in the same session, so the data is intrinsically **multi-modal** — a functional channel registered to an anatomical one. **Diagnoses:** cancer staging and treatment response above all; also cardiac viability, infection, and neurodegeneration (amyloid and tau imaging in dementia). SPECT, PET's cheaper single-photon cousin, dominates cardiac perfusion. **AI status:** growing fast — lesion detection across whole-body PET, automated SUV quantification for trial endpoints, and dose/time-reduction reconstruction (@sec-nuclear-medicine).
@@ -119,7 +119,7 @@ Everything so far produces a study to be read *after* acquisition. This family i
 ::: {layout-ncol=2}
 ![Ultrasound times echoes from a handheld probe — the image exists only where the operator points it, at video rate.](../figures/ch02/us-acquisition.png){#fig-us-acq fig-alt="Illustration of a sonographer scanning a patient's chest with the heart displayed on the machine."}
 
-![Representative echocardiogram. Illustrative rendering, not a real patient image.](../figures/ch02/us-example.png){#fig-us-ex fig-alt="Representative apical four-chamber echocardiogram image."}
+![Representative echocardiogram.](../figures/ch02/us-example.png){#fig-us-ex fig-alt="Representative apical four-chamber echocardiogram image."}
 :::
 
 **Diagnoses:** ubiquitous — obstetric growth and anomaly screening, abdominal organs, thyroid, vascular flow, and above all **echocardiography**: chamber sizes, ejection fraction, and valve function, medicine's front-line cardiac exam. Point-of-care ultrasound (POCUS) is pushing probes into ambulances, ERs, and low-resource settings — often into the hands of non-experts, which is exactly where AI guidance (coaching the operator to the right view, auto-measuring once there) earned one of its landmark FDA authorizations (@sec-ultrasound-echo).
@@ -131,7 +131,7 @@ Everything so far produces a study to be read *after* acquisition. This family i
 ::: {layout-ncol=2}
 ![Endoscopy is ordinary light from inside the body — a camera at the scope tip streaming HD video as the operator navigates.](../figures/ch02/endo-acquisition.png){#fig-endo-acq fig-alt="Illustration of a flexible endoscope inside the colon with the video view on a monitor."}
 
-![Representative illustrative endoscopic monitor view. Illustrative rendering, not a real patient image.](../figures/ch02/endo-example.png){#fig-endo-ex fig-alt="Representative illustrative endoscopy image."}
+![Representative endoscopic monitor view.](../figures/ch02/endo-example.png){#fig-endo-ex fig-alt="Representative illustrative endoscopy image."}
 :::
 
 ### Surgical and interventional video
@@ -141,7 +141,7 @@ Everything so far produces a study to be read *after* acquisition. This family i
 ::: {layout-ncol=2}
 ![In surgical video the image documents an activity, not just anatomy — hours of footage where the labels are events in time.](../figures/ch02/surgvideo-acquisition.png){#fig-surgvideo-acq fig-alt="Illustration of laparoscopic surgery with the internal camera view shown on the operating-room monitor."}
 
-![Representative laparoscopic surgical view. Illustrative rendering, not a real patient image.](../figures/ch02/surgvideo-example.png){#fig-surgvideo-ex fig-alt="Representative laparoscopic surgery video frame."}
+![Representative laparoscopic surgical view.](../figures/ch02/surgvideo-example.png){#fig-surgvideo-ex fig-alt="Representative laparoscopic surgery video frame."}
 :::
 
 ## Ophthalmic imaging
@@ -155,7 +155,7 @@ The eye is the only place in the body where the microvasculature and central-ner
 ::: {layout-ncol=2}
 ![The fundus camera photographs the retina through the pupil — the only place the body's microvasculature can be imaged directly with visible light.](../figures/ch02/fundus-acquisition.png){#fig-fundus-acq fig-alt="Illustration of a patient at a fundus camera with the light path into a cutaway eye."}
 
-![Representative fundus photograph. Illustrative rendering, not a real patient image.](../figures/ch02/fundus-example.png){#fig-fundus-ex fig-alt="Representative color fundus photograph."}
+![Representative fundus photograph.](../figures/ch02/fundus-example.png){#fig-fundus-ex fig-alt="Representative color fundus photograph."}
 :::
 
 ### Optical coherence tomography (OCT)
@@ -165,7 +165,7 @@ The eye is the only place in the body where the microvasculature and central-ner
 ::: {layout-ncol=2}
 ![OCT is light's version of ultrasound — interferometry resolving the retina's layers in micron-scale cross-sections.](../figures/ch02/oct-acquisition.png){#fig-oct-acq fig-alt="Illustration of an OCT scanner sweeping a beam across the retina and producing layered cross-section slices."}
 
-![Representative macular OCT B-scan. Illustrative rendering, not a real patient image.](../figures/ch02/oct-example.png){#fig-oct-ex fig-alt="Representative macular OCT cross-section image."}
+![Representative macular OCT B-scan.](../figures/ch02/oct-example.png){#fig-oct-ex fig-alt="Representative macular OCT cross-section image."}
 :::
 
 ## Microscopy: the laboratory image
@@ -179,7 +179,7 @@ Radiology images the intact patient; pathology images extracted tissue — and p
 ::: {layout-ncol=2}
 ![Pathology images extracted tissue: micron-thin stained sections digitized into gigapixel whole-slide images — far too large for any model to swallow whole.](../figures/ch02/path-acquisition.png){#fig-path-acq fig-alt="Illustration of tissue sectioning, staining, and slide scanning into a tiled gigapixel image."}
 
-![Representative H&E histology field. Illustrative rendering, not a real patient image.](../figures/ch02/path-example.png){#fig-path-ex fig-alt="Representative hematoxylin-and-eosin histology image."}
+![Representative H&E histology field.](../figures/ch02/path-example.png){#fig-path-ex fig-alt="Representative hematoxylin-and-eosin histology image."}
 :::
 
 **Diagnoses:** cancer — its presence, type, grade, margins, and biomarkers — plus inflammatory, infectious, and degenerative disease across every organ.
@@ -195,11 +195,11 @@ Individual cells rather than tissue architecture: Pap smears (cervical-cancer sc
 ::: {layout-ncol=2}
 ![Dermoscopy puts polarized magnification against the skin, revealing pigment structures invisible to the naked eye.](../figures/ch02/derm-acquisition.png){#fig-derm-acq fig-alt="Illustration of a clinician examining a mole with a handheld dermatoscope linked to a phone."}
 
-![Representative dermoscopic image. Illustrative rendering, not a real patient image.](../figures/ch02/derm-example.png){#fig-derm-ex fig-alt="Representative dermoscopic image of a benign pigmented lesion."}
+![Representative dermoscopic image.](../figures/ch02/derm-example.png){#fig-derm-ex fig-alt="Representative dermoscopic image of a benign pigmented lesion."}
 
 ![Dental imaging spans quick panoramic sweeps to cone-beam CT volumes for implant planning.](../figures/ch02/dental-acquisition.png){#fig-dental-acq fig-alt="Illustration of a panoramic dental X-ray machine orbiting a standing patient's head."}
 
-![Representative panoramic dental radiograph. Illustrative rendering, not a real patient image.](../figures/ch02/dental-example.png){#fig-dental-ex fig-alt="Representative panoramic dental radiograph."}
+![Representative panoramic dental radiograph.](../figures/ch02/dental-example.png){#fig-dental-ex fig-alt="Representative panoramic dental radiograph."}
 :::
 
 ## Emerging and adjacent

@@ -5,7 +5,7 @@ Figures for `chapters/02-universe-of-medical-images.qmd`. Each modality gets a *
 - **(A) Acquisition illustration** — cartoonified scene of how the image is made (patient + equipment + energy path). AI-generate these.
 - **(B) Representative image** — what the resulting scan looks like.
 
-> ⚠️ **Editorial rule for (B):** for a credible textbook, prefer a **real, openly-licensed image** over a generated lookalike — first choice: a screenshot from MedAI OS displaying a public sample study (doubles as product tie-in); second: Wikimedia Commons (check license allows reuse; avoid Radiopaedia's NC-SA unless the book license is compatible). Generation prompts for (B) are provided as fallback — if used, the caption MUST say *"Illustrative rendering, not a real patient image."*
+> **Editorial note for (B):** Prefer a real, openly licensed image when one is readily available — first choice: a screenshot from MedAI OS displaying a public sample study; second: Wikimedia Commons (check that the license allows reuse). Generated educational renderings are also acceptable under the book-wide visual-content note in the preface.
 
 ## Global style block — prepend to every (A) prompt
 
@@ -170,4 +170,4 @@ Add each pair immediately **after the first paragraph of its modality's section*
 
 Section mapping: xray → "Radiography (X-ray)", mammo → "Mammography and digital breast tomosynthesis", fluoro → "Fluoroscopy and angiography", dexa → "DEXA", ct → "Computed tomography (CT)", mri → "Magnetic resonance imaging (MRI)", pet → "Nuclear medicine: PET and SPECT", us → "Ultrasound and echocardiography", endo → "Endoscopy", surgvideo → "Surgical and interventional video", fundus → "Fundus photography", oct → "Optical coherence tomography (OCT)", path → "Histopathology and whole-slide imaging", derm/dental → the "Dermatology, dental and maxillofacial" section (stack all four images in one 2×2 layout).
 
-Compress PNGs before committing (target < 400 KB each, e.g. `pngquant` or export at 1600px wide). If a generated (B) image is used, append "Illustrative rendering, not a real patient image." to its caption.
+Compress PNGs before committing (target < 400 KB each, e.g. `pngquant` or export at 1600px wide).

@@ -2,6 +2,8 @@
 
 Medical imaging is where artificial intelligence meets medicine at the largest scale: billions of studies a year, a global shortage of the specialists who read them, and a decade of AI research that is only now maturing into clinical products. This book is a guide to that landscape — modality by modality, concept by concept.
 
+*Visual note:* Some figures in this book are AI-generated educational illustrations. Unless a source is credited, they depict concepts and modalities rather than actual patient studies.
+
 ## Who this book is for {.unnumbered}
 
 This book is written for two readers at once:
