@@ -1,0 +1,60 @@
+name: Render & Publish Book
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Set up Python (for living tables)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python deps
+        run: pip install jupyter
+
+      - name: Render book
+        uses: quarto-dev/quarto-actions/render@v2
+
+      # Mirror 1: GitHub Pages (anandpreshob.github.io/ai-medical-imaging-book)
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_book
+
+      # Mirror 2: www.anandpreshob.com/book/ via the personal-website repo
+      - name: Sync rendered book to personal website
+        env:
+          WEBSITE_TOKEN: ${{ secrets.WEBSITE_SYNC_TOKEN }}
+        run: |
+          if [ -z "$WEBSITE_TOKEN" ]; then
+            echo "WEBSITE_SYNC_TOKEN not set — skipping website sync."
+            exit 0
+          fi
+          git clone --depth 1 "https://x-access-token:${WEBSITE_TOKEN}@github.com/anandpreshob/personal-website.git" website
+          rm -rf website/book
+          mkdir -p website/book
+          cp -r _book/. website/book/
+          cd website
+          git config user.name "book-sync[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add book
+          if git diff --cached --quiet; then
+            echo "No changes to sync."
+          else
+            git commit -m "Sync textbook build from ai-medical-imaging-book@${GITHUB_SHA::7}"
+            git push
+          fi

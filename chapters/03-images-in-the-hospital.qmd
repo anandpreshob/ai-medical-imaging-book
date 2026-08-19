@@ -1,0 +1,20 @@
+# How Images Live in a Hospital
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+## DICOM: the standard that runs radiology
+<!-- Structure, metadata, why it matters for ML. -->
+
+## Research formats: NIfTI, NRRD and friends
+
+## PACS, RIS, EHR and how they talk
+<!-- DICOMweb, HL7/FHIR. -->
+
+## The loop: acquisition → storage → reading → report
+
+## De-identification and data governance
+
+## Doing this in MedAI OS {.unnumbered}
+<!-- Orthanc PACS + the viewer's DICOM/NIfTI/NRRD loaders as a live playground. -->

@@ -1,0 +1,30 @@
+# The Universe of Medical Images
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- The complete modality atlas. For each family: what it measures,
+     dimensionality (2D / 3D / 2D+t / 3D+t), typical diagnoses. -->
+
+## Projection radiography
+<!-- X-ray, mammography, fluoroscopy, DEXA. -->
+
+## Cross-sectional imaging
+<!-- CT; MRI and its sequences; PET/SPECT and hybrids. -->
+
+## Real-time imaging
+<!-- Ultrasound incl. echo and Doppler; endoscopy; surgical video. -->
+
+## Ophthalmic imaging
+<!-- Fundus photography, OCT, OCT-A. -->
+
+## Microscopy-based imaging
+<!-- Pathology/histology whole-slide imaging, cytology, hematology. -->
+
+## Dermatology, dental & maxillofacial
+<!-- Dermoscopy; OPG, CBCT. -->
+
+## Emerging modalities
+
+## The master modality × diagnosis table

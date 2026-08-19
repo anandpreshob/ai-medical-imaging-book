@@ -1,0 +1,12 @@
+modality,task,model,weights,license,link,notes
+cxr,Detection + report generation,CheXagent 2 (3B),Open,Apache-2.0,https://huggingface.co/StanfordAIMI/CheXagent-2-3b,Ships in MedAI OS Chest X-Ray Suite
+cxr,Classification (multi-label),TorchXRayVision,Open,Apache-2.0,https://github.com/mlmed/torchxrayvision,Pretrained across 8+ CXR datasets
+cxr,VLM (general medical),MedGemma,Open (gated),Gemma license,https://deepmind.google/models/gemma/medgemma/,Google; CXR-strong VLM
+ct,Segmentation (117 structures),TotalSegmentator,Open,Apache-2.0,https://github.com/wasserth/TotalSegmentator,Ships in MedAI OS
+any,Text-prompted segmentation,BiomedParse,Open,Apache-2.0 (weights: MSR terms),https://github.com/microsoft/BiomedParse,Ships in MedAI OS
+any,Interactive segmentation,MedSAM2,Open,Apache-2.0,https://github.com/bowang-lab/MedSAM2,Ships in MedAI OS
+any,Interactive segmentation,nnInteractive,Open,Apache-2.0,https://github.com/MIC-DKFZ/nnInteractive,DKFZ; ships in MedAI OS
+any,Self-configuring segmentation,nnU-Net,Open,Apache-2.0,https://github.com/MIC-DKFZ/nnUNet,The segmentation workhorse
+path,Slide-level foundation model,UNI / UNI2,Open (gated),CC BY-NC 4.0,https://huggingface.co/MahmoodLab/UNI,Mahmood Lab
+path,Slide-level foundation model,Prov-GigaPath,Open (gated),Research,https://github.com/prov-gigapath/prov-gigapath,Microsoft/Providence
+mri,Reconstruction,fastMRI baselines,Open,MIT,https://github.com/facebookresearch/fastMRI,Reference implementations

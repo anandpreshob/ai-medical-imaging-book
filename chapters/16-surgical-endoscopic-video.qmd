@@ -1,0 +1,41 @@
+# Surgical & Endoscopic Video
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+## What is surgical and endoscopic video?
+
+<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+
+## Why and when it's ordered
+
+<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+
+## What diagnoses are made from it
+
+<!-- The finding taxonomy a model would need to learn. -->
+
+## How it works in a modern hospital
+
+<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+
+## The data landscape
+
+<!-- Living table filtered from data/datasets.csv (modality == "video"). -->
+
+## The model landscape
+
+<!-- Living table filtered from data/models.csv (modality == "video"); open vs. closed. -->
+
+## FDA-cleared AI products
+
+<!-- Living table filtered from data/fda-products.csv (modality == "video"). -->
+
+## Open challenges
+
+## Doing this in MedAI OS {.unnumbered}
+
+<!-- Surgical Suite: 3D models, FLR, mesh export for planning. -->
+
+## Further reading

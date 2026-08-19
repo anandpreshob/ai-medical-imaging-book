@@ -1,0 +1,19 @@
+# From Model to Product: Evaluation, Regulation, Deployment
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+## Benchmark performance vs. clinical validation
+<!-- Reader studies; dataset shift and bias. -->
+
+## Regulatory pathways in plain language
+<!-- FDA 510(k), De Novo, PMA; CE-MDR; what a clearance summary actually claims. -->
+
+## Post-market surveillance and audit trails
+
+## MLOps for hospitals
+
+## Doing this in MedAI OS {.unnumbered}
+<!-- Audit hash-chain logging and batch inference as teaching examples;
+     the "not a medical device" framing. -->

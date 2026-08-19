@@ -1,0 +1,25 @@
+# Building an Imaging AI Platform: MedAI OS as a Case Study
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- The explicitly MedAI-OS-centric chapter; doubles as the user manual. -->
+
+## Anatomy of a web-based viewer
+<!-- Cornerstone3D, VTK.js, itk-wasm loaders. -->
+
+## Feature flags and suites
+<!-- Boot-time feature registry; SuiteConfig; auto-detection from DICOM metadata. -->
+
+## Talking to a PACS
+<!-- Orthanc, DICOMweb proxying. -->
+
+## Serving models
+<!-- MONAI Label, microservices vs. single-container tiers, session-based
+     interactive segmentation, GPU memory budgeting. -->
+
+## Adding your own model
+<!-- TaskConfig → InferTask → register → Dockerfile. -->
+
+## Lessons learned

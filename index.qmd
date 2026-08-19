@@ -1,0 +1,27 @@
+# Preface {.unnumbered}
+
+Medical imaging is where artificial intelligence meets medicine at the largest scale: billions of studies a year, a global shortage of the specialists who read them, and a decade of AI research that is only now maturing into clinical products. This book is a guide to that landscape — modality by modality, concept by concept.
+
+## Who this book is for {.unnumbered}
+
+This book is written for two readers at once:
+
+**The clinician** — a radiologist, resident, or medical student who wants to understand what AI actually does, which claims to trust, and how to evaluate the tools arriving in their reading room. Every machine-learning concept is explained from first principles.
+
+**The engineer** — an ML practitioner or researcher entering medical imaging who needs the clinical context: what each modality measures, what diagnoses matter, how images move through a hospital, and where the data and regulatory landmines are. Every clinical term is explained when it first appears.
+
+Sections are written so that either reader can follow the whole book; the [dual glossary](appendices/f-dual-glossary.qmd) translates in both directions.
+
+## How this book relates to MedAI OS {.unnumbered}
+
+This book stands alone — nothing in it requires any particular software. But concepts stick better when you can try them, so most applied chapters end with a **"Doing this in MedAI OS"** section: a hands-on walkthrough using [MedAI OS](https://github.com/anandpreshob/medai-os), an open-source, browser-based medical imaging workstation with optional AI features (auto-segmentation, interactive segmentation, chest X-ray detection, report generation, triage, analytics). It is research and educational software — not a medical device — which makes it the ideal sandbox for this book.
+
+## Living tables {.unnumbered}
+
+The dataset directories, model zoos, and FDA-cleared product indexes in this book are generated from CSV files in the [book's repository](https://github.com/anandpreshob/ai-medical-imaging-book). The landscape moves fast; corrections and additions are welcome as pull requests.
+
+## Status {.unnumbered}
+
+::: {.callout-warning}
+This book is a work in progress, published as it is written. Chapters marked *draft* are incomplete.
+:::

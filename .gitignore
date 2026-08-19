@@ -1,0 +1,8 @@
+_book/
+.quarto/
+/.luarc.json
+*_files/
+.DS_Store
+__pycache__/
+
+/.quarto/

@@ -1,0 +1,21 @@
+# The Model Zoo {.unnumbered}
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- Master living table rendered from data/models.csv. -->
+
+```{python}
+#| echo: false
+#| output: asis
+import csv
+from pathlib import Path
+rows = list(csv.DictReader(open(Path("../data/models.csv"))))
+if rows:
+    headers = rows[0].keys()
+    print("| " + " | ".join(headers) + " |")
+    print("|" + "---|" * len(headers))
+    for r in rows:
+        print("| " + " | ".join(r.values()) + " |")
+```

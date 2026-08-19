@@ -1,0 +1,21 @@
+# FDA-Cleared AI Product Index {.unnumbered}
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- Master living table rendered from data/fda-products.csv. -->
+
+```{python}
+#| echo: false
+#| output: asis
+import csv
+from pathlib import Path
+rows = list(csv.DictReader(open(Path("../data/fda-products.csv"))))
+if rows:
+    headers = rows[0].keys()
+    print("| " + " | ".join(headers) + " |")
+    print("|" + "---|" * len(headers))
+    for r in rows:
+        print("| " + " | ".join(r.values()) + " |")
+```

@@ -1,0 +1,17 @@
+# Ethics, Bias, Safety & The Future
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+## Fairness across populations
+
+## Automation bias and human–AI teaming
+
+## Liability and accountability
+
+## The economics and sustainability of imaging AI
+
+## Foundation-model consolidation and agentic radiology
+
+## What to watch next

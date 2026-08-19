@@ -1,0 +1,7 @@
+# Dual Glossary {.unnumbered}
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- Clinical terms for engineers / ML terms for clinicians. -->

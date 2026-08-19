@@ -1,0 +1,21 @@
+# Deep Learning Architectures
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+## Convolutional neural networks from first principles
+
+## The encoder–decoder family: U-Net and its descendants
+<!-- nnU-Net as the self-configuring workhorse. -->
+
+## Vision transformers
+
+## Detection architectures
+
+## 3D and video architectures
+
+## Promptable segmentation: the SAM family
+<!-- MedAI OS hook: SAM2 / MedSAM2 / nnInteractive interactive segmentation. -->
+
+## Choosing an architecture

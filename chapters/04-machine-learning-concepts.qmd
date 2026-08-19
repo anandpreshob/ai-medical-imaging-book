@@ -1,0 +1,18 @@
+# Machine Learning: The Concepts
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+## Learning from examples: supervised learning
+
+## When labels are scarce: semi- and self-supervised learning
+
+## Finding structure: unsupervised learning and clustering
+
+## Learning from feedback: reinforcement learning
+
+## The discipline: train, validate, test — and overfitting
+
+## The medical-imaging superpowers
+<!-- Transfer learning, fine-tuning, domain adaptation. -->

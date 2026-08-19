@@ -1,0 +1,31 @@
+# What Computer Vision Can Do
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- Each task defined with a medical example and its evaluation metrics. -->
+
+## Classification
+
+## Detection and localization
+
+## Semantic segmentation
+
+## Instance segmentation
+
+## Keypoints, landmarks and registration
+
+## Depth estimation
+
+## Image-to-image
+<!-- Denoising, super-resolution, modality translation. -->
+
+## Image-to-text
+<!-- Report generation, visual question answering. -->
+
+## Text-to-image
+<!-- Synthesis and augmentation. -->
+
+## How we measure success
+<!-- AUROC, Dice, Hausdorff, mAP, calibration. -->

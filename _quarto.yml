@@ -1,0 +1,70 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "AI in Medical Imaging"
+  subtitle: "From Pixels to Practice"
+  author: "Anand Kadumberi"
+  date: today
+  repo-url: https://github.com/anandpreshob/ai-medical-imaging-book
+  repo-actions: [edit, issue]
+  site-url: https://www.anandpreshob.com/book/
+  page-footer:
+    left: "© 2026 Anand Kadumberi · Apache-2.0"
+    right: "Companion project: [MedAI OS](https://github.com/anandpreshob/medai-os) · [anandpreshob.com](https://www.anandpreshob.com)"
+  chapters:
+    - index.qmd
+    - part: "I — The Landscape of Medical Imaging"
+      chapters:
+        - chapters/01-introduction.qmd
+        - chapters/02-universe-of-medical-images.qmd
+        - chapters/03-images-in-the-hospital.qmd
+    - part: "II — Foundations: Machine Learning & Computer Vision"
+      chapters:
+        - chapters/04-machine-learning-concepts.qmd
+        - chapters/05-what-computer-vision-can-do.qmd
+        - chapters/06-deep-learning-architectures.qmd
+        - chapters/07-generative-and-frontier-models.qmd
+        - chapters/08-from-model-to-product.qmd
+    - part: "III — Diagnostic Imaging, Modality by Modality"
+      chapters:
+        - chapters/09-chest-xray.qmd
+        - chapters/10-computed-tomography.qmd
+        - chapters/11-mri.qmd
+        - chapters/12-ultrasound-echo.qmd
+        - chapters/13-mammography.qmd
+        - chapters/14-nuclear-medicine.qmd
+        - chapters/15-ophthalmic-imaging.qmd
+    - part: "IV — Interventional, Lab-Based & Video"
+      chapters:
+        - chapters/16-surgical-endoscopic-video.qmd
+        - chapters/17-digital-pathology.qmd
+        - chapters/18-the-remaining-map.qmd
+    - part: "V — Systems & The Road Ahead"
+      chapters:
+        - chapters/19-building-an-imaging-ai-platform.qmd
+        - chapters/20-ethics-bias-future.qmd
+  appendices:
+    - appendices/a-dataset-directory.qmd
+    - appendices/b-model-zoo.qmd
+    - appendices/c-fda-product-index.qmd
+    - appendices/d-dicom-quick-reference.qmd
+    - appendices/e-medai-os-setup.qmd
+    - appendices/f-dual-glossary.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: [cosmo, theme/custom.scss]
+      dark: [darkly, theme/custom.scss]
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    link-external-newwindow: true
+
+execute:
+  freeze: auto

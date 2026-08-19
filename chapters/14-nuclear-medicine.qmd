@@ -1,0 +1,41 @@
+# Nuclear Medicine: PET & SPECT
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+## What is PET/SPECT?
+
+<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+
+## Why and when it's ordered
+
+<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+
+## What diagnoses are made from it
+
+<!-- The finding taxonomy a model would need to learn. -->
+
+## How it works in a modern hospital
+
+<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+
+## The data landscape
+
+<!-- Living table filtered from data/datasets.csv (modality == "nm"). -->
+
+## The model landscape
+
+<!-- Living table filtered from data/models.csv (modality == "nm"); open vs. closed. -->
+
+## FDA-cleared AI products
+
+<!-- Living table filtered from data/fda-products.csv (modality == "nm"). -->
+
+## Open challenges
+
+## Doing this in MedAI OS {.unnumbered}
+
+<!-- SUV analytics, Oncology Suite trial endpoints. -->
+
+## Further reading

@@ -1,0 +1,7 @@
+# DICOM Quick Reference for ML Engineers {.unnumbered}
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- Tags that matter, pixel data gotchas, de-identification checklists. -->

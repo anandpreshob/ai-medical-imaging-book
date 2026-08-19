@@ -1,0 +1,18 @@
+# The Remaining Map
+
+::: {.callout-note}
+*Draft chapter — outline only. Content coming soon.*
+:::
+
+<!-- Condensed template treatment: dermatology imaging, dental/CBCT,
+     DEXA and opportunistic screening, ECG-as-image, emerging modalities. -->
+
+## Dermatology imaging
+
+## Dental & CBCT
+
+## DEXA and opportunistic screening
+
+## ECG as an image
+
+## Emerging modalities

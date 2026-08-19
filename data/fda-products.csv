@@ -1,0 +1,11 @@
+modality,product,vendor,clearance,indication,link,notes
+cxr,Critical Care Suite,GE HealthCare,510(k),Pneumothorax triage on mobile X-ray,https://www.gehealthcare.com/,On-device triage
+cxr,red dot,Behold.ai,510(k),Abnormality triage,https://behold.ai/,UK-origin
+cxr,Lunit INSIGHT CXR,Lunit,510(k),Multi-finding detection,https://www.lunit.io/,Widely deployed internationally
+ct,Viz LVO,Viz.ai,De Novo (2018),Large-vessel-occlusion stroke triage,https://www.viz.ai/,First CADt De Novo; created the reimbursement path
+ct,Aidoc BriefCase (ICH/PE),Aidoc,510(k),Intracranial hemorrhage & PE triage,https://www.aidoc.com/,Platform with many cleared modules
+ophtho,IDx-DR (LumineticsCore),Digital Diagnostics,De Novo (2018),Autonomous diabetic-retinopathy screening,https://www.digitaldiagnostics.com/,First autonomous AI diagnosis clearance
+mammo,Transpara,ScreenPoint Medical,510(k),Breast-cancer detection in mammography/DBT,https://screenpoint-medical.com/,Strong reader-study evidence
+echo,Caption Guidance,Caption Health (GE),De Novo (2020),AI-guided echo acquisition for novices,https://www.gehealthcare.com/,Acquisition guidance not diagnosis
+path,Paige Prostate,Paige.AI,De Novo (2021),Prostate-cancer detection in WSI,https://paige.ai/,First FDA-authorized pathology AI
+video,GI Genius,Medtronic/Cosmo,De Novo (2021),Real-time colonoscopy polyp detection,https://www.medtronic.com/,First cleared endoscopy CADe
