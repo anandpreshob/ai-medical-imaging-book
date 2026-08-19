@@ -47,3 +47,15 @@ quarto preview
 ## Note on the website nav
 
 The "Textbook" nav link and homepage card added to your website point to `/book/`, which 404s until step 4 completes. Deploy the book before (or together with) the website changes.
+
+## 0. Housekeeping (do this first)
+
+The repo was git-initialized from a sandboxed session that cannot delete temp files, so stale `.git` artifacts may linger. Before your first git command, run:
+
+```bash
+cd /Users/anandkadumberi/Projects/ai-medical-imaging-book
+find .git -name "*.lock" -delete
+find .git -name "tmp_obj_*" -delete
+```
+
+Also: a `_to_delete/` folder was created in `/Users/anandkadumberi/Projects/` holding the delivery zip and moved lock files — safe to trash.
