@@ -657,20 +657,132 @@ window.Quarto = {
 <section id="radiography-x-ray" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="radiography-x-ray"><span class="header-section-number">2.2.1</span> Radiography (X-ray)</h3>
 <p><strong>Signal:</strong> X-ray attenuation, integrated along each ray. <strong>Shape:</strong> 2D, single channel, typically 2000–4000 pixels per side at 10–14 bits. <strong>Diagnoses:</strong> the chest X-ray alone screens for pneumonia, pneumothorax, effusions, cardiomegaly, nodules, tuberculosis, and line/tube placement; skeletal radiographs cover fractures, arthritis, and bone lesions; abdominal films catch obstruction and free air. It is the most-performed imaging exam on Earth — billions annually — which is why it anchors both the public-dataset landscape and the FDA-cleared product market, and why it gets this book’s flagship treatment in <a href="10-chest-xray.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-xray-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a patient standing between an X-ray tube and a flat detector panel.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-xray-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/xray-acquisition.png" class="img-fluid figure-img" alt="Illustration of a patient standing between an X-ray tube and a flat detector panel.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-xray-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: How a radiograph is made: the X-ray tube projects a beam through the patient onto a detector — every structure along each ray is superimposed into one 2D shadow.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-xray-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative chest X-ray image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-xray-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/xray-example.png" class="img-fluid figure-img" alt="Representative chest X-ray image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-xray-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Representative chest radiograph. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p><strong>AI status:</strong> the most mature of any modality. Large labeled datasets exist, multi-finding classifiers are commodity, and cleared triage products are deployed at scale.</p>
 </section>
 <section id="mammography-and-digital-breast-tomosynthesis" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="mammography-and-digital-breast-tomosynthesis"><span class="header-section-number">2.2.2</span> Mammography and digital breast tomosynthesis</h3>
 <p><strong>Signal:</strong> low-energy X-ray attenuation through compressed breast tissue, tuned to maximize soft-tissue contrast — the differences that matter (a mass, a cluster of microcalcifications) are subtle. <strong>Shape:</strong> 2D at very high resolution (~4000 × 5000, 70–100 µm pixels); digital breast tomosynthesis (DBT) adds a limited sweep of angles reconstructed into a pseudo-3D stack of ~50–80 slices. <strong>Diagnoses:</strong> breast-cancer screening and diagnosis, reported in the standardized BI-RADS vocabulary.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-mammo-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a patient at a mammography unit with compression paddles and a sweeping X-ray tube.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mammo-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/mammo-acquisition.png" class="img-fluid figure-img" alt="Illustration of a patient at a mammography unit with compression paddles and a sweeping X-ray tube.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mammo-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Mammography compresses the breast between paddles and images it with low-energy X-rays; tomosynthesis sweeps the tube through an arc to build a pseudo-3D stack.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-mammo-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative mammography image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mammo-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/mammo-example.png" class="img-fluid figure-img" alt="Representative mammography image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mammo-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Representative mammogram. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p>Mammography is unusual: it is a <em>population screening</em> modality, read in enormous volumes with a low prevalence of disease. That makes sensitivity/specificity trade-offs, double-reading economics, and risk-stratified screening intervals central — and it is why mammography hosts some of the strongest reader-study evidence for AI anywhere in medicine (<a href="14-mammography.html" class="quarto-xref"><span>Chapter 14</span></a>).</p>
 </section>
 <section id="fluoroscopy-and-angiography" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="fluoroscopy-and-angiography"><span class="header-section-number">2.2.3</span> Fluoroscopy and angiography</h3>
 <p><strong>Signal:</strong> the same X-ray attenuation, but continuous — a live 2D+time video, usually with injected contrast tracing vessels or the GI tract. <strong>Shape:</strong> 2D+t, 512–1024 pixels per side, up to 30 frames/s. <strong>Uses:</strong> guiding interventions (catheters, stents, pacemaker leads), barium studies, joint injections. AI here is largely <em>intra-procedural</em>: vessel segmentation, device tracking, and radiation-dose reduction, sharing more DNA with the surgical-video world of <a href="17-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 17</span></a> than with static radiography.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fluoro-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a C-arm fluoroscopy suite with a physician guiding a catheter.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fluoro-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/fluoro-acquisition.png" class="img-fluid figure-img" alt="Illustration of a C-arm fluoroscopy suite with a physician guiding a catheter.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fluoro-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Fluoroscopy is X-ray as live video: a C-arm streams frames while the operator works, contrast dye tracing vessels in real time.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fluoro-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative fluoroscopy angiography image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fluoro-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/fluoro-example.png" class="img-fluid figure-img" alt="Representative fluoroscopy angiography image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fluoro-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Representative digital subtraction angiogram. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="dexa" class="level3" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="dexa"><span class="header-section-number">2.2.4</span> DEXA</h3>
 <p><strong>Signal:</strong> attenuation at <em>two</em> X-ray energies, which lets the scanner separate bone from soft tissue and output a number — bone mineral density — rather than primarily a picture. <strong>Diagnoses:</strong> osteoporosis and fracture risk. DEXA earns its place in the atlas as the purest example of imaging-as-measurement, and because <em>opportunistic screening</em> — AI mining bone density or body composition from CT scans acquired for other reasons — is quietly becoming one of imaging AI’s most cost-effective applications (<a href="19-the-remaining-map.html" class="quarto-xref"><span>Chapter 19</span></a>).</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dexa-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a patient on an open DEXA table with a scanning arm above the pelvis.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dexa-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/dexa-acquisition.png" class="img-fluid figure-img" alt="Illustration of a patient on an open DEXA table with a scanning arm above the pelvis.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dexa-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: DEXA measures attenuation at two X-ray energies to compute bone mineral density — imaging as measurement more than picture.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dexa-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative DEXA bone-density image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dexa-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/dexa-example.png" class="img-fluid figure-img" alt="Representative DEXA bone-density image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dexa-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.8: Representative DEXA hip image. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="cross-sectional-imaging" class="level2" data-number="2.3">
@@ -679,18 +791,102 @@ window.Quarto = {
 <section id="computed-tomography-ct" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="computed-tomography-ct"><span class="header-section-number">2.3.1</span> Computed tomography (CT)</h3>
 <p><strong>Signal:</strong> X-ray attenuation again — but measured from hundreds of angles as the tube spins around the patient, then reconstructed into a volume where every voxel carries a calibrated <strong>Hounsfield unit</strong> (HU): water is 0, air is −1000, bone is +400 to +2000. That calibration is a gift to machine learning; a liver is roughly the same HU in Boston and Bangalore.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ct-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Cutaway illustration of a CT gantry showing the rotating tube, detector arc, and fan beam.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/ct-acquisition.png" class="img-fluid figure-img" alt="Cutaway illustration of a CT gantry showing the rotating tube, detector arc, and fan beam.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.9: CT spins an X-ray tube and detector around the patient and reconstructs calibrated 3D slices from hundreds of projections.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ct-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative axial chest CT image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/ct-example.png" class="img-fluid figure-img" alt="Representative axial chest CT image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.10: Representative axial chest CT. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p><strong>Shape:</strong> 3D, canonically 512 × 512 in-plane with sub-millimeter voxels and anywhere from 40 to 2000+ slices; cardiac and perfusion protocols add time (4D). Intravenous contrast creates <em>phases</em> (arterial, venous, delayed) — effectively a temporal channel axis that an AI system ignores at its peril: the same lesion looks different in every phase.</p>
 <p><strong>Diagnoses:</strong> the emergency workhorse — stroke, hemorrhage, pulmonary embolism, trauma, appendicitis — plus cancer detection, staging and response assessment, lung-cancer screening, coronary imaging, and surgical planning. <strong>AI status:</strong> very mature. Triage products for hemorrhage, stroke and PE are the commercial heart of radiology AI, and whole-body anatomical segmentation is now open-source commodity infrastructure (<a href="11-computed-tomography.html" class="quarto-xref"><span>Chapter 11</span></a>).</p>
 </section>
 <section id="magnetic-resonance-imaging-mri" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="magnetic-resonance-imaging-mri"><span class="header-section-number">2.3.2</span> Magnetic resonance imaging (MRI)</h3>
 <p><strong>Signal:</strong> no ionizing radiation at all. The patient lies in a strong magnetic field; hydrogen nuclei are tipped by radio-frequency pulses, and the scanner measures how they <em>relax</em> back — at rates that depend exquisitely on the tissue they sit in. By reordering the pulses — the <strong>sequence</strong> — the same anatomy renders with entirely different contrast: T1-weighted (anatomy, fat bright), T2-weighted (fluid bright), FLAIR (fluid suppressed, lesions conspicuous), diffusion-weighted (water mobility — the sequence that lights up acute stroke within minutes), gradient-echo (blood products), and dynamic contrast-enhanced series watching gadolinium wash in and out.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-mri-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Cutaway illustration of an MRI bore with field lines, a head coil, and floating panels of differently contrasted brain images.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mri-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/mri-acquisition.png" class="img-fluid figure-img" alt="Cutaway illustration of an MRI bore with field lines, a head coil, and floating panels of differently contrasted brain images.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.11: MRI tips hydrogen nuclei in a strong magnetic field and listens to them relax; reordering the pulses — the sequence — renders the same anatomy in entirely different contrasts.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-mri-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative axial T1-weighted brain MRI image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mri-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/mri-example.png" class="img-fluid figure-img" alt="Representative axial T1-weighted brain MRI image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.12: Representative axial brain MRI. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p><strong>Shape:</strong> a <em>study</em> is a set of 3D volumes, one per sequence — think 4–12 misaligned, differently-contrasted, differently-resolved channels, often anisotropic (e.g., 0.5 mm in-plane but 5 mm between slices). Unlike CT, voxel intensities are <strong>not</strong> calibrated across scanners or even visits — the single most important fact about MRI for an ML practitioner, and the root of the domain-shift problems in <a href="04-machine-learning-concepts.html" class="quarto-xref"><span>Chapter 4</span></a>.</p>
 <p><strong>Diagnoses:</strong> the definitive modality for brain and spine (tumors, MS, dementia workup, stroke characterization), musculoskeletal soft tissue, prostate (PI-RADS), liver lesions, cardiac function and scar, and high-risk breast screening. <strong>AI status:</strong> strong in research, harder in deployment — sequence variability across vendors and sites is the great confounder. MRI also hosts imaging AI’s most distinctive success: <em>reconstruction</em> — using learned priors to produce diagnostic images from far less raw data, cutting scan times dramatically (<a href="12-mri.html" class="quarto-xref"><span>Chapter 12</span></a>).</p>
 </section>
 <section id="nuclear-medicine-pet-and-spect" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="nuclear-medicine-pet-and-spect"><span class="header-section-number">2.3.3</span> Nuclear medicine: PET and SPECT</h3>
 <p><strong>Signal:</strong> emission rather than transmission. A radioactive tracer is injected and accumulates where its target biology is active; the scanner detects the photons the patient emits. The archetype is FDG-PET — fluorine-18-labeled glucose — which maps metabolic activity: most cancers, being metabolically greedy, glow. Voxels are quantitative (<strong>SUV</strong>, standardized uptake value), making PET a measurement instrument like DEXA, but in 3D.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pet-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of tracer injection and a PET/CT scanner detecting glowing regions inside the patient.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pet-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/pet-acquisition.png" class="img-fluid figure-img" alt="Illustration of tracer injection and a PET/CT scanner detecting glowing regions inside the patient.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.13: PET images emission, not transmission: an injected tracer accumulates where its target biology is active, and the ring detects the photons the patient emits.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-pet-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative whole-body FDG-PET and fused PET/CT image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pet-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/pet-example.png" class="img-fluid figure-img" alt="Representative whole-body FDG-PET and fused PET/CT image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.14: Representative FDG-PET and fused PET/CT. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p><strong>Shape:</strong> 3D but low-resolution (~4–6 mm voxels, 128–256 per side) and almost never alone: PET/CT and PET/MR acquire an anatomical volume in the same session, so the data is intrinsically <strong>multi-modal</strong> — a functional channel registered to an anatomical one. <strong>Diagnoses:</strong> cancer staging and treatment response above all; also cardiac viability, infection, and neurodegeneration (amyloid and tau imaging in dementia). SPECT, PET’s cheaper single-photon cousin, dominates cardiac perfusion. <strong>AI status:</strong> growing fast — lesion detection across whole-body PET, automated SUV quantification for trial endpoints, and dose/time-reduction reconstruction (<a href="15-nuclear-medicine.html" class="quarto-xref"><span>Chapter 15</span></a>).</p>
 </section>
 </section>
@@ -700,15 +896,99 @@ window.Quarto = {
 <section id="ultrasound-and-echocardiography" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="ultrasound-and-echocardiography"><span class="header-section-number">2.4.1</span> Ultrasound and echocardiography</h3>
 <p><strong>Signal:</strong> high-frequency sound pulses; the machine times and weighs the echoes returning from tissue boundaries. Doppler processing adds a velocity channel — blood flow, in color. <strong>Shape:</strong> 2D+t video (~30–60 fps) from a hand-held probe whose position and angle are unrecorded and entirely operator-dependent; 3D/4D probes exist (obstetric and cardiac). The operator dependence is the field’s defining ML challenge: two sonographers produce different images of the same heart, and the “right” frame is a skill, not a coordinate.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-us-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a sonographer scanning a patient's chest with the heart displayed on the machine.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-us-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/us-acquisition.png" class="img-fluid figure-img" alt="Illustration of a sonographer scanning a patient's chest with the heart displayed on the machine.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.15: Ultrasound times echoes from a handheld probe — the image exists only where the operator points it, at video rate.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-us-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative apical four-chamber echocardiogram image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-us-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/us-example.png" class="img-fluid figure-img" alt="Representative apical four-chamber echocardiogram image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.16: Representative echocardiogram. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p><strong>Diagnoses:</strong> ubiquitous — obstetric growth and anomaly screening, abdominal organs, thyroid, vascular flow, and above all <strong>echocardiography</strong>: chamber sizes, ejection fraction, and valve function, medicine’s front-line cardiac exam. Point-of-care ultrasound (POCUS) is pushing probes into ambulances, ERs, and low-resource settings — often into the hands of non-experts, which is exactly where AI guidance (coaching the operator to the right view, auto-measuring once there) earned one of its landmark FDA authorizations (<a href="13-ultrasound-echo.html" class="quarto-xref"><span>Chapter 13</span></a>).</p>
 </section>
 <section id="endoscopy" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="endoscopy"><span class="header-section-number">2.4.2</span> Endoscopy</h3>
 <p><strong>Signal:</strong> ordinary visible light, from a camera inside the GI tract (or airway, bladder, joint). <strong>Shape:</strong> 2D+t high-definition video. <strong>Diagnoses:</strong> colorectal-cancer screening via polyp detection and removal, upper-GI lesions, bleeding sources. Real-time polyp detection was among the first cleared <em>live-video</em> AI products in medicine, and the adenoma-detection-rate literature around it is some of the best evidence that imaging AI changes hard clinical outcomes.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-endo-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a flexible endoscope inside the colon with the video view on a monitor.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-endo-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/endo-acquisition.png" class="img-fluid figure-img" alt="Illustration of a flexible endoscope inside the colon with the video view on a monitor.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-endo-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.17: Endoscopy is ordinary light from inside the body — a camera at the scope tip streaming HD video as the operator navigates.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-endo-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative illustrative endoscopy image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-endo-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/endo-example.png" class="img-fluid figure-img" alt="Representative illustrative endoscopy image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-endo-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.18: Representative illustrative endoscopic monitor view. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="surgical-and-interventional-video" class="level3" data-number="2.4.3">
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="surgical-and-interventional-video"><span class="header-section-number">2.4.3</span> Surgical and interventional video</h3>
 <p><strong>Signal:</strong> the laparoscope or robotic camera — visible light again, but now the video documents an <em>activity</em>, not just anatomy. <strong>Shape:</strong> 2D+t (sometimes stereo), hours long: a single case can exceed 100 GB, and “labels” are events in time (phases, instrument appearances, critical safety views) rather than regions in space. <strong>AI targets:</strong> workflow phase recognition, tool detection, safety-checkpoint verification, skill assessment, and automated documentation — the subject of <a href="17-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 17</span></a>, and the family closest to mainstream video understanding in computer vision.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-surgvideo-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of laparoscopic surgery with the internal camera view shown on the operating-room monitor.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-surgvideo-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/surgvideo-acquisition.png" class="img-fluid figure-img" alt="Illustration of laparoscopic surgery with the internal camera view shown on the operating-room monitor.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-surgvideo-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.19: In surgical video the image documents an activity, not just anatomy — hours of footage where the labels are events in time.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-surgvideo-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative laparoscopic surgery video frame.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-surgvideo-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/surgvideo-example.png" class="img-fluid figure-img" alt="Representative laparoscopic surgery video frame.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-surgvideo-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.20: Representative laparoscopic surgical view. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="ophthalmic-imaging" class="level2" data-number="2.5">
@@ -717,10 +997,66 @@ window.Quarto = {
 <section id="fundus-photography" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="fundus-photography"><span class="header-section-number">2.5.1</span> Fundus photography</h3>
 <p><strong>Signal:</strong> a visible-light color photograph of the retina. <strong>Shape:</strong> 2D RGB, ~2000–4000 pixels per side — the only major modality that looks like a natural image, which is why ImageNet-pretrained networks transferred so easily and why diabetic-retinopathy grading became deep learning’s first great medical success story. <strong>Diagnoses:</strong> diabetic retinopathy screening above all (the first <em>autonomous</em> — no-physician-in-the-loop — FDA authorization in medicine), plus glaucoma and macular degeneration. The emerging field of <strong>oculomics</strong> reads systemic health — cardiovascular risk, anemia, kidney disease — from the same photographs.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fundus-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a patient at a fundus camera with the light path into a cutaway eye.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fundus-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/fundus-acquisition.png" class="img-fluid figure-img" alt="Illustration of a patient at a fundus camera with the light path into a cutaway eye.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fundus-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.21: The fundus camera photographs the retina through the pupil — the only place the body’s microvasculature can be imaged directly with visible light.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-fundus-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative color fundus photograph.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fundus-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/fundus-example.png" class="img-fluid figure-img" alt="Representative color fundus photograph.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fundus-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.22: Representative fundus photograph. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="optical-coherence-tomography-oct" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="optical-coherence-tomography-oct"><span class="header-section-number">2.5.2</span> Optical coherence tomography (OCT)</h3>
 <p><strong>Signal:</strong> low-coherence interferometry — light’s analog of ultrasound — resolving retinal <em>depth</em> at micron scale. <strong>Shape:</strong> 3D, a stack of cross-sectional B-scans revealing every retinal layer; OCT-angiography derives flow maps without dye. <strong>Diagnoses:</strong> macular degeneration and diabetic macular edema management (it gates injection therapy), glaucoma progression. OCT is the highest-volume 3D scan in all of medicine by study count — ophthalmology clinics run them like vital signs (<a href="16-ophthalmic-imaging.html" class="quarto-xref"><span>Chapter 16</span></a>).</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-oct-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of an OCT scanner sweeping a beam across the retina and producing layered cross-section slices.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-oct-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/oct-acquisition.png" class="img-fluid figure-img" alt="Illustration of an OCT scanner sweeping a beam across the retina and producing layered cross-section slices.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-oct-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.23: OCT is light’s version of ultrasound — interferometry resolving the retina’s layers in micron-scale cross-sections.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-oct-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative macular OCT cross-section image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-oct-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/oct-example.png" class="img-fluid figure-img" alt="Representative macular OCT cross-section image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-oct-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.24: Representative macular OCT B-scan. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="microscopy-the-laboratory-image" class="level2" data-number="2.6">
@@ -729,6 +1065,34 @@ window.Quarto = {
 <section id="histopathology-and-whole-slide-imaging" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="histopathology-and-whole-slide-imaging"><span class="header-section-number">2.6.1</span> Histopathology and whole-slide imaging</h3>
 <p><strong>Signal:</strong> transmitted visible light through micron-thin, chemically stained tissue sections. H&amp;E is the universal stain; immunohistochemistry (IHC) adds targeted molecular markers; special stains flag organisms and deposits. <strong>Shape:</strong> a scanned <strong>whole-slide image (WSI)</strong> is a pyramidal gigapixel file — 100,000 pixels per side at full resolution, several GB per slide, far too large for any network to ingest whole. The standard paradigm is tiling plus <strong>multiple-instance learning</strong>: the slide has one label, the hundreds of thousands of tiles do not — a weak-supervision structure that shaped an entire subfield and now underpins pathology’s powerful slide-level foundation models (<a href="18-digital-pathology.html" class="quarto-xref"><span>Chapter 18</span></a>).</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-path-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of tissue sectioning, staining, and slide scanning into a tiled gigapixel image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-path-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/path-acquisition.png" class="img-fluid figure-img" alt="Illustration of tissue sectioning, staining, and slide scanning into a tiled gigapixel image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.25: Pathology images extracted tissue: micron-thin stained sections digitized into gigapixel whole-slide images — far too large for any model to swallow whole.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-path-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative hematoxylin-and-eosin histology image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-path-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/path-example.png" class="img-fluid figure-img" alt="Representative hematoxylin-and-eosin histology image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.26: Representative H&amp;E histology field. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p><strong>Diagnoses:</strong> cancer — its presence, type, grade, margins, and biomarkers — plus inflammatory, infectious, and degenerative disease across every organ.</p>
 </section>
 <section id="cytology-and-hematology" class="level3" data-number="2.6.2">
@@ -739,6 +1103,60 @@ window.Quarto = {
 <section id="dermatology-dental-and-maxillofacial" class="level2" data-number="2.7">
 <h2 data-number="2.7" class="anchored" data-anchor-id="dermatology-dental-and-maxillofacial"><span class="header-section-number">2.7</span> Dermatology, dental and maxillofacial</h2>
 <p><strong>Dermatology:</strong> clinical photographs and <strong>dermoscopy</strong> (polarized close-up imaging of skin lesions) — 2D RGB natural images, screening for melanoma against a benign-lesion background. Consumer-facing apps make this the modality where regulation, bias across skin tones, and dataset ethics collide most publicly. <strong>Dental:</strong> intraoral radiographs and panoramic X-rays (caries, periodontal bone loss — high-volume, well-suited to detection AI) plus <strong>CBCT</strong>, a compact cone-beam CT for implant planning and endodontics. Both get their template treatment in <a href="19-the-remaining-map.html" class="quarto-xref"><span>Chapter 19</span></a>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-derm-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a clinician examining a mole with a handheld dermatoscope linked to a phone.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-derm-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/derm-acquisition.png" class="img-fluid figure-img" alt="Illustration of a clinician examining a mole with a handheld dermatoscope linked to a phone.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-derm-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.27: Dermoscopy puts polarized magnification against the skin, revealing pigment structures invisible to the naked eye.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-derm-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative dermoscopic image of a benign pigmented lesion.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-derm-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/derm-example.png" class="img-fluid figure-img" alt="Representative dermoscopic image of a benign pigmented lesion.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-derm-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.28: Representative dermoscopic image. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dental-acq" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Illustration of a panoramic dental X-ray machine orbiting a standing patient's head.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dental-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/dental-acquisition.png" class="img-fluid figure-img" alt="Illustration of a panoramic dental X-ray machine orbiting a standing patient's head.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dental-acq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.29: Dental imaging spans quick panoramic sweeps to cone-beam CT volumes for implant planning.
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-dental-ex" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Representative panoramic dental radiograph.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dental-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch02/dental-example.png" class="img-fluid figure-img" alt="Representative panoramic dental radiograph.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dental-ex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.30: Representative panoramic dental radiograph. Illustrative rendering, not a real patient image.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="emerging-and-adjacent" class="level2" data-number="2.8">
 <h2 data-number="2.8" class="anchored" data-anchor-id="emerging-and-adjacent"><span class="header-section-number">2.8</span> Emerging and adjacent</h2>
