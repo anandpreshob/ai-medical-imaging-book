@@ -79,6 +79,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -527,11 +530,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dicom-the-standard-that-runs-radiology" id="toc-dicom-the-standard-that-runs-radiology" class="nav-link active" data-scroll-target="#dicom-the-standard-that-runs-radiology"><span class="header-section-number">3.1</span> DICOM: the standard that runs radiology</a></li>
+  <li><a href="#dicom-the-standard-that-runs-radiology" id="toc-dicom-the-standard-that-runs-radiology" class="nav-link active" data-scroll-target="#dicom-the-standard-that-runs-radiology"><span class="header-section-number">3.1</span> DICOM: the standard that runs radiology</a>
+  <ul class="collapse">
+  <li><a href="#the-information-model-patient-study-series-instance" id="toc-the-information-model-patient-study-series-instance" class="nav-link" data-scroll-target="#the-information-model-patient-study-series-instance"><span class="header-section-number">3.1.1</span> The information model: patient, study, series, instance</a></li>
+  <li><a href="#the-header-hundreds-of-tags-a-handful-that-matter-enormously" id="toc-the-header-hundreds-of-tags-a-handful-that-matter-enormously" class="nav-link" data-scroll-target="#the-header-hundreds-of-tags-a-handful-that-matter-enormously"><span class="header-section-number">3.1.2</span> The header: hundreds of tags, a handful that matter enormously</a></li>
+  <li><a href="#more-than-images-and-more-than-a-file-format" id="toc-more-than-images-and-more-than-a-file-format" class="nav-link" data-scroll-target="#more-than-images-and-more-than-a-file-format"><span class="header-section-number">3.1.3</span> More than images — and more than a file format</a></li>
+  </ul></li>
   <li><a href="#research-formats-nifti-nrrd-and-friends" id="toc-research-formats-nifti-nrrd-and-friends" class="nav-link" data-scroll-target="#research-formats-nifti-nrrd-and-friends"><span class="header-section-number">3.2</span> Research formats: NIfTI, NRRD and friends</a></li>
   <li><a href="#pacs-ris-ehr-and-how-they-talk" id="toc-pacs-ris-ehr-and-how-they-talk" class="nav-link" data-scroll-target="#pacs-ris-ehr-and-how-they-talk"><span class="header-section-number">3.3</span> PACS, RIS, EHR and how they talk</a></li>
   <li><a href="#the-loop-acquisition-storage-reading-report" id="toc-the-loop-acquisition-storage-reading-report" class="nav-link" data-scroll-target="#the-loop-acquisition-storage-reading-report"><span class="header-section-number">3.4</span> The loop: acquisition → storage → reading → report</a></li>
   <li><a href="#de-identification-and-data-governance" id="toc-de-identification-and-data-governance" class="nav-link" data-scroll-target="#de-identification-and-data-governance"><span class="header-section-number">3.5</span> De-identification and data governance</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try it yourself</a></li>
+  <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">3.6</span> The agentic outlook</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">3.7</span> Further reading</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/03-images-in-the-hospital.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -558,36 +569,211 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Sooner or later, everyone who works with medical images has the same first encounter: a folder containing three thousand files with meaningless names and no extensions, which no ordinary image viewer will open. That folder is a CT study, and the confusion it causes is the point of this chapter. A medical image is not a picture — it is a <em>record</em>: pixels wrapped in metadata about who was scanned, on what machine, with what settings, in what physical geometry, connected by identifiers to an order, a report, and a medical history, and moved between systems by protocols older than the web. Understanding that wrapping is not optional plumbing knowledge. It is the difference between a model that works and one that silently reads images upside down.</p>
+<p><a href="02-universe-of-medical-images.html" class="quarto-xref"><span>Chapter 2</span></a> described what the images <em>are</em>; this chapter describes how they <em>live</em> — the formats, the systems that store and move them, the loop a study travels from order to report, and the governance that decides whether pixels can ever leave the building.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the engineer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>This chapter is where medical imaging most differs from mainstream computer vision. There is no <code>imread()</code> for a hospital. The metadata you are tempted to discard is what makes voxel values physically meaningful, defines the geometry your model assumes, and carries the patient identifiers that make careless data handling a legal event. Most catastrophic-but-silent bugs in medical imaging ML — inverted grayscale, mis-scaled intensities, shuffled slices, leaked protected health information — are metadata bugs, and every one of them is introduced below.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the clinician
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You use these systems every day — PACS, the worklist, dictation — without needing to know what happens underneath. What this chapter adds is the machinery’s-eye view: why the AI vendor keeps asking about “DICOM routing” and “HL7 feeds,” why research datasets arrive in strange formats, and why de-identification is harder than deleting the patient’s name. When an AI deployment stalls for months, the delay is almost always in this chapter, not in the model.</p>
 </div>
 </div>
 <section id="dicom-the-standard-that-runs-radiology" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="dicom-the-standard-that-runs-radiology"><span class="header-section-number">3.1</span> DICOM: the standard that runs radiology</h2>
-<!-- Structure, metadata, why it matters for ML. -->
+<p>Every scanner, viewer, and archive in every hospital on Earth speaks <strong>DICOM</strong> — <em>Digital Imaging and Communications in Medicine</em> — a standard first published in its modern form in 1993 and continuously extended since. Its longevity comes from covering three things at once: a <strong>file format</strong> for images and their metadata, a <strong>network protocol</strong> for moving them, and an <strong>information model</strong> describing how medical imaging is organized. Miss any of the three and the hospital stops making sense.</p>
+<section id="the-information-model-patient-study-series-instance" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="the-information-model-patient-study-series-instance"><span class="header-section-number">3.1.1</span> The information model: patient, study, series, instance</h3>
+<p>DICOM organizes everything into a four-level hierarchy:</p>
+<ul>
+<li>A <strong>patient</strong> has one or more <strong>studies</strong> — one study per imaging <em>event</em> (“CT chest with contrast, March 3rd”).</li>
+<li>A study contains <strong>series</strong> — coherent stacks of images acquired the same way. A CT study might hold a scout view, a non-contrast series, an arterial-phase series, and a reconstruction at a different slice thickness. An MRI study holds one series per sequence — the T1, T2, FLAIR, and diffusion volumes of <a href="02-universe-of-medical-images.html" class="quarto-xref"><span>Chapter 2</span></a>.</li>
+<li>A series contains <strong>instances</strong> — individual DICOM objects, classically one file per slice. That is why one CT study is three thousand files: a 3D volume stored as a series of 2D instances, each carrying its own copy of the metadata.</li>
+</ul>
+<p>Each level is identified by a globally unique identifier (UID) — long dotted-decimal strings that let any two systems agree they are discussing the same study without sharing a database. When you assemble a volume, the hierarchy is the contract: instances group into series by UID, and their spatial order comes from geometry tags — <em>not</em> from filenames, which are arbitrary.</p>
+</section>
+<section id="the-header-hundreds-of-tags-a-handful-that-matter-enormously" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-header-hundreds-of-tags-a-handful-that-matter-enormously"><span class="header-section-number">3.1.2</span> The header: hundreds of tags, a handful that matter enormously</h3>
+<p>A DICOM file is a list of <strong>tags</strong> — (group, element) pairs like <code>(0008,0060) Modality</code> or <code>(0010,0010) PatientName</code> — followed by one enormous tag holding the pixel data. A typical file carries hundreds: who, what, when, where, machine model, software version, acquisition physics, display hints. For machine learning, a short list of them does most of the work, and ignoring any one of them is a classic silent bug:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tag(s)</th>
+<th>What it does</th>
+<th>The bug if ignored</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>RescaleSlope</code> / <code>RescaleIntercept</code></td>
+<td>Map stored integers to physical values — for CT, to Hounsfield units</td>
+<td>Intensities off by ~1000; every HU-based window or threshold wrong</td>
+</tr>
+<tr class="even">
+<td><code>PhotometricInterpretation</code></td>
+<td><code>MONOCHROME2</code> = bright-is-high; <code>MONOCHROME1</code> = <strong>inverted</strong></td>
+<td>A fraction of X-rays load as negatives; the model quietly learns from them anyway</td>
+</tr>
+<tr class="odd">
+<td><code>ImagePositionPatient</code> / <code>ImageOrientationPatient</code></td>
+<td>Each slice’s position and orientation in patient space</td>
+<td>Slices sorted by filename or instance number: shuffled or flipped volumes</td>
+</tr>
+<tr class="even">
+<td><code>PixelSpacing</code> / <code>SliceThickness</code> / <code>SpacingBetweenSlices</code></td>
+<td>Physical size of each voxel</td>
+<td>Anisotropy ignored; “5 mm nodule” measured in meaningless pixel units</td>
+</tr>
+<tr class="odd">
+<td><code>Modality</code>, <code>BodyPartExamined</code>, <code>StudyDescription</code></td>
+<td>What kind of study this is</td>
+<td>The routing problem of <a href="02-universe-of-medical-images.html" class="quarto-xref"><span>Chapter 2</span></a> — noisy but indispensable</td>
+</tr>
+<tr class="even">
+<td><code>WindowCenter</code> / <code>WindowWidth</code></td>
+<td>Default display contrast</td>
+<td>Images previewed with the wrong window look normal and aren’t, or vice versa</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled" title="The engineer's rule of thumb">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>The engineer’s rule of thumb
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Never treat DICOM pixel data as an image until you have applied rescale slope/intercept, honored photometric interpretation, and sorted slices by <code>ImagePositionPatient</code> along the acquisition axis. Libraries such as <strong>pydicom</strong> (Python) and <strong>SimpleITK</strong> handle much of this — but only if you use their volume-reading paths rather than reading files one by one and stacking them in filename order.</p>
+</div>
+</div>
+</section>
+<section id="more-than-images-and-more-than-a-file-format" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="more-than-images-and-more-than-a-file-format"><span class="header-section-number">3.1.3</span> More than images — and more than a file format</h3>
+<p>Two facts about DICOM surprise newcomers. First, not every DICOM object is an image: the standard defines <strong>Structured Reports</strong> (SR — measurements and findings as structured data), <strong>Segmentation objects</strong> (SEG — labeled voxel masks), <strong>RT Structure Sets</strong> (radiotherapy contours), <strong>presentation states</strong> (how an image was displayed), and even encapsulated PDFs. This matters for AI twice over: training labels increasingly arrive as SEG and SR objects, and a deployed model’s <em>output</em> usually must be one — that is how results appear inside the tools radiologists already use.</p>
+<p>Second, DICOM is a network protocol. Devices (“application entities”) push images to each other with <strong>C-STORE</strong>, query archives with <strong>C-FIND</strong>, and retrieve with <strong>C-MOVE</strong> — a service model designed in the early 1990s and still how most scanners talk to most archives today. Its modern counterpart, <strong>DICOMweb</strong>, reappears below. The practical upshot: an AI system in a hospital is not “an app that opens files” — it is a network node that receives studies pushed to it and sends results back, speaking the same protocol as a scanner.</p>
+<p>The tag-by-tag details live in <a href="../appendices/d-dicom-quick-reference.html">Appendix D</a>, a quick reference written for exactly the moments this chapter creates.</p>
+</section>
 </section>
 <section id="research-formats-nifti-nrrd-and-friends" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="research-formats-nifti-nrrd-and-friends"><span class="header-section-number">3.2</span> Research formats: NIfTI, NRRD and friends</h2>
-<!-- Point to @sec-viewers for the tools that open all of these. -->
+<p>Open any published medical-imaging ML paper and the data is usually <em>not</em> in DICOM. Researchers convert, for three good reasons: one volume becomes one file instead of a thousand; the geometry collapses to a single clean affine matrix instead of per-slice tags; and stripping the metadata down to geometry-only removes most identifying information in the same step. The formats you will meet:</p>
+<ul>
+<li><strong>NIfTI</strong> (<code>.nii</code>, <code>.nii.gz</code>) — the lingua franca, born in neuroimaging and now the default for volumetric ML datasets everywhere. One header, one voxel array, one affine mapping voxel indices to physical space. Read it with <strong>nibabel</strong> or SimpleITK. Its one famous trap: it stores <em>two</em> spatial transforms (the “qform” and “sform”), and tools disagree about which wins — the root of a whole genre of left–right-flip incidents.</li>
+<li><strong>NRRD</strong> (<code>.nrrd</code>) — 3D Slicer’s favorite: a human-readable text header (open it in a text editor — a debugging luxury DICOM never grants) ahead of the raw data, with clean support for label maps and directional data.</li>
+<li><strong>MetaImage</strong> (<code>.mha</code>/<code>.mhd</code>), <strong>Analyze</strong> (<code>.hdr</code>/<code>.img</code> — obsolete but haunting older datasets, with notoriously ambiguous orientation), and <strong>HDF5</strong>-based containers for large collections.</li>
+<li><strong>OME-TIFF and Zarr</strong> — the pyramidal, chunked formats of microscopy and pathology, built for the gigapixel whole-slide images of <a href="19-digital-pathology.html" class="quarto-xref"><span>Chapter 19</span></a> that no single-array format can hold.</li>
+</ul>
+<p>The standard conversion workhorse is <strong>dcm2niix</strong>, which handles the accumulated scanner quirks of two decades better than any hand-rolled script; SimpleITK and pydicom-based pipelines are the programmatic route. Two warnings deserve their own paragraph.</p>
+<p><strong>Conversion is lossy by design.</strong> The NIfTI file keeps geometry and pixels; it discards the acquisition parameters, timing, device identity, and clinical context. For training, that is often fine. For <em>deployment</em>, remember the asymmetry: your model may be trained on tidy NIfTI volumes, but a hospital will hand it live DICOM. The converter is not a preprocessing convenience — it is part of the product, with its own failure modes on data unlike your training distribution.</p>
+<p><strong>“Anonymized by conversion” is a hope, not a guarantee.</strong> Stripping the header does not touch identifying information <em>inside the pixels</em> — a point de-identification, below, takes up properly.</p>
+<p>Every format in this section opens in the free viewers of <a href="04-medical-image-viewers.html" class="quarto-xref"><span>Chapter 4</span></a>; loading the same volume as DICOM and as NIfTI in 3D Slicer, and watching the metadata panel shrink, is the fastest way to internalize what conversion keeps and discards.</p>
 </section>
 <section id="pacs-ris-ehr-and-how-they-talk" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="pacs-ris-ehr-and-how-they-talk"><span class="header-section-number">3.3</span> PACS, RIS, EHR and how they talk</h2>
-<!-- DICOMweb, HL7/FHIR. -->
+<p>A hospital’s imaging infrastructure is an ecosystem of systems with fifty years of accumulated acronyms. The cast:</p>
+<ul>
+<li><strong>PACS</strong> (Picture Archiving and Communication System) — the archive and its reading workstations: where images live, and where radiologists view them. When people say “it’s in PACS,” they mean the pixels have arrived at their long-term home.</li>
+<li><strong>RIS</strong> (Radiology Information System) — the department’s operational brain: scheduling, protocols, worklists, report management, billing. The RIS knows <em>about</em> studies; the PACS <em>holds</em> them.</li>
+<li><strong>EHR</strong> (Electronic Health Record) — the patient’s overall chart, where the order originates and the report lands. Clinicians outside radiology usually see images through a viewer launched from here.</li>
+<li><strong>VNA</strong> (Vendor Neutral Archive) — an enterprise archive consolidating imaging from radiology, cardiology, pathology, dermatology and beyond, in standard formats, decoupled from any single PACS vendor.</li>
+</ul>
+<p>These systems speak two protocol families. Images move as DICOM. <em>Everything else</em> — orders, status updates, reports, demographics — moves as <strong>HL7</strong>: classically HL7 v2, a delimited text format from the 1980s (an <code>ORM</code> message places an order; an <code>ORU</code> message carries the report back) that remains the actual working plumbing of most hospitals, and increasingly <strong>FHIR</strong>, the modern REST/JSON API that exposes the same concepts as web resources like <code>Patient</code>, <code>ImagingStudy</code>, and <code>DiagnosticReport</code>.</p>
+<p>Two bridges between the families are worth knowing by name:</p>
+<ul>
+<li><strong>DICOM Modality Worklist (MWL)</strong> — the scanner queries the RIS for scheduled patients, and the technologist <em>picks the patient from a list</em> instead of typing a name. This single service is why DICOM headers are usually right — and why, when a study is acquired off-worklist in an emergency, they are sometimes wrong. Every downstream consumer of metadata, human or model, inherits this fact.</li>
+<li><strong>DICOMweb</strong> — the web-native face of DICOM: <strong>QIDO-RS</strong> to search, <strong>WADO-RS</strong> to retrieve, <strong>STOW-RS</strong> to store, all over HTTPS with JSON. It is what zero-footprint viewers like OHIF (<a href="04-medical-image-viewers.html" class="quarto-xref"><span>Chapter 4</span></a>) expect to talk to, what cloud imaging platforms expose, and — not coincidentally — the interface most AI products and agents integrate against, because it turns a 1990s hospital protocol into an ordinary web API.</li>
+</ul>
+<p>Where does an AI system plug into all this? Almost always as another node in the flow: a DICOM router or the PACS forwards a copy of qualifying studies to the model’s endpoint; the model computes; results return as DICOM objects (SR, SEG, or annotated secondary-capture images) pushed back into PACS, as worklist reprioritizations in the RIS, or as HL7/FHIR messages to the EHR. “Integration” — the word that consumes most of an imaging-AI deployment’s calendar — means wiring exactly these paths, with the hospital’s names, networks, and exception cases attached.</p>
 </section>
 <section id="the-loop-acquisition-storage-reading-report" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="the-loop-acquisition-storage-reading-report"><span class="header-section-number">3.4</span> The loop: acquisition → storage → reading → report</h2>
+<p>Follow one contrast chest CT through a modern hospital, end to end — because every stage is both a place metadata is created and a place AI now intervenes.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  EHR[EHR&lt;br/&gt;order placed] -.HL7 order.-&gt; RIS[RIS&lt;br/&gt;schedule + protocol]
+  RIS -.worklist.-&gt; MOD[Scanner&lt;br/&gt;acquisition]
+  MOD --DICOM store--&gt; PACS[(PACS / VNA&lt;br/&gt;archive)]
+  PACS --route copy--&gt; AI[AI systems&lt;br/&gt;triage · quant · draft]
+  AI --SR / SEG / priority--&gt; PACS
+  PACS --&gt; READ[Radiologist&lt;br/&gt;worklist + viewer]
+  READ -.HL7 report.-&gt; EHR
+</pre>
+</div>
+<p></p><figcaption> The imaging loop. Orders and reports travel as HL7/FHIR (dashed); images and AI results travel as DICOM (solid).</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><strong>Order.</strong> A clinician places the order in the EHR; it reaches the RIS as an HL7 message carrying the indication — the <em>reason for the exam</em> that ought to accompany the study forever and, to every AI developer’s frustration, often arrives as free text or not at all.</li>
+<li><strong>Protocol and schedule.</strong> A radiologist or protocol rules decide exactly how to scan (contrast? phases? slice thickness?). AI’s quietest foothold is already here: automated protocoling and dose optimization.</li>
+<li><strong>Acquisition.</strong> The technologist pulls the patient from the modality worklist, scans, checks quality, and pushes the series to PACS via C-STORE. On modern scanners, AI is inside this step too — the deep-learning reconstruction of <a href="13-mri.html" class="quarto-xref"><span>Chapter 13</span></a> and <a href="12-computed-tomography.html" class="quarto-xref"><span>Chapter 12</span></a> runs before any human sees an image.</li>
+<li><strong>Storage and routing.</strong> The archive registers the study; routing rules fan copies out — to the VNA, to prefetching (pulling the patient’s <em>prior</em> studies so the reader can compare), and to any subscribed AI endpoints. Triage models run here, within minutes of acquisition, and write urgency flags back to the worklist.</li>
+<li><strong>Reading.</strong> The radiologist opens the study from a worklist — sorted by AI-adjusted priority in a growing number of departments — into a viewer that applies <em>hanging protocols</em> (automatic layout of series and priors). Detection and quantification aids surface as overlays; measurements land as structured data.</li>
+<li><strong>Report.</strong> The radiologist dictates; speech recognition transcribes; increasingly, drafting models propose text from the images and prior report for the radiologist to edit. The signed report returns to the EHR as an HL7 <code>ORU</code> message. For critical findings, an auditable direct-communication step ensures the ordering clinician actually <em>hears</em> about the aneurysm, not merely receives a document.</li>
+<li><strong>After.</strong> Billing codes derive from the report; peer review and quality programs sample it; and — the loop’s least-solved segment — <em>results follow-up</em> systems chase the incidental nodule that the report recommended re-imaging in six months. Studies that never got read, recommendations that never got followed: this unglamorous tail is where imaging care actually fails most often, and where workflow AI may matter more than any detector.</li>
+</ol>
+<p>Turnaround expectations calibrate the whole loop: minutes for a stroke code, an hour for emergency reads, a day or more for routine outpatient studies. When <a href="11-chest-xray.html" class="quarto-xref"><span>Chapter 11</span></a> and its siblings discuss triage products, this loop is the thing being re-ordered — and the reason a model’s <em>latency</em> and <em>integration point</em> matter as much as its AUROC.</p>
 </section>
 <section id="de-identification-and-data-governance" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="de-identification-and-data-governance"><span class="header-section-number">3.5</span> De-identification and data governance</h2>
+<p>Every dataset in <a href="../appendices/a-dataset-directory.html">Appendix A</a> exists because someone solved the problem this section describes: patient data is protected by law — HIPAA in the United States, GDPR in Europe, and equivalents elsewhere — and imaging data is unusually hard to de-identify.</p>
+<p><strong>The metadata layer is the easy part, done carefully.</strong> DICOM headers are saturated with identifiers: names, record numbers, birth dates, accession numbers, the referring physician, the institution — plus UIDs and device serial numbers that enable <em>linkage</em> across studies even when names are gone. The standard itself defines how to strip them (the confidentiality profiles of DICOM PS3.15), and mature tools implement it: the RSNA CTP anonymizer, pydicom-based pipelines, and the de-identification stages of platforms like the ones behind TCIA. Naive approaches fail in predictable ways — private vendor tags carrying identifiers, dates shifted inconsistently across a patient’s studies (destroying the intervals that make longitudinal data useful), UIDs regenerated without preserving the study/series structure.</p>
+<p><strong>The pixel layer is the hard part.</strong> Identifying information lives <em>inside the images</em>: ultrasound and secondary-capture images routinely have the patient’s name burned into the pixels; scanned documents ride along in studies; and — the famous case — a head CT or MRI contains the patient’s face, which modern software can reconstruct and match against photographs. Serious pipelines therefore add OCR-based burned-in-text detection and, for head imaging, <em>defacing</em> algorithms that blur or remove facial voxels while preserving the brain. Even then, careful releases treat re-identification risk as something to be <em>managed</em>, not eliminated — which is why many “public” datasets sit behind data-use agreements, credentialed access, and prohibitions on re-identification attempts rather than open links.</p>
+<p><strong>Governance is the process wrapper.</strong> Research use of clinical images runs through an IRB or ethics committee (with consent, or a waiver where re-consenting millions of historical studies is impracticable), data-use agreements bind recipients, and a hospital’s decision to share — or to run a vendor’s model — is ultimately a governance decision about risk. Two structural alternatives matter for AI specifically: keeping the data in place and bringing the compute to it (secure enclaves; <strong>federated learning</strong>, where models train across hospitals that never exchange images), and synthetic data, whose promise and limits <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a> examines. For the engineer, the operational rule is simple and absolute: <em>treat every DICOM file as containing PHI until a validated pipeline has proven otherwise</em> — including the ones a colleague swears are already anonymized.</p>
+</section>
+<section id="try-it-yourself" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="try-it-yourself">Try it yourself</h2>
+<p>The systems in this chapter sound abstract until you run them — and, unusually, you can run all of them on a laptop, free.</p>
+<ol type="1">
+<li><strong>Read a DICOM header.</strong> Install pydicom (<code>pip install pydicom</code>) and load one of its bundled files, or download a study from the <a href="https://portal.imaging.datacommons.cancer.gov/">Imaging Data Commons</a> or TCIA. <code>print(dcmread(path))</code> dumps every tag; find <code>Modality</code>, <code>PixelSpacing</code>, <code>RescaleIntercept</code>, and <code>PhotometricInterpretation</code> — then display the pixels and apply the rescale yourself to land in Hounsfield units.</li>
+<li><strong>Break the slice order on purpose.</strong> Load a CT series, stack slices sorted by filename, and compare against the volume sorted by <code>ImagePositionPatient</code>. On many studies they differ — a bug you will now never ship.</li>
+<li><strong>Convert and compare.</strong> Run <code>dcm2niix</code> on the same series and open both the DICOM and the NIfTI in 3D Slicer (<a href="04-medical-image-viewers.html" class="quarto-xref"><span>Chapter 4</span></a>). Same voxels; note what vanished from the metadata panel.</li>
+<li><strong>Run your own hospital.</strong> Launch <a href="https://www.orthanc-server.com">Orthanc</a> — a superb open-source DICOM server — via Docker, push your sample study to it, and browse it through its web interface or point an OHIF viewer at its DICOMweb API. In twenty minutes you will have touched C-STORE, an archive, QIDO/WADO, and a zero-footprint viewer: the entire middle of this chapter, running on your machine.</li>
+</ol>
+</section>
+<section id="the-agentic-outlook" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">3.6</span> The agentic outlook</h2>
+<p>This chapter is the agent’s <em>tool surface</em>. An autonomous imaging system does not experience the hospital as folders of files; it experiences QIDO-RS queries, WADO-RS retrievals, FHIR resources, and worklist states — precisely the interfaces catalogued above, which is why agent-era imaging infrastructure is converging on DICOMweb + FHIR as its API layer. Three implications follow. First, <em>metadata literacy is agent competence</em>: the modality tags, study descriptions, and worklist context that route studies are exactly the noisy signals an agent must weigh, cross-checked against pixels, before invoking any model (<a href="02-universe-of-medical-images.html" class="quarto-xref"><span>Chapter 2</span></a>). Second, <em>an agent is a node, not an app</em>: it must be a well-behaved DICOM/HL7 citizen — receiving pushed studies, writing results back as SR and SEG objects humans will actually see, and never mutating the archive it reads. Third, <em>governance binds agents tighter, not looser</em>: an agent that queries archives autonomously needs auditable logs of every retrieval and every output, PHI-handling guarantees at least as strong as a human’s, and the fail-safe behaviors that <a href="10-from-model-to-product.html" class="quarto-xref"><span>Chapter 10</span></a> and <a href="22-ethics-bias-future.html" class="quarto-xref"><span>Chapter 22</span></a> develop. The unglamorous plumbing of this chapter is, for agentic AI, the whole road.</p>
+</section>
+<section id="further-reading" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">3.7</span> Further reading</h2>
+<ul>
+<li>The DICOM standard itself at <a href="https://www.dicomstandard.org">dicom.nema.org</a> — vast, but Part 3 (information objects) and Part 15 (de-identification profiles) reward targeted reading; <a href="../appendices/d-dicom-quick-reference.html">Appendix D</a> is this book’s condensed companion.</li>
+<li>The <a href="https://orthanc.uclouvain.be/book/">Orthanc Book</a> — the best practical introduction to DICOM networking in existence, disguised as a server manual.</li>
+<li>HL7 FHIR documentation at <a href="https://hl7.org/fhir">hl7.org/fhir</a>, especially the <code>ImagingStudy</code> and <code>DiagnosticReport</code> resources.</li>
+<li>Moore et al., “De-identification of medical images with retention of scientific research value,” <em>RadioGraphics</em> (2015) — the standard reference on imaging de-identification practice.</li>
+<li>Schwarz et al., “Identification of anonymous MRI research participants with face-recognition software,” <em>NEJM</em> (2019) — the paper that made defacing mandatory.</li>
+</ul>
 
 
 </section>
