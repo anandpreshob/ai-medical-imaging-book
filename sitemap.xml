@@ -1,115 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.anandpreshob.com/book/index.html</loc>
-    <lastmod>2026-08-19T18:41:34.849Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/index.html</loc>
+    <lastmod>2026-08-23T15:37:04.394Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/01-introduction.html</loc>
-    <lastmod>2026-08-19T18:41:34.835Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/01-introduction.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/02-universe-of-medical-images.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/02-universe-of-medical-images.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/03-images-in-the-hospital.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/03-images-in-the-hospital.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/04-machine-learning-concepts.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/04-medical-image-viewers.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/05-what-computer-vision-can-do.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/05-machine-learning-concepts.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/06-deep-learning-architectures.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/06-what-computer-vision-can-do.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/07-generative-and-frontier-models.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/07-deep-learning-architectures.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/08-agentic-ai.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/08-generative-and-frontier-models.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/09-from-model-to-product.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/09-agentic-ai.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/10-chest-xray.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/10-from-model-to-product.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/11-computed-tomography.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/11-chest-xray.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/12-mri.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/12-computed-tomography.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/13-ultrasound-echo.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/13-mri.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/14-mammography.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/14-ultrasound-echo.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/15-nuclear-medicine.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/15-mammography.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/16-ophthalmic-imaging.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/16-nuclear-medicine.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/17-surgical-endoscopic-video.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/17-ophthalmic-imaging.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/18-digital-pathology.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/18-surgical-endoscopic-video.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/19-the-remaining-map.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/19-digital-pathology.html</loc>
+    <lastmod>2026-08-23T15:37:04.382Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/20-building-an-imaging-ai-platform.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/20-the-remaining-map.html</loc>
+    <lastmod>2026-08-23T15:37:04.382Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/chapters/21-ethics-bias-future.html</loc>
-    <lastmod>2026-08-19T18:41:34.836Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/21-building-an-imaging-ai-platform.html</loc>
+    <lastmod>2026-08-23T15:37:04.382Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/appendices/a-dataset-directory.html</loc>
-    <lastmod>2026-08-19T18:41:34.835Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/chapters/22-ethics-bias-future.html</loc>
+    <lastmod>2026-08-23T15:37:04.382Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/appendices/b-model-zoo.html</loc>
-    <lastmod>2026-08-19T18:41:34.835Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/appendices/a-dataset-directory.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/appendices/c-fda-product-index.html</loc>
-    <lastmod>2026-08-19T18:41:34.835Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/appendices/b-model-zoo.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/appendices/d-dicom-quick-reference.html</loc>
-    <lastmod>2026-08-19T18:41:34.835Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/appendices/c-fda-product-index.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/appendices/e-medai-os-setup.html</loc>
-    <lastmod>2026-08-19T18:41:34.835Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/appendices/d-dicom-quick-reference.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.anandpreshob.com/book/appendices/f-dual-glossary.html</loc>
-    <lastmod>2026-08-19T18:41:34.835Z</lastmod>
+    <loc>https://anandpreshob.github.io/ai-medical-imaging-book/appendices/f-dual-glossary.html</loc>
+    <lastmod>2026-08-23T15:37:04.381Z</lastmod>
   </url>
 </urlset>

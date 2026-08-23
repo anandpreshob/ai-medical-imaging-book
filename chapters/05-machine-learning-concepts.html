@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>21&nbsp; Ethics, Bias, Safety &amp; The Future – AI in Medical Imaging</title>
+<title>5&nbsp; Machine Learning: The Concepts – AI in Medical Imaging</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../appendices/a-dataset-directory.html" rel="next">
-<link href="../chapters/20-building-an-imaging-ai-platform.html" rel="prev">
+<link href="../chapters/06-what-computer-vision-can-do.html" rel="next">
+<link href="../chapters/04-medical-image-viewers.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -49,9 +49,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d712c48d74cd0dd68b539e4b6e88e70f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-4e737adb6a23ba595bb672796610038c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-d712c48d74cd0dd68b539e4b6e88e70f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-352996a7c9838933d6d4a3f3ccb5fda3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/20-building-an-imaging-ai-platform.html">V — Systems &amp; The Road Ahead</a></li><li class="breadcrumb-item"><a href="../chapters/21-ethics-bias-future.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/05-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/05-machine-learning-concepts.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -316,6 +316,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How Images Live in a Hospital</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-medical-image-viewers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -329,38 +335,38 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/04-machine-learning-concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></a>
+  <a href="../chapters/05-machine-learning-concepts.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/05-what-computer-vision-can-do.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span></a>
+  <a href="../chapters/06-what-computer-vision-can-do.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/06-deep-learning-architectures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span></a>
+  <a href="../chapters/07-deep-learning-architectures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/07-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
+  <a href="../chapters/08-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/08-agentic-ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
+  <a href="../chapters/09-agentic-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-from-model-to-product.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
+  <a href="../chapters/10-from-model-to-product.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
   </div>
 </li>
       </ul>
@@ -376,44 +382,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10-chest-xray.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
+  <a href="../chapters/11-chest-xray.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11-computed-tomography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
+  <a href="../chapters/12-computed-tomography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12-mri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
+  <a href="../chapters/13-mri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
+  <a href="../chapters/14-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14-mammography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
+  <a href="../chapters/15-mammography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
+  <a href="../chapters/16-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+  <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
   </div>
 </li>
       </ul>
@@ -429,20 +435,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/17-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
+  <a href="../chapters/18-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/18-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+  <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/19-the-remaining-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
+  <a href="../chapters/20-the-remaining-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -458,14 +464,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/20-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform: MedAI OS as a Case Study</span></span></a>
+  <a href="../chapters/21-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/21-ethics-bias-future.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
+  <a href="../chapters/22-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
   </div>
 </li>
       </ul>
@@ -505,12 +511,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendices/e-medai-os-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MedAI OS Setup Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../appendices/f-dual-glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dual Glossary</span></a>
   </div>
@@ -527,22 +527,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#fairness-across-populations" id="toc-fairness-across-populations" class="nav-link active" data-scroll-target="#fairness-across-populations"><span class="header-section-number">21.1</span> Fairness across populations</a></li>
-  <li><a href="#automation-bias-and-humanai-teaming" id="toc-automation-bias-and-humanai-teaming" class="nav-link" data-scroll-target="#automation-bias-and-humanai-teaming"><span class="header-section-number">21.2</span> Automation bias and human–AI teaming</a></li>
-  <li><a href="#liability-and-accountability" id="toc-liability-and-accountability" class="nav-link" data-scroll-target="#liability-and-accountability"><span class="header-section-number">21.3</span> Liability and accountability</a></li>
-  <li><a href="#the-economics-and-sustainability-of-imaging-ai" id="toc-the-economics-and-sustainability-of-imaging-ai" class="nav-link" data-scroll-target="#the-economics-and-sustainability-of-imaging-ai"><span class="header-section-number">21.4</span> The economics and sustainability of imaging AI</a></li>
-  <li><a href="#foundation-model-consolidation-and-agentic-radiology" id="toc-foundation-model-consolidation-and-agentic-radiology" class="nav-link" data-scroll-target="#foundation-model-consolidation-and-agentic-radiology"><span class="header-section-number">21.5</span> Foundation-model consolidation and agentic radiology</a></li>
-  <li><a href="#what-to-watch-next" id="toc-what-to-watch-next" class="nav-link" data-scroll-target="#what-to-watch-next"><span class="header-section-number">21.6</span> What to watch next</a></li>
+  <li><a href="#learning-from-examples-supervised-learning" id="toc-learning-from-examples-supervised-learning" class="nav-link active" data-scroll-target="#learning-from-examples-supervised-learning"><span class="header-section-number">5.1</span> Learning from examples: supervised learning</a></li>
+  <li><a href="#when-labels-are-scarce-semi--and-self-supervised-learning" id="toc-when-labels-are-scarce-semi--and-self-supervised-learning" class="nav-link" data-scroll-target="#when-labels-are-scarce-semi--and-self-supervised-learning"><span class="header-section-number">5.2</span> When labels are scarce: semi- and self-supervised learning</a></li>
+  <li><a href="#finding-structure-unsupervised-learning-and-clustering" id="toc-finding-structure-unsupervised-learning-and-clustering" class="nav-link" data-scroll-target="#finding-structure-unsupervised-learning-and-clustering"><span class="header-section-number">5.3</span> Finding structure: unsupervised learning and clustering</a></li>
+  <li><a href="#learning-from-feedback-reinforcement-learning" id="toc-learning-from-feedback-reinforcement-learning" class="nav-link" data-scroll-target="#learning-from-feedback-reinforcement-learning"><span class="header-section-number">5.4</span> Learning from feedback: reinforcement learning</a></li>
+  <li><a href="#the-discipline-train-validate-test-and-overfitting" id="toc-the-discipline-train-validate-test-and-overfitting" class="nav-link" data-scroll-target="#the-discipline-train-validate-test-and-overfitting"><span class="header-section-number">5.5</span> The discipline: train, validate, test — and overfitting</a></li>
+  <li><a href="#the-medical-imaging-superpowers" id="toc-the-medical-imaging-superpowers" class="nav-link" data-scroll-target="#the-medical-imaging-superpowers"><span class="header-section-number">5.6</span> The medical-imaging superpowers</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/21-ethics-bias-future.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/05-machine-learning-concepts.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/20-building-an-imaging-ai-platform.html">V — Systems &amp; The Road Ahead</a></li><li class="breadcrumb-item"><a href="../chapters/21-ethics-bias-future.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/05-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/05-machine-learning-concepts.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ethics-future" class="quarto-section-identifier"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></h1>
+<h1 class="title"><span id="sec-ml-concepts" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></h1>
 </div>
 
 
@@ -572,23 +572,24 @@ Note
 <p><em>Draft chapter — outline only. Content coming soon.</em></p>
 </div>
 </div>
-<section id="fairness-across-populations" class="level2" data-number="21.1">
-<h2 data-number="21.1" class="anchored" data-anchor-id="fairness-across-populations"><span class="header-section-number">21.1</span> Fairness across populations</h2>
+<section id="learning-from-examples-supervised-learning" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="learning-from-examples-supervised-learning"><span class="header-section-number">5.1</span> Learning from examples: supervised learning</h2>
 </section>
-<section id="automation-bias-and-humanai-teaming" class="level2" data-number="21.2">
-<h2 data-number="21.2" class="anchored" data-anchor-id="automation-bias-and-humanai-teaming"><span class="header-section-number">21.2</span> Automation bias and human–AI teaming</h2>
+<section id="when-labels-are-scarce-semi--and-self-supervised-learning" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="when-labels-are-scarce-semi--and-self-supervised-learning"><span class="header-section-number">5.2</span> When labels are scarce: semi- and self-supervised learning</h2>
 </section>
-<section id="liability-and-accountability" class="level2" data-number="21.3">
-<h2 data-number="21.3" class="anchored" data-anchor-id="liability-and-accountability"><span class="header-section-number">21.3</span> Liability and accountability</h2>
+<section id="finding-structure-unsupervised-learning-and-clustering" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="finding-structure-unsupervised-learning-and-clustering"><span class="header-section-number">5.3</span> Finding structure: unsupervised learning and clustering</h2>
 </section>
-<section id="the-economics-and-sustainability-of-imaging-ai" class="level2" data-number="21.4">
-<h2 data-number="21.4" class="anchored" data-anchor-id="the-economics-and-sustainability-of-imaging-ai"><span class="header-section-number">21.4</span> The economics and sustainability of imaging AI</h2>
+<section id="learning-from-feedback-reinforcement-learning" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="learning-from-feedback-reinforcement-learning"><span class="header-section-number">5.4</span> Learning from feedback: reinforcement learning</h2>
 </section>
-<section id="foundation-model-consolidation-and-agentic-radiology" class="level2" data-number="21.5">
-<h2 data-number="21.5" class="anchored" data-anchor-id="foundation-model-consolidation-and-agentic-radiology"><span class="header-section-number">21.5</span> Foundation-model consolidation and agentic radiology</h2>
+<section id="the-discipline-train-validate-test-and-overfitting" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="the-discipline-train-validate-test-and-overfitting"><span class="header-section-number">5.5</span> The discipline: train, validate, test — and overfitting</h2>
 </section>
-<section id="what-to-watch-next" class="level2" data-number="21.6">
-<h2 data-number="21.6" class="anchored" data-anchor-id="what-to-watch-next"><span class="header-section-number">21.6</span> What to watch next</h2>
+<section id="the-medical-imaging-superpowers" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="the-medical-imaging-superpowers"><span class="header-section-number">5.6</span> The medical-imaging superpowers</h2>
+<!-- Transfer learning, fine-tuning, domain adaptation. -->
 
 
 </section>
@@ -680,7 +681,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/www\.anandpreshob\.com\/book\/");
+        var filterRegex = new RegExp("https:\/\/anandpreshob\.github\.io\/ai-medical-imaging-book\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1014,13 +1015,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/20-building-an-imaging-ai-platform.html" class="pagination-link" aria-label="Building an Imaging AI Platform: MedAI OS as a Case Study">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform: MedAI OS as a Case Study</span></span>
+      <a href="../chapters/04-medical-image-viewers.html" class="pagination-link" aria-label="Medical Image Viewers">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../appendices/a-dataset-directory.html" class="pagination-link" aria-label="The Dataset Directory">
-        <span class="nav-page-text">The Dataset Directory</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/06-what-computer-vision-can-do.html" class="pagination-link" aria-label="What Computer Vision Can Do">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1032,9 +1033,9 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/21-ethics-bias-future.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/05-machine-learning-concepts.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Companion project: <a href="https://github.com/anandpreshob/medai-os">MedAI OS</a> · <a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
+<p><a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
 </div>
   </div>
 </footer>

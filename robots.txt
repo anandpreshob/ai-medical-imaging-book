@@ -1,1 +1,1 @@
-Sitemap: https://www.anandpreshob.com/book/sitemap.xml
+Sitemap: https://anandpreshob.github.io/ai-medical-imaging-book/sitemap.xml

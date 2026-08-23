@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; From Model to Product: Evaluation, Regulation, Deployment – AI in Medical Imaging</title>
+<title>9&nbsp; Agentic AI in Medical Imaging – AI in Medical Imaging</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/10-chest-xray.html" rel="next">
-<link href="../chapters/08-agentic-ai.html" rel="prev">
+<link href="../chapters/10-from-model-to-product.html" rel="next">
+<link href="../chapters/08-generative-and-frontier-models.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -49,9 +49,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d712c48d74cd0dd68b539e4b6e88e70f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-4e737adb6a23ba595bb672796610038c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-d712c48d74cd0dd68b539e4b6e88e70f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-352996a7c9838933d6d4a3f3ccb5fda3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/09-from-model-to-product.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/05-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/09-agentic-ai.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -316,6 +316,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How Images Live in a Hospital</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-medical-image-viewers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -329,38 +335,38 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/04-machine-learning-concepts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></a>
+  <a href="../chapters/05-machine-learning-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/05-what-computer-vision-can-do.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span></a>
+  <a href="../chapters/06-what-computer-vision-can-do.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/06-deep-learning-architectures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span></a>
+  <a href="../chapters/07-deep-learning-architectures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/07-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
+  <a href="../chapters/08-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/08-agentic-ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
+  <a href="../chapters/09-agentic-ai.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-from-model-to-product.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
+  <a href="../chapters/10-from-model-to-product.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
   </div>
 </li>
       </ul>
@@ -376,44 +382,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10-chest-xray.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
+  <a href="../chapters/11-chest-xray.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11-computed-tomography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
+  <a href="../chapters/12-computed-tomography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12-mri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
+  <a href="../chapters/13-mri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
+  <a href="../chapters/14-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14-mammography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
+  <a href="../chapters/15-mammography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
+  <a href="../chapters/16-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+  <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
   </div>
 </li>
       </ul>
@@ -429,20 +435,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/17-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
+  <a href="../chapters/18-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/18-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+  <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/19-the-remaining-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
+  <a href="../chapters/20-the-remaining-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -458,14 +464,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/20-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform: MedAI OS as a Case Study</span></span></a>
+  <a href="../chapters/21-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/21-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
+  <a href="../chapters/22-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
   </div>
 </li>
       </ul>
@@ -505,12 +511,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendices/e-medai-os-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MedAI OS Setup Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../appendices/f-dual-glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dual Glossary</span></a>
   </div>
@@ -527,21 +527,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#benchmark-performance-vs.-clinical-validation" id="toc-benchmark-performance-vs.-clinical-validation" class="nav-link active" data-scroll-target="#benchmark-performance-vs.-clinical-validation"><span class="header-section-number">9.1</span> Benchmark performance vs.&nbsp;clinical validation</a></li>
-  <li><a href="#regulatory-pathways-in-plain-language" id="toc-regulatory-pathways-in-plain-language" class="nav-link" data-scroll-target="#regulatory-pathways-in-plain-language"><span class="header-section-number">9.2</span> Regulatory pathways in plain language</a></li>
-  <li><a href="#post-market-surveillance-and-audit-trails" id="toc-post-market-surveillance-and-audit-trails" class="nav-link" data-scroll-target="#post-market-surveillance-and-audit-trails"><span class="header-section-number">9.3</span> Post-market surveillance and audit trails</a></li>
-  <li><a href="#mlops-for-hospitals" id="toc-mlops-for-hospitals" class="nav-link" data-scroll-target="#mlops-for-hospitals"><span class="header-section-number">9.4</span> MLOps for hospitals</a></li>
-  <li><a href="#doing-this-in-medai-os" id="toc-doing-this-in-medai-os" class="nav-link" data-scroll-target="#doing-this-in-medai-os">Doing this in MedAI OS</a></li>
+  <li><a href="#what-is-an-agent" id="toc-what-is-an-agent" class="nav-link active" data-scroll-target="#what-is-an-agent"><span class="header-section-number">9.1</span> What is an agent?</a></li>
+  <li><a href="#anatomy-of-a-harness" id="toc-anatomy-of-a-harness" class="nav-link" data-scroll-target="#anatomy-of-a-harness"><span class="header-section-number">9.2</span> Anatomy of a harness</a></li>
+  <li><a href="#tools-an-imaging-agent-calls" id="toc-tools-an-imaging-agent-calls" class="nav-link" data-scroll-target="#tools-an-imaging-agent-calls"><span class="header-section-number">9.3</span> Tools an imaging agent calls</a></li>
+  <li><a href="#orchestration-patterns" id="toc-orchestration-patterns" class="nav-link" data-scroll-target="#orchestration-patterns"><span class="header-section-number">9.4</span> Orchestration patterns</a></li>
+  <li><a href="#agents-as-readers-machine-readable-medical-knowledge" id="toc-agents-as-readers-machine-readable-medical-knowledge" class="nav-link" data-scroll-target="#agents-as-readers-machine-readable-medical-knowledge"><span class="header-section-number">9.5</span> Agents as readers: machine-readable medical knowledge</a></li>
+  <li><a href="#evaluating-agentic-systems" id="toc-evaluating-agentic-systems" class="nav-link" data-scroll-target="#evaluating-agentic-systems"><span class="header-section-number">9.6</span> Evaluating agentic systems</a></li>
+  <li><a href="#safety-liability-and-the-regulatory-frontier" id="toc-safety-liability-and-the-regulatory-frontier" class="nav-link" data-scroll-target="#safety-liability-and-the-regulatory-frontier"><span class="header-section-number">9.7</span> Safety, liability and the regulatory frontier</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">9.8</span> Further reading</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/09-from-model-to-product.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/09-agentic-ai.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/09-from-model-to-product.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/05-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/09-agentic-ai.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-model-to-product" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></h1>
+<h1 class="title"><span id="sec-agentic-ai" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></h1>
 </div>
 
 
@@ -571,24 +574,51 @@ Note
 <p><em>Draft chapter — outline only. Content coming soon.</em></p>
 </div>
 </div>
-<section id="benchmark-performance-vs.-clinical-validation" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="benchmark-performance-vs.-clinical-validation"><span class="header-section-number">9.1</span> Benchmark performance vs.&nbsp;clinical validation</h2>
-<!-- Reader studies; dataset shift and bias. -->
+<!-- The harness chapter: how LLM-driven agents with tools actually work, and what
+     they change in imaging. Referenced by "The agentic outlook" section in every
+     modality chapter. -->
+<section id="what-is-an-agent" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="what-is-an-agent"><span class="header-section-number">9.1</span> What is an agent?</h2>
+<!-- Model vs. harness: an LLM plus tools, memory, planning, and an environment.
+     Agent vs. workflow vs. copilot. Levels of autonomy. -->
 </section>
-<section id="regulatory-pathways-in-plain-language" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="regulatory-pathways-in-plain-language"><span class="header-section-number">9.2</span> Regulatory pathways in plain language</h2>
-<!-- FDA 510(k), De Novo, PMA; CE-MDR; what a clearance summary actually claims. -->
+<section id="anatomy-of-a-harness" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="anatomy-of-a-harness"><span class="header-section-number">9.2</span> Anatomy of a harness</h2>
+<!-- Tool schemas and function calling; context management; the Model Context
+     Protocol (MCP) as the emerging standard for tool access; sandboxing and
+     permissioning; audit logging of every tool call. -->
 </section>
-<section id="post-market-surveillance-and-audit-trails" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="post-market-surveillance-and-audit-trails"><span class="header-section-number">9.3</span> Post-market surveillance and audit trails</h2>
+<section id="tools-an-imaging-agent-calls" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="tools-an-imaging-agent-calls"><span class="header-section-number">9.3</span> Tools an imaging agent calls</h2>
+<!-- The hospital as a toolbox: DICOMweb queries as tools, segmentation and
+     detection models as tools, measurement/analytics endpoints, report
+     generators, the EHR via FHIR. Structured outputs as the glue. -->
 </section>
-<section id="mlops-for-hospitals" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="mlops-for-hospitals"><span class="header-section-number">9.4</span> MLOps for hospitals</h2>
+<section id="orchestration-patterns" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="orchestration-patterns"><span class="header-section-number">9.4</span> Orchestration patterns</h2>
+<!-- Single agent + tools; planner–executor; multi-agent (triage agent, reader
+     agent, QA agent); human-in-the-loop gates and when they are non-negotiable. -->
 </section>
-<section id="doing-this-in-medai-os" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="doing-this-in-medai-os">Doing this in MedAI OS</h2>
-<!-- Audit hash-chain logging and batch inference as teaching examples;
-     the "not a medical device" framing. -->
+<section id="agents-as-readers-machine-readable-medical-knowledge" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="agents-as-readers-machine-readable-medical-knowledge"><span class="header-section-number">9.5</span> Agents as readers: machine-readable medical knowledge</h2>
+<!-- Why this book is written for agents too: plain-markdown chapters, living
+     tables as CSVs, llms.txt. How an agent should consume a modality chapter:
+     the finding taxonomy, the dataset/model/product tables, the workflow
+     description — each maps to a decision the agent makes. -->
+</section>
+<section id="evaluating-agentic-systems" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="evaluating-agentic-systems"><span class="header-section-number">9.6</span> Evaluating agentic systems</h2>
+<!-- Task-completion benchmarks vs. step-level correctness; safety evals;
+     trajectory audits; why single-model metrics (AUROC, Dice) don't compose
+     into system-level guarantees. -->
+</section>
+<section id="safety-liability-and-the-regulatory-frontier" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="safety-liability-and-the-regulatory-frontier"><span class="header-section-number">9.7</span> Safety, liability and the regulatory frontier</h2>
+<!-- No FDA framework yet fits a tool-calling agent; predetermined change
+     control plans; the audit-trail imperative. Bridge to @sec-model-to-product. -->
+</section>
+<section id="further-reading" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">9.8</span> Further reading</h2>
 
 
 </section>
@@ -680,7 +710,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/www\.anandpreshob\.com\/book\/");
+        var filterRegex = new RegExp("https:\/\/anandpreshob\.github\.io\/ai-medical-imaging-book\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1014,13 +1044,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/08-agentic-ai.html" class="pagination-link" aria-label="Agentic AI in Medical Imaging">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span>
+      <a href="../chapters/08-generative-and-frontier-models.html" class="pagination-link" aria-label="Generative &amp; Frontier Models">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/10-chest-xray.html" class="pagination-link" aria-label="Chest X-ray">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/10-from-model-to-product.html" class="pagination-link" aria-label="From Model to Product: Evaluation, Regulation, Deployment">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1032,9 +1062,9 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/09-from-model-to-product.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/09-agentic-ai.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Companion project: <a href="https://github.com/anandpreshob/medai-os">MedAI OS</a> · <a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
+<p><a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
 </div>
   </div>
 </footer>

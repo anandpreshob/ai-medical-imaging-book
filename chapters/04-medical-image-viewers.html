@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Machine Learning: The Concepts – AI in Medical Imaging</title>
+<title>4&nbsp; Medical Image Viewers – AI in Medical Imaging</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/05-what-computer-vision-can-do.html" rel="next">
+<link href="../chapters/05-machine-learning-concepts.html" rel="next">
 <link href="../chapters/03-images-in-the-hospital.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -49,9 +49,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d712c48d74cd0dd68b539e4b6e88e70f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-4e737adb6a23ba595bb672796610038c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-d712c48d74cd0dd68b539e4b6e88e70f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-352996a7c9838933d6d4a3f3ccb5fda3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-introduction.html">I — The Landscape of Medical Imaging</a></li><li class="breadcrumb-item"><a href="../chapters/04-medical-image-viewers.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -316,6 +316,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How Images Live in a Hospital</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-medical-image-viewers.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -329,38 +335,38 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/04-machine-learning-concepts.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></a>
+  <a href="../chapters/05-machine-learning-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/05-what-computer-vision-can-do.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span></a>
+  <a href="../chapters/06-what-computer-vision-can-do.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/06-deep-learning-architectures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span></a>
+  <a href="../chapters/07-deep-learning-architectures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/07-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
+  <a href="../chapters/08-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/08-agentic-ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
+  <a href="../chapters/09-agentic-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/09-from-model-to-product.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
+  <a href="../chapters/10-from-model-to-product.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
   </div>
 </li>
       </ul>
@@ -376,44 +382,44 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/10-chest-xray.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
+  <a href="../chapters/11-chest-xray.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/11-computed-tomography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
+  <a href="../chapters/12-computed-tomography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/12-mri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
+  <a href="../chapters/13-mri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/13-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
+  <a href="../chapters/14-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/14-mammography.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
+  <a href="../chapters/15-mammography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/15-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
+  <a href="../chapters/16-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/16-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+  <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
   </div>
 </li>
       </ul>
@@ -429,20 +435,20 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/17-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
+  <a href="../chapters/18-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/18-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+  <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/19-the-remaining-map.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
+  <a href="../chapters/20-the-remaining-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
   </div>
 </li>
       </ul>
@@ -458,14 +464,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/20-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform: MedAI OS as a Case Study</span></span></a>
+  <a href="../chapters/21-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/21-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
+  <a href="../chapters/22-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
   </div>
 </li>
       </ul>
@@ -505,12 +511,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../appendices/e-medai-os-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">MedAI OS Setup Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../appendices/f-dual-glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dual Glossary</span></a>
   </div>
@@ -527,22 +527,41 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-from-examples-supervised-learning" id="toc-learning-from-examples-supervised-learning" class="nav-link active" data-scroll-target="#learning-from-examples-supervised-learning"><span class="header-section-number">4.1</span> Learning from examples: supervised learning</a></li>
-  <li><a href="#when-labels-are-scarce-semi--and-self-supervised-learning" id="toc-when-labels-are-scarce-semi--and-self-supervised-learning" class="nav-link" data-scroll-target="#when-labels-are-scarce-semi--and-self-supervised-learning"><span class="header-section-number">4.2</span> When labels are scarce: semi- and self-supervised learning</a></li>
-  <li><a href="#finding-structure-unsupervised-learning-and-clustering" id="toc-finding-structure-unsupervised-learning-and-clustering" class="nav-link" data-scroll-target="#finding-structure-unsupervised-learning-and-clustering"><span class="header-section-number">4.3</span> Finding structure: unsupervised learning and clustering</a></li>
-  <li><a href="#learning-from-feedback-reinforcement-learning" id="toc-learning-from-feedback-reinforcement-learning" class="nav-link" data-scroll-target="#learning-from-feedback-reinforcement-learning"><span class="header-section-number">4.4</span> Learning from feedback: reinforcement learning</a></li>
-  <li><a href="#the-discipline-train-validate-test-and-overfitting" id="toc-the-discipline-train-validate-test-and-overfitting" class="nav-link" data-scroll-target="#the-discipline-train-validate-test-and-overfitting"><span class="header-section-number">4.5</span> The discipline: train, validate, test — and overfitting</a></li>
-  <li><a href="#the-medical-imaging-superpowers" id="toc-the-medical-imaging-superpowers" class="nav-link" data-scroll-target="#the-medical-imaging-superpowers"><span class="header-section-number">4.6</span> The medical-imaging superpowers</a></li>
+  <li><a href="#three-kinds-of-viewer" id="toc-three-kinds-of-viewer" class="nav-link active" data-scroll-target="#three-kinds-of-viewer"><span class="header-section-number">4.1</span> Three kinds of “viewer”</a></li>
+  <li><a href="#the-research-workhorses" id="toc-the-research-workhorses" class="nav-link" data-scroll-target="#the-research-workhorses"><span class="header-section-number">4.2</span> The research workhorses</a>
+  <ul class="collapse">
+  <li><a href="#d-slicer" id="toc-d-slicer" class="nav-link" data-scroll-target="#d-slicer"><span class="header-section-number">4.2.1</span> 3D Slicer</a></li>
+  <li><a href="#itk-snap" id="toc-itk-snap" class="nav-link" data-scroll-target="#itk-snap"><span class="header-section-number">4.2.2</span> ITK-SNAP</a></li>
+  <li><a href="#napari" id="toc-napari" class="nav-link" data-scroll-target="#napari"><span class="header-section-number">4.2.3</span> napari</a></li>
+  <li><a href="#imagej-fiji" id="toc-imagej-fiji" class="nav-link" data-scroll-target="#imagej-fiji"><span class="header-section-number">4.2.4</span> ImageJ / Fiji</a></li>
+  <li><a href="#qupath" id="toc-qupath" class="nav-link" data-scroll-target="#qupath"><span class="header-section-number">4.2.5</span> QuPath</a></li>
+  </ul></li>
+  <li><a href="#web-viewers-and-building-blocks" id="toc-web-viewers-and-building-blocks" class="nav-link" data-scroll-target="#web-viewers-and-building-blocks"><span class="header-section-number">4.3</span> Web viewers and building blocks</a>
+  <ul class="collapse">
+  <li><a href="#ohif-viewer" id="toc-ohif-viewer" class="nav-link" data-scroll-target="#ohif-viewer"><span class="header-section-number">4.3.1</span> OHIF Viewer</a></li>
+  <li><a href="#weasis" id="toc-weasis" class="nav-link" data-scroll-target="#weasis"><span class="header-section-number">4.3.2</span> Weasis</a></li>
+  </ul></li>
+  <li><a href="#desktop-dicom-viewers" id="toc-desktop-dicom-viewers" class="nav-link" data-scroll-target="#desktop-dicom-viewers"><span class="header-section-number">4.4</span> Desktop DICOM viewers</a>
+  <ul class="collapse">
+  <li><a href="#horos-and-osirix" id="toc-horos-and-osirix" class="nav-link" data-scroll-target="#horos-and-osirix"><span class="header-section-number">4.4.1</span> Horos and OsiriX</a></li>
+  <li><a href="#radiant-and-microdicom" id="toc-radiant-and-microdicom" class="nav-link" data-scroll-target="#radiant-and-microdicom"><span class="header-section-number">4.4.2</span> RadiAnt and MicroDicom</a></li>
+  </ul></li>
+  <li><a href="#neuroimaging-specialists" id="toc-neuroimaging-specialists" class="nav-link" data-scroll-target="#neuroimaging-specialists"><span class="header-section-number">4.5</span> Neuroimaging specialists</a></li>
+  <li><a href="#the-clinical-tier-mim-and-the-enterprise-workstations" id="toc-the-clinical-tier-mim-and-the-enterprise-workstations" class="nav-link" data-scroll-target="#the-clinical-tier-mim-and-the-enterprise-workstations"><span class="header-section-number">4.6</span> The clinical tier: MIM and the enterprise workstations</a></li>
+  <li><a href="#the-comparison-table" id="toc-the-comparison-table" class="nav-link" data-scroll-target="#the-comparison-table"><span class="header-section-number">4.7</span> The comparison table</a></li>
+  <li><a href="#choosing-a-viewer" id="toc-choosing-a-viewer" class="nav-link" data-scroll-target="#choosing-a-viewer"><span class="header-section-number">4.8</span> Choosing a viewer</a></li>
+  <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">4.9</span> The agentic outlook</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">4.10</span> Further reading</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/04-machine-learning-concepts.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/04-medical-image-viewers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html">II — Foundations: Machine Learning &amp; Computer Vision</a></li><li class="breadcrumb-item"><a href="../chapters/04-machine-learning-concepts.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-introduction.html">I — The Landscape of Medical Imaging</a></li><li class="breadcrumb-item"><a href="../chapters/04-medical-image-viewers.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ml-concepts" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></h1>
+<h1 class="title"><span id="sec-viewers" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></span></h1>
 </div>
 
 
@@ -559,37 +578,292 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>You have just learned what medical images <em>are</em> (<a href="02-universe-of-medical-images.html" class="quarto-xref"><span>Chapter 2</span></a>) and how they move through a hospital (<a href="03-images-in-the-hospital.html" class="quarto-xref"><span>Chapter 3</span></a>). The obvious next question is disarmingly practical: <em>how do I actually open one?</em> Double-clicking a <code>.dcm</code> file rarely ends well, a 4 GB whole-slide image will defeat every ordinary photo app, and an MRI study is a folder of thousands of files that only make sense as a set.</p>
+<p>This chapter is a field guide to the viewers that solve that problem. For each one: what it is, what formats it opens, how to install it, what the license allows, and what it costs. Both readers need this chapter — the clinician exploring research tools beyond the hospital PACS, and the engineer who has a folder of DICOM files and has never seen a window/level control. And for the AI agent: the machine-readable version of this chapter lives in <code>data/viewers.csv</code>.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Research tools are not diagnostic devices">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Warning</span>Research tools are not diagnostic devices
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Most viewers in this chapter are <strong>not</strong> cleared for primary diagnosis. Software used to make clinical decisions about real patients must be a regulated medical device (FDA-cleared in the US, CE-marked under MDR in the EU) — a bar only a few entries here meet, and the ones that do say so explicitly. Everything else is for research, education, and software development.</p>
 </div>
 </div>
-<section id="learning-from-examples-supervised-learning" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="learning-from-examples-supervised-learning"><span class="header-section-number">4.1</span> Learning from examples: supervised learning</h2>
+<section id="three-kinds-of-viewer" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="three-kinds-of-viewer"><span class="header-section-number">4.1</span> Three kinds of “viewer”</h2>
+<p>The word covers three different species, and knowing which one you are holding avoids most confusion:</p>
+<ul>
+<li><strong>Clinical workstations</strong> — the FDA/CE-cleared software radiologists actually read from (enterprise PACS clients, OsiriX MD, MIM). Regulated, validated, and priced accordingly.</li>
+<li><strong>Research viewers</strong> — free desktop applications built by and for the scientific community (3D Slicer, ITK-SNAP, napari, ImageJ/Fiji, QuPath). This is where new AI methods meet images first.</li>
+<li><strong>Viewer components</strong> — libraries and web frameworks (OHIF, Cornerstone3D, NiiVue) that developers embed to build the other two. If you are building an imaging product, you will likely start here rather than write a renderer from scratch.</li>
+</ul>
+<p>A useful mental model: the hospital PACS viewer is a sealed appliance; research viewers are workshops; viewer components are the parts bin.</p>
 </section>
-<section id="when-labels-are-scarce-semi--and-self-supervised-learning" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="when-labels-are-scarce-semi--and-self-supervised-learning"><span class="header-section-number">4.2</span> When labels are scarce: semi- and self-supervised learning</h2>
+<section id="the-research-workhorses" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-research-workhorses"><span class="header-section-number">4.2</span> The research workhorses</h2>
+<section id="d-slicer" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="d-slicer"><span class="header-section-number">4.2.1</span> 3D Slicer</h3>
+<p><strong>What it is.</strong> The closest thing research imaging has to a universal workstation: visualization, segmentation, registration, and analysis for 3D and 4D data, developed continuously since the late 1990s.</p>
+<p><strong>Formats.</strong> DICOM (full study import with its own database), NRRD, NIfTI, MetaImage, VTK models, STL meshes, and many more via plugins.</p>
+<p><strong>Installation.</strong> Point-and-click installers for Windows, macOS, and Linux from <a href="https://download.slicer.org/">slicer.org</a>; a Preview release tracks the cutting edge.</p>
+<p><strong>License &amp; cost.</strong> Free, open source under a permissive BSD-style license — explicitly usable in commercial products. Not cleared for clinical use.</p>
+<p><strong>Best for.</strong> Anything 3D: scrolling a CT in three planes, volume rendering, drawing or editing segmentations, converting between formats. Its <em>Sample Data</em> module makes it the fastest way to get legal example studies onto your screen.</p>
+<p><strong>AI ecosystem.</strong> The Extension Manager is the killer feature: <strong>MONAI Label</strong> connects Slicer to an AI segmentation server for active-learning annotation; <strong>TotalSegmentator</strong> and <strong>MONAI Auto3DSeg</strong> run full-body CT/MR segmentation with one click; a built-in Python console scripts everything. When later chapters say “run an automatic segmentation and inspect it,” this is the default place to do it.</p>
 </section>
-<section id="finding-structure-unsupervised-learning-and-clustering" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="finding-structure-unsupervised-learning-and-clustering"><span class="header-section-number">4.3</span> Finding structure: unsupervised learning and clustering</h2>
+<section id="itk-snap" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="itk-snap"><span class="header-section-number">4.2.2</span> ITK-SNAP</h3>
+<p><strong>What it is.</strong> A deliberately small tool that does one thing exceptionally well: labeling anatomical structures in 3D images. Where Slicer is a workshop, ITK-SNAP is a scalpel.</p>
+<p><strong>Formats.</strong> DICOM series, NIfTI, NRRD, MetaImage, Analyze, MGH.</p>
+<p><strong>Installation.</strong> Installers for all three major OSes from <a href="http://www.itksnap.org">itksnap.org</a>.</p>
+<p><strong>License &amp; cost.</strong> Free, open source (GPL).</p>
+<p><strong>Best for.</strong> Producing ground-truth segmentations. Its semi-automatic <em>active contour</em> (“snake”) mode grows a 3D contour from seed points — often the fastest route to a clean label without any ML at all, and still a respectable baseline to compare learned methods against.</p>
 </section>
-<section id="learning-from-feedback-reinforcement-learning" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="learning-from-feedback-reinforcement-learning"><span class="header-section-number">4.4</span> Learning from feedback: reinforcement learning</h2>
+<section id="napari" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="napari"><span class="header-section-number">4.2.3</span> napari</h3>
+<p><strong>What it is.</strong> A Python-native n-dimensional viewer that lives <em>inside</em> your analysis environment rather than beside it: <code>viewer.add_image(array)</code> and your NumPy tensor is on screen, with layers, annotations, and GPU-accelerated rendering.</p>
+<p><strong>Formats.</strong> TIFF/OME-Zarr and anything imageio reads natively; DICOM, NIfTI, and NRRD via plugins (<code>napari-itk-io</code>, <code>napari-medical-image-formats</code>) or by loading through SimpleITK/nibabel yourself.</p>
+<p><strong>Installation.</strong> <code>pip install "napari[all]"</code> or conda — it is a Python package, not an application, though bundled installers exist.</p>
+<p><strong>License &amp; cost.</strong> Free, open source (BSD-3).</p>
+<p><strong>Best for.</strong> The ML engineer’s inner loop: visually checking tensors mid-pipeline, overlaying model predictions on inputs, annotating training data with plugins. Leans microscopy, but nothing stops you from feeding it a CT volume.</p>
 </section>
-<section id="the-discipline-train-validate-test-and-overfitting" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="the-discipline-train-validate-test-and-overfitting"><span class="header-section-number">4.5</span> The discipline: train, validate, test — and overfitting</h2>
+<section id="imagej-fiji" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="imagej-fiji"><span class="header-section-number">4.2.4</span> ImageJ / Fiji</h3>
+<p><strong>What it is.</strong> The elder statesman of scientific imaging (born 1997 at NIH) and still ubiquitous in biology labs. <strong>Fiji</strong> (“Fiji Is Just ImageJ”) is the batteries-included distribution with hundreds of plugins and an auto-updater — for practical purposes, install Fiji.</p>
+<p><strong>Formats.</strong> TIFF at heart, plus roughly 160 scientific formats through the bundled <strong>Bio-Formats</strong> library — including OME-TIFF and basic DICOM (single images fine; full multi-series studies are not its strength).</p>
+<p><strong>Installation.</strong> Download, unzip, run — fully portable, no admin rights needed (<a href="https://fiji.sc">fiji.sc</a>).</p>
+<p><strong>License &amp; cost.</strong> Free. Original ImageJ is public domain; ImageJ2 core is BSD-2; Fiji as a distribution is GPL.</p>
+<p><strong>Best for.</strong> 2D image processing and measurement at lab scale: intensity analysis, stacks, batch macros. For medical imaging specifically it is the utility knife you reach for on single images, not the tool for reading a CT study.</p>
 </section>
-<section id="the-medical-imaging-superpowers" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="the-medical-imaging-superpowers"><span class="header-section-number">4.6</span> The medical-imaging superpowers</h2>
-<!-- Transfer learning, fine-tuning, domain adaptation. -->
+<section id="qupath" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="qupath"><span class="header-section-number">4.2.5</span> QuPath</h3>
+<p><strong>What it is.</strong> The standard open tool for digital pathology. Ordinary viewers cannot open a 100,000 × 100,000-pixel whole-slide image at all; QuPath’s tile-streaming architecture makes browsing one feel like Google Maps.</p>
+<p><strong>Formats.</strong> Whole-slide formats via OpenSlide and Bio-Formats: Aperio SVS, Hamamatsu NDPI, Leica SCN, MIRAX, OME-TIFF, and more.</p>
+<p><strong>Installation.</strong> Installers for Windows, macOS, Linux from <a href="https://qupath.github.io">qupath.github.io</a>.</p>
+<p><strong>License &amp; cost.</strong> Free, open source (GPLv3).</p>
+<p><strong>Best for.</strong> Everything in <a href="19-digital-pathology.html" class="quarto-xref"><span>Chapter 19</span></a>: viewing slides, annotating regions, cell detection and classification, and Groovy scripting for batch analysis across a slide archive.</p>
+</section>
+</section>
+<section id="web-viewers-and-building-blocks" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="web-viewers-and-building-blocks"><span class="header-section-number">4.3</span> Web viewers and building blocks</h2>
+<section id="ohif-viewer" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="ohif-viewer"><span class="header-section-number">4.3.1</span> OHIF Viewer</h3>
+<p><strong>What it is.</strong> The Open Health Imaging Foundation’s zero-footprint web viewer: nothing to install for the end user, just a URL. More than an application, it is a <em>framework</em> — the de-facto starting point for building custom imaging applications, powering research portals like the NCI’s Imaging Data Commons.</p>
+<p><strong>Formats.</strong> DICOM over <strong>DICOMweb</strong> (it expects an archive to talk to, e.g.&nbsp;Orthanc or a cloud PACS), including overlays like DICOM SEG, RTSTRUCT, and SR.</p>
+<p><strong>Installation.</strong> For users: none — visit a deployment (a public demo lives at <a href="https://viewer.ohif.org">viewer.ohif.org</a>). For developers: Node/yarn or Docker.</p>
+<p><strong>License &amp; cost.</strong> Free, open source under MIT — the most permissive license in this chapter, deliberately chosen so companies can build products on it.</p>
+<p><strong>AI ecosystem.</strong> Rendering comes from <strong>Cornerstone3D</strong> (the underlying MIT-licensed JavaScript engine), and a MONAI Label mode brings AI-assisted annotation into the browser.</p>
+</section>
+<section id="weasis" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="weasis"><span class="header-section-number">4.3.2</span> Weasis</h3>
+<p><strong>What it is.</strong> A free, cross-platform desktop DICOM viewer designed to be <em>launched by</em> hospital systems — the “view images” button in an EHR or PACS portal often opens Weasis.</p>
+<p><strong>Formats.</strong> DICOM and DICOMweb, with proper handling of clinical niceties (presentation states, key objects, multi-monitor hanging).</p>
+<p><strong>Installation.</strong> Installers for Windows, macOS, Linux (<a href="https://weasis.org">weasis.org</a>); also web-launchable.</p>
+<p><strong>License &amp; cost.</strong> Free, open source (EPL-2.0 / Apache-2.0).</p>
+<p><strong>Best for.</strong> A no-cost, no-license-anxiety DICOM viewer that behaves like clinical software, and the integration story when you need image viewing wired into another system.</p>
+</section>
+</section>
+<section id="desktop-dicom-viewers" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="desktop-dicom-viewers"><span class="header-section-number">4.4</span> Desktop DICOM viewers</h2>
+<section id="horos-and-osirix" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="horos-and-osirix"><span class="header-section-number">4.4.1</span> Horos and OsiriX</h3>
+<p>One lineage, two licenses. <strong>OsiriX</strong> pioneered the Mac DICOM workstation; <strong>Horos</strong> is its free, LGPL, community-maintained fork (<a href="https://horosproject.org">horosproject.org</a>) — capable, Mac-only, and <em>not</em> cleared for diagnosis. <strong>OsiriX MD</strong> (<a href="https://www.osirix-viewer.com">osirix-viewer.com</a>) is the commercial continuation: FDA-cleared as a Class II device and CE-marked, sold as a subscription (on the order of $70/month) or one-time license. The pair is the cleanest illustration in this chapter of what the regulatory line actually buys: nearly identical software, on opposite sides of it.</p>
+</section>
+<section id="radiant-and-microdicom" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="radiant-and-microdicom"><span class="header-section-number">4.4.2</span> RadiAnt and MicroDicom</h3>
+<p>The lightweight Windows pair. <strong>RadiAnt</strong> (<a href="https://www.radiantviewer.com">radiantviewer.com</a>) is famously fast at opening large studies — commercial with a free trial, CE-marked in the EU but not FDA-cleared. <strong>MicroDicom</strong> (<a href="https://www.microdicom.com">microdicom.com</a>) is freeware for non-commercial use and the quickest answer to “a colleague sent me a CD of DICOM files.” Both are viewers in the narrow sense: browsing and measuring, not segmentation or analysis.</p>
+</section>
+</section>
+<section id="neuroimaging-specialists" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="neuroimaging-specialists"><span class="header-section-number">4.5</span> Neuroimaging specialists</h2>
+<p>Neuroscience grew its own viewer lineage around NIfTI rather than DICOM. <strong>FSLeyes</strong>, the viewer of the FSL suite, is the standard for overlaying statistical maps, atlases, and diffusion data on brain volumes (free for non-commercial use under FSL’s terms; installs with FSL or via conda). <strong>NiiVue</strong> is the modern web answer: a BSD-licensed WebGL library that renders volumes, meshes, and tractography in any browser or notebook — less an application than a component, and the easiest way to put a brain volume into a web page. Honorable mentions in the same family: MRIcroGL and Mango.</p>
+</section>
+<section id="the-clinical-tier-mim-and-the-enterprise-workstations" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="the-clinical-tier-mim-and-the-enterprise-workstations"><span class="header-section-number">4.6</span> The clinical tier: MIM and the enterprise workstations</h2>
+<p>At the top of the market sit regulated enterprise platforms — <strong>MIM</strong> (<a href="https://www.mimsoftware.com">mimsoftware.com</a>) is a representative example, alongside vendor PACS clients from Sectra, GE, Philips, and Agfa. MIM specializes in radiation oncology and nuclear medicine: PET/CT fusion, SUV quantification, RT structure handling, dose review, with FDA-cleared modules throughout. There is no download link and no price list; licensing is quote-based and sold to departments, not individuals. You will not install these to learn from this book — they appear here so the landscape has its ceiling: this is what “cleared for diagnosis, integrated with the hospital, priced like infrastructure” looks like, and it is the tier an imaging AI product must ultimately meet.</p>
+</section>
+<section id="the-comparison-table" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="the-comparison-table"><span class="header-section-number">4.7</span> The comparison table</h2>
+<p>The living version of this table is <code>data/viewers.csv</code> in the book’s repository — corrections welcome as pull requests.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>viewer</th>
+<th>platforms</th>
+<th>key formats</th>
+<th>license</th>
+<th>cost</th>
+<th>cleared for diagnosis</th>
+<th>best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3D Slicer</td>
+<td>Win / macOS / Linux</td>
+<td>DICOM, NRRD, NIfTI, MetaImage, VTK, STL</td>
+<td>BSD-style (permissive)</td>
+<td>Free</td>
+<td>No</td>
+<td>3D research workhorse: segmentation, registration, AI extensions</td>
+</tr>
+<tr class="even">
+<td>ITK-SNAP</td>
+<td>Win / macOS / Linux</td>
+<td>DICOM, NIfTI, NRRD, Analyze, MGH</td>
+<td>GPL</td>
+<td>Free</td>
+<td>No</td>
+<td>Focused manual + semi-automatic 3D segmentation</td>
+</tr>
+<tr class="odd">
+<td>napari</td>
+<td>Win / macOS / Linux (Python)</td>
+<td>TIFF/OME-Zarr native; DICOM, NIfTI, NRRD via plugins</td>
+<td>BSD-3</td>
+<td>Free</td>
+<td>No</td>
+<td>Python-scriptable n-D viewing inside an ML workflow</td>
+</tr>
+<tr class="even">
+<td>ImageJ / Fiji</td>
+<td>Win / macOS / Linux (Java)</td>
+<td>TIFF + ~160 formats via Bio-Formats (OME-TIFF, basic DICOM)</td>
+<td>Public domain / GPL (Fiji)</td>
+<td>Free</td>
+<td>No</td>
+<td>2D scientific image analysis and batch macros</td>
+</tr>
+<tr class="odd">
+<td>QuPath</td>
+<td>Win / macOS / Linux (Java)</td>
+<td>Whole-slide: SVS, NDPI, OME-TIFF, and more (OpenSlide/Bio-Formats)</td>
+<td>GPLv3</td>
+<td>Free</td>
+<td>No</td>
+<td>Gigapixel pathology slides: viewing + cell-level analysis</td>
+</tr>
+<tr class="even">
+<td>OHIF Viewer</td>
+<td>Any browser (zero-footprint)</td>
+<td>DICOM via DICOMweb (incl.&nbsp;SEG / RTSTRUCT / SR)</td>
+<td>MIT</td>
+<td>Free</td>
+<td>No (framework)</td>
+<td>Embedding a web viewer into your own application</td>
+</tr>
+<tr class="odd">
+<td>Weasis</td>
+<td>Win / macOS / Linux + web launch</td>
+<td>DICOM (+ DICOMweb)</td>
+<td>EPL-2.0 / Apache-2.0</td>
+<td>Free</td>
+<td>No</td>
+<td>Free desktop DICOM viewer with PACS/HIS integration</td>
+</tr>
+<tr class="even">
+<td>Horos</td>
+<td>macOS only</td>
+<td>DICOM</td>
+<td>LGPL</td>
+<td>Free</td>
+<td>No</td>
+<td>Free Mac DICOM viewer (OsiriX lineage)</td>
+</tr>
+<tr class="odd">
+<td>OsiriX MD</td>
+<td>macOS only</td>
+<td>DICOM</td>
+<td>Commercial</td>
+<td>~$70/mo or one-time license</td>
+<td>Yes — FDA Class II / CE</td>
+<td>Clinical-grade reading on a Mac</td>
+</tr>
+<tr class="even">
+<td>RadiAnt</td>
+<td>Windows only</td>
+<td>DICOM</td>
+<td>Commercial</td>
+<td>Paid license (free trial)</td>
+<td>No (EU CE only)</td>
+<td>Fast, lightweight Windows DICOM browsing</td>
+</tr>
+<tr class="odd">
+<td>MicroDicom</td>
+<td>Windows only</td>
+<td>DICOM</td>
+<td>Proprietary freeware</td>
+<td>Free (non-commercial)</td>
+<td>No</td>
+<td>Quick free DICOM viewing on Windows</td>
+</tr>
+<tr class="even">
+<td>FSLeyes</td>
+<td>Win / macOS / Linux (Python)</td>
+<td>NIfTI, GIFTI, DICOM (basic)</td>
+<td>Apache-style (FSL terms; free for non-commercial)</td>
+<td>Free (academic)</td>
+<td>No</td>
+<td>Neuroimaging: overlays, atlases, fMRI/DTI display</td>
+</tr>
+<tr class="odd">
+<td>NiiVue</td>
+<td>Any browser (JS/WebGL library)</td>
+<td>NIfTI, DICOM, meshes, tractography</td>
+<td>BSD-2</td>
+<td>Free</td>
+<td>No</td>
+<td>Embedding neuro visualization into web pages and notebooks</td>
+</tr>
+<tr class="even">
+<td>MIM</td>
+<td>Win / macOS (enterprise)</td>
+<td>DICOM (incl.&nbsp;RT objects, PET/CT fusion)</td>
+<td>Commercial</td>
+<td>Quote-based</td>
+<td>Yes — FDA-cleared modules</td>
+<td>Enterprise radiation-oncology and nuclear-medicine workflows</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="choosing-a-viewer" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="choosing-a-viewer"><span class="header-section-number">4.8</span> Choosing a viewer</h2>
+<ul>
+<li><strong>“I have a folder of DICOM files and just want to look”</strong> → Weasis or MicroDicom (free), RadiAnt (Windows, fast), Horos (Mac).</li>
+<li><strong>“I need to scroll a CT/MRI properly, in three planes, with 3D”</strong> → 3D Slicer.</li>
+<li><strong>“I need to create segmentation ground truth”</strong> → ITK-SNAP for focused structures; 3D Slicer (+ MONAI Label) when AI assistance should do the first pass.</li>
+<li><strong>“I’m mid-Python-pipeline and want to see my tensors”</strong> → napari.</li>
+<li><strong>“It’s a pathology slide”</strong> → QuPath.</li>
+<li><strong>“It’s a brain study with overlays”</strong> → FSLeyes; NiiVue if it needs to live in a browser.</li>
+<li><strong>“I’m building an application”</strong> → OHIF/Cornerstone3D for DICOM, NiiVue for neuro.</li>
+<li><strong>“It’s for actual patient care”</strong> → only the cleared tier: your PACS, OsiriX MD, MIM — nothing else in this chapter.</li>
+</ul>
+</section>
+<section id="the-agentic-outlook" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">4.9</span> The agentic outlook</h2>
+<p>Viewers are where humans see images; increasingly they are also where <em>agents</em> act on them. Three properties of this chapter’s tools matter for that future. First, <strong>scriptability is an agent interface</strong>: 3D Slicer’s Python console, napari’s plain-Python API, ImageJ macros, and QuPath’s Groovy engine mean an agent can drive the same tools a human does — load a study, run a segmentation, export a measurement — without any bespoke integration. Second, <strong>web components dissolve the boundary between viewer and application</strong>: an agent that drafts a finding can render its evidence through OHIF or NiiVue directly in its own interface, turning “the viewer” from a destination into a widget the agent composes. Third, the <strong>regulatory line does not move</strong>: an agent operating research viewers inherits their non-diagnostic status, and an agentic workflow that touches patient care needs the cleared tier — a theme <a href="10-from-model-to-product.html" class="quarto-xref"><span>Chapter 10</span></a> takes up properly.</p>
+</section>
+<section id="further-reading" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">4.10</span> Further reading</h2>
+<ul>
+<li>Each project’s own documentation is the authoritative source for formats and licensing: <a href="https://www.slicer.org">slicer.org</a>, <a href="http://www.itksnap.org">itksnap.org</a>, <a href="https://napari.org">napari.org</a>, <a href="https://fiji.sc">fiji.sc</a>, <a href="https://qupath.readthedocs.io">qupath.readthedocs.io</a>, <a href="https://docs.ohif.org">docs.ohif.org</a>, <a href="https://weasis.org">weasis.org</a>.</li>
+<li>Fedorov et al., “3D Slicer as an image computing platform for the Quantitative Imaging Network,” <em>Magnetic Resonance Imaging</em> (2012) — the canonical Slicer reference.</li>
+<li>Bankhead et al., “QuPath: Open source software for digital pathology image analysis,” <em>Scientific Reports</em> (2017).</li>
+<li>Ziegler et al., “Open Health Imaging Foundation Viewer: An extensible open-source framework,” <em>JCO Clinical Cancer Informatics</em> (2020).</li>
+</ul>
 
 
 </section>
@@ -681,7 +955,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/www\.anandpreshob\.com\/book\/");
+        var filterRegex = new RegExp("https:\/\/anandpreshob\.github\.io\/ai-medical-imaging-book\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1020,8 +1294,8 @@ Note
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/05-what-computer-vision-can-do.html" class="pagination-link" aria-label="What Computer Vision Can Do">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/05-machine-learning-concepts.html" class="pagination-link" aria-label="Machine Learning: The Concepts">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1033,9 +1307,9 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/04-machine-learning-concepts.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/04-medical-image-viewers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
-<p>Companion project: <a href="https://github.com/anandpreshob/medai-os">MedAI OS</a> · <a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
+<p><a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
 </div>
   </div>
 </footer>
