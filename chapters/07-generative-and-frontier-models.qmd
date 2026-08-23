@@ -17,7 +17,3 @@
 <!-- MedSAM, BiomedParse, CheXagent, MedGemma, TotalSegmentator as model-as-infrastructure. -->
 
 ## Agentic workflows
-
-## Doing this in MedAI OS {.unnumbered}
-<!-- Nearly every model in this chapter ships in MedAI OS: BiomedParse text-prompted
-     segmentation, CheXagent, the RAG chat assistant, agentic workflows. -->

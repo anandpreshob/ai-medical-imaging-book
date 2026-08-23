@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Autonomous triage queues that re-prioritize the worklist as studies arrive; agents that draft the report, pre-fill prior comparisons from PACS, flag discrepancies between the draft and the image findings, and track incidental findings to follow-up completion. CXR's volume and 2D simplicity make it the first modality where end-to-end agentic loops (detect → draft → route → follow up) will run at scale. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- Chest X-Ray Suite: CheXagent abnormality detection, phrase grounding, tube/fracture/foreign-object detection, structured report generation, triage. -->
-
 ## Further reading

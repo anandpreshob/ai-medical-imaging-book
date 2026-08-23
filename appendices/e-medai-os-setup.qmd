@@ -1,7 +1,0 @@
-# MedAI OS Setup Guide {.unnumbered}
-
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
-:::
-
-<!-- Condensed from the medai-os README: basic viewer, Orthanc, feature flags, backend tiers, sample data. -->

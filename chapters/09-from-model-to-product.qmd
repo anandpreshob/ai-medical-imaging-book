@@ -13,7 +13,3 @@
 ## Post-market surveillance and audit trails
 
 ## MLOps for hospitals
-
-## Doing this in MedAI OS {.unnumbered}
-<!-- Audit hash-chain logging and batch inference as teaching examples;
-     the "not a medical device" framing. -->

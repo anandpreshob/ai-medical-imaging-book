@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Agents that protocol the scan from the order text, monitor acquisition for repeat-worthy artifacts, trigger the right segmentation models per body part, assemble volumetric comparisons across timepoints, and draft structured oncologic response assessments (RECIST) automatically. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- TotalSegmentator + BiomedParse auto-segmentation, MPR/3D rendering, volumetrics and radiomics, Oncology Suite lesion tracking; RT Suite sidebar. -->
-
 ## Further reading

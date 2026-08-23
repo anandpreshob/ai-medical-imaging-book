@@ -48,12 +48,4 @@
 <!-- No FDA framework yet fits a tool-calling agent; predetermined change
      control plans; the audit-trail imperative. Bridge to @sec-model-to-product. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- MedAI OS ships an agentic layer: agentic workflows architecture, the
-     agentic_skills registry, the triage agent, and the "Ask MedAI" RAG chat --
-     each maps to a section above. Walk through one end-to-end agentic loop:
-     study arrives -> triage agent scores it -> suite auto-detection routes it ->
-     detection model runs -> report drafted -> audit chain records every step. -->
-
 ## Further reading

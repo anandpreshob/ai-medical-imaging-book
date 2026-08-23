@@ -16,6 +16,6 @@
 ## 3D and video architectures
 
 ## Promptable segmentation: the SAM family
-<!-- MedAI OS hook: SAM2 / MedSAM2 / nnInteractive interactive segmentation. -->
+<!-- Cover SAM2 / MedSAM2 / nnInteractive interactive segmentation. -->
 
 ## Choosing an architecture

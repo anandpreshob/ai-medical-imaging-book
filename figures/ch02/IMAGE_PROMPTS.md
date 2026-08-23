@@ -5,7 +5,7 @@ Figures for `chapters/02-universe-of-medical-images.qmd`. Each modality gets a *
 - **(A) Acquisition illustration** — cartoonified scene of how the image is made (patient + equipment + energy path). AI-generate these.
 - **(B) Representative image** — what the resulting scan looks like.
 
-> **Editorial note for (B):** Prefer a real, openly licensed image when one is readily available — first choice: a screenshot from MedAI OS displaying a public sample study; second: Wikimedia Commons (check that the license allows reuse). Generated educational renderings are also acceptable under the book-wide visual-content note in the preface.
+> **Editorial note for (B):** Prefer a real, openly licensed image when one is readily available — first choice: a screenshot from a free viewer (3D Slicer, OHIF) displaying a public sample study; second: Wikimedia Commons (check that the license allows reuse). Generated educational renderings are also acceptable under the book-wide visual-content note in the preface.
 
 ## Global style block — prepend to every (A) prompt
 
@@ -24,7 +24,7 @@ File naming: `figures/ch02/<slug>-acquisition.png` and `figures/ch02/<slug>-exam
 **(A) Prompt:** A person standing upright in profile facing a wall-mounted flat detector panel, arms slightly raised to the sides of the panel. Behind them, an X-ray tube head on an articulated ceiling mount emits a subtle cone-shaped coral beam that passes through the person's chest and lands on the detector. Faint silhouette of ribs and lungs visible inside the chest where the beam passes, hinting at the shadow being cast. A lead-glass control booth with a technologist visible in the corner background.
 
 **(B) Fallback prompt:** A frontal (PA) chest X-ray radiograph, grayscale: dark air-filled lungs, white heart shadow slightly left of center, visible rib cage, clavicles, and diaphragm domes, sharp and correctly exposed.
-**(B) Real-image source:** MedAI OS screenshot of a sample chest X-ray, or NIH ChestX-ray14 sample (CC0-adjacent, verify), or Wikimedia Commons "Chest radiograph".
+**(B) Real-image source:** Viewer screenshot of a sample chest X-ray (3D Slicer/OHIF), or NIH ChestX-ray14 sample (CC0-adjacent, verify), or Wikimedia Commons "Chest radiograph".
 
 **Caption:** How a radiograph is made: the X-ray tube projects a beam through the patient onto a detector — every structure along each ray is superimposed into one 2D shadow. | **Alt:** Illustration of a patient standing between an X-ray tube and a flat detector panel.
 
@@ -60,7 +60,7 @@ File naming: `figures/ch02/<slug>-acquisition.png` and `figures/ch02/<slug>-exam
 **(A) Prompt:** A patient lying on a motorized table sliding into the short open bore of a large donut-shaped CT gantry, shown in three-quarter cutaway view: inside the gantry ring, an X-ray tube and an opposing curved detector arc are visible mid-rotation, with a coral fan-beam sweeping across the patient's chest and circular motion lines indicating spin. A stack of thin translucent axial slices floats above the patient's torso hinting at the reconstructed volume.
 
 **(B) Fallback prompt:** An axial chest CT slice in lung window, grayscale: black lungs with fine bronchovascular branching, gray mediastinum, white vertebra and ribs, patient oriented supine.
-**(B) Real-image source:** MedAI OS screenshot of a sample CT (best — shows MPR); Wikimedia Commons "CT scan of the chest".
+**(B) Real-image source:** 3D Slicer screenshot of a sample CT (best — shows MPR); Wikimedia Commons "CT scan of the chest".
 
 **Caption:** CT spins an X-ray tube and detector around the patient and reconstructs calibrated 3D slices from hundreds of projections. | **Alt:** Cutaway illustration of a CT gantry showing the rotating tube, detector arc, and fan beam.
 
@@ -69,7 +69,7 @@ File naming: `figures/ch02/<slug>-acquisition.png` and `figures/ch02/<slug>-exam
 **(A) Prompt:** A patient on a table entering the long cylindrical bore of an MRI scanner, cutaway view revealing nested rings inside the housing (magnet coils), gentle concentric indigo field lines wrapping the bore, and a soft coral radio-wave symbol pulsing from a head coil around the patient's head. Beside the scanner, four small floating panels show the same stylized brain in different contrast tints, suggesting sequences. No metal objects anywhere in the room.
 
 **(B) Fallback prompt:** An axial T1-weighted brain MRI slice, grayscale: bright white-matter tracts, darker cortical gray matter ribbon, black CSF in ventricles, smooth skull outline with bright subcutaneous fat.
-**(B) Real-image source:** MedAI OS screenshot of a sample multi-sequence brain MRI (shows the sequence list — pedagogically ideal); Wikimedia Commons "MRI of the brain".
+**(B) Real-image source:** 3D Slicer screenshot of a sample multi-sequence brain MRI (shows the sequence list — pedagogically ideal); Wikimedia Commons "MRI of the brain".
 
 **Caption:** MRI tips hydrogen nuclei in a strong magnetic field and listens to them relax; reordering the pulses — the sequence — renders the same anatomy in entirely different contrasts. | **Alt:** Cutaway illustration of an MRI bore with field lines, a head coil, and floating panels of differently-contrasted brain images.
 
@@ -78,7 +78,7 @@ File naming: `figures/ch02/<slug>-acquisition.png` and `figures/ch02/<slug>-exam
 **(A) Prompt:** A two-stage scene: on the left, a seated patient receives a small injection, with a stylized glowing tracer molecule icon; on the right, the same patient lies in a long dual-ring scanner (two donut gantries in one housing). Inside the patient's silhouette, a few soft coral glowing spots emit tiny photon rays outward in opposite directions toward the detector ring. A faint gray anatomical outline overlays one glowing spot, suggesting PET fused on CT.
 
 **(B) Fallback prompt:** A whole-body FDG-PET maximum-intensity projection: grayscale-inverted body silhouette with dark brain and bladder (normal uptake) and a fused axial PET/CT slice beside it with a hot color-mapped lesion.
-**(B) Real-image source:** Wikimedia Commons "FDG PET scan"; MedAI OS SUV analytics screenshot when available.
+**(B) Real-image source:** Wikimedia Commons "FDG PET scan"; a PET/CT fusion screenshot from 3D Slicer when available.
 
 **Caption:** PET images emission, not transmission: an injected tracer accumulates where its target biology is active, and the ring detects the photons the patient emits. | **Alt:** Illustration of tracer injection and a PET/CT scanner detecting glowing regions inside the patient.
 

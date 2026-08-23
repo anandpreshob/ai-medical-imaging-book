@@ -11,10 +11,10 @@ book:
   date: today
   repo-url: https://github.com/anandpreshob/ai-medical-imaging-book
   repo-actions: [edit, issue]
-  site-url: https://www.anandpreshob.com/book/
+  site-url: https://anandpreshob.github.io/ai-medical-imaging-book/
   page-footer:
     left: "© 2026 Anand Kadumberi · Apache-2.0"
-    right: "Companion project: [MedAI OS](https://github.com/anandpreshob/medai-os) · [anandpreshob.com](https://www.anandpreshob.com)"
+    right: "[anandpreshob.com](https://www.anandpreshob.com)"
   chapters:
     - index.qmd
     - part: "I — The Landscape of Medical Imaging"
@@ -53,7 +53,6 @@ book:
     - appendices/b-model-zoo.qmd
     - appendices/c-fda-product-index.qmd
     - appendices/d-dicom-quick-reference.qmd
-    - appendices/e-medai-os-setup.qmd
     - appendices/f-dual-glossary.qmd
 
 bibliography: references.bib

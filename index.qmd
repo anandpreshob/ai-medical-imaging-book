@@ -18,10 +18,6 @@ Sections are written so that any of the three can follow the whole book; the [du
 
 Because agents are actors in these workflows and not just readers, the book treats agentic AI as a first-class topic: a dedicated chapter covers agent harnesses, tool use, and orchestration, and every modality chapter includes **"The agentic outlook"** — how autonomous, tool-calling systems will change that modality's workflow.
 
-## How this book relates to MedAI OS {.unnumbered}
-
-This book stands alone — nothing in it requires any particular software. But concepts stick better when you can try them, so most applied chapters end with a **"Doing this in MedAI OS"** section: a hands-on walkthrough using [MedAI OS](https://github.com/anandpreshob/medai-os), an open-source, browser-based medical imaging workstation with optional AI features (auto-segmentation, interactive segmentation, chest X-ray detection, report generation, triage, analytics). It is research and educational software — not a medical device — which makes it the ideal sandbox for this book.
-
 ## Living tables {.unnumbered}
 
 The dataset directories, model zoos, and FDA-cleared product indexes in this book are generated from CSV files in the [book's repository](https://github.com/anandpreshob/ai-medical-imaging-book). The landscape moves fast; corrections and additions are welcome as pull requests.

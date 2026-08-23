@@ -2,15 +2,11 @@
 
 An open, in-progress textbook on AI in medical imaging — written for clinicians, ML engineers, and AI agents at the same time. Human readers get dual-track explanations; agents get a fixed chapter structure, machine-readable CSV fact tables in [`data/`](data/), plain-markdown source, and an `llms.txt`.
 
-**Read it:**
-- 🌐 https://www.anandpreshob.com/book/
-- 📖 https://anandpreshob.github.io/ai-medical-imaging-book/ (mirror)
-
-**Companion project:** [MedAI OS](https://github.com/anandpreshob/medai-os) — an open-source, browser-based medical imaging workstation. Most applied chapters end with a hands-on "Doing this in MedAI OS" walkthrough.
+**Read it:** https://anandpreshob.github.io/ai-medical-imaging-book/
 
 ## How it's built
 
-A [Quarto](https://quarto.org) book. Every push to `main` renders the book and publishes it to both mirrors automatically (see `.github/workflows/publish.yml`).
+A [Quarto](https://quarto.org) book. Every push to `main` renders the book and publishes it to GitHub Pages automatically (see `.github/workflows/publish.yml`).
 
 ```bash
 # Local preview

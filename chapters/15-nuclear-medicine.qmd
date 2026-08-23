@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Agents that reconcile PET findings with the CT anatomy automatically, compute SUV deltas across studies, and draft response assessments against trial criteria — the most quantification-heavy modality benefits most from agents that never miss a measurement. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- SUV analytics, Oncology Suite trial endpoints. -->
-
 ## Further reading

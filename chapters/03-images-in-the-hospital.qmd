@@ -15,6 +15,3 @@
 ## The loop: acquisition → storage → reading → report
 
 ## De-identification and data governance
-
-## Doing this in MedAI OS {.unnumbered}
-<!-- Orthanc PACS + the viewer's DICOM/NIfTI/NRRD loaders as a live playground. -->

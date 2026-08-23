@@ -14,9 +14,3 @@ h1, h2, h3 {
 .sidebar-title {
   font-family: "Space Grotesk", sans-serif;
 }
-
-// "Doing this in MedAI OS" sections get a subtle accent bar
-section[id^="doing-this-in-medai-os"] {
-  border-left: 3px solid $link-color;
-  padding-left: 1rem;
-}

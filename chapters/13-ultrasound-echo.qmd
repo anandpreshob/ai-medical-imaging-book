@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Real-time guidance agents that coach acquisition (probe placement, view completeness), auto-measure as the exam proceeds, and assemble the worksheet before the sonographer finishes — collapsing the acquire-measure-report loop into one pass. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- Cardiology Suite sidebar: 4D cine, LV/RV volumes, EF calculation (Phase 3). -->
-
 ## Further reading

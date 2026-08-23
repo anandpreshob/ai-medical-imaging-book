@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Intra-operative agents that watch the video stream for phase transitions and safety-critical moments (critical view of safety, bleeding), keep the OR team informed, and auto-assemble the post-op note with time-stamped clips. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- Surgical Suite: 3D models, FLR, mesh export for planning. -->
-
 ## Further reading

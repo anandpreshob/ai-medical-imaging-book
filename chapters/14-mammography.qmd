@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Screening-population agents: managing recall workflows, combining current AI scores with prior exams and risk models to personalize screening intervals, and drafting BI-RADS-structured results letters. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- Breast DCE-MRI nnU-Net segmentation and BI-RADS reporting integration. -->
-
 ## Further reading

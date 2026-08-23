@@ -1,10 +1,10 @@
-# Building an Imaging AI Platform: MedAI OS as a Case Study {#sec-platform}
+# Building an Imaging AI Platform {#sec-platform}
 
 ::: {.callout-note}
 *Draft chapter — outline only. Content coming soon.*
 :::
 
-<!-- The explicitly MedAI-OS-centric chapter; doubles as the user manual. -->
+<!-- What it takes to build a web-based imaging AI platform end to end. -->
 
 ## Anatomy of a web-based viewer
 <!-- Cornerstone3D, VTK.js, itk-wasm loaders. -->

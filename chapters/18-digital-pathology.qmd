@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Agents that pre-screen slides overnight, order recuts or stains when a region is ambiguous, integrate genomics with morphology, and assemble tumor-board-ready case summaries across pathology, radiology, and the chart. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- TIFF loading via itk-wasm; candidate future suite. -->
-
 ## Further reading

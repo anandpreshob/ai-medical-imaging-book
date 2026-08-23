@@ -39,8 +39,4 @@
 <!-- How agent harnesses change this modality's workflow. Seed ideas:
 Sequence-aware agents that verify protocol completeness before the patient leaves the scanner, route each sequence to the right model, reconcile multi-sequence findings into one narrative, and manage longitudinal lesion tracking across visits. -->
 
-## Doing this in MedAI OS {.unnumbered}
-
-<!-- Neurology Suite (MS/dementia/stroke workflows, ICV normalization), breast DCE-MRI nnU-Net, registration + propagation. -->
-
 ## Further reading

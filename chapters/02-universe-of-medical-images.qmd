@@ -249,17 +249,16 @@ Three recurring axes deserve respect: **calibration** (HU and SUV mean something
 
 For an autonomous system, this chapter is not background — it is a **routing table**. The first decision any imaging agent makes about a study is *what am I looking at*, and everything downstream (which models to call, which measurements matter, which report template applies, which findings are urgent) hangs off that answer. In principle the DICOM header answers it — modality, body part, protocol — but real-world metadata is famously dirty: mislabeled body parts, free-text study descriptions, protocol names that differ at every site. Robust agents therefore combine metadata with the image content itself, exactly the modality-and-anatomy scoring described throughout this atlas.
 
-This is also the first place theory meets running code: MedAI OS's suite auto-detection does precisely this routing — weighing DICOM modality, body part, and description keywords to select a clinical suite (a chest X-ray study routes to the Chest X-Ray Suite, an RTSTRUCT to radiotherapy) before any model runs. An agent that has internalized this chapter can extend that logic: recognize a contrast-phase mismatch, notice a missing MRI sequence before wasting an inference call, or refuse to run a 2D chest model on a CT scout view. Modality literacy is to imaging agents what anatomy is to medical students — the prerequisite everything else assumes.
+This routing is buildable today: weigh the DICOM modality tag, body part, and study-description keywords to pick a pipeline before any model runs — a chest radiograph routes to chest X-ray models, an RTSTRUCT to radiotherapy tooling. An agent that has internalized this chapter can extend that logic: recognize a contrast-phase mismatch, notice a missing MRI sequence before wasting an inference call, or refuse to run a 2D chest model on a CT scout view. Modality literacy is to imaging agents what anatomy is to medical students — the prerequisite everything else assumes.
 
-## Doing this in MedAI OS {.unnumbered}
+## Try it yourself {.unnumbered}
 
-The fastest way to make this atlas concrete is to load one study from each family and *feel* the differences:
+The fastest way to make this atlas concrete is to load one study from each family in a free viewer (the viewer landscape is mapped in @sec-viewers; [3D Slicer](https://www.slicer.org) handles everything below) and *feel* the differences:
 
-1. **Get sample data.** From the [medai-os repo](https://github.com/anandpreshob/medai-os), `./scripts/download-sample-data.sh` fetches public studies spanning several modalities (add `--upload` to push them into a running Orthanc PACS).
-2. **Load a radiograph vs. a CT.** Drag a chest X-ray into the viewer: one 2D frame, window/level is nearly all the interaction there is. Now load a CT: scroll the stack, switch to multi-planar reconstruction, and re-window between lung/soft-tissue/bone presets — calibrated Hounsfield units at work.
+1. **Get sample data.** 3D Slicer's built-in *Sample Data* module ships anonymized studies across modalities; public sources like the [Imaging Data Commons](https://portal.imaging.datacommons.cancer.gov/) and TCIA offer full DICOM studies to download.
+2. **Load a radiograph vs. a CT.** Open a chest X-ray: one 2D frame, window/level is nearly all the interaction there is. Now load a CT: scroll the stack, view the three orthogonal planes, and re-window between lung/soft-tissue/bone presets — calibrated Hounsfield units at work.
 3. **Load an MRI study.** Note that it arrives as *multiple series* — the sequences of this chapter — and that intensity windows that suit T1 make FLAIR unreadable: uncalibrated values, experienced firsthand.
-4. **Watch the router.** Load studies of different types and watch the Suite Selector auto-detect and switch — the agentic outlook's routing table, running live on DICOM metadata.
-5. **Formats:** the viewer's local loaders accept DICOM, NIfTI, NRRD, MHA, and TIFF — a working tour of the format landscape coming up in @sec-images-in-the-hospital.
+4. **Formats:** the same viewer opens DICOM, NIfTI, NRRD, MetaImage, and TIFF — a working tour of the format landscape coming up in @sec-images-in-the-hospital.
 
 ## Further reading
 
