@@ -182,7 +182,11 @@ Ch. 19 (platform), Ch. 20, appendices, dual glossary, full-book editing pass.
 
 ---
 
-## 7. Status (updated 2026-08-19)
+## 7. Status (updated 2026-08-23)
+
+**Part I complete (2026-08-23):** Ch. 1 (Introduction) and Ch. 3 (How Images Live in a Hospital) written, joining Ch. 2 (modality atlas) and Ch. 4 (viewers). All four render clean with resolved cross-references. Next writing step: Ch. 11 (chest X-ray flagship) or Part II foundations (Ch. 5–10, all still stubs).
+
+## 7a. Prior status (2026-08-19)
 
 **Done — Phase 0 scaffold:**
 - Quarto book scaffolded and test-rendered at `/Users/anandkadumberi/Projects/ai-medical-imaging-book` (git-initialized, `main`): full TOC as chapter stubs, living-table CSVs seeded (`data/datasets.csv`, `models.csv`, `fda-products.csv`), site-matching theme (Inter/Space Grotesk), publish workflow (GitHub Pages + website sync).

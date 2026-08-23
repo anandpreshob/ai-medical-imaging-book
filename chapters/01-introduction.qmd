@@ -1,15 +1,90 @@
 # Introduction: Why AI in Medical Imaging {#sec-introduction}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
+Somewhere tonight, a radiologist on a solo overnight shift has ninety unread studies in the queue. One of them — they don't yet know which — is an intracranial hemorrhage that will matter enormously in the next hour. The queue is sorted by arrival time. The scanner down the hall adds another CT every few minutes, each one a stack of a thousand images. This scene, repeated across thousands of hospitals every night, is the honest answer to the question in this chapter's title: not "because AI is exciting," but because medical imaging has a throughput problem that people alone can no longer absorb — and because, after a decade of false starts and real progress, software can finally carry part of the load.
+
+This book is a map of that territory: what medical images are, what machine learning genuinely does with them, and how the two meet — modality by modality, dataset by dataset, cleared product by cleared product.
+
+::: {.callout-tip title="For the clinician"}
+You will not need any machine-learning background to read this book. Every technical concept — training, overfitting, segmentation, transformers — is built from first principles in Part II before it is used. What this chapter asks of you is only a willingness to see your daily work the way an engineer does: as a pipeline of images, labels, and decisions with measurable bottlenecks.
+:::
+
+::: {.callout-tip title="For the engineer"}
+You will not need any medical background either. What you should take from this chapter is calibration: medical imaging is not "ImageNet but grayscale." The images are bigger, the labels are noisier, the stakes are asymmetric, the deployment environment is a regulated hospital network, and the gap between a strong benchmark number and a useful clinical tool is the central subject of this book — not a footnote to it.
 :::
 
 ## The scale problem
 
-<!-- Imaging volume vs. radiologist supply; global disparities. -->
+Medical imaging is the largest visual dataset humanity produces about itself. Billions of imaging exams are performed each year worldwide; the chest X-ray alone is the most common diagnostic imaging test on Earth, and a single modern hospital system generates terabytes of new pixel data every week. Nearly every consequential episode of care — the emergency visit, the cancer workup, the screening program, the surgery — runs through an image at some point. When care goes wrong for want of a diagnosis, remarkably often the information was already sitting in an image, waiting to be read.
+
+Against that volume stands a fixed and unevenly distributed supply of readers. Training a radiologist takes more than a decade; most health systems in high-income countries report shortfalls and rising backlogs, and burnout among readers is well documented. The mismatch compounds from both directions: imaging volumes grow a few percent every year, and each *study* has grown too — a CT exam that produced dozens of images in the 1990s routinely produces over a thousand today. The number of images a radiologist must interpret per minute of the working day has increased by an order of magnitude within a single career.
+
+And that is the *well-resourced* version of the problem. Globally, the World Health Organization has long estimated that a majority of the world's population lacks reliable access to basic diagnostic imaging — not because scanners are impossible to buy, but because the specialists to operate and interpret them are concentrated in wealthy cities. Radiologist density differs between high-income and low-income countries by orders of magnitude; entire nations have a handful of radiologists, or none. A tuberculosis-screening chest X-ray program in a district with no radiologist is not a hypothetical use case for automated reading — it is the setting where some of the first autonomous imaging AI actually deployed.
+
+Three consequences follow, and they frame everything in this book:
+
+1. **Prioritization is as valuable as diagnosis.** If the hemorrhage in tonight's queue is read first instead of ninetieth, the AI that reordered the queue has changed the outcome without making a single diagnosis. This is why *triage* — not autonomous interpretation — became the commercially dominant form of imaging AI.
+2. **Quantification is drudgery that machines do better.** Measuring volumes, counting lesions, tracking change across time points: humans do this slowly, inconsistently, and resentfully. Machines do it instantly and reproducibly. Much of imaging AI's quiet, unglamorous value is here.
+3. **Access is the largest prize.** In places with no reader at all, the realistic comparison for an AI system is not "expert radiologist" but "no interpretation whatsoever." That reframing changes both the ethics and the economics, and we will return to it in @sec-ethics-future.
 
 ## A short history: from CAD to foundation models
 
+Imaging AI's history matters because the field has been through a full hype cycle before, and the scars explain the caution you will encounter in every hospital.
+
+**The CAD era (1960s–2000s).** Researchers began analyzing radiographs by computer in the 1960s, and by the 1980s a systematic program of "computer-aided detection" (CAD) had formed around hand-engineered features: edge detectors, texture statistics, rule-based classifiers. It produced a genuine landmark — in 1998 the FDA approved the first commercial CAD system for mammography screening, and within a decade CAD marks on mammograms were reimbursed and widespread in the United States. Then came the sobering part: large observational studies through the 2000s found that mammography CAD, as actually used, increased recalls and biopsies without convincingly improving cancer detection. Radiologists learned to ignore the marks; hospitals kept billing for them. CAD became the field's cautionary tale — proof that regulatory clearance, reimbursement, and adoption can all occur without clinical benefit, and the reason experienced radiologists greet each new "AI assistant" with an eyebrow already raised.
+
+**The deep-learning turn (2012–2017).** In 2012 a convolutional neural network won the ImageNet competition by a margin that ended the hand-engineered-feature era in computer vision, and medical imaging followed within a few years. The years 2016–2017 produced the results that made the field believe again: diabetic-retinopathy grading from fundus photographs at specialist level, skin-cancer classification matching dermatologists on held-out test sets, and chest X-ray classifiers trained on the first large public datasets. It was also the era of peak rhetoric — 2016 brought the most famous wrong prediction in the field's history, that radiologist training should stop because the machines would arrive within five years. The machines did arrive; the radiologists, instructively, are busier than ever.
+
+**The dataset and product era (2017–2022).** What actually changed the field was less any single model than the arrival of *data at scale*: public chest X-ray collections of hundreds of thousands of studies, then equivalents for CT, mammography, retinal imaging, and pathology (the living directory in [Appendix A](../appendices/a-dataset-directory.qmd) descends directly from this era). On the product side, 2018 brought a genuine first — an autonomous diabetic-retinopathy system authorized by the FDA to make a screening decision *without* a physician reading the image — and the cleared-product catalog grew from a curiosity into an industry: on the order of a thousand AI-enabled medical devices have now been cleared, roughly three-quarters of them in radiology ([Appendix C](../appendices/c-fda-product-index.qmd)). Triage products for hemorrhage, stroke, and pulmonary embolism became the commercial core.
+
+**The foundation-model era (2022–present).** The current chapter of the story is the shift from one-model-per-task to large pretrained models adapted to many tasks: promptable segmentation models that outline arbitrary structures, open whole-body CT segmentation as free infrastructure, vision-language models that draft report text, and pathology foundation models trained on tens of thousands of slides. Layered on top is the newest ingredient — *agentic* systems that chain these models with tools, retrieval, and reasoning steps (@sec-agentic-ai). Whether this era ends in consolidation, commoditization, or another disappointment is an open question this book takes seriously rather than answers by assumption.
+
+The arc to internalize: each era overpromised, and each era nonetheless left behind something real — CAD left the regulatory pathway, deep learning left the datasets and the architectures, and the current era is leaving open models good enough to build on. The field's failures were failures of *deployment and evidence*, almost never of raw pixel-level capability. That is why this book spends as much time on evaluation, regulation, and workflow (@sec-model-to-product) as on architectures.
+
 ## What AI realistically does today — and what it doesn't
 
+Cutting through both the marketing and the backlash, the honest scorecard looks like this.
+
+**What deployed AI actually does, today, in real hospitals:**
+
+- **Triage and worklist prioritization.** Flagging likely hemorrhage, pneumothorax, PE, or large-vessel stroke so those studies are read first. The dominant cleared category; the model never renders the diagnosis, it reorders the queue.
+- **Detection assistance.** Marking candidate findings — lung nodules, polyps during live colonoscopy, breast lesions — for a human to accept or dismiss. The direct descendant of CAD, now good enough that reader studies show genuine sensitivity gains in several modalities.
+- **Quantification.** Segmenting organs and lesions, computing volumes, ejection fraction, bone density, coronary calcium; tracking change over time. The least glamorous and arguably most reliable value in the catalog.
+- **Reconstruction and image quality.** Producing diagnostic images from faster MRI acquisitions and lower CT doses — AI applied *before* any human ever sees the image, and one of the field's cleanest success stories.
+- **Narrow autonomous screening.** In a small number of tightly bounded settings — diabetic-retinopathy screening, TB screening where no reader exists — systems authorized to act without a physician in the loop.
+- **Workflow and reporting.** Study routing, protocol suggestions, prior-study retrieval, and increasingly, draft report text for a radiologist to edit.
+
+**What AI does not do — claims to treat with suspicion:**
+
+- **It does not practice radiology.** No system reads an arbitrary study, integrates the clinical history, weighs incidental findings, and produces an accountable diagnostic report. Every cleared product operates within a narrow, explicitly labeled indication — and @sec-model-to-product explains why the clearance document, not the press release, defines what a product actually does.
+- **It does not generalize by default.** A model trained at one hospital routinely degrades at the next — different scanners, protocols, patient populations, and disease prevalence. Dataset shift is the field's central technical villain, introduced properly in @sec-ml-concepts and reappearing in every modality chapter.
+- **It does not know when it is wrong.** Confidently incorrect output on out-of-distribution input remains the norm, which is why human oversight, monitoring, and fail-safe design are engineering requirements rather than regulatory decoration.
+- **It has not yet transformed outcomes at scale.** For most cleared products, the published evidence measures reader performance or turnaround time, not mortality or cost. The strongest outcome evidence lives in a few specific corners — colonoscopy adenoma detection, mammography reader studies, stroke-workflow timing — and the book flags evidence quality wherever it reports capability.
+
+If the deep-learning era proved anything, it is that *pixel-level performance is the easy two-thirds of the problem*. The remaining third — validation across sites, integration into PACS and worklists, regulatory clearance, monitoring, and earning the trust of the person whose license is on the report — is where products live or die, and it is the through-line of Parts III–V.
+
 ## How this book is organized
+
+The book is arranged so that each part stands on the one before it, but a reader with a specific need can jump straight to a modality chapter and follow the cross-references back.
+
+**Part I — The Landscape of Medical Imaging** is the ground truth about the images themselves: the complete modality atlas — what each modality measures, its dimensionality, its diagnoses (@sec-universe); how images actually live and move inside a hospital — DICOM, PACS, HL7/FHIR, de-identification (@sec-images-in-the-hospital); and the viewers you will use to look at everything in this book (@sec-viewers).
+
+**Part II — Foundations** builds the machine-learning side from zero: core ML concepts including the transfer-learning ideas that power everything in medical imaging (@sec-ml-concepts); the computer-vision task taxonomy and its evaluation metrics (@sec-cv-tasks); deep-learning architectures from CNNs to promptable segmentation (@sec-architectures); generative, vision-language, and foundation models (@sec-frontier-models); agentic AI as a first-class topic (@sec-agentic-ai); and the road from model to product — validation, FDA/CE regulation, deployment (@sec-model-to-product).
+
+**Parts III and IV — Modality by Modality** are the heart of the book: chest X-ray as the flagship template (@sec-chest-xray), then CT, MRI, ultrasound and echo, mammography, nuclear medicine, ophthalmic imaging, surgical and endoscopic video, digital pathology, and a condensed sweep of everything else (@sec-remaining-map). Every chapter follows the same skeleton — physics, clinical use, hospital workflow, then the *living tables* of public datasets, open models, and FDA-cleared products, then open challenges and the agentic outlook — so that once you have read one, you know where everything is in all of them.
+
+**Part V — Systems and the Road Ahead** covers building an imaging AI platform end-to-end (@sec-platform) and the ethics, bias, safety, and future questions that determine whether any of this deserves to be deployed (@sec-ethics-future).
+
+The **appendices** hold the master living tables — datasets, models, cleared products — plus a DICOM quick reference and a dual glossary that translates clinical language for engineers and ML language for clinicians. The tables are generated from CSV files in the book's repository precisely so they can stay current: the landscape described in prose moves slowly; the landscape enumerated in tables moves monthly.
+
+Three reading tracks run through every chapter. **Clinicians** can trust that no ML concept is used before it is explained. **Engineers** can trust the same about clinical concepts. And because software increasingly reads alongside people, the book is deliberately structured for **AI agents** too — fixed chapter skeletons, machine-readable tables, plain-markdown source — a design choice explained in the preface and exercised in every chapter's "agentic outlook" section.
+
+## The agentic outlook
+
+Each chapter of this book closes by asking how autonomous, tool-calling systems change its subject; the introduction's answer is the frame for all the others. The first wave of imaging AI produced *models* — functions from pixels to predictions, each wrapped in its own product. The wave now arriving produces *agents* — systems that decide which study to examine, which models to invoke, which measurements to make, what to draft, and when to escalate to a human. That shift moves the interesting engineering from the model to the harness around it: routing (@sec-universe), data plumbing (@sec-images-in-the-hospital), tool interfaces (@sec-viewers), orchestration (@sec-agentic-ai), and accountability (@sec-model-to-product, @sec-ethics-future). If the last decade's question was *"can a network see the finding?"*, this decade's is *"can a system be trusted with the workflow?"* — and answering it requires exactly the combination of clinical grounding and engineering literacy this book exists to provide.
+
+## Further reading
+
+- Fenton et al., "Influence of computer-aided detection on performance of screening mammography," *NEJM* (2007) — the study that defined the CAD era's lesson.
+- Gulshan et al., "Development and validation of a deep learning algorithm for detection of diabetic retinopathy," *JAMA* (2016), and Esteva et al., "Dermatologist-level classification of skin cancer," *Nature* (2017) — the papers that opened the deep-learning era in medicine.
+- Rajpurkar et al., "AI in health and medicine," *Nature Medicine* (2022) — a broad, sober survey of the field's state at the end of the dataset era.
+- The FDA's public list of AI/ML-enabled medical devices — the primary source behind [Appendix C](../appendices/c-fda-product-index.qmd), and the single most grounding document a newcomer can skim.
