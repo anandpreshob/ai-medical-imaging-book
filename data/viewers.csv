@@ -1,0 +1,15 @@
+viewer,platforms,key formats,license,cost,cleared for diagnosis,best for
+3D Slicer,Win / macOS / Linux,"DICOM, NRRD, NIfTI, MetaImage, VTK, STL",BSD-style (permissive),Free,No,"3D research workhorse: segmentation, registration, AI extensions"
+ITK-SNAP,Win / macOS / Linux,"DICOM, NIfTI, NRRD, Analyze, MGH",GPL,Free,No,Focused manual + semi-automatic 3D segmentation
+napari,Win / macOS / Linux (Python),"TIFF/OME-Zarr native; DICOM, NIfTI, NRRD via plugins",BSD-3,Free,No,Python-scriptable n-D viewing inside an ML workflow
+ImageJ / Fiji,Win / macOS / Linux (Java),"TIFF + ~160 formats via Bio-Formats (OME-TIFF, basic DICOM)",Public domain / GPL (Fiji),Free,No,2D scientific image analysis and batch macros
+QuPath,Win / macOS / Linux (Java),"Whole-slide: SVS, NDPI, OME-TIFF, and more (OpenSlide/Bio-Formats)",GPLv3,Free,No,Gigapixel pathology slides: viewing + cell-level analysis
+OHIF Viewer,Any browser (zero-footprint),DICOM via DICOMweb (incl. SEG / RTSTRUCT / SR),MIT,Free,No (framework),Embedding a web viewer into your own application
+Weasis,Win / macOS / Linux + web launch,DICOM (+ DICOMweb),EPL-2.0 / Apache-2.0,Free,No,Free desktop DICOM viewer with PACS/HIS integration
+Horos,macOS only,DICOM,LGPL,Free,No,Free Mac DICOM viewer (OsiriX lineage)
+OsiriX MD,macOS only,DICOM,Commercial,"~$70/mo or one-time license",Yes — FDA Class II / CE,Clinical-grade reading on a Mac
+RadiAnt,Windows only,DICOM,Commercial,"Paid license (free trial)",No (EU CE only),"Fast, lightweight Windows DICOM browsing"
+MicroDicom,Windows only,DICOM,Proprietary freeware,Free (non-commercial),No,Quick free DICOM viewing on Windows
+FSLeyes,Win / macOS / Linux (Python),"NIfTI, GIFTI, DICOM (basic)",Apache-style (FSL terms; free for non-commercial),Free (academic),No,"Neuroimaging: overlays, atlases, fMRI/DTI display"
+NiiVue,Any browser (JS/WebGL library),"NIfTI, DICOM, meshes, tractography",BSD-2,Free,No,Embedding neuro visualization into web pages and notebooks
+MIM,Win / macOS (enterprise),"DICOM (incl. RT objects, PET/CT fusion)",Commercial,Quote-based,Yes — FDA-cleared modules,"Enterprise radiation-oncology and nuclear-medicine workflows"

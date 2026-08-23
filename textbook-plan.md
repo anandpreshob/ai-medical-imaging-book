@@ -82,6 +82,9 @@ The complete modality atlas — every modality, every dimension. Projection radi
 **Ch. 3 — How Images Live in a Hospital**
 DICOM (the standard, metadata, why it matters for ML), NIfTI/NRRD and research formats, PACS/RIS/EHR, DICOMweb, HL7/FHIR, the acquisition→storage→reading→report loop, de-identification and data governance.
 
+**Ch. 4 — Medical Image Viewers** *(added 2026-08-23; shifts all later numbering by one — the live `_quarto.yml` is the numbering source of truth)*
+A field guide to the viewer landscape: research workhorses (3D Slicer, ITK-SNAP, napari, ImageJ/Fiji, QuPath), web viewers and components (OHIF/Cornerstone3D, Weasis, NiiVue), desktop DICOM viewers (Horos/OsiriX, RadiAnt, MicroDicom), neuro specialists (FSLeyes), and the cleared clinical tier (MIM, OsiriX MD). Per viewer: formats, installation, license, cost, diagnostic-clearance status. Living table: `data/viewers.csv`.
+
 ### Part II — Foundations: Machine Learning & Computer Vision
 
 **Ch. 4 — Machine Learning: The Concepts**

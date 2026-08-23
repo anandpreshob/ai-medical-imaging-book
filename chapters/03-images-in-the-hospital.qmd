@@ -8,6 +8,7 @@
 <!-- Structure, metadata, why it matters for ML. -->
 
 ## Research formats: NIfTI, NRRD and friends
+<!-- Point to @sec-viewers for the tools that open all of these. -->
 
 ## PACS, RIS, EHR and how they talk
 <!-- DICOMweb, HL7/FHIR. -->

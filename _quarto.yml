@@ -22,32 +22,33 @@ book:
         - chapters/01-introduction.qmd
         - chapters/02-universe-of-medical-images.qmd
         - chapters/03-images-in-the-hospital.qmd
+        - chapters/04-medical-image-viewers.qmd
     - part: "II — Foundations: Machine Learning & Computer Vision"
       chapters:
-        - chapters/04-machine-learning-concepts.qmd
-        - chapters/05-what-computer-vision-can-do.qmd
-        - chapters/06-deep-learning-architectures.qmd
-        - chapters/07-generative-and-frontier-models.qmd
-        - chapters/08-agentic-ai.qmd
-        - chapters/09-from-model-to-product.qmd
+        - chapters/05-machine-learning-concepts.qmd
+        - chapters/06-what-computer-vision-can-do.qmd
+        - chapters/07-deep-learning-architectures.qmd
+        - chapters/08-generative-and-frontier-models.qmd
+        - chapters/09-agentic-ai.qmd
+        - chapters/10-from-model-to-product.qmd
     - part: "III — Diagnostic Imaging, Modality by Modality"
       chapters:
-        - chapters/10-chest-xray.qmd
-        - chapters/11-computed-tomography.qmd
-        - chapters/12-mri.qmd
-        - chapters/13-ultrasound-echo.qmd
-        - chapters/14-mammography.qmd
-        - chapters/15-nuclear-medicine.qmd
-        - chapters/16-ophthalmic-imaging.qmd
+        - chapters/11-chest-xray.qmd
+        - chapters/12-computed-tomography.qmd
+        - chapters/13-mri.qmd
+        - chapters/14-ultrasound-echo.qmd
+        - chapters/15-mammography.qmd
+        - chapters/16-nuclear-medicine.qmd
+        - chapters/17-ophthalmic-imaging.qmd
     - part: "IV — Interventional, Lab-Based & Video"
       chapters:
-        - chapters/17-surgical-endoscopic-video.qmd
-        - chapters/18-digital-pathology.qmd
-        - chapters/19-the-remaining-map.qmd
+        - chapters/18-surgical-endoscopic-video.qmd
+        - chapters/19-digital-pathology.qmd
+        - chapters/20-the-remaining-map.qmd
     - part: "V — Systems & The Road Ahead"
       chapters:
-        - chapters/20-building-an-imaging-ai-platform.qmd
-        - chapters/21-ethics-bias-future.qmd
+        - chapters/21-building-an-imaging-ai-platform.qmd
+        - chapters/22-ethics-bias-future.qmd
   appendices:
     - appendices/a-dataset-directory.qmd
     - appendices/b-model-zoo.qmd
