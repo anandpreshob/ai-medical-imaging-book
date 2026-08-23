@@ -131,7 +131,7 @@ Everything so far produces a study to be read *after* acquisition. This family i
 ::: {layout-ncol=2}
 ![Endoscopy is ordinary light from inside the body — a camera at the scope tip streaming HD video as the operator navigates.](../figures/ch02/endo-acquisition.png){#fig-endo-acq fig-alt="Illustration of a flexible endoscope inside the colon with the video view on a monitor."}
 
-![Colonoscopy view of a colonic polyp. Image: Stephen Holland, M.D. ([CC BY 2.5](https://creativecommons.org/licenses/by/2.5/)).](../figures/ch02/endo-example.png){#fig-endo-ex fig-alt="Colonoscopy image showing a smooth polyp projecting from the colonic mucosa."}
+![Colonoscopy view of a colonic polyp. Image: Stephen Holland, M.D. ([CC BY 2.5](https://creativecommons.org/licenses/by/2.5/)).](../figures/ch02/endo-colonoscopy-example.png){#fig-endo-ex fig-alt="Colonoscopy image showing a smooth polyp projecting from the colonic mucosa."}
 :::
 
 ### Surgical and interventional video
