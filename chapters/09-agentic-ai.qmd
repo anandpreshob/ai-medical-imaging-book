@@ -1,51 +1,86 @@
 # Agentic AI in Medical Imaging {#sec-agentic-ai}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
+The models in @sec-frontier-models answer questions when asked. An **agent** goes further: it decides which questions to ask, chooses and calls tools, observes the results, and iterates until the task is done. In medical imaging that means a system that receives a study, decides which models to run, queries priors and measurements, and drafts a report — always under human oversight. This chapter explains how such a system is built, what it changes about imaging workflow, and why evaluating and regulating it is harder than regulating a single model.
+
+::: {.callout-tip title="For the engineer"}
+The hard problems in agentic imaging are not model problems. They are interface problems (what does the hospital actually expose?), safety problems (what happens when a tool call is wrong?), and audit problems (how do you reconstruct what happened after the fact?). Everything below is organized around those constraints.
 :::
 
-<!-- The harness chapter: how LLM-driven agents with tools actually work, and what
-     they change in imaging. Referenced by "The agentic outlook" section in every
-     modality chapter. -->
+::: {.callout-tip title="For the clinician"}
+Think of an agent not as a smarter radiologist but as a very capable assistant with a very literal mind: it will follow instructions, call tools, and compose results — but every step it takes on your behalf must be visible, reviewable, and reversible. The sections below explain what that means in practice.
+:::
 
 ## What is an agent?
 
 <!-- Model vs. harness: an LLM plus tools, memory, planning, and an environment.
      Agent vs. workflow vs. copilot. Levels of autonomy. -->
+- **Model** — a language or vision-language model that maps input to output in a single pass.
+- **Harness** — the software around the model: tools it can call, memory it can read and write, the rules it follows, the environment it acts in.
+- **Agent** — the combination: a model *plus a harness*, able to plan, act, observe results, and iterate.
+
+The distinction matters because the intelligence of an agent is not only in the model. A brilliant model with a broken tool interface, no memory of prior turns, and no ability to ask for help will be less useful than a smaller model with a well-designed harness.
+
+**Agent versus workflow versus copilot.** A *workflow* is a fixed pipeline: every step is coded in advance. An *agent* decides its own path within a defined space of actions. A *copilot* suggests actions but a human executes them. These are points on an autonomy spectrum, not binary categories, and the right point depends on how much trust the system has earned and how consequential each action is.
 
 ## Anatomy of a harness
 
-<!-- Tool schemas and function calling; context management; the Model Context
-     Protocol (MCP) as the emerging standard for tool access; sandboxing and
-     permissioning; audit logging of every tool call. -->
+A harness gives an LLM agency: the ability to act, remember, and be held accountable.
+
+- **Tool schemas and function calling.** Machine-readable descriptions of each tool — name, inputs, outputs, side effects. Function calling translates the model's decision to use a tool into an actual API invocation and returns the result to the model.
+- **Context management.** The model has a finite context window. A good harness manages what enters it: relevant prior images, previous tool results, the current task, the user's intent — and summarizes or discards what is no longer needed.
+- **Memory.** Distinguishing *working memory* (current task context), *task memory* (what happened earlier this session), and *institutional memory* (departmental protocols, prior cases) is a design decision with safety implications: what the agent remembers shapes what it does next.
+- **The Model Context Protocol (MCP).** An emerging open standard for how a model connects to tools and data sources — a common interface so tools written for one harness work with another.
+- **Sandboxing and permissioning.** Every tool call is a potential action in the real world — a DICOM query reveals PHI, a report draft could reach the EHR. A harness must enforce least privilege: only the access needed for the current task, and dangerous actions require explicit human approval.
+- **Audit logging.** Every tool call, model decision, and piece of context consulted — recorded so the session can be replayed. This is the foundation of both debugging and regulatory compliance (@sec-model-to-product).
 
 ## Tools an imaging agent calls
 
-<!-- The hospital as a toolbox: DICOMweb queries as tools, segmentation and
-     detection models as tools, measurement/analytics endpoints, report
-     generators, the EHR via FHIR. Structured outputs as the glue. -->
+The hospital is already a toolbox. The agent's job is to use it safely and legibly:
+
+- **DICOMweb queries** — search studies, retrieve images, fetch metadata. Read-only versions are the safest first tools to expose.
+- **Segmentation and detection models** — the discriminative AI of @sec-architectures, invoked as services: "run lung nodule detection on this CT."
+- **Measurement and analytics endpoints** — volume calculators, change-detection tools, quantitative imaging biomarkers.
+- **Report generators and templates** — convert structured model output into report-ready language or structured fields.
+- **The EHR via FHIR** — lab values, clinical history, prior reports. The most sensitive tool in the box: every query touches PHI and must be logged.
+
+The design principle is the same as in software engineering: **small, well-typed, side-effect-aware tools beat one giant "do the radiology" tool.**
 
 ## Orchestration patterns
 
-<!-- Single agent + tools; planner–executor; multi-agent (triage agent, reader
-     agent, QA agent); human-in-the-loop gates and when they are non-negotiable. -->
+1. **Single agent + tools.** One model, given tool access, plans and acts in a loop. Simple to build, audit, and reason about; appropriate for bounded tasks ("summarize this study's findings").
+2. **Planner–executor.** A planner decomposes the task ("what do I need to know before drafting this report?") and an executor runs each step. Separating *what to do* from *how to do it* makes both easier to test.
+3. **Multi-agent systems.** Specialized agents — triage, reading, quality assurance — collaborate, each with its own scope and tools. Expressive, but harder to evaluate, and errors can compound across agent boundaries.
+4. **Human-in-the-loop gates.** Non-negotiable for any action that reaches the patient record: a human must review and approve before a report is signed, a measurement enters the chart, or a finding is communicated. Autonomy in imaging is earned one task at a time, and the default gate is always a clinician.
 
 ## Agents as readers: machine-readable medical knowledge
 
-<!-- Why this book is written for agents too: plain-markdown chapters, living
-     tables as CSVs, llms.txt. How an agent should consume a modality chapter:
-     the finding taxonomy, the dataset/model/product tables, the workflow
-     description — each maps to a decision the agent makes. -->
+This book is written for human readers, but also so that *machines* can read it: chapters in plain Markdown, living tables in CSV, and an `llms.txt` at the root pointing agents to what exists and how it is organized.
+
+An imaging agent that needs to know "what datasets exist for mammography?" or "which FDA-cleared products detect breast cancer?" should not guess from parametric memory. It should read the chapter, find the table, and consume the authoritative current data directly. Each section of a modality chapter maps to a decision the agent might need to make:
+
+- The **finding taxonomy** tells it what outputs to look for.
+- The **dataset table** tells it where to find training or evaluation data.
+- The **model zoo** tells it which tools are available.
+- The **product table** tells it what is actually deployed and cleared.
+- The **workflow description** tells it where its output fits in the clinical process.
+
+Writing for agents alongside humans is what makes the difference between an agent that hallucinates its knowledge of the field and one that can be pointed at a reliable source and told "look it up."
 
 ## Evaluating agentic systems
 
-<!-- Task-completion benchmarks vs. step-level correctness; safety evals;
-     trajectory audits; why single-model metrics (AUROC, Dice) don't compose
-     into system-level guarantees. -->
+- **Task-completion benchmarks** ask whether the agent achieved the goal — right report, right tools, right answer.
+- **Step-level correctness** asks whether each individual decision was right, even if the final answer was. An agent that reaches the correct diagnosis via a hallucinated prior study has not earned trust.
+- **Safety evals** specifically test the failure modes that matter: can the agent be tricked into calling a tool it should not, exfiltrating PHI, or signing a report without human review?
+- **Trajectory audits** reconstruct the full chain of decisions and tool calls for review. In regulated environments, the trajectory *is* the record.
+
+The deeper point: **single-model metrics do not compose.** A segmentation model with 0.90 Dice and a report generator with 95% faithfulness do not yield a 0.95-probability-of-correct-system when composed in an agent. System-level evaluation must measure the emergent behavior of the whole pipeline — which is why @sec-model-to-product's post-market surveillance and audit-trail discussions matter more for agents than for single-model deployments.
 
 ## Safety, liability and the regulatory frontier
 
-<!-- No FDA framework yet fits a tool-calling agent; predetermined change
-     control plans; the audit-trail imperative. Bridge to @sec-model-to-product. -->
+- **No regulatory framework yet fits a tool-calling agent.** FDA pathways (@sec-model-to-product) assume a defined device with a fixed function and a change-control plan. An agent whose behavior emerges from a model, a set of tools, and its environment does not map cleanly onto that framework, and regulators are still catching up.
+- **Predetermined change control plans (PCCPs)** — pre-agreed plans for how a model may be updated and re-validated — are the closest existing mechanism, but they were designed for model updates, not agents that choose their own tool calls.
+- **The audit trail is the safety net.** Until regulation catches up, the practical safety regime is transparency: every action logged, every output attributable to a specific chain of reasoning and tool calls, and every consequential action gated by a human.
 
 ## Further reading
+
+The references for this chapter should be maintained as a living list rather than frozen at publication; the field is moving too quickly for a static bibliography to stay honest. Current primary sources include the MCP specification, the SAM and MedSAM papers, and the leading agentic-evaluation benchmarks.

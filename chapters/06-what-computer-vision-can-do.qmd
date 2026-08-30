@@ -1,31 +1,98 @@
 # What Computer Vision Can Do {#sec-cv-tasks}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
+Almost every claim in the rest of this book reduces to one of a small set of visual tasks: *is there disease in this image?*, *where is it?*, *what is its shape and extent?*, *has it changed since the last scan?*, or *what should the report say?* The task determines the data you need, the architecture you choose (@sec-architectures), and the metric that decides whether the system works. This chapter walks through those tasks, each anchored in a medical example and its standard evaluation.
+
+::: {.callout-tip title="For the engineer"}
+Resist the temptation to call everything "image classification." Choosing the right task formulation — detection instead of classification, segmentation instead of bounding boxes, ordinal regression instead of classes — is often the single highest-leverage design decision in a medical AI project.
 :::
 
-<!-- Each task defined with a medical example and its evaluation metrics. -->
+::: {.callout-tip title="For the clinician"}
+Each section below is a different answer to the question "what should the AI output look like?" A likelihood, a box, an outline, a number, a new image, or a paragraph — each carries different information and different failure modes, and knowing which you were promised is the first step in reviewing any vendor claim.
+:::
 
 ## Classification
 
+The simplest task: assign the whole image a category. *Does this chest X-ray show a pneumothorax?* The output is a score (often read as a probability) per class. Multi-label variants assign several independent yes/no answers to one image, because a real film can show cardiomegaly, effusion, and consolidation simultaneously.
+
+Medicine adds nuance to the output. **Binary** classification answers one question; **multi-label** classification answers a panel of questions at once; **ordinal** classification ranks severity (mild, moderate, severe) — and treating ordinal stages as unrelated categories throws away clinically important structure. Some outputs are better expressed as **probabilities that need calibration**: if a system says 80% and the true rate is 40% among such cases, triage logic built on that number will misbehave even if the ranking is perfect.
+
+**Metrics.** **AUROC** (area under the receiver operating characteristic curve) measures how well the system separates positives from negatives across all thresholds; **sensitivity** and **specificity** describe behavior at one chosen operating point; **precision** (positive predictive value) depends directly on disease prevalence and is therefore often the more clinically honest number.
 ## Detection and localization
 
+Detection answers *where is it?* by drawing a bounding box around each finding. A chest model that outputs "pneumothorax, left upper zone, box at x=..." supports a workflow a bare yes/no cannot: the reader's eye is drawn to the region, and a second read can check whether the box actually contains the finding.
+
+Standard detection metrics aggregate over classes and confidence thresholds: **mAP** (mean average precision) rewards finding the right objects with tight boxes, while **sensitivity at a fixed false-positive rate per image** is the radiology-native formulation — "how many nodules do we catch if we allow 0.125 false alarms per scan?" In practice, box quality is judged with **IoU** (intersection over union): a detection counts as correct only if its box overlaps the truth enough.
+
+For many clinical purposes, coarse localization by heatmap is enough. **Weakly supervised localization** trains on image-level labels only and then visualizes the regions the network attended to — cheap labels, approximate boxes, but often sufficient for triage.
 ## Semantic segmentation
 
+Segmentation assigns a class to every pixel: this voxel is liver, this one is tumor, this one is background. It is the workhorse of quantitative imaging — organ volumes, tumor burden, cartilage thickness, plaque composition all require a delineation before any arithmetic can happen. Modern medical segmentation is so thoroughly associated with the U-Net family and its descendants (@sec-architectures) that the architecture and the task are nearly synonymous.
+
+Two standard metrics:
+
+- **Dice coefficient** measures overlap between prediction and ground truth: 1.0 is a perfect match, 0 is no overlap. It handles class imbalance far better than pixel accuracy, which is why a 95% "accuracy" on a segmentation task where the target is 1% of the image is meaningless.
+- **Hausdorff distance** (usually the 95th-percentile variant, HD95) measures how far the predicted boundary is from the truth boundary, catching the thin tendrils and spillovers Dice can miss.
 ## Instance segmentation
 
+Where semantic segmentation answers "what class is this pixel?", instance segmentation answers "which object is this pixel part of?" It distinguishes cell *A* from cell *B* even when they touch, counts nuclei individually, and separates overlapping lung lesions. The distinction matters because counting and tracking require boundaries between instances, not just colored regions.
+
+On whole-slide pathology images this is the computational backbone of many analyses: detect and segment every nucleus, then derive grade-relevant features from their shapes and arrangements (@sec-digital-pathology).
 ## Keypoints, landmarks and registration
 
+Some clinical questions are answered by points rather than regions:
+
+- **Keypoint detection** finds anatomically defined landmarks — the corners of a vertebra, the apex of the heart, the center of a femoral head — and from those landmarks derives angles, lengths, and alignment measurements. Orthopedics, craniofacial analysis, and cardiac geometry all live here. Landmark error is usually reported in millimeters.
+- **Registration** aligns two images into a common frame: the pre-operative MRI to the intraoperative CT, this month's MRI to last year's, the motion-corrected sequence to the reference. It is the invisible plumbing behind longitudinal comparison ("has this lesion grown?") and image-guided intervention. Quality is judged by target registration error (TRE) in millimeters.
+
+Longitudinal comparison deserves emphasis: **change detection** — registering follow-up to baseline and analyzing the difference — is how growth, response to therapy, and progression are quantified, and it is one of the most immediately useful forms of AI in clinical workflow.
 ## Depth estimation
 
+Monocular depth estimation predicts how far away each pixel is from a single image. In medicine its value concentrates in video-based fields: laparoscopic surgery (@sec-surgical-video), where instrument-to-tissue distance matters for autonomy and safety, and bronchoscopy or endoscopy, where 3D scene understanding supports navigation. It is also the enabling layer behind novel-view synthesis and the reconstruction tasks in @sec-frontier-models.
+
 ## Image-to-image
-<!-- Denoising, super-resolution, modality translation. -->
+
+Image-to-image models transform one image into another while preserving spatial layout:
+
+- **Denoising and artifact removal** — reduce scan noise or motion artifacts, often to enable lower radiation dose or shorter acquisition times. Evaluation is subtle: the output must be *diagnostically* faithful, not merely pretty.
+- **Super-resolution** — synthesize a sharper, higher-resolution image from an acquired lower-resolution one. Tempting, and genuinely useful for display and downstream tasks, but it hallucinates detail where none was acquired — a caveat that matters enormously in diagnosis.
+- **Modality translation** — synthesize a CT from an MRI, or a contrast image from a non-contrast one. Clinically valuable when the target modality is expensive, uncomfortable, or unavailable, and as a data-augmentation trick to make paired datasets go further.
+- **Virtual contrast / virtual staining** — predict how tissue would appear under a stain or contrast agent that was never administered.
+
+These tasks blur into the generative methods of @sec-frontier-models; the difference is mostly in intent and evaluation. Here the goal is a *usable clinical image*; there, it is often a *realistic sample*.
 
 ## Image-to-text
-<!-- Report generation, visual question answering. -->
+
+- **Report generation** produces natural-language findings from an image. The engineering challenge is not fluency — language models produce fluent text trivially — but **faithfulness**: the report must be supported by pixels, complete, and clinically actionable. Hallucinated findings are a safety-critical failure, not an inconvenience.
+- **Visual question answering (VQA)** lets a user ask "is there a pneumothorax?" and get an answer grounded in the image. In medical use, VQA doubles as an education and second-opinion tool, but the same grounding requirement applies.
+- **Captioning and structured extraction** convert a report into structured fields or an image into a structured finding list — the quiet workhorse that connects AI analysis to the EHR.
+
+All three are vision-language problems and share machinery with the models discussed in @sec-frontier-models.
 
 ## Text-to-image
+
+Text-to-image generation in medicine serves three honest purposes: **synthetic data augmentation** (rare findings, balanced demographic representation), **education and communication** (illustrations a patient can actually understand), and **privacy-preserving research data**. It must never be conflated with diagnostic truth. A generated image can be realistic and wrong; every synthetic-image claim in this book should be read with that sentence in mind.
 <!-- Synthesis and augmentation. -->
 
 ## How we measure success
+
+Choosing the metric is choosing what the system optimizes for. The core toolkit:
+
+| Metric | Task family | What it rewards | Medical caveat |
+|---|---|---|---|
+| AUROC | classification | ranking positives above negatives | insensitive to prevalence; a great AUROC can still miss the clinically chosen threshold |
+| Sensitivity / specificity | classification | catches disease / avoids false alarms | must be reported together, at a clinically meaningful operating point |
+| Dice | segmentation | volumetric overlap | insensitive to small boundary errors that may matter |
+| HD95 | segmentation | worst-case boundary error | sensitive to outlier blobs |
+| mAP | detection | precise boxes, ranked by confidence | hides per-class behavior; small-lesion performance needs its own view |
+| F1 / IoU | instance segmentation | correct instances, not just pixels | counting accuracy often matters more |
+| Landmark error (mm) | keypoints | physical accuracy | the only metric that maps directly to anatomy |
+| Calibration (ECE) | classification | honest probabilities | essential whenever output feeds a decision threshold |
+
+Beyond any single number, three questions decide whether a metric is trustworthy:
+
+1. **What was the test set?** Patient-level splits, external validation, and representative case mix (@sec-ml-concepts).
+2. **Does the metric match the decision?** A triage tool needs high sensitivity; a quantitative biomarker needs accuracy in physical units; a report generator needs faithfulness, not BLEU score.
+3. **Is the uncertainty communicated?** A confidence estimate that is honest (calibrated) is worth more than a point prediction, especially when the downstream consumer is a clinician deciding whether to trust the output.
+
+The next chapter examines the architectures that make these outputs possible.
 <!-- AUROC, Dice, Hausdorff, mAP, calibration. -->

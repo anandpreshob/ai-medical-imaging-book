@@ -1,18 +1,60 @@
 # Machine Learning: The Concepts {#sec-ml-concepts}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
+Machine learning is the discipline of getting computers to improve at a task through exposure to examples rather than through explicit rules. Nobody writes the rule "if the lung field looks like this, say pneumonia" — instead the system sees thousands of labeled chest X-rays and adjusts itself until its guesses match the labels. This chapter builds the vocabulary used everywhere else in this book: what it means to learn from examples, what happens when labels are scarce, and why the seemingly boring discipline of splitting data correctly is the single most important habit in medical AI.
+
+::: {.callout-tip title="For the engineer"}
+Medical data breaks most of the assumptions behind standard ML practice. Patients have many images, images correlate across time, and the test set you scraped from the internet almost never resembles your hospital. Treat this chapter as a checklist of the failure modes that separate a leaderboard score from a clinically useful system.
+:::
+
+::: {.callout-tip title="For the clinician"}
+Think of machine learning as training a resident on a very large case library. The questions that matter are familiar: how many cases, how were the labels decided, how similar were they to tomorrow's patients, and has anyone watched the resident work on cases they have never seen before?
 :::
 
 ## Learning from examples: supervised learning
 
+In **supervised learning**, a model is given many input–label pairs — image plus diagnosis, scan plus lesion outline — and tunes its parameters to reproduce the labels. The typical medical example is binary classification: pass a chest X-ray through a network that outputs a number between 0 and 1, and interpret that number as "evidence of pneumothorax." During training, a **loss function** measures how far the prediction sits from the truth, and gradient descent nudges the network's millions of weights in the direction that reduces the loss.
+
+Three details matter more in medicine than elsewhere:
+
+- **Label provenance.** A "ground truth" diagnosis usually comes from a radiology report, which may itself be imperfect. Labels derived from later clinical outcomes or consensus reads by several experts are better, but costlier.
+- **Class imbalance.** Common diseases are common; rare findings may appear in fewer than 1% of images. Naive training then collapses to "always say no," which achieves 99% accuracy and catches zero cases. Solutions include re-weighting the loss, careful sampling, and reporting metrics that ignore prevalence (@sec-cv-tasks).
+- **Patient-level splits.** Two X-rays of the same patient taken a week apart are nearly identical. If one goes in training and the other in testing, the model appears to have learned medicine but has actually memorized patients. Splits must always be by patient, ideally by institution.
 ## When labels are scarce: semi- and self-supervised learning
 
+Expert labels are the most expensive input in medical AI. Several strategies stretch them:
+
+- **Semi-supervised learning** mixes a small labeled set with a large unlabeled one, often by training the model to be consistent with itself under augmentations of the same image.
+- **Self-supervised learning** invents the task: hide a patch of the image and predict it from context, or decide which of two augmentations came from the same scan. The model learns general visual features first and then needs only a modest labeled set for fine-tuning. This is exactly how a resident learns — years of looking before years of being told the answer — and it underpins most modern medical foundation models (@sec-frontier-models).
+- **Weak supervision** mines labels from the clinical record: "this report says no fracture" becomes a noisy label for a no-fracture image. Cheap and abundant, but noisy; systems that use it must model that noise explicitly.
+- **Active learning** points the labeling budget where it matters: the model requests labels only for the images it is least confident about.
 ## Finding structure: unsupervised learning and clustering
 
+**Unsupervised learning** works without labels at all. **Clustering** groups similar images, and in imaging it is most useful as a quality-control and discovery tool: which studies in a large archive look unlike anything in the training distribution? Is there a scanner in the network whose output drifts away from its peers? Which patients cluster into phenotypes nobody pre-specified?
+
+The medical-imaging variant of this idea is **out-of-distribution detection**: a model should know when it is being shown something it was never prepared for — a different scanner, an unusual view, an artifact the training data never contained. A trustworthy imaging system flags these cases rather than guessing confidently, a theme that returns when we discuss deployment in @sec-model-to-product.
 ## Learning from feedback: reinforcement learning
 
+In **reinforcement learning**, an agent learns by acting, receiving rewards, and adjusting its policy — learning from consequences rather than examples. Pure reinforcement learning has found limited direct use in static image interpretation, but two descendants matter throughout this book:
+
+- **Reinforcement learning from human feedback (RLHF)** is how large language models are aligned after pre-training — human raters compare candidate outputs and the model learns to prefer the better ones. It is the mechanism behind the conversational behavior of the models discussed in @sec-frontier-models and @sec-agentic-ai.
+- **Sequential decision problems** — choosing the next best view in ultrasound, deciding when an aspirational biopsy should be taken, planning a treatment sequence — are natural reinforcement learning tasks where the reward arrives only after several correct decisions.
 ## The discipline: train, validate, test — and overfitting
 
+The iron rule of machine learning is that a model must be judged on data it has never influenced. Practically that means three splits:
+
+- **Training set** — what the model learns from.
+- **Validation set** — used to pick hyperparameters (learning rate, architecture size, stopping point). The model never trains on it, but *you* make decisions based on it, so it leaks.
+- **Test set** — touched exactly once, at the end, to estimate real-world performance.
+
+**Overfitting** is what happens when a model learns the training examples — including their noise and their shortcuts — instead of the underlying signal. A classic medical case: a pneumonia classifier that learns to recognize the portable-scanner marker that happens to appear more often on sick patients' films. It achieves excellent accuracy on the training hospital and fails everywhere else. The defenses are unglamorous but effective: more diverse training data, augmentation (random flips, crops, intensity shifts), regularization and early stopping, and — above all — external validation on data from a different hospital, scanner population, and patient mix.
+
+The reader should hold on to one calibration habit for the rest of the book: **always ask what the test set was, and who was in it.** Every performance number quoted in later chapters is only as trustworthy as that answer.
 ## The medical-imaging superpowers
-<!-- Transfer learning, fine-tuning, domain adaptation. -->
+
+Three ideas make medical imaging tractable despite small, expensive, idiosyncratic datasets:
+
+- **Transfer learning.** Models pre-trained on millions of natural images (or self-supervised on unlabeled medical archives) already know edges, textures, and shapes. Fine-tuning such a model on a few hundred labeled medical images routinely beats training from scratch on thousands. The exception worth remembering: for some 3D modalities, natural-image pre-training helps less, and modality-specific pre-training or self-supervision wins.
+- **Fine-tuning.** Taking the pre-trained model and continuing training on the target task, often with a smaller learning rate so general features are not destroyed. Parameter-efficient variants (LoRA and similar adapters) update only a small fraction of weights — increasingly important as base models grow (@sec-frontier-models).
+- **Domain adaptation and generalization.** Scanners, protocols, and populations differ between sites. Domain adaptation techniques try to make a model trained at hospital A work at hospital B, by aligning feature distributions, harmonizing images, or training explicitly across sites. The pragmatic best practice is simpler: train on as many sites as possible, and always validate externally before trusting a number.
+
+With these concepts in place, the next chapter turns to the tasks themselves — what, exactly, computer vision systems are asked to *do* with a medical image.

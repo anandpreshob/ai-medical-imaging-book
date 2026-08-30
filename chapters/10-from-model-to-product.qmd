@@ -1,15 +1,64 @@
 # From Model to Product: Evaluation, Regulation, Deployment {#sec-model-to-product}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
+A model that performs well on a benchmark is not a product. Between "our network achieves 0.94 AUROC on the held-out test set" and "a radiologist in a hospital uses this tool on real patients every day" lies a landscape of reader studies, regulatory submissions, post-market surveillance, and operational plumbing — each of which can quietly kill a project that succeeded technically. This chapter walks that landscape, from benchmark to deployment and beyond.
+
+::: {.callout-tip title="For the engineer"}
+Everything in this chapter is about the gap between *the model works* and *the system is safe*. Benchmark numbers do not compose into clinical validity; a 510(k) clearance does not mean the tool is good; and the hardest deployment problem is usually not the model — it is the data plumbing, the version control, and the monitoring that keeps it honest after go-live.
+:::
+
+::: {.callout-tip title="For the clinician"}
+When a vendor says "FDA-cleared" or "peer-reviewed," this chapter tells you what those words actually mean — and what they do not. A clearance summary specifies what the tool was *tested to do*, on *whom*, under *what conditions*. Reading it carefully is the single most useful skill for evaluating any imaging AI product.
 :::
 
 ## Benchmark performance vs. clinical validation
-<!-- Reader studies; dataset shift and bias. -->
+
+A benchmark measures how well a model reproduces ground-truth labels on a fixed dataset. It is necessary but not sufficient, because the ground truth in a benchmark is not the ground truth in a clinic. The gap is filled by progressively more realistic evaluation:
+
+- **Retrospective validation** — run the model on historical cases and compare its output to what actually happened. Cheaper and faster, but subject to all the biases of the historical record (which patients were scanned, who got the diagnosis, which scanners were used).
+- **Reader studies** — put the model in front of clinicians and measure whether it changes their diagnostic accuracy. This is the design that matters for decision-support products: not "does the model perform well?" but "does the clinician *plus* the model perform better than the clinician alone?" Reader studies are expensive, require IRB approval, and are the standard evidence for most regulatory submissions.
+- **Prospective clinical validation** — run the model in the real clinical workflow, on consecutive patients, and measure outcomes. This is the gold standard and the rarest, because it requires an actual deployment before a full validation is complete.
+
+Two phenomena make benchmark results fragile:
+
+- **Dataset shift.** The distribution of images at hospital B will differ from hospital A — different scanners, protocols, patient demographics, disease prevalence. A model validated only at one site has not been validated for the field, and this is the most common cause of a model that looked excellent in the paper and underperforms in deployment (@sec-ml-concepts).
+- **Bias.** If the training data underrepresents certain populations — by age, sex, ethnicity, body habitus, comorbidity — the model may systematically underperform on those patients. Benchmark aggregate metrics hide this; stratified performance and subgroup analysis reveal it, and are increasingly expected by regulators (@sec-ethics-future).
 
 ## Regulatory pathways in plain language
-<!-- FDA 510(k), De Novo, PMA; CE-MDR; what a clearance summary actually claims. -->
+
+In the United States, three FDA pathways cover most imaging AI:
+
+- **510(k)** — the most common. The applicant shows that the new device is *substantially equivalent* to a legally marketed predicate device. It does not require clinical trial evidence of effectiveness in the way PMA does, and it is the pathway most AI/ML imaging software takes, usually classified as **Class II** (moderate risk).
+- **De Novo** — for devices that are genuinely new (no predicate exists) but are still low-to-moderate risk. Grants a new classification that future similar devices can then use as a predicate.
+- **PMA (Premarket Approval)** — the most rigorous pathway, for Class III (high-risk) devices. Requires clinical trial evidence of safety and effectiveness. Rare for current imaging AI, which mostly falls into Class II.
+
+In Europe, the equivalent framework is the **Medical Device Regulation (MDR)**, which classifies by risk and requires a notified body to review the technical file and issue a CE mark.
+
+What a clearance summary actually tells you: it lists the device's **indications for use** — what it is cleared to do, in what patient population, with what intended user, in what clinical setting. It does *not* tell you the tool is accurate in absolute terms, only that the manufacturer demonstrated reasonable assurance of safety and effectiveness for the specific claimed indication. Reading the indications-for-use statement carefully, and matching it to your intended use, is the essential due-diligence step.
+
+Two regulatory concepts deserve attention:
+
+- **Software as a Medical Device (SaMD).** The classification under which most imaging AI falls: software intended for medical purposes that is not part of a hardware device.
+- **Predetermined Change Control Plans (PCCPs).** FDA's mechanism for allowing AI/ML models to be updated after clearance without a new submission, by pre-agreeing the scope and validation method of those updates. This is what makes iterative improvement compatible with regulation — and its extension to agentic systems is an open question (@sec-agentic-ai).
 
 ## Post-market surveillance and audit trails
 
+Regulatory clearance is the beginning of the safety story, not the end. Once deployed, a system needs:
+
+- **Performance monitoring.** Is the model still performing as well as it did in validation? Input distributions drift — new scanners, changed protocols, evolving patient populations — and a model can degrade silently. Monitoring should track input statistics, output distributions, and (where available) downstream clinical outcomes.
+- **Adverse event reporting.** When a model contributes to a wrong diagnosis or a missed finding, that event must be reported and investigated — the same discipline as any other medical device.
+- **Audit trails.** Every input, every output, every version, every human interaction — logged and reconstructable. When something goes wrong months later, the audit trail is the only way to reconstruct what the system saw, what it output, and what the clinician did with it. For agentic systems (@sec-agentic-ai), this extends to the full trajectory of tool calls and reasoning.
+- **Version control.** Which model version was in use on the day a specific patient was seen? A deployment without precise version tracking cannot answer that question, and it will eventually need to.
+
+The operational discipline this requires is substantial, and is the reason many hospitals treat AI deployment as an ongoing clinical governance problem rather than a one-time IT project.
+
 ## MLOps for hospitals
+
+Getting a validated model into clinical use and keeping it there requires the same engineering discipline as any production ML system, adapted to healthcare's constraints:
+
+- **Data pipelines.** DICOM routing, de-identification, quality checks, and storage that respect patient privacy while feeding the model. The data engineering is usually harder than the model engineering (@sec-images-in-the-hospital).
+- **Deployment environments.** On-premise (common for hospitals with strict data-governance requirements), cloud-hosted (easier to update, harder to get through IT), or hybrid. Each has different latency, security, and update implications.
+- **Integration.** The model must plug into the radiologist's actual workflow — PACS viewer integration, worklist integration, report integration. A model that requires the radiologist to switch to a separate web portal will not be used, no matter how accurate it is.
+- **Monitoring and alerting.** Uptime, latency, and model-quality dashboards. When the model is down or degraded, the clinical team needs to know — and needs a safe fallback workflow.
+- **Model lifecycle management.** Re-training on new data, validating before deployment, staged rollouts, rollback plans. Every update to the model is a new version that must be tracked, validated, and — if the model is cleared under a PCCP — re-assessed against the pre-agreed change plan.
+
+The state of the art in hospital MLOps is still maturing; most deployments today are bespoke integrations rather than turnkey platforms. The organizations that treat AI deployment as a clinical-engineering discipline — with the same rigor as imaging physics or radiation safety — are the ones whose systems survive contact with reality.
