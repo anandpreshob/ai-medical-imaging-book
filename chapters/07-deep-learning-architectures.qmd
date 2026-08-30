@@ -14,6 +14,8 @@ You do not need the mathematics to use these systems, but the vocabulary below e
 
 A convolutional neural network (CNN) is built on one insight: visual features are local and translation-invariant. A small filter slides across the image, computing a weighted sum over a neighborhood (a 3×3 patch, say) at every position, and produces a **feature map** — a new "image" whose pixels say "how strongly does this pattern appear here?" Early layers learn edges and textures; deeper layers stack those into shapes, organs, and pathology.
 
+![A CNN builds a hierarchy of representations: local filters produce edge-sensitive feature maps, deeper layers combine them into anatomical and semantic patterns, and the compressed representation drives a prediction.](../figures/ch07/cnn-feature-hierarchy.png){#fig-cnn-feature-hierarchy fig-alt="A chest radiograph passes through a highlighted local filter, stacks of progressively smaller feature maps, deeper feature representations, and a final prediction."}
+
 Three structural ideas complete the design:
 
 - **Pooling** shrinks feature maps, giving deeper layers a wider view and some robustness to small shifts.
@@ -29,12 +31,16 @@ Classification discards spatial information; segmentation needs it back. The **e
 
 Picture a symmetric hourglass: the encoder compresses spatial detail while deepening semantics; the decoder expands back to pixel-level output; horizontal skip connections carry fine boundaries from encoder to decoder so they survive the compression. Every serious medical segmentation system since 2015 is a variation on that hourglass.
 
+![The U-Net hourglass. The encoder compresses an MRI into deep features, the decoder restores spatial resolution, and skip connections preserve fine boundary information for the final segmentation.](../figures/ch07/unet-encoder-decoder.png){#fig-unet-hourglass fig-alt="A U-shaped encoder-decoder network takes a brain MRI as input and produces a tumor segmentation, with horizontal skip connections joining matching resolution levels."}
+
 The most important descendant is not a novel architecture but a *policy*: **nnU-Net** ("no new U-Net") reads a dataset's geometry, intensity distribution, and class balance and then automatically configures preprocessing, architecture, training schedule, and ensembling. It has been the strongest general-purpose medical segmentation system for years, and its lesson is the field's most valuable engineering lesson: *meticulous, task-adapted configuration of a boring architecture beats a novel architecture trained carelessly.*
 <!-- nnU-Net as the self-configuring workhorse. -->
 
 ## Vision transformers
 
 The **vision transformer (ViT)** replaces convolutions with self-attention: the image is chopped into patches, each patch is embedded as a token, and attention layers let every token weigh information from every other token. Global relationships come for free; locality and translation-invariance must be learned or built in.
+
+![A vision transformer divides a fundus image into patches, converts the patches into tokens, and uses self-attention to combine information from distant retinal regions into a global prediction.](../figures/ch07/vision-transformer.png){#fig-vision-transformer fig-alt="A retinal fundus image is divided into a patch grid, converted to a token sequence, passed through a self-attention matrix and global representation, and classified."}
 
 In medical imaging, transformers shine where **long-range context** matters — relating a distant mass to surrounding tissue, or fusing sequences in a multi-parametric MRI study — and where scale allows: transformers are data-hungry, so they pair naturally with self-supervised pre-training on large unlabeled medical archives (@sec-frontier-models).
 
