@@ -528,15 +528,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#classification" id="toc-classification" class="nav-link active" data-scroll-target="#classification"><span class="header-section-number">6.1</span> Classification</a></li>
-  <li><a href="#detection-and-localization" id="toc-detection-and-localization" class="nav-link" data-scroll-target="#detection-and-localization"><span class="header-section-number">6.2</span> Detection and localization</a></li>
-  <li><a href="#semantic-segmentation" id="toc-semantic-segmentation" class="nav-link" data-scroll-target="#semantic-segmentation"><span class="header-section-number">6.3</span> Semantic segmentation</a></li>
-  <li><a href="#instance-segmentation" id="toc-instance-segmentation" class="nav-link" data-scroll-target="#instance-segmentation"><span class="header-section-number">6.4</span> Instance segmentation</a></li>
-  <li><a href="#keypoints-landmarks-and-registration" id="toc-keypoints-landmarks-and-registration" class="nav-link" data-scroll-target="#keypoints-landmarks-and-registration"><span class="header-section-number">6.5</span> Keypoints, landmarks and registration</a></li>
-  <li><a href="#depth-estimation" id="toc-depth-estimation" class="nav-link" data-scroll-target="#depth-estimation"><span class="header-section-number">6.6</span> Depth estimation</a></li>
-  <li><a href="#image-to-image" id="toc-image-to-image" class="nav-link" data-scroll-target="#image-to-image"><span class="header-section-number">6.7</span> Image-to-image</a></li>
-  <li><a href="#image-to-text" id="toc-image-to-text" class="nav-link" data-scroll-target="#image-to-text"><span class="header-section-number">6.8</span> Image-to-text</a></li>
-  <li><a href="#text-to-image" id="toc-text-to-image" class="nav-link" data-scroll-target="#text-to-image"><span class="header-section-number">6.9</span> Text-to-image</a></li>
-  <li><a href="#how-we-measure-success" id="toc-how-we-measure-success" class="nav-link" data-scroll-target="#how-we-measure-success"><span class="header-section-number">6.10</span> How we measure success</a></li>
+  <li><a href="#image-to-image" id="toc-image-to-image" class="nav-link" data-scroll-target="#image-to-image"><span class="header-section-number">6.2</span> Image-to-image</a></li>
+  <li><a href="#image-to-text" id="toc-image-to-text" class="nav-link" data-scroll-target="#image-to-text"><span class="header-section-number">6.3</span> Image-to-text</a></li>
+  <li><a href="#text-to-image" id="toc-text-to-image" class="nav-link" data-scroll-target="#text-to-image"><span class="header-section-number">6.4</span> Text-to-image</a></li>
+  <li><a href="#how-we-measure-success" id="toc-how-we-measure-success" class="nav-link" data-scroll-target="#how-we-measure-success"><span class="header-section-number">6.5</span> How we measure success</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/06-what-computer-vision-can-do.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -563,53 +558,157 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Almost every claim in the rest of this book reduces to one of a small set of visual tasks: <em>is there disease in this image?</em>, <em>where is it?</em>, <em>what is its shape and extent?</em>, <em>has it changed since the last scan?</em>, or <em>what should the report say?</em> The task determines the data you need, the architecture you choose (<a href="07-deep-learning-architectures.html" class="quarto-xref"><span>Chapter 7</span></a>), and the metric that decides whether the system works. This chapter walks through those tasks, each anchored in a medical example and its standard evaluation.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the engineer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Resist the temptation to call everything “image classification.” Choosing the right task formulation — detection instead of classification, segmentation instead of bounding boxes, ordinal regression instead of classes — is often the single highest-leverage design decision in a medical AI project.</p>
 </div>
 </div>
-<!-- Each task defined with a medical example and its evaluation metrics. -->
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the clinician
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each section below is a different answer to the question “what should the AI output look like?” A likelihood, a box, an outline, a number, a new image, or a paragraph — each carries different information and different failure modes, and knowing which you were promised is the first step in reviewing any vendor claim.</p>
+</div>
+</div>
 <section id="classification" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="classification"><span class="header-section-number">6.1</span> Classification</h2>
+<p>The simplest task: assign the whole image a category. <em>Does this chest X-ray show a pneumothorax?</em> The output is a score (often read as a probability) per class. Multi-label variants assign several independent yes/no answers to one image, because a real film can show cardiomegaly, effusion, and consolidation simultaneously.</p>
+<p>Medicine adds nuance to the output. <strong>Binary</strong> classification answers one question; <strong>multi-label</strong> classification answers a panel of questions at once; <strong>ordinal</strong> classification ranks severity (mild, moderate, severe) — and treating ordinal stages as unrelated categories throws away clinically important structure. Some outputs are better expressed as <strong>probabilities that need calibration</strong>: if a system says 80% and the true rate is 40% among such cases, triage logic built on that number will misbehave even if the ranking is perfect.</p>
+<p><strong>Metrics.</strong> <strong>AUROC</strong> (area under the receiver operating characteristic curve) measures how well the system separates positives from negatives across all thresholds; <strong>sensitivity</strong> and <strong>specificity</strong> describe behavior at one chosen operating point; <strong>precision</strong> (positive predictive value) depends directly on disease prevalence and is therefore often the more clinically honest number. ## Detection and localization</p>
+<p>Detection answers <em>where is it?</em> by drawing a bounding box around each finding. A chest model that outputs “pneumothorax, left upper zone, box at x=…” supports a workflow a bare yes/no cannot: the reader’s eye is drawn to the region, and a second read can check whether the box actually contains the finding.</p>
+<p>Standard detection metrics aggregate over classes and confidence thresholds: <strong>mAP</strong> (mean average precision) rewards finding the right objects with tight boxes, while <strong>sensitivity at a fixed false-positive rate per image</strong> is the radiology-native formulation — “how many nodules do we catch if we allow 0.125 false alarms per scan?” In practice, box quality is judged with <strong>IoU</strong> (intersection over union): a detection counts as correct only if its box overlaps the truth enough.</p>
+<p>For many clinical purposes, coarse localization by heatmap is enough. <strong>Weakly supervised localization</strong> trains on image-level labels only and then visualizes the regions the network attended to — cheap labels, approximate boxes, but often sufficient for triage. ## Semantic segmentation</p>
+<p>Segmentation assigns a class to every pixel: this voxel is liver, this one is tumor, this one is background. It is the workhorse of quantitative imaging — organ volumes, tumor burden, cartilage thickness, plaque composition all require a delineation before any arithmetic can happen. Modern medical segmentation is so thoroughly associated with the U-Net family and its descendants (<a href="07-deep-learning-architectures.html" class="quarto-xref"><span>Chapter 7</span></a>) that the architecture and the task are nearly synonymous.</p>
+<p>Two standard metrics:</p>
+<ul>
+<li><strong>Dice coefficient</strong> measures overlap between prediction and ground truth: 1.0 is a perfect match, 0 is no overlap. It handles class imbalance far better than pixel accuracy, which is why a 95% “accuracy” on a segmentation task where the target is 1% of the image is meaningless.</li>
+<li><strong>Hausdorff distance</strong> (usually the 95th-percentile variant, HD95) measures how far the predicted boundary is from the truth boundary, catching the thin tendrils and spillovers Dice can miss. ## Instance segmentation</li>
+</ul>
+<p>Where semantic segmentation answers “what class is this pixel?”, instance segmentation answers “which object is this pixel part of?” It distinguishes cell <em>A</em> from cell <em>B</em> even when they touch, counts nuclei individually, and separates overlapping lung lesions. The distinction matters because counting and tracking require boundaries between instances, not just colored regions.</p>
+<p>On whole-slide pathology images this is the computational backbone of many analyses: detect and segment every nucleus, then derive grade-relevant features from their shapes and arrangements (<a href="19-digital-pathology.html" class="quarto-xref"><span>Chapter 19</span></a>). ## Keypoints, landmarks and registration</p>
+<p>Some clinical questions are answered by points rather than regions:</p>
+<ul>
+<li><strong>Keypoint detection</strong> finds anatomically defined landmarks — the corners of a vertebra, the apex of the heart, the center of a femoral head — and from those landmarks derives angles, lengths, and alignment measurements. Orthopedics, craniofacial analysis, and cardiac geometry all live here. Landmark error is usually reported in millimeters.</li>
+<li><strong>Registration</strong> aligns two images into a common frame: the pre-operative MRI to the intraoperative CT, this month’s MRI to last year’s, the motion-corrected sequence to the reference. It is the invisible plumbing behind longitudinal comparison (“has this lesion grown?”) and image-guided intervention. Quality is judged by target registration error (TRE) in millimeters.</li>
+</ul>
+<p>Longitudinal comparison deserves emphasis: <strong>change detection</strong> — registering follow-up to baseline and analyzing the difference — is how growth, response to therapy, and progression are quantified, and it is one of the most immediately useful forms of AI in clinical workflow. ## Depth estimation</p>
+<p>Monocular depth estimation predicts how far away each pixel is from a single image. In medicine its value concentrates in video-based fields: laparoscopic surgery (<a href="18-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 18</span></a>), where instrument-to-tissue distance matters for autonomy and safety, and bronchoscopy or endoscopy, where 3D scene understanding supports navigation. It is also the enabling layer behind novel-view synthesis and the reconstruction tasks in <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 </section>
-<section id="detection-and-localization" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="detection-and-localization"><span class="header-section-number">6.2</span> Detection and localization</h2>
+<section id="image-to-image" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="image-to-image"><span class="header-section-number">6.2</span> Image-to-image</h2>
+<p>Image-to-image models transform one image into another while preserving spatial layout:</p>
+<ul>
+<li><strong>Denoising and artifact removal</strong> — reduce scan noise or motion artifacts, often to enable lower radiation dose or shorter acquisition times. Evaluation is subtle: the output must be <em>diagnostically</em> faithful, not merely pretty.</li>
+<li><strong>Super-resolution</strong> — synthesize a sharper, higher-resolution image from an acquired lower-resolution one. Tempting, and genuinely useful for display and downstream tasks, but it hallucinates detail where none was acquired — a caveat that matters enormously in diagnosis.</li>
+<li><strong>Modality translation</strong> — synthesize a CT from an MRI, or a contrast image from a non-contrast one. Clinically valuable when the target modality is expensive, uncomfortable, or unavailable, and as a data-augmentation trick to make paired datasets go further.</li>
+<li><strong>Virtual contrast / virtual staining</strong> — predict how tissue would appear under a stain or contrast agent that was never administered.</li>
+</ul>
+<p>These tasks blur into the generative methods of <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>; the difference is mostly in intent and evaluation. Here the goal is a <em>usable clinical image</em>; there, it is often a <em>realistic sample</em>.</p>
 </section>
-<section id="semantic-segmentation" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="semantic-segmentation"><span class="header-section-number">6.3</span> Semantic segmentation</h2>
+<section id="image-to-text" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="image-to-text"><span class="header-section-number">6.3</span> Image-to-text</h2>
+<ul>
+<li><strong>Report generation</strong> produces natural-language findings from an image. The engineering challenge is not fluency — language models produce fluent text trivially — but <strong>faithfulness</strong>: the report must be supported by pixels, complete, and clinically actionable. Hallucinated findings are a safety-critical failure, not an inconvenience.</li>
+<li><strong>Visual question answering (VQA)</strong> lets a user ask “is there a pneumothorax?” and get an answer grounded in the image. In medical use, VQA doubles as an education and second-opinion tool, but the same grounding requirement applies.</li>
+<li><strong>Captioning and structured extraction</strong> convert a report into structured fields or an image into a structured finding list — the quiet workhorse that connects AI analysis to the EHR.</li>
+</ul>
+<p>All three are vision-language problems and share machinery with the models discussed in <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 </section>
-<section id="instance-segmentation" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="instance-segmentation"><span class="header-section-number">6.4</span> Instance segmentation</h2>
+<section id="text-to-image" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="text-to-image"><span class="header-section-number">6.4</span> Text-to-image</h2>
+<p>Text-to-image generation in medicine serves three honest purposes: <strong>synthetic data augmentation</strong> (rare findings, balanced demographic representation), <strong>education and communication</strong> (illustrations a patient can actually understand), and <strong>privacy-preserving research data</strong>. It must never be conflated with diagnostic truth. A generated image can be realistic and wrong; every synthetic-image claim in this book should be read with that sentence in mind. <!-- Synthesis and augmentation. --></p>
 </section>
-<section id="keypoints-landmarks-and-registration" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="keypoints-landmarks-and-registration"><span class="header-section-number">6.5</span> Keypoints, landmarks and registration</h2>
-</section>
-<section id="depth-estimation" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="depth-estimation"><span class="header-section-number">6.6</span> Depth estimation</h2>
-</section>
-<section id="image-to-image" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="image-to-image"><span class="header-section-number">6.7</span> Image-to-image</h2>
-<!-- Denoising, super-resolution, modality translation. -->
-</section>
-<section id="image-to-text" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="image-to-text"><span class="header-section-number">6.8</span> Image-to-text</h2>
-<!-- Report generation, visual question answering. -->
-</section>
-<section id="text-to-image" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="text-to-image"><span class="header-section-number">6.9</span> Text-to-image</h2>
-<!-- Synthesis and augmentation. -->
-</section>
-<section id="how-we-measure-success" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="how-we-measure-success"><span class="header-section-number">6.10</span> How we measure success</h2>
-<!-- AUROC, Dice, Hausdorff, mAP, calibration. -->
+<section id="how-we-measure-success" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="how-we-measure-success"><span class="header-section-number">6.5</span> How we measure success</h2>
+<p>Choosing the metric is choosing what the system optimizes for. The core toolkit:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Task family</th>
+<th>What it rewards</th>
+<th>Medical caveat</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AUROC</td>
+<td>classification</td>
+<td>ranking positives above negatives</td>
+<td>insensitive to prevalence; a great AUROC can still miss the clinically chosen threshold</td>
+</tr>
+<tr class="even">
+<td>Sensitivity / specificity</td>
+<td>classification</td>
+<td>catches disease / avoids false alarms</td>
+<td>must be reported together, at a clinically meaningful operating point</td>
+</tr>
+<tr class="odd">
+<td>Dice</td>
+<td>segmentation</td>
+<td>volumetric overlap</td>
+<td>insensitive to small boundary errors that may matter</td>
+</tr>
+<tr class="even">
+<td>HD95</td>
+<td>segmentation</td>
+<td>worst-case boundary error</td>
+<td>sensitive to outlier blobs</td>
+</tr>
+<tr class="odd">
+<td>mAP</td>
+<td>detection</td>
+<td>precise boxes, ranked by confidence</td>
+<td>hides per-class behavior; small-lesion performance needs its own view</td>
+</tr>
+<tr class="even">
+<td>F1 / IoU</td>
+<td>instance segmentation</td>
+<td>correct instances, not just pixels</td>
+<td>counting accuracy often matters more</td>
+</tr>
+<tr class="odd">
+<td>Landmark error (mm)</td>
+<td>keypoints</td>
+<td>physical accuracy</td>
+<td>the only metric that maps directly to anatomy</td>
+</tr>
+<tr class="even">
+<td>Calibration (ECE)</td>
+<td>classification</td>
+<td>honest probabilities</td>
+<td>essential whenever output feeds a decision threshold</td>
+</tr>
+</tbody>
+</table>
+<p>Beyond any single number, three questions decide whether a metric is trustworthy:</p>
+<ol type="1">
+<li><strong>What was the test set?</strong> Patient-level splits, external validation, and representative case mix (<a href="05-machine-learning-concepts.html" class="quarto-xref"><span>Chapter 5</span></a>).</li>
+<li><strong>Does the metric match the decision?</strong> A triage tool needs high sensitivity; a quantitative biomarker needs accuracy in physical units; a report generator needs faithfulness, not BLEU score.</li>
+<li><strong>Is the uncertainty communicated?</strong> A confidence estimate that is honest (calibrated) is worth more than a point prediction, especially when the downstream consumer is a clinician deciding whether to trust the output.</li>
+</ol>
+<p>The next chapter examines the architectures that make these outputs possible. <!-- AUROC, Dice, Hausdorff, mAP, calibration. --></p>
 
 
 </section>

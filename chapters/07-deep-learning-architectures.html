@@ -528,12 +528,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#convolutional-neural-networks-from-first-principles" id="toc-convolutional-neural-networks-from-first-principles" class="nav-link active" data-scroll-target="#convolutional-neural-networks-from-first-principles"><span class="header-section-number">7.1</span> Convolutional neural networks from first principles</a></li>
-  <li><a href="#the-encoderdecoder-family-u-net-and-its-descendants" id="toc-the-encoderdecoder-family-u-net-and-its-descendants" class="nav-link" data-scroll-target="#the-encoderdecoder-family-u-net-and-its-descendants"><span class="header-section-number">7.2</span> The encoder–decoder family: U-Net and its descendants</a></li>
-  <li><a href="#vision-transformers" id="toc-vision-transformers" class="nav-link" data-scroll-target="#vision-transformers"><span class="header-section-number">7.3</span> Vision transformers</a></li>
-  <li><a href="#detection-architectures" id="toc-detection-architectures" class="nav-link" data-scroll-target="#detection-architectures"><span class="header-section-number">7.4</span> Detection architectures</a></li>
-  <li><a href="#d-and-video-architectures" id="toc-d-and-video-architectures" class="nav-link" data-scroll-target="#d-and-video-architectures"><span class="header-section-number">7.5</span> 3D and video architectures</a></li>
-  <li><a href="#promptable-segmentation-the-sam-family" id="toc-promptable-segmentation-the-sam-family" class="nav-link" data-scroll-target="#promptable-segmentation-the-sam-family"><span class="header-section-number">7.6</span> Promptable segmentation: the SAM family</a></li>
-  <li><a href="#choosing-an-architecture" id="toc-choosing-an-architecture" class="nav-link" data-scroll-target="#choosing-an-architecture"><span class="header-section-number">7.7</span> Choosing an architecture</a></li>
+  <li><a href="#vision-transformers" id="toc-vision-transformers" class="nav-link" data-scroll-target="#vision-transformers"><span class="header-section-number">7.2</span> Vision transformers</a></li>
+  <li><a href="#detection-architectures" id="toc-detection-architectures" class="nav-link" data-scroll-target="#detection-architectures"><span class="header-section-number">7.3</span> Detection architectures</a></li>
+  <li><a href="#d-and-video-architectures" id="toc-d-and-video-architectures" class="nav-link" data-scroll-target="#d-and-video-architectures"><span class="header-section-number">7.4</span> 3D and video architectures</a></li>
+  <li><a href="#promptable-segmentation-the-sam-family" id="toc-promptable-segmentation-the-sam-family" class="nav-link" data-scroll-target="#promptable-segmentation-the-sam-family"><span class="header-section-number">7.5</span> Promptable segmentation: the SAM family</a></li>
+  <li><a href="#choosing-an-architecture" id="toc-choosing-an-architecture" class="nav-link" data-scroll-target="#choosing-an-architecture"><span class="header-section-number">7.6</span> Choosing an architecture</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/07-deep-learning-architectures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -560,41 +559,90 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Architecture is the shape of the function that turns pixels into predictions. The chapter before this described <em>what</em> medical vision systems output; this one describes the machinery that makes those outputs possible, organized around the three great families — convolutional networks, encoder–decoders, and transformers — plus the special-purpose designs for detection, 3D volumes, and promptable segmentation.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the engineer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Most production medical imaging systems still run on a small set of well-understood architectures, not on the newest paper. nnU-Net for segmentation and a ResNet- or EfficientNet-class encoder for classification solve a remarkable fraction of the field’s problems. Knowing <em>when not</em> to be clever is part of the craft.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the clinician
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You do not need the mathematics to use these systems, but the vocabulary below explains why different problems feel different: a classifier is a fast yes/no opinion; a segmentation system is a pixel-level annotator; a promptable model is a collaborative tool that waits for your input. Understanding the shape of the machine explains the shape of its failure modes.</p>
 </div>
 </div>
 <section id="convolutional-neural-networks-from-first-principles" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="convolutional-neural-networks-from-first-principles"><span class="header-section-number">7.1</span> Convolutional neural networks from first principles</h2>
+<p>A convolutional neural network (CNN) is built on one insight: visual features are local and translation-invariant. A small filter slides across the image, computing a weighted sum over a neighborhood (a 3×3 patch, say) at every position, and produces a <strong>feature map</strong> — a new “image” whose pixels say “how strongly does this pattern appear here?” Early layers learn edges and textures; deeper layers stack those into shapes, organs, and pathology.</p>
+<p>Three structural ideas complete the design:</p>
+<ul>
+<li><strong>Pooling</strong> shrinks feature maps, giving deeper layers a wider view and some robustness to small shifts.</li>
+<li><strong>Downsampling + expansion</strong> progressively reduces spatial detail while increasing the number of channels, ending in a compact representation used for classification.</li>
+<li><strong>Residual connections</strong> let very deep networks train reliably by giving each block a shortcut that carries information forward unchanged.</li>
+</ul>
+<p>Classic encoders — ResNet, EfficientNet, DenseNet, ConvNeXt — differ in the details but share this DNA, and they remain the default backbones for classification and detection tasks on 2D images. For medical imaging their advantages are maturity, efficiency, and the availability of natural-image pre-training (<a href="05-machine-learning-concepts.html" class="quarto-xref"><span>Chapter 5</span></a>). ## The encoder–decoder family: U-Net and its descendants</p>
+<p>Classification discards spatial information; segmentation needs it back. The <strong>encoder–decoder</strong> design solves this: the encoder progressively compresses the image into a small, semantically rich feature map; the decoder progressively expands it back to full resolution; and <strong>skip connections</strong> carry high-resolution detail from encoder to decoder so fine boundaries survive the trip.</p>
+<p><strong>U-Net</strong> is this idea in its purest form, and became the default architecture of medical segmentation almost immediately after publication. Its descendants — Attention U-Net, TransUNet, SegFormer, and dozens more — modify the blocks but keep the skeleton.</p>
+<p>Picture a symmetric hourglass: the encoder compresses spatial detail while deepening semantics; the decoder expands back to pixel-level output; horizontal skip connections carry fine boundaries from encoder to decoder so they survive the compression. Every serious medical segmentation system since 2015 is a variation on that hourglass.</p>
+<p>The most important descendant is not a novel architecture but a <em>policy</em>: <strong>nnU-Net</strong> (“no new U-Net”) reads a dataset’s geometry, intensity distribution, and class balance and then automatically configures preprocessing, architecture, training schedule, and ensembling. It has been the strongest general-purpose medical segmentation system for years, and its lesson is the field’s most valuable engineering lesson: <em>meticulous, task-adapted configuration of a boring architecture beats a novel architecture trained carelessly.</em> <!-- nnU-Net as the self-configuring workhorse. --></p>
 </section>
-<section id="the-encoderdecoder-family-u-net-and-its-descendants" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="the-encoderdecoder-family-u-net-and-its-descendants"><span class="header-section-number">7.2</span> The encoder–decoder family: U-Net and its descendants</h2>
-<!-- nnU-Net as the self-configuring workhorse. -->
+<section id="vision-transformers" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="vision-transformers"><span class="header-section-number">7.2</span> Vision transformers</h2>
+<p>The <strong>vision transformer (ViT)</strong> replaces convolutions with self-attention: the image is chopped into patches, each patch is embedded as a token, and attention layers let every token weigh information from every other token. Global relationships come for free; locality and translation-invariance must be learned or built in.</p>
+<p>In medical imaging, transformers shine where <strong>long-range context</strong> matters — relating a distant mass to surrounding tissue, or fusing sequences in a multi-parametric MRI study — and where scale allows: transformers are data-hungry, so they pair naturally with self-supervised pre-training on large unlabeled medical archives (<a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>).</p>
+<p>The modern consensus is hybrid: convolutional stem for local structure, attention for global reasoning, and heavy pre-training. Swin-style windowed transformers, ConvNeXt blocks, and attention-augmented U-Nets are all expressions of that compromise.</p>
 </section>
-<section id="vision-transformers" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="vision-transformers"><span class="header-section-number">7.3</span> Vision transformers</h2>
+<section id="detection-architectures" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="detection-architectures"><span class="header-section-number">7.3</span> Detection architectures</h2>
+<p>Detection adds two problems to classification: <em>where</em> and <em>how many</em>.</p>
+<ul>
+<li><strong>Two-stage detectors</strong> (Faster R-CNN lineage) first propose candidate regions, then classify and refine each proposal. They are accurate and remain common where boxes matter more than speed.</li>
+<li><strong>Single-stage detectors</strong> (YOLO, RetinaNet, DETR-family) predict boxes directly across the whole image in one pass. YOLO’s speed makes it the default when real-time matters, and modern YOLO variants are accurate enough for most clinical screening tasks.</li>
+<li><strong>Anchor-free and transformer detectors</strong> (DETR, DINO) treat detection as set prediction and remove hand-designed anchor boxes — elegant, and increasingly competitive.</li>
+</ul>
+<p>Medical reality modifies the playbook: lesions are small relative to whole scans, so multi-scale feature pyramids (FPN) matter; a single image may contain dozens of findings of several classes; and false positives carry a real cost in radiologist attention, so operating-point selection is a first-class design decision (<a href="06-what-computer-vision-can-do.html" class="quarto-xref"><span>Chapter 6</span></a>).</p>
 </section>
-<section id="detection-architectures" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="detection-architectures"><span class="header-section-number">7.4</span> Detection architectures</h2>
+<section id="d-and-video-architectures" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="d-and-video-architectures"><span class="header-section-number">7.4</span> 3D and video architectures</h2>
+<p>CT and MRI are volumes; ultrasound and endoscopy are video. The 2D playbook extends in two directions:</p>
+<ul>
+<li><strong>3D convolutions</strong> replace 2D patches with 3D volumes, so a “pixel” filter becomes a voxel filter. This is the natural formulation for volumetric segmentation and is central to nnU-Net’s 3D mode. The cost is memory: a full CT at 1mm isotropic resolution can exceed GPU memory, which is why patch-based training and sliding-window inference are standard practice.</li>
+<li><strong>2.5D processing</strong> treats a volume as a stack of adjacent 2D slices, feeding each slice a few neighbors for context. Cheaper, sometimes nearly as good, and a pragmatic default when data is limited.</li>
+<li><strong>Video architectures</strong> add a temporal axis: 3D CNNs over space-time volumes, or recurrent/attention mechanisms that carry state across frames. Surgical video understanding (<a href="18-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 18</span></a>) is the flagship application.</li>
+</ul>
+<p>The engineering theme is <strong>context budgeting</strong>: how much of the volume, and of time, can the model see at once? Most medical 3D and video systems are clever answers to that question.</p>
 </section>
-<section id="d-and-video-architectures" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="d-and-video-architectures"><span class="header-section-number">7.5</span> 3D and video architectures</h2>
+<section id="promptable-segmentation-the-sam-family" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="promptable-segmentation-the-sam-family"><span class="header-section-number">7.5</span> Promptable segmentation: the SAM family</h2>
+<p><strong>SAM</strong> (Segment Anything Model) reframed segmentation as <em>interactive</em>: the model is trained on a billion masks so that, given a prompt — a click, a box, a text phrase — it can segment the indicated object in an image it has never seen. MedSAM and MedSAM2 fine-tune that paradigm on medical data; nnInteractive pushes it toward radiology-grade interactive workflows where the clinician refines the mask with a few clicks.</p>
+<p>The clinical meaning is substantial: instead of training a bespoke segmentation model per organ per modality per task — a project — one general model, prompted by a user, covers a broad space of tasks. Generalization to new organs, modalities, and even new institutions is the frontier where this family is actively being pushed, and <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a> places it in the foundation-model landscape it belongs to.</p>
 </section>
-<section id="promptable-segmentation-the-sam-family" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="promptable-segmentation-the-sam-family"><span class="header-section-number">7.6</span> Promptable segmentation: the SAM family</h2>
-<!-- Cover SAM2 / MedSAM2 / nnInteractive interactive segmentation. -->
-</section>
-<section id="choosing-an-architecture" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="choosing-an-architecture"><span class="header-section-number">7.7</span> Choosing an architecture</h2>
+<section id="choosing-an-architecture" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="choosing-an-architecture"><span class="header-section-number">7.6</span> Choosing an architecture</h2>
+<p>Practical guidance distilled from the choices that recur across this book:</p>
+<ol type="1">
+<li><strong>Start boring.</strong> A pre-trained ResNet/EfficientNet for classification, nnU-Net for segmentation. Novel architectures are a research activity, not a deployment strategy.</li>
+<li><strong>Match architecture to data scale.</strong> Small labeled sets favor CNNs with transfer learning or self-supervised backbones; large unlabeled archives justify transformers and foundation models.</li>
+<li><strong>Respect geometry.</strong> Use 3D architectures when the pathology is defined by volume context (most CT/MRI segmentation) and 2D when each slice is independently interpretable (some screening tasks).</li>
+<li><strong>Budget for the workflow.</strong> Real-time video needs single-stage efficiency; overnight batch CT analysis can afford 3D attention and ensembles.</li>
+<li><strong>Prefer models whose outputs the workflow can consume.</strong> A beautiful architecture that outputs a heatmap when the PACS needs a DICOM segmentation object is the wrong architecture.</li>
+</ol>
+<p>None of these rules survives contact with a specific problem unchanged — but they are the right starting point, and the next chapter changes the frame from discriminative models (which label pixels) to generative models (which create them).</p>
 
 
 </section>

@@ -495,62 +495,18 @@
     "href": "chapters/05-machine-learning-concepts.html",
     "title": "5  Machine Learning: The Concepts",
     "section": "",
-    "text": "5.1 Learning from examples: supervised learning",
+    "text": "5.1 Learning from examples: supervised learning\nMachine learning is the discipline of getting computers to improve at a task through exposure to examples rather than through explicit rules. Nobody writes the rule “if the lung field looks like this, say pneumonia” — instead the system sees thousands of labeled chest X-rays and adjusts itself until its guesses match the labels. This chapter builds the vocabulary used everywhere else in this book: what it means to learn from examples, what happens when labels are scarce, and why the seemingly boring discipline of splitting data correctly is the single most important habit in medical AI.\nIn supervised learning, a model is given many input–label pairs — image plus diagnosis, scan plus lesion outline — and tunes its parameters to reproduce the labels. The typical medical example is binary classification: pass a chest X-ray through a network that outputs a number between 0 and 1, and interpret that number as “evidence of pneumothorax.” During training, a loss function measures how far the prediction sits from the truth, and gradient descent nudges the network’s millions of weights in the direction that reduces the loss.\nThree details matter more in medicine than elsewhere:\nExpert labels are the most expensive input in medical AI. Several strategies stretch them:\nUnsupervised learning works without labels at all. Clustering groups similar images, and in imaging it is most useful as a quality-control and discovery tool: which studies in a large archive look unlike anything in the training distribution? Is there a scanner in the network whose output drifts away from its peers? Which patients cluster into phenotypes nobody pre-specified?\nThe medical-imaging variant of this idea is out-of-distribution detection: a model should know when it is being shown something it was never prepared for — a different scanner, an unusual view, an artifact the training data never contained. A trustworthy imaging system flags these cases rather than guessing confidently, a theme that returns when we discuss deployment in Chapter 10. ## Learning from feedback: reinforcement learning\nIn reinforcement learning, an agent learns by acting, receiving rewards, and adjusting its policy — learning from consequences rather than examples. Pure reinforcement learning has found limited direct use in static image interpretation, but two descendants matter throughout this book:\nThe iron rule of machine learning is that a model must be judged on data it has never influenced. Practically that means three splits:\nOverfitting is what happens when a model learns the training examples — including their noise and their shortcuts — instead of the underlying signal. A classic medical case: a pneumonia classifier that learns to recognize the portable-scanner marker that happens to appear more often on sick patients’ films. It achieves excellent accuracy on the training hospital and fails everywhere else. The defenses are unglamorous but effective: more diverse training data, augmentation (random flips, crops, intensity shifts), regularization and early stopping, and — above all — external validation on data from a different hospital, scanner population, and patient mix.\nThe reader should hold on to one calibration habit for the rest of the book: always ask what the test set was, and who was in it. Every performance number quoted in later chapters is only as trustworthy as that answer. ## The medical-imaging superpowers\nThree ideas make medical imaging tractable despite small, expensive, idiosyncratic datasets:\nWith these concepts in place, the next chapter turns to the tasks themselves — what, exactly, computer vision systems are asked to do with a medical image.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Machine Learning: The Concepts</span>"
     ]
   },
   {
-    "objectID": "chapters/05-machine-learning-concepts.html#when-labels-are-scarce-semi--and-self-supervised-learning",
-    "href": "chapters/05-machine-learning-concepts.html#when-labels-are-scarce-semi--and-self-supervised-learning",
+    "objectID": "chapters/05-machine-learning-concepts.html#learning-from-examples-supervised-learning",
+    "href": "chapters/05-machine-learning-concepts.html#learning-from-examples-supervised-learning",
     "title": "5  Machine Learning: The Concepts",
-    "section": "5.2 When labels are scarce: semi- and self-supervised learning",
-    "text": "5.2 When labels are scarce: semi- and self-supervised learning",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Machine Learning: The Concepts</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/05-machine-learning-concepts.html#finding-structure-unsupervised-learning-and-clustering",
-    "href": "chapters/05-machine-learning-concepts.html#finding-structure-unsupervised-learning-and-clustering",
-    "title": "5  Machine Learning: The Concepts",
-    "section": "5.3 Finding structure: unsupervised learning and clustering",
-    "text": "5.3 Finding structure: unsupervised learning and clustering",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Machine Learning: The Concepts</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/05-machine-learning-concepts.html#learning-from-feedback-reinforcement-learning",
-    "href": "chapters/05-machine-learning-concepts.html#learning-from-feedback-reinforcement-learning",
-    "title": "5  Machine Learning: The Concepts",
-    "section": "5.4 Learning from feedback: reinforcement learning",
-    "text": "5.4 Learning from feedback: reinforcement learning",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Machine Learning: The Concepts</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/05-machine-learning-concepts.html#the-discipline-train-validate-test-and-overfitting",
-    "href": "chapters/05-machine-learning-concepts.html#the-discipline-train-validate-test-and-overfitting",
-    "title": "5  Machine Learning: The Concepts",
-    "section": "5.5 The discipline: train, validate, test — and overfitting",
-    "text": "5.5 The discipline: train, validate, test — and overfitting",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Machine Learning: The Concepts</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/05-machine-learning-concepts.html#the-medical-imaging-superpowers",
-    "href": "chapters/05-machine-learning-concepts.html#the-medical-imaging-superpowers",
-    "title": "5  Machine Learning: The Concepts",
-    "section": "5.6 The medical-imaging superpowers",
-    "text": "5.6 The medical-imaging superpowers",
+    "section": "",
+    "text": "Label provenance. A “ground truth” diagnosis usually comes from a radiology report, which may itself be imperfect. Labels derived from later clinical outcomes or consensus reads by several experts are better, but costlier.\nClass imbalance. Common diseases are common; rare findings may appear in fewer than 1% of images. Naive training then collapses to “always say no,” which achieves 99% accuracy and catches zero cases. Solutions include re-weighting the loss, careful sampling, and reporting metrics that ignore prevalence (Chapter 6).\nPatient-level splits. Two X-rays of the same patient taken a week apart are nearly identical. If one goes in training and the other in testing, the model appears to have learned medicine but has actually memorized patients. Splits must always be by patient, ideally by institution. ## When labels are scarce: semi- and self-supervised learning\n\n\n\nSemi-supervised learning mixes a small labeled set with a large unlabeled one, often by training the model to be consistent with itself under augmentations of the same image.\nSelf-supervised learning invents the task: hide a patch of the image and predict it from context, or decide which of two augmentations came from the same scan. The model learns general visual features first and then needs only a modest labeled set for fine-tuning. This is exactly how a resident learns — years of looking before years of being told the answer — and it underpins most modern medical foundation models (Chapter 8).\nWeak supervision mines labels from the clinical record: “this report says no fracture” becomes a noisy label for a no-fracture image. Cheap and abundant, but noisy; systems that use it must model that noise explicitly.\nActive learning points the labeling budget where it matters: the model requests labels only for the images it is least confident about. ## Finding structure: unsupervised learning and clustering\n\n\n\n\n\nReinforcement learning from human feedback (RLHF) is how large language models are aligned after pre-training — human raters compare candidate outputs and the model learns to prefer the better ones. It is the mechanism behind the conversational behavior of the models discussed in Chapter 8 and Chapter 9.\nSequential decision problems — choosing the next best view in ultrasound, deciding when an aspirational biopsy should be taken, planning a treatment sequence — are natural reinforcement learning tasks where the reward arrives only after several correct decisions. ## The discipline: train, validate, test — and overfitting\n\n\n\nTraining set — what the model learns from.\nValidation set — used to pick hyperparameters (learning rate, architecture size, stopping point). The model never trains on it, but you make decisions based on it, so it leaks.\nTest set — touched exactly once, at the end, to estimate real-world performance.\n\n\n\n\n\nTransfer learning. Models pre-trained on millions of natural images (or self-supervised on unlabeled medical archives) already know edges, textures, and shapes. Fine-tuning such a model on a few hundred labeled medical images routinely beats training from scratch on thousands. The exception worth remembering: for some 3D modalities, natural-image pre-training helps less, and modality-specific pre-training or self-supervision wins.\nFine-tuning. Taking the pre-trained model and continuing training on the target task, often with a smaller learning rate so general features are not destroyed. Parameter-efficient variants (LoRA and similar adapters) update only a small fraction of weights — increasingly important as base models grow (Chapter 8).\nDomain adaptation and generalization. Scanners, protocols, and populations differ between sites. Domain adaptation techniques try to make a model trained at hospital A work at hospital B, by aligning feature distributions, harmonizing images, or training explicitly across sites. The pragmatic best practice is simpler: train on as many sites as possible, and always validate externally before trusting a number.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Machine Learning: The Concepts</span>"
@@ -561,62 +517,18 @@
     "href": "chapters/06-what-computer-vision-can-do.html",
     "title": "6  What Computer Vision Can Do",
     "section": "",
-    "text": "6.1 Classification",
+    "text": "6.1 Classification\nAlmost every claim in the rest of this book reduces to one of a small set of visual tasks: is there disease in this image?, where is it?, what is its shape and extent?, has it changed since the last scan?, or what should the report say? The task determines the data you need, the architecture you choose (Chapter 7), and the metric that decides whether the system works. This chapter walks through those tasks, each anchored in a medical example and its standard evaluation.\nThe simplest task: assign the whole image a category. Does this chest X-ray show a pneumothorax? The output is a score (often read as a probability) per class. Multi-label variants assign several independent yes/no answers to one image, because a real film can show cardiomegaly, effusion, and consolidation simultaneously.\nMedicine adds nuance to the output. Binary classification answers one question; multi-label classification answers a panel of questions at once; ordinal classification ranks severity (mild, moderate, severe) — and treating ordinal stages as unrelated categories throws away clinically important structure. Some outputs are better expressed as probabilities that need calibration: if a system says 80% and the true rate is 40% among such cases, triage logic built on that number will misbehave even if the ranking is perfect.\nMetrics. AUROC (area under the receiver operating characteristic curve) measures how well the system separates positives from negatives across all thresholds; sensitivity and specificity describe behavior at one chosen operating point; precision (positive predictive value) depends directly on disease prevalence and is therefore often the more clinically honest number. ## Detection and localization\nDetection answers where is it? by drawing a bounding box around each finding. A chest model that outputs “pneumothorax, left upper zone, box at x=…” supports a workflow a bare yes/no cannot: the reader’s eye is drawn to the region, and a second read can check whether the box actually contains the finding.\nStandard detection metrics aggregate over classes and confidence thresholds: mAP (mean average precision) rewards finding the right objects with tight boxes, while sensitivity at a fixed false-positive rate per image is the radiology-native formulation — “how many nodules do we catch if we allow 0.125 false alarms per scan?” In practice, box quality is judged with IoU (intersection over union): a detection counts as correct only if its box overlaps the truth enough.\nFor many clinical purposes, coarse localization by heatmap is enough. Weakly supervised localization trains on image-level labels only and then visualizes the regions the network attended to — cheap labels, approximate boxes, but often sufficient for triage. ## Semantic segmentation\nSegmentation assigns a class to every pixel: this voxel is liver, this one is tumor, this one is background. It is the workhorse of quantitative imaging — organ volumes, tumor burden, cartilage thickness, plaque composition all require a delineation before any arithmetic can happen. Modern medical segmentation is so thoroughly associated with the U-Net family and its descendants (Chapter 7) that the architecture and the task are nearly synonymous.\nTwo standard metrics:\nWhere semantic segmentation answers “what class is this pixel?”, instance segmentation answers “which object is this pixel part of?” It distinguishes cell A from cell B even when they touch, counts nuclei individually, and separates overlapping lung lesions. The distinction matters because counting and tracking require boundaries between instances, not just colored regions.\nOn whole-slide pathology images this is the computational backbone of many analyses: detect and segment every nucleus, then derive grade-relevant features from their shapes and arrangements (Chapter 19). ## Keypoints, landmarks and registration\nSome clinical questions are answered by points rather than regions:\nLongitudinal comparison deserves emphasis: change detection — registering follow-up to baseline and analyzing the difference — is how growth, response to therapy, and progression are quantified, and it is one of the most immediately useful forms of AI in clinical workflow. ## Depth estimation\nMonocular depth estimation predicts how far away each pixel is from a single image. In medicine its value concentrates in video-based fields: laparoscopic surgery (Chapter 18), where instrument-to-tissue distance matters for autonomy and safety, and bronchoscopy or endoscopy, where 3D scene understanding supports navigation. It is also the enabling layer behind novel-view synthesis and the reconstruction tasks in Chapter 8.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
     ]
   },
   {
-    "objectID": "chapters/06-what-computer-vision-can-do.html#detection-and-localization",
-    "href": "chapters/06-what-computer-vision-can-do.html#detection-and-localization",
+    "objectID": "chapters/06-what-computer-vision-can-do.html#classification",
+    "href": "chapters/06-what-computer-vision-can-do.html#classification",
     "title": "6  What Computer Vision Can Do",
-    "section": "6.2 Detection and localization",
-    "text": "6.2 Detection and localization",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/06-what-computer-vision-can-do.html#semantic-segmentation",
-    "href": "chapters/06-what-computer-vision-can-do.html#semantic-segmentation",
-    "title": "6  What Computer Vision Can Do",
-    "section": "6.3 Semantic segmentation",
-    "text": "6.3 Semantic segmentation",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/06-what-computer-vision-can-do.html#instance-segmentation",
-    "href": "chapters/06-what-computer-vision-can-do.html#instance-segmentation",
-    "title": "6  What Computer Vision Can Do",
-    "section": "6.4 Instance segmentation",
-    "text": "6.4 Instance segmentation",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/06-what-computer-vision-can-do.html#keypoints-landmarks-and-registration",
-    "href": "chapters/06-what-computer-vision-can-do.html#keypoints-landmarks-and-registration",
-    "title": "6  What Computer Vision Can Do",
-    "section": "6.5 Keypoints, landmarks and registration",
-    "text": "6.5 Keypoints, landmarks and registration",
-    "crumbs": [
-      "II — Foundations: Machine Learning & Computer Vision",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/06-what-computer-vision-can-do.html#depth-estimation",
-    "href": "chapters/06-what-computer-vision-can-do.html#depth-estimation",
-    "title": "6  What Computer Vision Can Do",
-    "section": "6.6 Depth estimation",
-    "text": "6.6 Depth estimation",
+    "section": "",
+    "text": "Dice coefficient measures overlap between prediction and ground truth: 1.0 is a perfect match, 0 is no overlap. It handles class imbalance far better than pixel accuracy, which is why a 95% “accuracy” on a segmentation task where the target is 1% of the image is meaningless.\nHausdorff distance (usually the 95th-percentile variant, HD95) measures how far the predicted boundary is from the truth boundary, catching the thin tendrils and spillovers Dice can miss. ## Instance segmentation\n\n\n\n\n\nKeypoint detection finds anatomically defined landmarks — the corners of a vertebra, the apex of the heart, the center of a femoral head — and from those landmarks derives angles, lengths, and alignment measurements. Orthopedics, craniofacial analysis, and cardiac geometry all live here. Landmark error is usually reported in millimeters.\nRegistration aligns two images into a common frame: the pre-operative MRI to the intraoperative CT, this month’s MRI to last year’s, the motion-corrected sequence to the reference. It is the invisible plumbing behind longitudinal comparison (“has this lesion grown?”) and image-guided intervention. Quality is judged by target registration error (TRE) in millimeters.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
@@ -626,8 +538,8 @@
     "objectID": "chapters/06-what-computer-vision-can-do.html#image-to-image",
     "href": "chapters/06-what-computer-vision-can-do.html#image-to-image",
     "title": "6  What Computer Vision Can Do",
-    "section": "6.7 Image-to-image",
-    "text": "6.7 Image-to-image",
+    "section": "6.2 Image-to-image",
+    "text": "6.2 Image-to-image\nImage-to-image models transform one image into another while preserving spatial layout:\n\nDenoising and artifact removal — reduce scan noise or motion artifacts, often to enable lower radiation dose or shorter acquisition times. Evaluation is subtle: the output must be diagnostically faithful, not merely pretty.\nSuper-resolution — synthesize a sharper, higher-resolution image from an acquired lower-resolution one. Tempting, and genuinely useful for display and downstream tasks, but it hallucinates detail where none was acquired — a caveat that matters enormously in diagnosis.\nModality translation — synthesize a CT from an MRI, or a contrast image from a non-contrast one. Clinically valuable when the target modality is expensive, uncomfortable, or unavailable, and as a data-augmentation trick to make paired datasets go further.\nVirtual contrast / virtual staining — predict how tissue would appear under a stain or contrast agent that was never administered.\n\nThese tasks blur into the generative methods of Chapter 8; the difference is mostly in intent and evaluation. Here the goal is a usable clinical image; there, it is often a realistic sample.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
@@ -637,8 +549,8 @@
     "objectID": "chapters/06-what-computer-vision-can-do.html#image-to-text",
     "href": "chapters/06-what-computer-vision-can-do.html#image-to-text",
     "title": "6  What Computer Vision Can Do",
-    "section": "6.8 Image-to-text",
-    "text": "6.8 Image-to-text",
+    "section": "6.3 Image-to-text",
+    "text": "6.3 Image-to-text\n\nReport generation produces natural-language findings from an image. The engineering challenge is not fluency — language models produce fluent text trivially — but faithfulness: the report must be supported by pixels, complete, and clinically actionable. Hallucinated findings are a safety-critical failure, not an inconvenience.\nVisual question answering (VQA) lets a user ask “is there a pneumothorax?” and get an answer grounded in the image. In medical use, VQA doubles as an education and second-opinion tool, but the same grounding requirement applies.\nCaptioning and structured extraction convert a report into structured fields or an image into a structured finding list — the quiet workhorse that connects AI analysis to the EHR.\n\nAll three are vision-language problems and share machinery with the models discussed in Chapter 8.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
@@ -648,8 +560,8 @@
     "objectID": "chapters/06-what-computer-vision-can-do.html#text-to-image",
     "href": "chapters/06-what-computer-vision-can-do.html#text-to-image",
     "title": "6  What Computer Vision Can Do",
-    "section": "6.9 Text-to-image",
-    "text": "6.9 Text-to-image",
+    "section": "6.4 Text-to-image",
+    "text": "6.4 Text-to-image\nText-to-image generation in medicine serves three honest purposes: synthetic data augmentation (rare findings, balanced demographic representation), education and communication (illustrations a patient can actually understand), and privacy-preserving research data. It must never be conflated with diagnostic truth. A generated image can be realistic and wrong; every synthetic-image claim in this book should be read with that sentence in mind.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
@@ -659,8 +571,8 @@
     "objectID": "chapters/06-what-computer-vision-can-do.html#how-we-measure-success",
     "href": "chapters/06-what-computer-vision-can-do.html#how-we-measure-success",
     "title": "6  What Computer Vision Can Do",
-    "section": "6.10 How we measure success",
-    "text": "6.10 How we measure success",
+    "section": "6.5 How we measure success",
+    "text": "6.5 How we measure success\nChoosing the metric is choosing what the system optimizes for. The core toolkit:\n\n\n\n\n\n\n\n\n\nMetric\nTask family\nWhat it rewards\nMedical caveat\n\n\n\n\nAUROC\nclassification\nranking positives above negatives\ninsensitive to prevalence; a great AUROC can still miss the clinically chosen threshold\n\n\nSensitivity / specificity\nclassification\ncatches disease / avoids false alarms\nmust be reported together, at a clinically meaningful operating point\n\n\nDice\nsegmentation\nvolumetric overlap\ninsensitive to small boundary errors that may matter\n\n\nHD95\nsegmentation\nworst-case boundary error\nsensitive to outlier blobs\n\n\nmAP\ndetection\nprecise boxes, ranked by confidence\nhides per-class behavior; small-lesion performance needs its own view\n\n\nF1 / IoU\ninstance segmentation\ncorrect instances, not just pixels\ncounting accuracy often matters more\n\n\nLandmark error (mm)\nkeypoints\nphysical accuracy\nthe only metric that maps directly to anatomy\n\n\nCalibration (ECE)\nclassification\nhonest probabilities\nessential whenever output feeds a decision threshold\n\n\n\nBeyond any single number, three questions decide whether a metric is trustworthy:\n\nWhat was the test set? Patient-level splits, external validation, and representative case mix (Chapter 5).\nDoes the metric match the decision? A triage tool needs high sensitivity; a quantitative biomarker needs accuracy in physical units; a report generator needs faithfulness, not BLEU score.\nIs the uncertainty communicated? A confidence estimate that is honest (calibrated) is worth more than a point prediction, especially when the downstream consumer is a clinician deciding whether to trust the output.\n\nThe next chapter examines the architectures that make these outputs possible.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>What Computer Vision Can Do</span>"
@@ -671,18 +583,18 @@
     "href": "chapters/07-deep-learning-architectures.html",
     "title": "7  Deep Learning Architectures",
     "section": "",
-    "text": "7.1 Convolutional neural networks from first principles",
+    "text": "7.1 Convolutional neural networks from first principles\nArchitecture is the shape of the function that turns pixels into predictions. The chapter before this described what medical vision systems output; this one describes the machinery that makes those outputs possible, organized around the three great families — convolutional networks, encoder–decoders, and transformers — plus the special-purpose designs for detection, 3D volumes, and promptable segmentation.\nA convolutional neural network (CNN) is built on one insight: visual features are local and translation-invariant. A small filter slides across the image, computing a weighted sum over a neighborhood (a 3×3 patch, say) at every position, and produces a feature map — a new “image” whose pixels say “how strongly does this pattern appear here?” Early layers learn edges and textures; deeper layers stack those into shapes, organs, and pathology.\nThree structural ideas complete the design:\nClassic encoders — ResNet, EfficientNet, DenseNet, ConvNeXt — differ in the details but share this DNA, and they remain the default backbones for classification and detection tasks on 2D images. For medical imaging their advantages are maturity, efficiency, and the availability of natural-image pre-training (Chapter 5). ## The encoder–decoder family: U-Net and its descendants\nClassification discards spatial information; segmentation needs it back. The encoder–decoder design solves this: the encoder progressively compresses the image into a small, semantically rich feature map; the decoder progressively expands it back to full resolution; and skip connections carry high-resolution detail from encoder to decoder so fine boundaries survive the trip.\nU-Net is this idea in its purest form, and became the default architecture of medical segmentation almost immediately after publication. Its descendants — Attention U-Net, TransUNet, SegFormer, and dozens more — modify the blocks but keep the skeleton.\nPicture a symmetric hourglass: the encoder compresses spatial detail while deepening semantics; the decoder expands back to pixel-level output; horizontal skip connections carry fine boundaries from encoder to decoder so they survive the compression. Every serious medical segmentation system since 2015 is a variation on that hourglass.\nThe most important descendant is not a novel architecture but a policy: nnU-Net (“no new U-Net”) reads a dataset’s geometry, intensity distribution, and class balance and then automatically configures preprocessing, architecture, training schedule, and ensembling. It has been the strongest general-purpose medical segmentation system for years, and its lesson is the field’s most valuable engineering lesson: meticulous, task-adapted configuration of a boring architecture beats a novel architecture trained carelessly.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Deep Learning Architectures</span>"
     ]
   },
   {
-    "objectID": "chapters/07-deep-learning-architectures.html#the-encoderdecoder-family-u-net-and-its-descendants",
-    "href": "chapters/07-deep-learning-architectures.html#the-encoderdecoder-family-u-net-and-its-descendants",
+    "objectID": "chapters/07-deep-learning-architectures.html#convolutional-neural-networks-from-first-principles",
+    "href": "chapters/07-deep-learning-architectures.html#convolutional-neural-networks-from-first-principles",
     "title": "7  Deep Learning Architectures",
-    "section": "7.2 The encoder–decoder family: U-Net and its descendants",
-    "text": "7.2 The encoder–decoder family: U-Net and its descendants",
+    "section": "",
+    "text": "Pooling shrinks feature maps, giving deeper layers a wider view and some robustness to small shifts.\nDownsampling + expansion progressively reduces spatial detail while increasing the number of channels, ending in a compact representation used for classification.\nResidual connections let very deep networks train reliably by giving each block a shortcut that carries information forward unchanged.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Deep Learning Architectures</span>"
@@ -692,8 +604,8 @@
     "objectID": "chapters/07-deep-learning-architectures.html#vision-transformers",
     "href": "chapters/07-deep-learning-architectures.html#vision-transformers",
     "title": "7  Deep Learning Architectures",
-    "section": "7.3 Vision transformers",
-    "text": "7.3 Vision transformers",
+    "section": "7.2 Vision transformers",
+    "text": "7.2 Vision transformers\nThe vision transformer (ViT) replaces convolutions with self-attention: the image is chopped into patches, each patch is embedded as a token, and attention layers let every token weigh information from every other token. Global relationships come for free; locality and translation-invariance must be learned or built in.\nIn medical imaging, transformers shine where long-range context matters — relating a distant mass to surrounding tissue, or fusing sequences in a multi-parametric MRI study — and where scale allows: transformers are data-hungry, so they pair naturally with self-supervised pre-training on large unlabeled medical archives (Chapter 8).\nThe modern consensus is hybrid: convolutional stem for local structure, attention for global reasoning, and heavy pre-training. Swin-style windowed transformers, ConvNeXt blocks, and attention-augmented U-Nets are all expressions of that compromise.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Deep Learning Architectures</span>"
@@ -703,8 +615,8 @@
     "objectID": "chapters/07-deep-learning-architectures.html#detection-architectures",
     "href": "chapters/07-deep-learning-architectures.html#detection-architectures",
     "title": "7  Deep Learning Architectures",
-    "section": "7.4 Detection architectures",
-    "text": "7.4 Detection architectures",
+    "section": "7.3 Detection architectures",
+    "text": "7.3 Detection architectures\nDetection adds two problems to classification: where and how many.\n\nTwo-stage detectors (Faster R-CNN lineage) first propose candidate regions, then classify and refine each proposal. They are accurate and remain common where boxes matter more than speed.\nSingle-stage detectors (YOLO, RetinaNet, DETR-family) predict boxes directly across the whole image in one pass. YOLO’s speed makes it the default when real-time matters, and modern YOLO variants are accurate enough for most clinical screening tasks.\nAnchor-free and transformer detectors (DETR, DINO) treat detection as set prediction and remove hand-designed anchor boxes — elegant, and increasingly competitive.\n\nMedical reality modifies the playbook: lesions are small relative to whole scans, so multi-scale feature pyramids (FPN) matter; a single image may contain dozens of findings of several classes; and false positives carry a real cost in radiologist attention, so operating-point selection is a first-class design decision (Chapter 6).",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Deep Learning Architectures</span>"
@@ -714,8 +626,8 @@
     "objectID": "chapters/07-deep-learning-architectures.html#d-and-video-architectures",
     "href": "chapters/07-deep-learning-architectures.html#d-and-video-architectures",
     "title": "7  Deep Learning Architectures",
-    "section": "7.5 3D and video architectures",
-    "text": "7.5 3D and video architectures",
+    "section": "7.4 3D and video architectures",
+    "text": "7.4 3D and video architectures\nCT and MRI are volumes; ultrasound and endoscopy are video. The 2D playbook extends in two directions:\n\n3D convolutions replace 2D patches with 3D volumes, so a “pixel” filter becomes a voxel filter. This is the natural formulation for volumetric segmentation and is central to nnU-Net’s 3D mode. The cost is memory: a full CT at 1mm isotropic resolution can exceed GPU memory, which is why patch-based training and sliding-window inference are standard practice.\n2.5D processing treats a volume as a stack of adjacent 2D slices, feeding each slice a few neighbors for context. Cheaper, sometimes nearly as good, and a pragmatic default when data is limited.\nVideo architectures add a temporal axis: 3D CNNs over space-time volumes, or recurrent/attention mechanisms that carry state across frames. Surgical video understanding (Chapter 18) is the flagship application.\n\nThe engineering theme is context budgeting: how much of the volume, and of time, can the model see at once? Most medical 3D and video systems are clever answers to that question.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Deep Learning Architectures</span>"
@@ -725,8 +637,8 @@
     "objectID": "chapters/07-deep-learning-architectures.html#promptable-segmentation-the-sam-family",
     "href": "chapters/07-deep-learning-architectures.html#promptable-segmentation-the-sam-family",
     "title": "7  Deep Learning Architectures",
-    "section": "7.6 Promptable segmentation: the SAM family",
-    "text": "7.6 Promptable segmentation: the SAM family",
+    "section": "7.5 Promptable segmentation: the SAM family",
+    "text": "7.5 Promptable segmentation: the SAM family\nSAM (Segment Anything Model) reframed segmentation as interactive: the model is trained on a billion masks so that, given a prompt — a click, a box, a text phrase — it can segment the indicated object in an image it has never seen. MedSAM and MedSAM2 fine-tune that paradigm on medical data; nnInteractive pushes it toward radiology-grade interactive workflows where the clinician refines the mask with a few clicks.\nThe clinical meaning is substantial: instead of training a bespoke segmentation model per organ per modality per task — a project — one general model, prompted by a user, covers a broad space of tasks. Generalization to new organs, modalities, and even new institutions is the frontier where this family is actively being pushed, and Chapter 8 places it in the foundation-model landscape it belongs to.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Deep Learning Architectures</span>"
@@ -736,8 +648,8 @@
     "objectID": "chapters/07-deep-learning-architectures.html#choosing-an-architecture",
     "href": "chapters/07-deep-learning-architectures.html#choosing-an-architecture",
     "title": "7  Deep Learning Architectures",
-    "section": "7.7 Choosing an architecture",
-    "text": "7.7 Choosing an architecture",
+    "section": "7.6 Choosing an architecture",
+    "text": "7.6 Choosing an architecture\nPractical guidance distilled from the choices that recur across this book:\n\nStart boring. A pre-trained ResNet/EfficientNet for classification, nnU-Net for segmentation. Novel architectures are a research activity, not a deployment strategy.\nMatch architecture to data scale. Small labeled sets favor CNNs with transfer learning or self-supervised backbones; large unlabeled archives justify transformers and foundation models.\nRespect geometry. Use 3D architectures when the pathology is defined by volume context (most CT/MRI segmentation) and 2D when each slice is independently interpretable (some screening tasks).\nBudget for the workflow. Real-time video needs single-stage efficiency; overnight batch CT analysis can afford 3D attention and ensembles.\nPrefer models whose outputs the workflow can consume. A beautiful architecture that outputs a heatmap when the PACS needs a DICOM segmentation object is the wrong architecture.\n\nNone of these rules survives contact with a specific problem unchanged — but they are the right starting point, and the next chapter changes the frame from discriminative models (which label pixels) to generative models (which create them).",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Deep Learning Architectures</span>"
@@ -748,7 +660,18 @@
     "href": "chapters/08-generative-and-frontier-models.html",
     "title": "8  Generative & Frontier Models",
     "section": "",
-    "text": "8.1 Diffusion models",
+    "text": "8.1 Diffusion models\nThe previous chapters described models that label images — assign a class, draw a box, outline an organ. Generative models learn the distribution of images well enough to produce new ones: to fill in missing tissue, translate between modalities, synthesize training data, or answer questions in natural language. This chapter covers that shift and the frontier models that now dominate the conversation: diffusion models, vision-language systems, medical foundation models, and the agentic workflows built on top of them.\nDiffusion models learn to create images by learning to destroy them: start with a real image and progressively add noise until nothing recognizable remains; then train a network to reverse that process step by step. Once trained, the network can start from pure noise and walk backward to a realistic sample. Text conditioning — the mechanism behind image generators like Stable Diffusion — lets the reverse process be steered by a description.\nIn medicine, diffusion models are used for:\nThe central caveat: because diffusion models are generative, they can invent plausible detail. A reconstructed image may look convincing and contain tissue that was not there. Whether that is acceptable depends entirely on the downstream use, and is the recurring question of this chapter.",
+    "crumbs": [
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Generative & Frontier Models</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/08-generative-and-frontier-models.html#diffusion-models",
+    "href": "chapters/08-generative-and-frontier-models.html#diffusion-models",
+    "title": "8  Generative & Frontier Models",
+    "section": "",
+    "text": "Synthesis — generating realistic images for data augmentation, privacy-preserving sharing, or balancing underrepresented classes.\nReconstruction — recovering a sharp image from undersampled MRI (accelerated acquisition), low-dose CT, or sparse-view CT. Here the generative model acts as a learned prior: it knows what anatomy should look like, and uses that knowledge to fill in what the scanner did not capture.\nAnomaly detection — by learning what normal looks like and flagging pixels where the real image cannot be reconstructed from the learned distribution.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Generative & Frontier Models</span>"
@@ -759,7 +682,7 @@
     "href": "chapters/08-generative-and-frontier-models.html#gans-history-and-remaining-niches",
     "title": "8  Generative & Frontier Models",
     "section": "8.2 GANs: history and remaining niches",
-    "text": "8.2 GANs: history and remaining niches",
+    "text": "8.2 GANs: history and remaining niches\nBefore diffusion, generative adversarial networks (GANs) were the dominant approach: a generator produces images and a discriminator judges real versus fake; training pushes each to beat the other, and the generator learns to produce samples the discriminator cannot distinguish from real data. GANs powered the first wave of medical image synthesis, super-resolution, and modality translation (CycleGAN, pix2pix, and their many descendants).\nDiffusion has largely displaced GANs for general image generation because it is more stable to train and produces higher-quality, more diverse samples. GANs retain niches where their strengths matter: extremely fast one-step generation, precise paired translation tasks, and legacy systems still in production. The field’s current center of gravity, though, is diffusion and its successors.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Generative & Frontier Models</span>"
@@ -770,7 +693,7 @@
     "href": "chapters/08-generative-and-frontier-models.html#vision-language-models",
     "title": "8  Generative & Frontier Models",
     "section": "8.3 Vision-language models",
-    "text": "8.3 Vision-language models",
+    "text": "8.3 Vision-language models\nVision-language models (VLMs) combine a vision encoder with a language model so the system can reason about images and text in the same space. Feed it an X-ray and the question “is there a pneumothorax?” and it can answer in natural language, grounded in what the vision encoder extracted.\nIn medical imaging, VLMs power:\n\nReport generation and editing — draft findings from an image, or revise an existing report.\nVisual question answering — “where is the abnormality?” “is this nodule larger than last time?”\nZero-shot classification — asking whether an image shows a finding the model was never explicitly trained to detect, by comparing its visual embedding to a text description.\n\nTheir promise and their danger are the same property: fluency. A VLM’s output is generated text, and its faithfulness to the image must be evaluated explicitly, not assumed — a theme that carries into the report-generation discussion in Chapter 6.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Generative & Frontier Models</span>"
@@ -781,7 +704,7 @@
     "href": "chapters/08-generative-and-frontier-models.html#llms-in-imaging",
     "title": "8  Generative & Frontier Models",
     "section": "8.4 LLMs in imaging",
-    "text": "8.4 LLMs in imaging",
+    "text": "8.4 LLMs in imaging\nLarge language models touch imaging in three distinct roles:\n\nReport generation and structured extraction. A VLM drafts findings from the image; a plain LLM turns dictated reports into structured fields, extracts measurements, or rewrites a report at a reading level appropriate for a patient.\nRetrieval-augmented generation (RAG). Instead of answering from parametric memory alone, the model first retrieves relevant documents — UpToDate entries, departmental protocols, the hospital’s own guidelines — and grounds its answer in them. For medicine, where the answer must be traceable and current, RAG is less an enhancement than a requirement.\nReasoning and agentic use. Chain-of-thought reasoning, tool use, and agentic orchestration turn an LLM from a text generator into a system that can call a segmentation model, query the EHR, and compose a workflow. That is the subject of Chapter 9.\n\nRLHF and instruction tuning are what make these models usable: after pre-training, human feedback teaches the model to follow instructions, prefer honest answers, and refuse when it does not know — imperfectly, and with hallucination still a live failure mode.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Generative & Frontier Models</span>"
@@ -792,7 +715,7 @@
     "href": "chapters/08-generative-and-frontier-models.html#medical-foundation-models",
     "title": "8  Generative & Frontier Models",
     "section": "8.5 Medical foundation models",
-    "text": "8.5 Medical foundation models",
+    "text": "8.5 Medical foundation models\nA foundation model is a large model pre-trained on broad data (self-supervised on unlabeled medical archives, or broadly supervised across tasks) that can then be adapted — fine-tuned, prompted, or distilled — to many downstream tasks. Medical imaging has produced several families:\n\nGeneral segmentation — MedSAM, MedSAM2, BiomedParse, TotalSegmentator: promptable or task-flexible segmentation across organs and modalities. The SAM family’s medical descendants (Chapter 7) belong here.\nModality-specific encoders — CheXzero, CheXagent, RadImageNet: self-supervised or supervised models pre-trained on large radiology archives, ready to be fine-tuned on downstream tasks with far less labeled data than training from scratch.\nMultimodal medical LLMs — MedGemma, LLaVA-Med, and similar models that accept images and text, aiming to serve as the conversational layer over imaging.\nModel-as-infrastructure — TotalSegmentator’s organ segmentation, nnU-Net’s auto-configuration, open model zoos that treat a model as a reusable building block rather than a one-off project.\n\nThe strategic question for any organization is whether to fine-tune a foundation model or train from scratch. Foundation models win when data is scarce, tasks are diverse, and the pre-training distribution is close enough to the target; bespoke models still win when the task is narrow, the data is abundant, and the foundation model’s priors are wrong for the modality.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Generative & Frontier Models</span>"
@@ -803,7 +726,7 @@
     "href": "chapters/08-generative-and-frontier-models.html#agentic-workflows",
     "title": "8  Generative & Frontier Models",
     "section": "8.6 Agentic workflows",
-    "text": "8.6 Agentic workflows",
+    "text": "8.6 Agentic workflows\nThe models above answer questions when asked. An agentic system decides which questions to ask, calls the tools needed to answer them, and composes the results — a shift from “model as function” to “model as orchestrator.” In imaging, that means an agent that receives a study, decides which segmentation model to call, queries the prior comparison, reads the measurement tool’s output, and drafts a report — all under human review.\nThat capability is significant enough to deserve its own chapter: Chapter 9 examines the harness, the tools, the orchestration patterns, and the safety implications in detail.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Generative & Frontier Models</span>"
@@ -814,7 +737,18 @@
     "href": "chapters/09-agentic-ai.html",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "",
-    "text": "9.1 What is an agent?",
+    "text": "9.1 What is an agent?\nThe models in Chapter 8 answer questions when asked. An agent goes further: it decides which questions to ask, chooses and calls tools, observes the results, and iterates until the task is done. In medical imaging that means a system that receives a study, decides which models to run, queries priors and measurements, and drafts a report — always under human oversight. This chapter explains how such a system is built, what it changes about imaging workflow, and why evaluating and regulating it is harder than regulating a single model.\nThe distinction matters because the intelligence of an agent is not only in the model. A brilliant model with a broken tool interface, no memory of prior turns, and no ability to ask for help will be less useful than a smaller model with a well-designed harness.\nAgent versus workflow versus copilot. A workflow is a fixed pipeline: every step is coded in advance. An agent decides its own path within a defined space of actions. A copilot suggests actions but a human executes them. These are points on an autonomy spectrum, not binary categories, and the right point depends on how much trust the system has earned and how consequential each action is.",
+    "crumbs": [
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/09-agentic-ai.html#what-is-an-agent",
+    "href": "chapters/09-agentic-ai.html#what-is-an-agent",
+    "title": "9  Agentic AI in Medical Imaging",
+    "section": "",
+    "text": "Model — a language or vision-language model that maps input to output in a single pass.\nHarness — the software around the model: tools it can call, memory it can read and write, the rules it follows, the environment it acts in.\nAgent — the combination: a model plus a harness, able to plan, act, observe results, and iterate.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -825,7 +759,7 @@
     "href": "chapters/09-agentic-ai.html#anatomy-of-a-harness",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "9.2 Anatomy of a harness",
-    "text": "9.2 Anatomy of a harness",
+    "text": "9.2 Anatomy of a harness\nA harness gives an LLM agency: the ability to act, remember, and be held accountable.\n\nTool schemas and function calling. Machine-readable descriptions of each tool — name, inputs, outputs, side effects. Function calling translates the model’s decision to use a tool into an actual API invocation and returns the result to the model.\nContext management. The model has a finite context window. A good harness manages what enters it: relevant prior images, previous tool results, the current task, the user’s intent — and summarizes or discards what is no longer needed.\nMemory. Distinguishing working memory (current task context), task memory (what happened earlier this session), and institutional memory (departmental protocols, prior cases) is a design decision with safety implications: what the agent remembers shapes what it does next.\nThe Model Context Protocol (MCP). An emerging open standard for how a model connects to tools and data sources — a common interface so tools written for one harness work with another.\nSandboxing and permissioning. Every tool call is a potential action in the real world — a DICOM query reveals PHI, a report draft could reach the EHR. A harness must enforce least privilege: only the access needed for the current task, and dangerous actions require explicit human approval.\nAudit logging. Every tool call, model decision, and piece of context consulted — recorded so the session can be replayed. This is the foundation of both debugging and regulatory compliance (Chapter 10).",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -836,7 +770,7 @@
     "href": "chapters/09-agentic-ai.html#tools-an-imaging-agent-calls",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "9.3 Tools an imaging agent calls",
-    "text": "9.3 Tools an imaging agent calls",
+    "text": "9.3 Tools an imaging agent calls\nThe hospital is already a toolbox. The agent’s job is to use it safely and legibly:\n\nDICOMweb queries — search studies, retrieve images, fetch metadata. Read-only versions are the safest first tools to expose.\nSegmentation and detection models — the discriminative AI of Chapter 7, invoked as services: “run lung nodule detection on this CT.”\nMeasurement and analytics endpoints — volume calculators, change-detection tools, quantitative imaging biomarkers.\nReport generators and templates — convert structured model output into report-ready language or structured fields.\nThe EHR via FHIR — lab values, clinical history, prior reports. The most sensitive tool in the box: every query touches PHI and must be logged.\n\nThe design principle is the same as in software engineering: small, well-typed, side-effect-aware tools beat one giant “do the radiology” tool.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -847,7 +781,7 @@
     "href": "chapters/09-agentic-ai.html#orchestration-patterns",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "9.4 Orchestration patterns",
-    "text": "9.4 Orchestration patterns",
+    "text": "9.4 Orchestration patterns\n\nSingle agent + tools. One model, given tool access, plans and acts in a loop. Simple to build, audit, and reason about; appropriate for bounded tasks (“summarize this study’s findings”).\nPlanner–executor. A planner decomposes the task (“what do I need to know before drafting this report?”) and an executor runs each step. Separating what to do from how to do it makes both easier to test.\nMulti-agent systems. Specialized agents — triage, reading, quality assurance — collaborate, each with its own scope and tools. Expressive, but harder to evaluate, and errors can compound across agent boundaries.\nHuman-in-the-loop gates. Non-negotiable for any action that reaches the patient record: a human must review and approve before a report is signed, a measurement enters the chart, or a finding is communicated. Autonomy in imaging is earned one task at a time, and the default gate is always a clinician.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -858,7 +792,7 @@
     "href": "chapters/09-agentic-ai.html#agents-as-readers-machine-readable-medical-knowledge",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "9.5 Agents as readers: machine-readable medical knowledge",
-    "text": "9.5 Agents as readers: machine-readable medical knowledge",
+    "text": "9.5 Agents as readers: machine-readable medical knowledge\nThis book is written for human readers, but also so that machines can read it: chapters in plain Markdown, living tables in CSV, and an llms.txt at the root pointing agents to what exists and how it is organized.\nAn imaging agent that needs to know “what datasets exist for mammography?” or “which FDA-cleared products detect breast cancer?” should not guess from parametric memory. It should read the chapter, find the table, and consume the authoritative current data directly. Each section of a modality chapter maps to a decision the agent might need to make:\n\nThe finding taxonomy tells it what outputs to look for.\nThe dataset table tells it where to find training or evaluation data.\nThe model zoo tells it which tools are available.\nThe product table tells it what is actually deployed and cleared.\nThe workflow description tells it where its output fits in the clinical process.\n\nWriting for agents alongside humans is what makes the difference between an agent that hallucinates its knowledge of the field and one that can be pointed at a reliable source and told “look it up.”",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -869,7 +803,7 @@
     "href": "chapters/09-agentic-ai.html#evaluating-agentic-systems",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "9.6 Evaluating agentic systems",
-    "text": "9.6 Evaluating agentic systems",
+    "text": "9.6 Evaluating agentic systems\n\nTask-completion benchmarks ask whether the agent achieved the goal — right report, right tools, right answer.\nStep-level correctness asks whether each individual decision was right, even if the final answer was. An agent that reaches the correct diagnosis via a hallucinated prior study has not earned trust.\nSafety evals specifically test the failure modes that matter: can the agent be tricked into calling a tool it should not, exfiltrating PHI, or signing a report without human review?\nTrajectory audits reconstruct the full chain of decisions and tool calls for review. In regulated environments, the trajectory is the record.\n\nThe deeper point: single-model metrics do not compose. A segmentation model with 0.90 Dice and a report generator with 95% faithfulness do not yield a 0.95-probability-of-correct-system when composed in an agent. System-level evaluation must measure the emergent behavior of the whole pipeline — which is why Chapter 10’s post-market surveillance and audit-trail discussions matter more for agents than for single-model deployments.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -880,7 +814,7 @@
     "href": "chapters/09-agentic-ai.html#safety-liability-and-the-regulatory-frontier",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "9.7 Safety, liability and the regulatory frontier",
-    "text": "9.7 Safety, liability and the regulatory frontier",
+    "text": "9.7 Safety, liability and the regulatory frontier\n\nNo regulatory framework yet fits a tool-calling agent. FDA pathways (Chapter 10) assume a defined device with a fixed function and a change-control plan. An agent whose behavior emerges from a model, a set of tools, and its environment does not map cleanly onto that framework, and regulators are still catching up.\nPredetermined change control plans (PCCPs) — pre-agreed plans for how a model may be updated and re-validated — are the closest existing mechanism, but they were designed for model updates, not agents that choose their own tool calls.\nThe audit trail is the safety net. Until regulation catches up, the practical safety regime is transparency: every action logged, every output attributable to a specific chain of reasoning and tool calls, and every consequential action gated by a human.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -891,7 +825,7 @@
     "href": "chapters/09-agentic-ai.html#further-reading",
     "title": "9  Agentic AI in Medical Imaging",
     "section": "9.8 Further reading",
-    "text": "9.8 Further reading",
+    "text": "9.8 Further reading\nThe references for this chapter should be maintained as a living list rather than frozen at publication; the field is moving too quickly for a static bibliography to stay honest. Current primary sources include the MCP specification, the SAM and MedSAM papers, and the leading agentic-evaluation benchmarks.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Agentic AI in Medical Imaging</span>"
@@ -902,7 +836,18 @@
     "href": "chapters/10-from-model-to-product.html",
     "title": "10  From Model to Product: Evaluation, Regulation, Deployment",
     "section": "",
-    "text": "10.1 Benchmark performance vs. clinical validation",
+    "text": "10.1 Benchmark performance vs. clinical validation\nA model that performs well on a benchmark is not a product. Between “our network achieves 0.94 AUROC on the held-out test set” and “a radiologist in a hospital uses this tool on real patients every day” lies a landscape of reader studies, regulatory submissions, post-market surveillance, and operational plumbing — each of which can quietly kill a project that succeeded technically. This chapter walks that landscape, from benchmark to deployment and beyond.\nA benchmark measures how well a model reproduces ground-truth labels on a fixed dataset. It is necessary but not sufficient, because the ground truth in a benchmark is not the ground truth in a clinic. The gap is filled by progressively more realistic evaluation:\nTwo phenomena make benchmark results fragile:",
+    "crumbs": [
+      "II — Foundations: Machine Learning & Computer Vision",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/10-from-model-to-product.html#benchmark-performance-vs.-clinical-validation",
+    "href": "chapters/10-from-model-to-product.html#benchmark-performance-vs.-clinical-validation",
+    "title": "10  From Model to Product: Evaluation, Regulation, Deployment",
+    "section": "",
+    "text": "Retrospective validation — run the model on historical cases and compare its output to what actually happened. Cheaper and faster, but subject to all the biases of the historical record (which patients were scanned, who got the diagnosis, which scanners were used).\nReader studies — put the model in front of clinicians and measure whether it changes their diagnostic accuracy. This is the design that matters for decision-support products: not “does the model perform well?” but “does the clinician plus the model perform better than the clinician alone?” Reader studies are expensive, require IRB approval, and are the standard evidence for most regulatory submissions.\nProspective clinical validation — run the model in the real clinical workflow, on consecutive patients, and measure outcomes. This is the gold standard and the rarest, because it requires an actual deployment before a full validation is complete.\n\n\n\nDataset shift. The distribution of images at hospital B will differ from hospital A — different scanners, protocols, patient demographics, disease prevalence. A model validated only at one site has not been validated for the field, and this is the most common cause of a model that looked excellent in the paper and underperforms in deployment (Chapter 5).\nBias. If the training data underrepresents certain populations — by age, sex, ethnicity, body habitus, comorbidity — the model may systematically underperform on those patients. Benchmark aggregate metrics hide this; stratified performance and subgroup analysis reveal it, and are increasingly expected by regulators (Chapter 22).",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
@@ -913,7 +858,7 @@
     "href": "chapters/10-from-model-to-product.html#regulatory-pathways-in-plain-language",
     "title": "10  From Model to Product: Evaluation, Regulation, Deployment",
     "section": "10.2 Regulatory pathways in plain language",
-    "text": "10.2 Regulatory pathways in plain language",
+    "text": "10.2 Regulatory pathways in plain language\nIn the United States, three FDA pathways cover most imaging AI:\n\n510(k) — the most common. The applicant shows that the new device is substantially equivalent to a legally marketed predicate device. It does not require clinical trial evidence of effectiveness in the way PMA does, and it is the pathway most AI/ML imaging software takes, usually classified as Class II (moderate risk).\nDe Novo — for devices that are genuinely new (no predicate exists) but are still low-to-moderate risk. Grants a new classification that future similar devices can then use as a predicate.\nPMA (Premarket Approval) — the most rigorous pathway, for Class III (high-risk) devices. Requires clinical trial evidence of safety and effectiveness. Rare for current imaging AI, which mostly falls into Class II.\n\nIn Europe, the equivalent framework is the Medical Device Regulation (MDR), which classifies by risk and requires a notified body to review the technical file and issue a CE mark.\nWhat a clearance summary actually tells you: it lists the device’s indications for use — what it is cleared to do, in what patient population, with what intended user, in what clinical setting. It does not tell you the tool is accurate in absolute terms, only that the manufacturer demonstrated reasonable assurance of safety and effectiveness for the specific claimed indication. Reading the indications-for-use statement carefully, and matching it to your intended use, is the essential due-diligence step.\nTwo regulatory concepts deserve attention:\n\nSoftware as a Medical Device (SaMD). The classification under which most imaging AI falls: software intended for medical purposes that is not part of a hardware device.\nPredetermined Change Control Plans (PCCPs). FDA’s mechanism for allowing AI/ML models to be updated after clearance without a new submission, by pre-agreeing the scope and validation method of those updates. This is what makes iterative improvement compatible with regulation — and its extension to agentic systems is an open question (Chapter 9).",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
@@ -924,7 +869,7 @@
     "href": "chapters/10-from-model-to-product.html#post-market-surveillance-and-audit-trails",
     "title": "10  From Model to Product: Evaluation, Regulation, Deployment",
     "section": "10.3 Post-market surveillance and audit trails",
-    "text": "10.3 Post-market surveillance and audit trails",
+    "text": "10.3 Post-market surveillance and audit trails\nRegulatory clearance is the beginning of the safety story, not the end. Once deployed, a system needs:\n\nPerformance monitoring. Is the model still performing as well as it did in validation? Input distributions drift — new scanners, changed protocols, evolving patient populations — and a model can degrade silently. Monitoring should track input statistics, output distributions, and (where available) downstream clinical outcomes.\nAdverse event reporting. When a model contributes to a wrong diagnosis or a missed finding, that event must be reported and investigated — the same discipline as any other medical device.\nAudit trails. Every input, every output, every version, every human interaction — logged and reconstructable. When something goes wrong months later, the audit trail is the only way to reconstruct what the system saw, what it output, and what the clinician did with it. For agentic systems (Chapter 9), this extends to the full trajectory of tool calls and reasoning.\nVersion control. Which model version was in use on the day a specific patient was seen? A deployment without precise version tracking cannot answer that question, and it will eventually need to.\n\nThe operational discipline this requires is substantial, and is the reason many hospitals treat AI deployment as an ongoing clinical governance problem rather than a one-time IT project.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"
@@ -935,7 +880,7 @@
     "href": "chapters/10-from-model-to-product.html#mlops-for-hospitals",
     "title": "10  From Model to Product: Evaluation, Regulation, Deployment",
     "section": "10.4 MLOps for hospitals",
-    "text": "10.4 MLOps for hospitals",
+    "text": "10.4 MLOps for hospitals\nGetting a validated model into clinical use and keeping it there requires the same engineering discipline as any production ML system, adapted to healthcare’s constraints:\n\nData pipelines. DICOM routing, de-identification, quality checks, and storage that respect patient privacy while feeding the model. The data engineering is usually harder than the model engineering (Chapter 3).\nDeployment environments. On-premise (common for hospitals with strict data-governance requirements), cloud-hosted (easier to update, harder to get through IT), or hybrid. Each has different latency, security, and update implications.\nIntegration. The model must plug into the radiologist’s actual workflow — PACS viewer integration, worklist integration, report integration. A model that requires the radiologist to switch to a separate web portal will not be used, no matter how accurate it is.\nMonitoring and alerting. Uptime, latency, and model-quality dashboards. When the model is down or degraded, the clinical team needs to know — and needs a safe fallback workflow.\nModel lifecycle management. Re-training on new data, validating before deployment, staged rollouts, rollback plans. Every update to the model is a new version that must be tracked, validated, and — if the model is cleared under a PCCP — re-assessed against the pre-agreed change plan.\n\nThe state of the art in hospital MLOps is still maturing; most deployments today are bespoke integrations rather than turnkey platforms. The organizations that treat AI deployment as a clinical-engineering discipline — with the same rigor as imaging physics or radiation safety — are the ones whose systems survive contact with reality.",
     "crumbs": [
       "II — Foundations: Machine Learning & Computer Vision",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>From Model to Product: Evaluation, Regulation, Deployment</span>"

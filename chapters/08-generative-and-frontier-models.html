@@ -559,38 +559,85 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>The previous chapters described models that <em>label</em> images — assign a class, draw a box, outline an organ. Generative models learn the <em>distribution</em> of images well enough to produce new ones: to fill in missing tissue, translate between modalities, synthesize training data, or answer questions in natural language. This chapter covers that shift and the frontier models that now dominate the conversation: diffusion models, vision-language systems, medical foundation models, and the agentic workflows built on top of them.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the engineer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Generative models trade a discriminative model’s clear loss landscape for a much harder evaluation problem: when the model <em>creates</em> the output, how do you know it is right? This chapter’s recurring theme is that faithfulness, not realism, is the property medical applications must demand.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the clinician
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The models described here are the ones that make headlines: image generators, chatbots, systems that “see and reason.” The practical questions are the same as for any other AI system — what was it trained on, what can it actually be trusted to do, and who checks its output — but the failure modes are subtler, because a fluent, confident, realistic answer can be wrong in ways that are hard to detect.</p>
 </div>
 </div>
 <section id="diffusion-models" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="diffusion-models"><span class="header-section-number">8.1</span> Diffusion models</h2>
+<p>Diffusion models learn to create images by learning to <em>destroy</em> them: start with a real image and progressively add noise until nothing recognizable remains; then train a network to reverse that process step by step. Once trained, the network can start from pure noise and walk backward to a realistic sample. Text conditioning — the mechanism behind image generators like Stable Diffusion — lets the reverse process be steered by a description.</p>
+<p>In medicine, diffusion models are used for:</p>
+<ul>
+<li><strong>Synthesis</strong> — generating realistic images for data augmentation, privacy-preserving sharing, or balancing underrepresented classes.</li>
+<li><strong>Reconstruction</strong> — recovering a sharp image from undersampled MRI (accelerated acquisition), low-dose CT, or sparse-view CT. Here the generative model acts as a learned prior: it knows what anatomy should look like, and uses that knowledge to fill in what the scanner did not capture.</li>
+<li><strong>Anomaly detection</strong> — by learning what <em>normal</em> looks like and flagging pixels where the real image cannot be reconstructed from the learned distribution.</li>
+</ul>
+<p>The central caveat: because diffusion models are generative, they can <em>invent</em> plausible detail. A reconstructed image may look convincing and contain tissue that was not there. Whether that is acceptable depends entirely on the downstream use, and is the recurring question of this chapter.</p>
 </section>
 <section id="gans-history-and-remaining-niches" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="gans-history-and-remaining-niches"><span class="header-section-number">8.2</span> GANs: history and remaining niches</h2>
+<p>Before diffusion, <strong>generative adversarial networks</strong> (GANs) were the dominant approach: a generator produces images and a discriminator judges real versus fake; training pushes each to beat the other, and the generator learns to produce samples the discriminator cannot distinguish from real data. GANs powered the first wave of medical image synthesis, super-resolution, and modality translation (CycleGAN, pix2pix, and their many descendants).</p>
+<p>Diffusion has largely displaced GANs for general image generation because it is more stable to train and produces higher-quality, more diverse samples. GANs retain niches where their strengths matter: extremely fast one-step generation, precise paired translation tasks, and legacy systems still in production. The field’s current center of gravity, though, is diffusion and its successors.</p>
 </section>
 <section id="vision-language-models" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="vision-language-models"><span class="header-section-number">8.3</span> Vision-language models</h2>
+<p><strong>Vision-language models (VLMs)</strong> combine a vision encoder with a language model so the system can reason about images <em>and</em> text in the same space. Feed it an X-ray and the question “is there a pneumothorax?” and it can answer in natural language, grounded in what the vision encoder extracted.</p>
+<p>In medical imaging, VLMs power:</p>
+<ul>
+<li><strong>Report generation and editing</strong> — draft findings from an image, or revise an existing report.</li>
+<li><strong>Visual question answering</strong> — “where is the abnormality?” “is this nodule larger than last time?”</li>
+<li><strong>Zero-shot classification</strong> — asking whether an image shows a finding the model was never explicitly trained to detect, by comparing its visual embedding to a text description.</li>
+</ul>
+<p>Their promise and their danger are the same property: fluency. A VLM’s output is <em>generated text</em>, and its faithfulness to the image must be evaluated explicitly, not assumed — a theme that carries into the report-generation discussion in <a href="06-what-computer-vision-can-do.html" class="quarto-xref"><span>Chapter 6</span></a>.</p>
 </section>
 <section id="llms-in-imaging" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="llms-in-imaging"><span class="header-section-number">8.4</span> LLMs in imaging</h2>
-<!-- Report generation, RAG assistants; RLHF and reasoning models. -->
+<p>Large language models touch imaging in three distinct roles:</p>
+<ul>
+<li><strong>Report generation and structured extraction.</strong> A VLM drafts findings from the image; a plain LLM turns dictated reports into structured fields, extracts measurements, or rewrites a report at a reading level appropriate for a patient.</li>
+<li><strong>Retrieval-augmented generation (RAG).</strong> Instead of answering from parametric memory alone, the model first retrieves relevant documents — UpToDate entries, departmental protocols, the hospital’s own guidelines — and grounds its answer in them. For medicine, where the answer must be traceable and current, RAG is less an enhancement than a requirement.</li>
+<li><strong>Reasoning and agentic use.</strong> Chain-of-thought reasoning, tool use, and agentic orchestration turn an LLM from a text generator into a system that can call a segmentation model, query the EHR, and compose a workflow. That is the subject of <a href="09-agentic-ai.html" class="quarto-xref"><span>Chapter 9</span></a>.</li>
+</ul>
+<p>RLHF and instruction tuning are what make these models usable: after pre-training, human feedback teaches the model to follow instructions, prefer honest answers, and refuse when it does not know — imperfectly, and with hallucination still a live failure mode.</p>
 </section>
 <section id="medical-foundation-models" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="medical-foundation-models"><span class="header-section-number">8.5</span> Medical foundation models</h2>
-<!-- MedSAM, BiomedParse, CheXagent, MedGemma, TotalSegmentator as model-as-infrastructure. -->
+<p>A <strong>foundation model</strong> is a large model pre-trained on broad data (self-supervised on unlabeled medical archives, or broadly supervised across tasks) that can then be adapted — fine-tuned, prompted, or distilled — to many downstream tasks. Medical imaging has produced several families:</p>
+<ul>
+<li><strong>General segmentation</strong> — MedSAM, MedSAM2, BiomedParse, TotalSegmentator: promptable or task-flexible segmentation across organs and modalities. The SAM family’s medical descendants (<a href="07-deep-learning-architectures.html" class="quarto-xref"><span>Chapter 7</span></a>) belong here.</li>
+<li><strong>Modality-specific encoders</strong> — CheXzero, CheXagent, RadImageNet: self-supervised or supervised models pre-trained on large radiology archives, ready to be fine-tuned on downstream tasks with far less labeled data than training from scratch.</li>
+<li><strong>Multimodal medical LLMs</strong> — MedGemma, LLaVA-Med, and similar models that accept images <em>and</em> text, aiming to serve as the conversational layer over imaging.</li>
+<li><strong>Model-as-infrastructure</strong> — TotalSegmentator’s organ segmentation, nnU-Net’s auto-configuration, open model zoos that treat a model as a reusable building block rather than a one-off project.</li>
+</ul>
+<p>The strategic question for any organization is whether to <strong>fine-tune a foundation model</strong> or <strong>train from scratch</strong>. Foundation models win when data is scarce, tasks are diverse, and the pre-training distribution is close enough to the target; bespoke models still win when the task is narrow, the data is abundant, and the foundation model’s priors are wrong for the modality.</p>
 </section>
 <section id="agentic-workflows" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="agentic-workflows"><span class="header-section-number">8.6</span> Agentic workflows</h2>
+<p>The models above answer questions when asked. An <strong>agentic</strong> system decides <em>which</em> questions to ask, calls the tools needed to answer them, and composes the results — a shift from “model as function” to “model as orchestrator.” In imaging, that means an agent that receives a study, decides which segmentation model to call, queries the prior comparison, reads the measurement tool’s output, and drafts a report — all under human review.</p>
+<p>That capability is significant enough to deserve its own chapter: <a href="09-agentic-ai.html" class="quarto-xref"><span>Chapter 9</span></a> examines the harness, the tools, the orchestration patterns, and the safety implications in detail.</p>
 
 
 </section>
