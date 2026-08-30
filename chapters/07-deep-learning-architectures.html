@@ -589,6 +589,16 @@ ul.task-list li input[type="checkbox"] {
 <section id="convolutional-neural-networks-from-first-principles" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="convolutional-neural-networks-from-first-principles"><span class="header-section-number">7.1</span> Convolutional neural networks from first principles</h2>
 <p>A convolutional neural network (CNN) is built on one insight: visual features are local and translation-invariant. A small filter slides across the image, computing a weighted sum over a neighborhood (a 3×3 patch, say) at every position, and produces a <strong>feature map</strong> — a new “image” whose pixels say “how strongly does this pattern appear here?” Early layers learn edges and textures; deeper layers stack those into shapes, organs, and pathology.</p>
+<div id="fig-cnn-feature-hierarchy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A chest radiograph passes through a highlighted local filter, stacks of progressively smaller feature maps, deeper feature representations, and a final prediction.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cnn-feature-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch07/cnn-feature-hierarchy.png" class="img-fluid figure-img" alt="A chest radiograph passes through a highlighted local filter, stacks of progressively smaller feature maps, deeper feature representations, and a final prediction.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cnn-feature-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: A CNN builds a hierarchy of representations: local filters produce edge-sensitive feature maps, deeper layers combine them into anatomical and semantic patterns, and the compressed representation drives a prediction.
+</figcaption>
+</figure>
+</div>
 <p>Three structural ideas complete the design:</p>
 <ul>
 <li><strong>Pooling</strong> shrinks feature maps, giving deeper layers a wider view and some robustness to small shifts.</li>
@@ -599,11 +609,31 @@ ul.task-list li input[type="checkbox"] {
 <p>Classification discards spatial information; segmentation needs it back. The <strong>encoder–decoder</strong> design solves this: the encoder progressively compresses the image into a small, semantically rich feature map; the decoder progressively expands it back to full resolution; and <strong>skip connections</strong> carry high-resolution detail from encoder to decoder so fine boundaries survive the trip.</p>
 <p><strong>U-Net</strong> is this idea in its purest form, and became the default architecture of medical segmentation almost immediately after publication. Its descendants — Attention U-Net, TransUNet, SegFormer, and dozens more — modify the blocks but keep the skeleton.</p>
 <p>Picture a symmetric hourglass: the encoder compresses spatial detail while deepening semantics; the decoder expands back to pixel-level output; horizontal skip connections carry fine boundaries from encoder to decoder so they survive the compression. Every serious medical segmentation system since 2015 is a variation on that hourglass.</p>
+<div id="fig-unet-hourglass" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A U-shaped encoder-decoder network takes a brain MRI as input and produces a tumor segmentation, with horizontal skip connections joining matching resolution levels.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-unet-hourglass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch07/unet-encoder-decoder.png" class="img-fluid figure-img" alt="A U-shaped encoder-decoder network takes a brain MRI as input and produces a tumor segmentation, with horizontal skip connections joining matching resolution levels.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unet-hourglass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.2: The U-Net hourglass. The encoder compresses an MRI into deep features, the decoder restores spatial resolution, and skip connections preserve fine boundary information for the final segmentation.
+</figcaption>
+</figure>
+</div>
 <p>The most important descendant is not a novel architecture but a <em>policy</em>: <strong>nnU-Net</strong> (“no new U-Net”) reads a dataset’s geometry, intensity distribution, and class balance and then automatically configures preprocessing, architecture, training schedule, and ensembling. It has been the strongest general-purpose medical segmentation system for years, and its lesson is the field’s most valuable engineering lesson: <em>meticulous, task-adapted configuration of a boring architecture beats a novel architecture trained carelessly.</em> <!-- nnU-Net as the self-configuring workhorse. --></p>
 </section>
 <section id="vision-transformers" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="vision-transformers"><span class="header-section-number">7.2</span> Vision transformers</h2>
 <p>The <strong>vision transformer (ViT)</strong> replaces convolutions with self-attention: the image is chopped into patches, each patch is embedded as a token, and attention layers let every token weigh information from every other token. Global relationships come for free; locality and translation-invariance must be learned or built in.</p>
+<div id="fig-vision-transformer" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A retinal fundus image is divided into a patch grid, converted to a token sequence, passed through a self-attention matrix and global representation, and classified.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vision-transformer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch07/vision-transformer.png" class="img-fluid figure-img" alt="A retinal fundus image is divided into a patch grid, converted to a token sequence, passed through a self-attention matrix and global representation, and classified.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vision-transformer-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.3: A vision transformer divides a fundus image into patches, converts the patches into tokens, and uses self-attention to combine information from distant retinal regions into a global prediction.
+</figcaption>
+</figure>
+</div>
 <p>In medical imaging, transformers shine where <strong>long-range context</strong> matters — relating a distant mass to surrounding tissue, or fusing sequences in a multi-parametric MRI study — and where scale allows: transformers are data-hungry, so they pair naturally with self-supervised pre-training on large unlabeled medical archives (<a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>).</p>
 <p>The modern consensus is hybrid: convolutional stem for local structure, attention for global reasoning, and heavy pre-training. Swin-style windowed transformers, ConvNeXt blocks, and attention-augmented U-Nets are all expressions of that compromise.</p>
 </section>
