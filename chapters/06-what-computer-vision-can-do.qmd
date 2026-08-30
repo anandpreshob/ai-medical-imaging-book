@@ -10,33 +10,75 @@ Resist the temptation to call everything "image classification." Choosing the ri
 Each section below is a different answer to the question "what should the AI output look like?" A likelihood, a box, an outline, a number, a new image, or a paragraph — each carries different information and different failure modes, and knowing which you were promised is the first step in reviewing any vendor claim.
 :::
 
-## Classification
+## Four tasks, four kinds of answer
 
-The simplest task: assign the whole image a category. *Does this chest X-ray show a pneumothorax?* The output is a score (often read as a probability) per class. Multi-label variants assign several independent yes/no answers to one image, because a real film can show cardiomegaly, effusion, and consolidation simultaneously.
+Classification, object detection, semantic segmentation, and instance segmentation can all inspect the same pixels, but they answer different questions and require different annotations. The distinction is easiest to see in the shape of the output:
 
-Medicine adds nuance to the output. **Binary** classification answers one question; **multi-label** classification answers a panel of questions at once; **ordinal** classification ranks severity (mild, moderate, severe) — and treating ordinal stages as unrelated categories throws away clinically important structure. Some outputs are better expressed as **probabilities that need calibration**: if a system says 80% and the true rate is 40% among such cases, triage logic built on that number will misbehave even if the ranking is perfect.
+| Task | Question | Training annotation | Model output | Typical medical use |
+|---|---|---|---|---|
+| Classification | **What is present?** | One or more labels per image, series, or study | Class score(s) | Triage, screening, view recognition, quality control |
+| Object detection | **What is present, and roughly where?** | A box and class for every target | Boxes, classes, confidence scores | Nodules, polyps, fractures, devices |
+| Semantic segmentation | **What class is each pixel or voxel?** | A class mask | One class label per pixel or voxel | Organ and tumor volumes, treatment planning |
+| Instance segmentation | **Which individual object owns each pixel?** | A separate mask for every object | Object identity, class, mask, score | Nucleus counting, lesion counting, cell morphology |
 
-**Metrics.** **AUROC** (area under the receiver operating characteristic curve) measures how well the system separates positives from negatives across all thresholds; **sensitivity** and **specificity** describe behavior at one chosen operating point; **precision** (positive predictive value) depends directly on disease prevalence and is therefore often the more clinically honest number.
-## Detection and localization
+The tasks form an information ladder. Classification compresses an image to a few scores. Detection adds approximate location. Semantic segmentation restores exact spatial extent but merges objects of the same class. Instance segmentation preserves both exact boundaries and individual identity. More detailed output is not automatically better: it costs more to label, train, validate, store, and integrate.
 
-Detection answers *where is it?* by drawing a bounding box around each finding. A chest model that outputs "pneumothorax, left upper zone, box at x=..." supports a workflow a bare yes/no cannot: the reader's eye is drawn to the region, and a second read can check whether the box actually contains the finding.
+## Classification: one decision for the whole image
 
-Standard detection metrics aggregate over classes and confidence thresholds: **mAP** (mean average precision) rewards finding the right objects with tight boxes, while **sensitivity at a fixed false-positive rate per image** is the radiology-native formulation — "how many nodules do we catch if we allow 0.125 false alarms per scan?" In practice, box quality is judged with **IoU** (intersection over union): a detection counts as correct only if its box overlaps the truth enough.
+**Classification** assigns a label—or a set of scores—to an entire input. For a chest radiograph the question might be *does this image contain pneumonia?* The answer may be clinically useful for triage, but it does not say which lung contains the opacity or how large it is. The unit being classified must be explicit: one image, one series, one 3D study, or one patient can produce very different datasets and models.
 
-For many clinical purposes, coarse localization by heatmap is enough. **Weakly supervised localization** trains on image-level labels only and then visualizes the regions the network attended to — cheap labels, approximate boxes, but often sufficient for triage.
-## Semantic segmentation
+![Classification reduces the whole image to class scores. This chest radiograph receives image-level probabilities, but the output contains no location or boundary.](../figures/ch06/classification-example.png){#fig-classification-example fig-alt="A chest radiograph is treated as one whole input and mapped to probabilities for pneumonia, pleural effusion, and pneumothorax. No box, contour, or location is shown."}
 
-Segmentation assigns a class to every pixel: this voxel is liver, this one is tumor, this one is background. It is the workhorse of quantitative imaging — organ volumes, tumor burden, cartilage thickness, plaque composition all require a delineation before any arithmetic can happen. Modern medical segmentation is so thoroughly associated with the U-Net family and its descendants (@sec-architectures) that the architecture and the task are nearly synonymous.
+There are several important variants:
 
-Two standard metrics:
+- **Binary classification** asks one yes/no question, such as pneumothorax present versus absent.
+- **Multiclass classification** chooses one mutually exclusive class, such as frontal versus lateral versus oblique view.
+- **Multi-label classification** assigns several independent labels because one image can simultaneously contain cardiomegaly, effusion, and consolidation.
+- **Ordinal classification** predicts ordered categories such as mild, moderate, and severe. Treating these as unrelated classes discards their clinical ordering.
 
-- **Dice coefficient** measures overlap between prediction and ground truth: 1.0 is a perfect match, 0 is no overlap. It handles class imbalance far better than pixel accuracy, which is why a 95% "accuracy" on a segmentation task where the target is 1% of the image is meaningless.
-- **Hausdorff distance** (usually the 95th-percentile variant, HD95) measures how far the predicted boundary is from the truth boundary, catching the thin tendrils and spillovers Dice can miss.
-## Instance segmentation
+Training labels are comparatively cheap: they may come from a report, diagnosis code, or study-level review. That convenience creates the task's characteristic weakness—**label ambiguity**. A positive report does not prove the finding is visible on every image in the study, and a negative report does not prove it was absent. Models may also exploit shortcuts such as portable-scanner markers or laterality tokens instead of anatomy.
 
-Where semantic segmentation answers "what class is this pixel?", instance segmentation answers "which object is this pixel part of?" It distinguishes cell *A* from cell *B* even when they touch, counts nuclei individually, and separates overlapping lung lesions. The distinction matters because counting and tracking require boundaries between instances, not just colored regions.
+**How it is evaluated.** AUROC measures ranking across all thresholds; sensitivity and specificity describe one operating point; precision depends strongly on prevalence and therefore better reflects the false-alert burden in deployment. If scores drive a clinical threshold, **calibration** matters too: among cases assigned 0.8 probability, roughly 80% should truly be positive.
 
-On whole-slide pathology images this is the computational backbone of many analyses: detect and segment every nucleus, then derive grade-relevant features from their shapes and arrangements (@sec-digital-pathology).
+## Object detection: a list of findings and locations
+
+**Object detection** predicts a variable-length list of objects. Each prediction usually contains a class, a confidence score, and a rectangular or cuboidal bounding box. Detection therefore answers *what is present and roughly where?* It is appropriate when the workflow must direct attention, count candidates, or crop regions for a second model, but does not require an exact boundary.
+
+![Object detection returns one box, class, and confidence score per candidate. Boxes localize pulmonary nodules on CT but only approximate their boundaries.](../figures/ch06/object-detection-example.png){#fig-object-detection-example fig-alt="An axial lung CT contains three pulmonary nodules enclosed by separate rectangular boxes with confidence scores. A small unboxed candidate illustrates a possible missed detection."}
+
+Creating a detection dataset requires an annotator to mark **every relevant object**, not merely one representative lesion. Missing annotations are especially damaging: a real nodule left unboxed is treated during training as background. Box definitions must also be consistent—does a box include surrounding edema, pleural contact, or only the solid lesion? In 3D imaging, teams must decide whether to annotate boxes per slice or one 3D cuboid per lesion.
+
+Detectors fail in two clinically visible ways. **False positives** create extra boxes and consume reader attention; **false negatives** leave a real finding completely unmarked. Small lesions are difficult because they occupy few pixels, and multiple predictions around one lesion require **non-maximum suppression** or a set-prediction design to collapse duplicates.
+
+**How it is evaluated.** A predicted box is matched to a reference using **intersection over union (IoU)**. Precision–recall is then summarized as **average precision (AP)**, and averaged across classes or IoU thresholds as **mAP**. For lesion-finding systems, sensitivity at a fixed number of false positives per image or scan is often more interpretable: *what fraction of nodules are found if the system is allowed one false alarm per CT?*
+
+::: {.callout-note title="A heatmap is not a detector"}
+A class-activation heatmap shows which region influenced a classification score; it does not produce a validated object list. Weakly supervised localization is useful for explanation and cheap prototyping, but a diffuse hot region should not be reported as if it were a measured lesion box.
+:::
+
+## Semantic segmentation: a class for every pixel
+
+**Semantic segmentation** labels every pixel in 2D—or every voxel in 3D—with a class. All liver pixels share the liver label; all tumor pixels share the tumor label; background receives its own label. The result preserves exact spatial extent, which makes segmentation the workhorse of quantitative imaging: organ volume, tumor burden, cartilage thickness, radiation dose planning, and surgical margins all begin with a mask.
+
+![Semantic segmentation assigns one anatomical class to every pixel. The brain MRI is divided into gray matter, white matter, ventricles, tumor, and background regions.](../figures/ch06/semantic-segmentation-example.png){#fig-semantic-segmentation-example fig-alt="A grayscale axial brain MRI is shown beside the same slice with colored masks assigning each pixel to gray matter, white matter, ventricles, tumor, or background."}
+
+A segmentation label is far more expensive than an image label or box. Experts must trace boundaries slice by slice, and legitimate disagreement occurs at infiltrative tumor edges, low-contrast organ borders, and partial-volume voxels. Annotation protocols therefore need explicit rules and often multiple reviewers. In volumetric imaging, geometry matters as much as pixels: a mask must remain aligned after resampling, orientation changes, and DICOM-to-NIfTI conversion.
+
+The model outputs a class probability for every pixel or voxel, then converts those probabilities into a mask. Post-processing may remove tiny disconnected islands, fill holes, or keep only the largest component—but every such rule can also erase real disease. The U-Net family and its descendants dominate this task because their encoder–decoder structure combines semantic context with fine boundaries (@sec-architectures).
+
+**How it is evaluated.** The **Dice coefficient** measures overlap and is robust to the severe foreground–background imbalance common in medicine. **IoU** measures similar overlap more strictly. **Hausdorff distance**, usually HD95, measures boundary error and exposes thin spillovers that overlap scores can hide. For clinical use, add a task-specific measure—volume error, maximum diameter error, or dose impact—because two masks with the same Dice score may not be equally useful.
+
+## Instance segmentation: a mask for every object
+
+**Instance segmentation** combines detection and segmentation. It assigns a class and an exact mask to each individual object, so two touching nuclei remain nucleus 17 and nucleus 18 rather than merging into one region. The output supports counting, per-object measurements, tracking across frames, and analysis of spatial relationships.
+
+![Instance segmentation separates individual nuclei in an H&E pathology field. Each object receives its own mask and identity, allowing cells to be counted and measured even when they touch.](../figures/ch06/instance-segmentation-example.png){#fig-instance-segmentation-example fig-alt="An H-and-E histology field is shown beside an overlay where individual nuclei have separate colored masks and boundaries. A result card reports a nucleus count and per-object measurement capability."}
+
+The difference from semantic segmentation is fundamental. If ten adjacent nuclei are all colored simply *nucleus*, semantic segmentation may represent them as one connected blob. Instance segmentation must find ten centers or proposals, separate ten boundaries, and return ten identities. This makes crowded scenes—pathology, blood smears, microscopy, and clustered lesions—its natural domain.
+
+Instance annotations are the most laborious of the four core tasks because every object needs a separate contour. Models must balance three errors: **missed instances**, **duplicate instances**, and **merged or split instances**. A visually convincing foreground mask can still produce a wildly wrong cell count if touching objects merge.
+
+**How it is evaluated.** Per-instance AP evaluates whether each predicted mask matches a reference object at an IoU threshold. **Panoptic quality** combines recognition and mask quality. Counting error and per-object measurement error should be reported when those are the clinical purpose. In pathology, object-level precision and recall may matter more than aggregate pixel overlap (@sec-digital-pathology).
 ## Keypoints, landmarks and registration
 
 Some clinical questions are answered by points rather than regions:
