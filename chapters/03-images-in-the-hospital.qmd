@@ -26,6 +26,8 @@ DICOM organizes everything into a four-level hierarchy:
 
 Each level is identified by a globally unique identifier (UID) — long dotted-decimal strings that let any two systems agree they are discussing the same study without sharing a database. When you assemble a volume, the hierarchy is the contract: instances group into series by UID, and their spatial order comes from geometry tags — *not* from filenames, which are arbitrary.
 
+![The DICOM information hierarchy. One patient can have many imaging studies; each study contains one or more acquisition series; and each series contains ordered DICOM instances, classically one object per slice.](../figures/ch03/dicom-information-hierarchy.png){#fig-dicom-information-hierarchy fig-alt="A four-level diagram labeled Patient, Study, Series, and Instance. A patient leads to one CT imaging event, which contains multiple image series; one selected series expands into many ordered axial CT slice objects, each with a unique identifier."}
+
 ### The header: hundreds of tags, a handful that matter enormously
 
 A DICOM file is a list of **tags** — (group, element) pairs like `(0008,0060) Modality` or `(0010,0010) PatientName` — followed by one enormous tag holding the pixel data. A typical file carries hundreds: who, what, when, where, machine model, software version, acquisition physics, display hints. For machine learning, a short list of them does most of the work, and ignoring any one of them is a classic silent bug:
@@ -90,17 +92,7 @@ Where does an AI system plug into all this? Almost always as another node in the
 
 Follow one contrast chest CT through a modern hospital, end to end — because every stage is both a place metadata is created and a place AI now intervenes.
 
-```{mermaid}
-%%| fig-cap: "The imaging loop. Orders and reports travel as HL7/FHIR (dashed); images and AI results travel as DICOM (solid)."
-flowchart LR
-  EHR[EHR<br/>order placed] -.HL7 order.-> RIS[RIS<br/>schedule + protocol]
-  RIS -.worklist.-> MOD[Scanner<br/>acquisition]
-  MOD --DICOM store--> PACS[(PACS / VNA<br/>archive)]
-  PACS --route copy--> AI[AI systems<br/>triage · quant · draft]
-  AI --SR / SEG / priority--> PACS
-  PACS --> READ[Radiologist<br/>worklist + viewer]
-  READ -.HL7 report.-> EHR
-```
+![The hospital imaging loop. Orders and reports travel between the EHR and departmental systems as HL7/FHIR (dashed teal); images and AI results travel through the scanner, PACS/VNA, AI endpoint, and radiologist workstation as DICOM (solid navy). AI assists from a routed copy and returns results to the archive; the radiologist remains responsible for the signed report.](../figures/ch03/hospital-imaging-workflow.png){#fig-hospital-imaging-workflow fig-alt="A seven-stage workflow: an EHR order goes to RIS scheduling, then CT acquisition, PACS or VNA archiving, optional AI assistance, radiologist reading, and a signed report returned to the EHR. Solid arrows denote DICOM; dashed arrows denote HL7 or FHIR."}
 
 1. **Order.** A clinician places the order in the EHR; it reaches the RIS as an HL7 message carrying the indication — the *reason for the exam* that ought to accompany the study forever and, to every AI developer's frustration, often arrives as free text or not at all.
 2. **Protocol and schedule.** A radiologist or protocol rules decide exactly how to scan (contrast? phases? slice thickness?). AI's quietest foothold is already here: automated protocoling and dose optimization.
