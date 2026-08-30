@@ -527,11 +527,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#classification" id="toc-classification" class="nav-link active" data-scroll-target="#classification"><span class="header-section-number">6.1</span> Classification</a></li>
-  <li><a href="#image-to-image" id="toc-image-to-image" class="nav-link" data-scroll-target="#image-to-image"><span class="header-section-number">6.2</span> Image-to-image</a></li>
-  <li><a href="#image-to-text" id="toc-image-to-text" class="nav-link" data-scroll-target="#image-to-text"><span class="header-section-number">6.3</span> Image-to-text</a></li>
-  <li><a href="#text-to-image" id="toc-text-to-image" class="nav-link" data-scroll-target="#text-to-image"><span class="header-section-number">6.4</span> Text-to-image</a></li>
-  <li><a href="#how-we-measure-success" id="toc-how-we-measure-success" class="nav-link" data-scroll-target="#how-we-measure-success"><span class="header-section-number">6.5</span> How we measure success</a></li>
+  <li><a href="#four-tasks-four-kinds-of-answer" id="toc-four-tasks-four-kinds-of-answer" class="nav-link active" data-scroll-target="#four-tasks-four-kinds-of-answer"><span class="header-section-number">6.1</span> Four tasks, four kinds of answer</a></li>
+  <li><a href="#classification-one-decision-for-the-whole-image" id="toc-classification-one-decision-for-the-whole-image" class="nav-link" data-scroll-target="#classification-one-decision-for-the-whole-image"><span class="header-section-number">6.2</span> Classification: one decision for the whole image</a></li>
+  <li><a href="#object-detection-a-list-of-findings-and-locations" id="toc-object-detection-a-list-of-findings-and-locations" class="nav-link" data-scroll-target="#object-detection-a-list-of-findings-and-locations"><span class="header-section-number">6.3</span> Object detection: a list of findings and locations</a></li>
+  <li><a href="#semantic-segmentation-a-class-for-every-pixel" id="toc-semantic-segmentation-a-class-for-every-pixel" class="nav-link" data-scroll-target="#semantic-segmentation-a-class-for-every-pixel"><span class="header-section-number">6.4</span> Semantic segmentation: a class for every pixel</a></li>
+  <li><a href="#instance-segmentation-a-mask-for-every-object" id="toc-instance-segmentation-a-mask-for-every-object" class="nav-link" data-scroll-target="#instance-segmentation-a-mask-for-every-object"><span class="header-section-number">6.5</span> Instance segmentation: a mask for every object</a></li>
+  <li><a href="#image-to-image" id="toc-image-to-image" class="nav-link" data-scroll-target="#image-to-image"><span class="header-section-number">6.6</span> Image-to-image</a></li>
+  <li><a href="#image-to-text" id="toc-image-to-text" class="nav-link" data-scroll-target="#image-to-text"><span class="header-section-number">6.7</span> Image-to-text</a></li>
+  <li><a href="#text-to-image" id="toc-text-to-image" class="nav-link" data-scroll-target="#text-to-image"><span class="header-section-number">6.8</span> Text-to-image</a></li>
+  <li><a href="#how-we-measure-success" id="toc-how-we-measure-success" class="nav-link" data-scroll-target="#how-we-measure-success"><span class="header-section-number">6.9</span> How we measure success</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/06-what-computer-vision-can-do.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -585,22 +589,145 @@ ul.task-list li input[type="checkbox"] {
 <p>Each section below is a different answer to the question “what should the AI output look like?” A likelihood, a box, an outline, a number, a new image, or a paragraph — each carries different information and different failure modes, and knowing which you were promised is the first step in reviewing any vendor claim.</p>
 </div>
 </div>
-<section id="classification" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="classification"><span class="header-section-number">6.1</span> Classification</h2>
-<p>The simplest task: assign the whole image a category. <em>Does this chest X-ray show a pneumothorax?</em> The output is a score (often read as a probability) per class. Multi-label variants assign several independent yes/no answers to one image, because a real film can show cardiomegaly, effusion, and consolidation simultaneously.</p>
-<p>Medicine adds nuance to the output. <strong>Binary</strong> classification answers one question; <strong>multi-label</strong> classification answers a panel of questions at once; <strong>ordinal</strong> classification ranks severity (mild, moderate, severe) — and treating ordinal stages as unrelated categories throws away clinically important structure. Some outputs are better expressed as <strong>probabilities that need calibration</strong>: if a system says 80% and the true rate is 40% among such cases, triage logic built on that number will misbehave even if the ranking is perfect.</p>
-<p><strong>Metrics.</strong> <strong>AUROC</strong> (area under the receiver operating characteristic curve) measures how well the system separates positives from negatives across all thresholds; <strong>sensitivity</strong> and <strong>specificity</strong> describe behavior at one chosen operating point; <strong>precision</strong> (positive predictive value) depends directly on disease prevalence and is therefore often the more clinically honest number. ## Detection and localization</p>
-<p>Detection answers <em>where is it?</em> by drawing a bounding box around each finding. A chest model that outputs “pneumothorax, left upper zone, box at x=…” supports a workflow a bare yes/no cannot: the reader’s eye is drawn to the region, and a second read can check whether the box actually contains the finding.</p>
-<p>Standard detection metrics aggregate over classes and confidence thresholds: <strong>mAP</strong> (mean average precision) rewards finding the right objects with tight boxes, while <strong>sensitivity at a fixed false-positive rate per image</strong> is the radiology-native formulation — “how many nodules do we catch if we allow 0.125 false alarms per scan?” In practice, box quality is judged with <strong>IoU</strong> (intersection over union): a detection counts as correct only if its box overlaps the truth enough.</p>
-<p>For many clinical purposes, coarse localization by heatmap is enough. <strong>Weakly supervised localization</strong> trains on image-level labels only and then visualizes the regions the network attended to — cheap labels, approximate boxes, but often sufficient for triage. ## Semantic segmentation</p>
-<p>Segmentation assigns a class to every pixel: this voxel is liver, this one is tumor, this one is background. It is the workhorse of quantitative imaging — organ volumes, tumor burden, cartilage thickness, plaque composition all require a delineation before any arithmetic can happen. Modern medical segmentation is so thoroughly associated with the U-Net family and its descendants (<a href="07-deep-learning-architectures.html" class="quarto-xref"><span>Chapter 7</span></a>) that the architecture and the task are nearly synonymous.</p>
-<p>Two standard metrics:</p>
+<section id="four-tasks-four-kinds-of-answer" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="four-tasks-four-kinds-of-answer"><span class="header-section-number">6.1</span> Four tasks, four kinds of answer</h2>
+<p>Classification, object detection, semantic segmentation, and instance segmentation can all inspect the same pixels, but they answer different questions and require different annotations. The distinction is easiest to see in the shape of the output:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Question</th>
+<th>Training annotation</th>
+<th>Model output</th>
+<th>Typical medical use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Classification</td>
+<td><strong>What is present?</strong></td>
+<td>One or more labels per image, series, or study</td>
+<td>Class score(s)</td>
+<td>Triage, screening, view recognition, quality control</td>
+</tr>
+<tr class="even">
+<td>Object detection</td>
+<td><strong>What is present, and roughly where?</strong></td>
+<td>A box and class for every target</td>
+<td>Boxes, classes, confidence scores</td>
+<td>Nodules, polyps, fractures, devices</td>
+</tr>
+<tr class="odd">
+<td>Semantic segmentation</td>
+<td><strong>What class is each pixel or voxel?</strong></td>
+<td>A class mask</td>
+<td>One class label per pixel or voxel</td>
+<td>Organ and tumor volumes, treatment planning</td>
+</tr>
+<tr class="even">
+<td>Instance segmentation</td>
+<td><strong>Which individual object owns each pixel?</strong></td>
+<td>A separate mask for every object</td>
+<td>Object identity, class, mask, score</td>
+<td>Nucleus counting, lesion counting, cell morphology</td>
+</tr>
+</tbody>
+</table>
+<p>The tasks form an information ladder. Classification compresses an image to a few scores. Detection adds approximate location. Semantic segmentation restores exact spatial extent but merges objects of the same class. Instance segmentation preserves both exact boundaries and individual identity. More detailed output is not automatically better: it costs more to label, train, validate, store, and integrate.</p>
+</section>
+<section id="classification-one-decision-for-the-whole-image" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="classification-one-decision-for-the-whole-image"><span class="header-section-number">6.2</span> Classification: one decision for the whole image</h2>
+<p><strong>Classification</strong> assigns a label—or a set of scores—to an entire input. For a chest radiograph the question might be <em>does this image contain pneumonia?</em> The answer may be clinically useful for triage, but it does not say which lung contains the opacity or how large it is. The unit being classified must be explicit: one image, one series, one 3D study, or one patient can produce very different datasets and models.</p>
+<div id="fig-classification-example" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A chest radiograph is treated as one whole input and mapped to probabilities for pneumonia, pleural effusion, and pneumothorax. No box, contour, or location is shown.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-classification-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch06/classification-example.png" class="img-fluid figure-img" alt="A chest radiograph is treated as one whole input and mapped to probabilities for pneumonia, pleural effusion, and pneumothorax. No box, contour, or location is shown.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-classification-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Classification reduces the whole image to class scores. This chest radiograph receives image-level probabilities, but the output contains no location or boundary.
+</figcaption>
+</figure>
+</div>
+<p>There are several important variants:</p>
 <ul>
-<li><strong>Dice coefficient</strong> measures overlap between prediction and ground truth: 1.0 is a perfect match, 0 is no overlap. It handles class imbalance far better than pixel accuracy, which is why a 95% “accuracy” on a segmentation task where the target is 1% of the image is meaningless.</li>
-<li><strong>Hausdorff distance</strong> (usually the 95th-percentile variant, HD95) measures how far the predicted boundary is from the truth boundary, catching the thin tendrils and spillovers Dice can miss. ## Instance segmentation</li>
+<li><strong>Binary classification</strong> asks one yes/no question, such as pneumothorax present versus absent.</li>
+<li><strong>Multiclass classification</strong> chooses one mutually exclusive class, such as frontal versus lateral versus oblique view.</li>
+<li><strong>Multi-label classification</strong> assigns several independent labels because one image can simultaneously contain cardiomegaly, effusion, and consolidation.</li>
+<li><strong>Ordinal classification</strong> predicts ordered categories such as mild, moderate, and severe. Treating these as unrelated classes discards their clinical ordering.</li>
 </ul>
-<p>Where semantic segmentation answers “what class is this pixel?”, instance segmentation answers “which object is this pixel part of?” It distinguishes cell <em>A</em> from cell <em>B</em> even when they touch, counts nuclei individually, and separates overlapping lung lesions. The distinction matters because counting and tracking require boundaries between instances, not just colored regions.</p>
-<p>On whole-slide pathology images this is the computational backbone of many analyses: detect and segment every nucleus, then derive grade-relevant features from their shapes and arrangements (<a href="19-digital-pathology.html" class="quarto-xref"><span>Chapter 19</span></a>). ## Keypoints, landmarks and registration</p>
+<p>Training labels are comparatively cheap: they may come from a report, diagnosis code, or study-level review. That convenience creates the task’s characteristic weakness—<strong>label ambiguity</strong>. A positive report does not prove the finding is visible on every image in the study, and a negative report does not prove it was absent. Models may also exploit shortcuts such as portable-scanner markers or laterality tokens instead of anatomy.</p>
+<p><strong>How it is evaluated.</strong> AUROC measures ranking across all thresholds; sensitivity and specificity describe one operating point; precision depends strongly on prevalence and therefore better reflects the false-alert burden in deployment. If scores drive a clinical threshold, <strong>calibration</strong> matters too: among cases assigned 0.8 probability, roughly 80% should truly be positive.</p>
+</section>
+<section id="object-detection-a-list-of-findings-and-locations" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="object-detection-a-list-of-findings-and-locations"><span class="header-section-number">6.3</span> Object detection: a list of findings and locations</h2>
+<p><strong>Object detection</strong> predicts a variable-length list of objects. Each prediction usually contains a class, a confidence score, and a rectangular or cuboidal bounding box. Detection therefore answers <em>what is present and roughly where?</em> It is appropriate when the workflow must direct attention, count candidates, or crop regions for a second model, but does not require an exact boundary.</p>
+<div id="fig-object-detection-example" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An axial lung CT contains three pulmonary nodules enclosed by separate rectangular boxes with confidence scores. A small unboxed candidate illustrates a possible missed detection.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-object-detection-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch06/object-detection-example.png" class="img-fluid figure-img" alt="An axial lung CT contains three pulmonary nodules enclosed by separate rectangular boxes with confidence scores. A small unboxed candidate illustrates a possible missed detection.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-object-detection-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Object detection returns one box, class, and confidence score per candidate. Boxes localize pulmonary nodules on CT but only approximate their boundaries.
+</figcaption>
+</figure>
+</div>
+<p>Creating a detection dataset requires an annotator to mark <strong>every relevant object</strong>, not merely one representative lesion. Missing annotations are especially damaging: a real nodule left unboxed is treated during training as background. Box definitions must also be consistent—does a box include surrounding edema, pleural contact, or only the solid lesion? In 3D imaging, teams must decide whether to annotate boxes per slice or one 3D cuboid per lesion.</p>
+<p>Detectors fail in two clinically visible ways. <strong>False positives</strong> create extra boxes and consume reader attention; <strong>false negatives</strong> leave a real finding completely unmarked. Small lesions are difficult because they occupy few pixels, and multiple predictions around one lesion require <strong>non-maximum suppression</strong> or a set-prediction design to collapse duplicates.</p>
+<p><strong>How it is evaluated.</strong> A predicted box is matched to a reference using <strong>intersection over union (IoU)</strong>. Precision–recall is then summarized as <strong>average precision (AP)</strong>, and averaged across classes or IoU thresholds as <strong>mAP</strong>. For lesion-finding systems, sensitivity at a fixed number of false positives per image or scan is often more interpretable: <em>what fraction of nodules are found if the system is allowed one false alarm per CT?</em></p>
+<div class="callout callout-style-default callout-note callout-titled" title="A heatmap is not a detector">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A heatmap is not a detector
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A class-activation heatmap shows which region influenced a classification score; it does not produce a validated object list. Weakly supervised localization is useful for explanation and cheap prototyping, but a diffuse hot region should not be reported as if it were a measured lesion box.</p>
+</div>
+</div>
+</section>
+<section id="semantic-segmentation-a-class-for-every-pixel" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="semantic-segmentation-a-class-for-every-pixel"><span class="header-section-number">6.4</span> Semantic segmentation: a class for every pixel</h2>
+<p><strong>Semantic segmentation</strong> labels every pixel in 2D—or every voxel in 3D—with a class. All liver pixels share the liver label; all tumor pixels share the tumor label; background receives its own label. The result preserves exact spatial extent, which makes segmentation the workhorse of quantitative imaging: organ volume, tumor burden, cartilage thickness, radiation dose planning, and surgical margins all begin with a mask.</p>
+<div id="fig-semantic-segmentation-example" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A grayscale axial brain MRI is shown beside the same slice with colored masks assigning each pixel to gray matter, white matter, ventricles, tumor, or background.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-semantic-segmentation-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch06/semantic-segmentation-example.png" class="img-fluid figure-img" alt="A grayscale axial brain MRI is shown beside the same slice with colored masks assigning each pixel to gray matter, white matter, ventricles, tumor, or background.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-semantic-segmentation-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: Semantic segmentation assigns one anatomical class to every pixel. The brain MRI is divided into gray matter, white matter, ventricles, tumor, and background regions.
+</figcaption>
+</figure>
+</div>
+<p>A segmentation label is far more expensive than an image label or box. Experts must trace boundaries slice by slice, and legitimate disagreement occurs at infiltrative tumor edges, low-contrast organ borders, and partial-volume voxels. Annotation protocols therefore need explicit rules and often multiple reviewers. In volumetric imaging, geometry matters as much as pixels: a mask must remain aligned after resampling, orientation changes, and DICOM-to-NIfTI conversion.</p>
+<p>The model outputs a class probability for every pixel or voxel, then converts those probabilities into a mask. Post-processing may remove tiny disconnected islands, fill holes, or keep only the largest component—but every such rule can also erase real disease. The U-Net family and its descendants dominate this task because their encoder–decoder structure combines semantic context with fine boundaries (<a href="07-deep-learning-architectures.html" class="quarto-xref"><span>Chapter 7</span></a>).</p>
+<p><strong>How it is evaluated.</strong> The <strong>Dice coefficient</strong> measures overlap and is robust to the severe foreground–background imbalance common in medicine. <strong>IoU</strong> measures similar overlap more strictly. <strong>Hausdorff distance</strong>, usually HD95, measures boundary error and exposes thin spillovers that overlap scores can hide. For clinical use, add a task-specific measure—volume error, maximum diameter error, or dose impact—because two masks with the same Dice score may not be equally useful.</p>
+</section>
+<section id="instance-segmentation-a-mask-for-every-object" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="instance-segmentation-a-mask-for-every-object"><span class="header-section-number">6.5</span> Instance segmentation: a mask for every object</h2>
+<p><strong>Instance segmentation</strong> combines detection and segmentation. It assigns a class and an exact mask to each individual object, so two touching nuclei remain nucleus 17 and nucleus 18 rather than merging into one region. The output supports counting, per-object measurements, tracking across frames, and analysis of spatial relationships.</p>
+<div id="fig-instance-segmentation-example" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An H-and-E histology field is shown beside an overlay where individual nuclei have separate colored masks and boundaries. A result card reports a nucleus count and per-object measurement capability.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-instance-segmentation-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch06/instance-segmentation-example.png" class="img-fluid figure-img" alt="An H-and-E histology field is shown beside an overlay where individual nuclei have separate colored masks and boundaries. A result card reports a nucleus count and per-object measurement capability.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-instance-segmentation-example-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: Instance segmentation separates individual nuclei in an H&amp;E pathology field. Each object receives its own mask and identity, allowing cells to be counted and measured even when they touch.
+</figcaption>
+</figure>
+</div>
+<p>The difference from semantic segmentation is fundamental. If ten adjacent nuclei are all colored simply <em>nucleus</em>, semantic segmentation may represent them as one connected blob. Instance segmentation must find ten centers or proposals, separate ten boundaries, and return ten identities. This makes crowded scenes—pathology, blood smears, microscopy, and clustered lesions—its natural domain.</p>
+<p>Instance annotations are the most laborious of the four core tasks because every object needs a separate contour. Models must balance three errors: <strong>missed instances</strong>, <strong>duplicate instances</strong>, and <strong>merged or split instances</strong>. A visually convincing foreground mask can still produce a wildly wrong cell count if touching objects merge.</p>
+<p><strong>How it is evaluated.</strong> Per-instance AP evaluates whether each predicted mask matches a reference object at an IoU threshold. <strong>Panoptic quality</strong> combines recognition and mask quality. Counting error and per-object measurement error should be reported when those are the clinical purpose. In pathology, object-level precision and recall may matter more than aggregate pixel overlap (<a href="19-digital-pathology.html" class="quarto-xref"><span>Chapter 19</span></a>). ## Keypoints, landmarks and registration</p>
 <p>Some clinical questions are answered by points rather than regions:</p>
 <ul>
 <li><strong>Keypoint detection</strong> finds anatomically defined landmarks — the corners of a vertebra, the apex of the heart, the center of a femoral head — and from those landmarks derives angles, lengths, and alignment measurements. Orthopedics, craniofacial analysis, and cardiac geometry all live here. Landmark error is usually reported in millimeters.</li>
@@ -609,8 +736,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Longitudinal comparison deserves emphasis: <strong>change detection</strong> — registering follow-up to baseline and analyzing the difference — is how growth, response to therapy, and progression are quantified, and it is one of the most immediately useful forms of AI in clinical workflow. ## Depth estimation</p>
 <p>Monocular depth estimation predicts how far away each pixel is from a single image. In medicine its value concentrates in video-based fields: laparoscopic surgery (<a href="18-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 18</span></a>), where instrument-to-tissue distance matters for autonomy and safety, and bronchoscopy or endoscopy, where 3D scene understanding supports navigation. It is also the enabling layer behind novel-view synthesis and the reconstruction tasks in <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 </section>
-<section id="image-to-image" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="image-to-image"><span class="header-section-number">6.2</span> Image-to-image</h2>
+<section id="image-to-image" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="image-to-image"><span class="header-section-number">6.6</span> Image-to-image</h2>
 <p>Image-to-image models transform one image into another while preserving spatial layout:</p>
 <ul>
 <li><strong>Denoising and artifact removal</strong> — reduce scan noise or motion artifacts, often to enable lower radiation dose or shorter acquisition times. Evaluation is subtle: the output must be <em>diagnostically</em> faithful, not merely pretty.</li>
@@ -620,8 +747,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>These tasks blur into the generative methods of <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>; the difference is mostly in intent and evaluation. Here the goal is a <em>usable clinical image</em>; there, it is often a <em>realistic sample</em>.</p>
 </section>
-<section id="image-to-text" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="image-to-text"><span class="header-section-number">6.3</span> Image-to-text</h2>
+<section id="image-to-text" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="image-to-text"><span class="header-section-number">6.7</span> Image-to-text</h2>
 <ul>
 <li><strong>Report generation</strong> produces natural-language findings from an image. The engineering challenge is not fluency — language models produce fluent text trivially — but <strong>faithfulness</strong>: the report must be supported by pixels, complete, and clinically actionable. Hallucinated findings are a safety-critical failure, not an inconvenience.</li>
 <li><strong>Visual question answering (VQA)</strong> lets a user ask “is there a pneumothorax?” and get an answer grounded in the image. In medical use, VQA doubles as an education and second-opinion tool, but the same grounding requirement applies.</li>
@@ -629,12 +756,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>All three are vision-language problems and share machinery with the models discussed in <a href="08-generative-and-frontier-models.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 </section>
-<section id="text-to-image" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="text-to-image"><span class="header-section-number">6.4</span> Text-to-image</h2>
+<section id="text-to-image" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="text-to-image"><span class="header-section-number">6.8</span> Text-to-image</h2>
 <p>Text-to-image generation in medicine serves three honest purposes: <strong>synthetic data augmentation</strong> (rare findings, balanced demographic representation), <strong>education and communication</strong> (illustrations a patient can actually understand), and <strong>privacy-preserving research data</strong>. It must never be conflated with diagnostic truth. A generated image can be realistic and wrong; every synthetic-image claim in this book should be read with that sentence in mind. <!-- Synthesis and augmentation. --></p>
 </section>
-<section id="how-we-measure-success" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="how-we-measure-success"><span class="header-section-number">6.5</span> How we measure success</h2>
+<section id="how-we-measure-success" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="how-we-measure-success"><span class="header-section-number">6.9</span> How we measure success</h2>
 <p>Choosing the metric is choosing what the system optimizes for. The core toolkit:</p>
 <table class="caption-top table">
 <colgroup>

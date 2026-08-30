@@ -79,9 +79,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -614,6 +611,16 @@ ul.task-list li input[type="checkbox"] {
 <li>A series contains <strong>instances</strong> — individual DICOM objects, classically one file per slice. That is why one CT study is three thousand files: a 3D volume stored as a series of 2D instances, each carrying its own copy of the metadata.</li>
 </ul>
 <p>Each level is identified by a globally unique identifier (UID) — long dotted-decimal strings that let any two systems agree they are discussing the same study without sharing a database. When you assemble a volume, the hierarchy is the contract: instances group into series by UID, and their spatial order comes from geometry tags — <em>not</em> from filenames, which are arbitrary.</p>
+<div id="fig-dicom-information-hierarchy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A four-level diagram labeled Patient, Study, Series, and Instance. A patient leads to one CT imaging event, which contains multiple image series; one selected series expands into many ordered axial CT slice objects, each with a unique identifier.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dicom-information-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch03/dicom-information-hierarchy.png" class="img-fluid figure-img" alt="A four-level diagram labeled Patient, Study, Series, and Instance. A patient leads to one CT imaging event, which contains multiple image series; one selected series expands into many ordered axial CT slice objects, each with a unique identifier.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dicom-information-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: The DICOM information hierarchy. One patient can have many imaging studies; each study contains one or more acquisition series; and each series contains ordered DICOM instances, classically one object per slice.
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="the-header-hundreds-of-tags-a-handful-that-matter-enormously" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="the-header-hundreds-of-tags-a-handful-that-matter-enormously"><span class="header-section-number">3.1.2</span> The header: hundreds of tags, a handful that matter enormously</h3>
@@ -719,24 +726,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="the-loop-acquisition-storage-reading-report" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="the-loop-acquisition-storage-reading-report"><span class="header-section-number">3.4</span> The loop: acquisition → storage → reading → report</h2>
 <p>Follow one contrast chest CT through a modern hospital, end to end — because every stage is both a place metadata is created and a place AI now intervenes.</p>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  EHR[EHR&lt;br/&gt;order placed] -.HL7 order.-&gt; RIS[RIS&lt;br/&gt;schedule + protocol]
-  RIS -.worklist.-&gt; MOD[Scanner&lt;br/&gt;acquisition]
-  MOD --DICOM store--&gt; PACS[(PACS / VNA&lt;br/&gt;archive)]
-  PACS --route copy--&gt; AI[AI systems&lt;br/&gt;triage · quant · draft]
-  AI --SR / SEG / priority--&gt; PACS
-  PACS --&gt; READ[Radiologist&lt;br/&gt;worklist + viewer]
-  READ -.HL7 report.-&gt; EHR
-</pre>
+<div id="fig-hospital-imaging-workflow" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A seven-stage workflow: an EHR order goes to RIS scheduling, then CT acquisition, PACS or VNA archiving, optional AI assistance, radiologist reading, and a signed report returned to the EHR. Solid arrows denote DICOM; dashed arrows denote HL7 or FHIR.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hospital-imaging-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch03/hospital-imaging-workflow.png" class="img-fluid figure-img" alt="A seven-stage workflow: an EHR order goes to RIS scheduling, then CT acquisition, PACS or VNA archiving, optional AI assistance, radiologist reading, and a signed report returned to the EHR. Solid arrows denote DICOM; dashed arrows denote HL7 or FHIR.">
 </div>
-<p></p><figcaption> The imaging loop. Orders and reports travel as HL7/FHIR (dashed); images and AI results travel as DICOM (solid).</figcaption> </figure><p></p>
-</div>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hospital-imaging-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: The hospital imaging loop. Orders and reports travel between the EHR and departmental systems as HL7/FHIR (dashed teal); images and AI results travel through the scanner, PACS/VNA, AI endpoint, and radiologist workstation as DICOM (solid navy). AI assists from a routed copy and returns results to the archive; the radiologist remains responsible for the signed report.
+</figcaption>
+</figure>
 </div>
 <ol type="1">
 <li><strong>Order.</strong> A clinician places the order in the EHR; it reaches the RIS as an HL7 message carrying the indication — the <em>reason for the exam</em> that ought to accompany the study forever and, to every AI developer’s frustration, often arrives as free text or not at all.</li>
