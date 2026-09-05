@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img"><title>Why projection changes apparent size</title>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#526779"/></marker></defs>
+<rect width="1200" height="600" fill="#fbfaf6"/>
+<text x="50" y="58" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#18354a" font-weight="bold" text-anchor="start">Why projection changes apparent size</text>
+<text x="50" y="96" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#526779" font-weight="normal" text-anchor="start">Same object, same source-to-detector distance; only object position changes.</text>
+<text x="60" y="155" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#007f86" font-weight="bold" text-anchor="start">Object close to detector</text>
+<circle cx="90" cy="300" r="9" fill="#c75543"/>
+<line x1="90" y1="300" x2="525" y2="237.85714285714286" stroke="#c75543" stroke-width="2"/>
+<line x1="90" y1="300" x2="525" y2="362.14285714285717" stroke="#c75543" stroke-width="2"/>
+<line x1="525" y1="180" x2="525" y2="425" stroke="#18354a" stroke-width="6"/>
+<line x1="370" y1="260" x2="370" y2="340" stroke="#007f86" stroke-width="13"/>
+<line x1="525" y1="237.85714285714286" x2="525" y2="362.14285714285717" stroke="#c75543" stroke-width="13"/>
+<text x="90" y="455" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#18354a" font-weight="normal" text-anchor="middle">Source</text>
+<text x="370" y="455" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#18354a" font-weight="normal" text-anchor="middle">Object</text>
+<text x="525" y="455" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#18354a" font-weight="normal" text-anchor="middle">Detector</text>
+<text x="60" y="510" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#18354a" font-weight="normal" text-anchor="start">PA positioning reduces cardiac magnification</text>
+<text x="650" y="155" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#007f86" font-weight="bold" text-anchor="start">Object farther from detector</text>
+<circle cx="680" cy="300" r="9" fill="#c75543"/>
+<line x1="680" y1="300" x2="1115" y2="191.25" stroke="#c75543" stroke-width="2"/>
+<line x1="680" y1="300" x2="1115" y2="408.75" stroke="#c75543" stroke-width="2"/>
+<line x1="1115" y1="180" x2="1115" y2="425" stroke="#18354a" stroke-width="6"/>
+<line x1="840" y1="260" x2="840" y2="340" stroke="#007f86" stroke-width="13"/>
+<line x1="1115" y1="191.25" x2="1115" y2="408.75" stroke="#c75543" stroke-width="13"/>
+<text x="680" y="455" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#18354a" font-weight="normal" text-anchor="middle">Source</text>
+<text x="840" y="455" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#18354a" font-weight="normal" text-anchor="middle">Object</text>
+<text x="1115" y="455" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#18354a" font-weight="normal" text-anchor="middle">Detector</text>
+<text x="650" y="510" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#18354a" font-weight="normal" text-anchor="start">AP positioning can magnify the cardiac silhouette</text>
+<text x="50" y="566" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#526779" font-weight="normal" text-anchor="start">Geometry schematic • Not to scale • Patient positioning and inspiration also affect appearance.</text>
+</svg>

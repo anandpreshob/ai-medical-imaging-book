@@ -182,7 +182,11 @@ Ch. 19 (platform), Ch. 20, appendices, dual glossary, full-book editing pass.
 
 ---
 
-## 7. Status (updated 2026-08-23)
+## 7. Status
+
+**Chest X-ray flagship complete (2026-09-04):** Ch. 11 now covers all ten modality-template sections, with approximately 4,600 words, three CSV-backed CXR tables, two CC0 real radiographs, and four original reproducible diagrams. CXR dataset/model entries and three historical FDA clearances were checked against primary sources. Figure provenance is recorded in `figures/ch11/SOURCES.md`.
+
+### Previous status (2026-08-23)
 
 **Part I complete (2026-08-23):** Ch. 1 (Introduction) and Ch. 3 (How Images Live in a Hospital) written, joining Ch. 2 (modality atlas) and Ch. 4 (viewers). All four render clean with resolved cross-references. Next writing step: Ch. 11 (chest X-ray flagship) or Part II foundations (Ch. 5–10, all still stubs).
 

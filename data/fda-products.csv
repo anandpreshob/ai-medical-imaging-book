@@ -1,7 +1,7 @@
 modality,product,vendor,clearance,indication,link,notes
-cxr,Critical Care Suite,GE HealthCare,510(k),Pneumothorax triage on mobile X-ray,https://www.gehealthcare.com/,On-device triage
-cxr,red dot,Behold.ai,510(k),Abnormality triage,https://behold.ai/,UK-origin
-cxr,Lunit INSIGHT CXR,Lunit,510(k),Multi-finding detection,https://www.lunit.io/,Widely deployed internationally
+cxr,Critical Care Suite,GE HealthCare,K183182 (2019),Frontal CXR pneumothorax triage; adult-size patients,https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183182.pdf,Notification only; physician image review retained; historical clearance checked 2026-09-04
+cxr,Red Dot,Behold.ai,K191556 (2020),Adult CXR suspected pneumothorax case prioritization,https://www.accessdata.fda.gov/cdrh_docs/pdf19/K191556.pdf,Not localization or pneumothorax rule-out; historical clearance checked 2026-09-04
+cxr,Lunit INSIGHT CXR Triage,Lunit,K211733 (2021),Adult CXR pleural effusion and/or pneumothorax triage,https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211733.pdf,Passive case-level prioritization; not standalone diagnosis; historical clearance checked 2026-09-04
 ct,Viz LVO,Viz.ai,De Novo (2018),Large-vessel-occlusion stroke triage,https://www.viz.ai/,First CADt De Novo; created the reimbursement path
 ct,Aidoc BriefCase (ICH/PE),Aidoc,510(k),Intracranial hemorrhage & PE triage,https://www.aidoc.com/,Platform with many cleared modules
 ophtho,IDx-DR (LumineticsCore),Digital Diagnostics,De Novo (2018),Autonomous diabetic-retinopathy screening,https://www.digitaldiagnostics.com/,First autonomous AI diagnosis clearance

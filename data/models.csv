@@ -1,7 +1,7 @@
 modality,task,model,weights,license,link,notes
-cxr,Detection + report generation,CheXagent 2 (3B),Open,Apache-2.0,https://huggingface.co/StanfordAIMI/CheXagent-2-3b,Chest X-ray foundation model from Stanford AIMI
-cxr,Classification (multi-label),TorchXRayVision,Open,Apache-2.0,https://github.com/mlmed/torchxrayvision,Pretrained across 8+ CXR datasets
-cxr,VLM (general medical),MedGemma,Open (gated),Gemma license,https://deepmind.google/models/gemma/medgemma/,Google; CXR-strong VLM
+cxr,CXR vision-language interpretation,CheXagent 2 (3B),Open,MIT (checkpoint metadata); research-only stated use,https://huggingface.co/StanfordAIMI/CheXagent-2-3b,Stanford AIMI; use checkpoint-specific tasks and interface
+cxr,Classification (multi-label),TorchXRayVision,Open,Apache-2.0 code; inspect selected weights and data terms,https://github.com/mlmed/torchxrayvision,Research baseline; preserve documented intensity normalization
+cxr,VLM (general medical),MedGemma (medical multimodal family),Open (gated),Gemma license,https://developers.google.com/health-ai-developer-foundations/medgemma/model-card,Development starting point; pin version; application-specific validation required
 ct,Segmentation (117 structures),TotalSegmentator,Open,Apache-2.0,https://github.com/wasserth/TotalSegmentator,
 any,Text-prompted segmentation,BiomedParse,Open,Apache-2.0 (weights: MSR terms),https://github.com/microsoft/BiomedParse,
 any,Interactive segmentation,MedSAM2,Open,Apache-2.0,https://github.com/bowang-lab/MedSAM2,

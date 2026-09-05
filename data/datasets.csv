@@ -1,9 +1,9 @@
 modality,name,size,labels,license/access,link,notes
-cxr,ChestX-ray14 (NIH),"112,120 images, 30,805 patients",14 findings (NLP-mined),Open,https://nihcc.app.box.com/v/ChestXray-NIHCC,Label noise from report mining
-cxr,CheXpert,"224,316 images","14 findings, uncertainty labels",Credentialed (free),https://stanfordmlgroup.github.io/competitions/chexpert/,Stanford; official test set held out
-cxr,MIMIC-CXR,"377,110 images + free-text reports",Reports + CheXpert labels,PhysioNet credentialed,https://physionet.org/content/mimic-cxr/,Largest public CXR+report corpus
-cxr,PadChest,"160,868 images",174 findings; 27% manually labeled,Open (registration),https://bimcv.cipf.es/bimcv-projects/padchest/,Spanish reports
-cxr,VinDr-CXR,"18,000 images",Radiologist bounding boxes; 28 findings,PhysioNet credentialed,https://physionet.org/content/vindr-cxr/,Box-level labels — rare and valuable
+cxr,ChestX-ray14 (NIH),"112,120 images, 30,805 patients",14 findings (NLP-mined),Public research release; consult NIH terms,https://nihcc.app.box.com/v/ChestXray-NIHCC,Report-mined labels; single US center; release documentation governs splits
+cxr,CheXpert,"224,316 images; 65,240 patients","14 findings, uncertainty labels",Access request and Stanford dataset agreement,https://stanfordmlgroup.github.io/competitions/chexpert/,Single US center; report-mined training labels; expert evaluation
+cxr,MIMIC-CXR,"377,110 images; 227,835 studies (v2 release)",DICOM images and free-text reports,PhysioNet credentialing; training; data-use agreement,https://physionet.org/content/mimic-cxr/,Single Boston center; JPG derivative overlaps this corpus
+cxr,PadChest,"160,868 images",174 findings; 27% manually labeled,Research-use agreement; access request,https://bimcv.cipf.es/bimcv-projects/padchest/,Spanish hospital; manual and automated annotations; restricted redistribution
+cxr,VinDr-CXR,"18,000 images",22 local findings with boxes; 6 global categories,PhysioNet credentialing and data-use agreement,https://physionet.org/content/vindr-cxr/1.0.0/,"Adult PA images from two Vietnamese hospitals; 15,000 train / 3,000 test"
 ct,LIDC-IDRI,"1,018 CT scans",Lung nodule contours (4 readers),Open (TCIA),https://www.cancerimagingarchive.net/collection/lidc-idri/,Classic nodule benchmark
 ct,TotalSegmentator dataset,"1,228 CT scans",117 anatomical structures,CC BY 4.0,https://zenodo.org/records/10047292,Powers the model of the same name
 mri,fastMRI,"~8,400 knee/brain volumes + raw k-space",Reconstruction targets,Open (registration),https://fastmri.med.nyu.edu/,NYU/Meta; reconstruction benchmark
