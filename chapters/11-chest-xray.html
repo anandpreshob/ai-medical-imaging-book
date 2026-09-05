@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -49,9 +84,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-352996a7c9838933d6d4a3f3ccb5fda3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-06bcf803f3cb041e628075a1cf2295ba.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-616e2840c5e2a61466f3606187068303.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-906e246b2c55ccdd06d8d5869fb45c37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-616e2840c5e2a61466f3606187068303.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -80,6 +115,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -527,15 +591,49 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-a-chest-x-ray" id="toc-what-is-a-chest-x-ray" class="nav-link active" data-scroll-target="#what-is-a-chest-x-ray"><span class="header-section-number">11.1</span> What is a chest X-ray?</a></li>
+  <li><a href="#what-is-a-chest-x-ray" id="toc-what-is-a-chest-x-ray" class="nav-link active" data-scroll-target="#what-is-a-chest-x-ray"><span class="header-section-number">11.1</span> What is a chest X-ray?</a>
+  <ul class="collapse">
+  <li><a href="#a-projection-not-a-slice" id="toc-a-projection-not-a-slice" class="nav-link" data-scroll-target="#a-projection-not-a-slice"><span class="header-section-number">11.1.1</span> A projection, not a slice</a></li>
+  <li><a href="#pa-ap-and-lateral-views" id="toc-pa-ap-and-lateral-views" class="nav-link" data-scroll-target="#pa-ap-and-lateral-views"><span class="header-section-number">11.1.2</span> PA, AP, and lateral views</a></li>
+  <li><a href="#what-an-engineer-receives" id="toc-what-an-engineer-receives" class="nav-link" data-scroll-target="#what-an-engineer-receives"><span class="header-section-number">11.1.3</span> What an engineer receives</a></li>
+  </ul></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">11.2</span> Why and when it’s ordered</a></li>
-  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">11.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">11.4</span> How it works in a modern hospital</a></li>
-  <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">11.5</span> The data landscape</a></li>
-  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">11.6</span> The model landscape</a></li>
+  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">11.3</span> What diagnoses are made from it</a>
+  <ul class="collapse">
+  <li><a href="#findings-explanations-and-actions" id="toc-findings-explanations-and-actions" class="nav-link" data-scroll-target="#findings-explanations-and-actions"><span class="header-section-number">11.3.1</span> Findings, explanations, and actions</a></li>
+  <li><a href="#reading-as-a-structured-search" id="toc-reading-as-a-structured-search" class="nav-link" data-scroll-target="#reading-as-a-structured-search"><span class="header-section-number">11.3.2</span> Reading as a structured search</a></li>
+  </ul></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">11.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#acquisition-and-quality" id="toc-acquisition-and-quality" class="nav-link" data-scroll-target="#acquisition-and-quality"><span class="header-section-number">11.4.1</span> Acquisition and quality</a></li>
+  <li><a href="#from-pacs-to-a-signed-report" id="toc-from-pacs-to-a-signed-report" class="nav-link" data-scroll-target="#from-pacs-to-a-signed-report"><span class="header-section-number">11.4.2</span> From PACS to a signed report</a></li>
+  <li><a href="#a-worked-workflow-example" id="toc-a-worked-workflow-example" class="nav-link" data-scroll-target="#a-worked-workflow-example"><span class="header-section-number">11.4.3</span> A worked workflow example</a></li>
+  </ul></li>
+  <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">11.5</span> The data landscape</a>
+  <ul class="collapse">
+  <li><a href="#choose-supervision-that-matches-the-task" id="toc-choose-supervision-that-matches-the-task" class="nav-link" data-scroll-target="#choose-supervision-that-matches-the-task"><span class="header-section-number">11.5.1</span> Choose supervision that matches the task</a></li>
+  <li><a href="#split-patients-before-processing-images" id="toc-split-patients-before-processing-images" class="nav-link" data-scroll-target="#split-patients-before-processing-images"><span class="header-section-number">11.5.2</span> Split patients before processing images</a></li>
+  </ul></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">11.6</span> The model landscape</a>
+  <ul class="collapse">
+  <li><a href="#classifiers-localizers-and-language-models" id="toc-classifiers-localizers-and-language-models" class="nav-link" data-scroll-target="#classifiers-localizers-and-language-models"><span class="header-section-number">11.6.1</span> Classifiers, localizers, and language models</a></li>
+  <li><a href="#what-is-mature-and-what-remains-difficult" id="toc-what-is-mature-and-what-remains-difficult" class="nav-link" data-scroll-target="#what-is-mature-and-what-remains-difficult"><span class="header-section-number">11.6.2</span> What is mature, and what remains difficult?</a></li>
+  <li><a href="#a-reproducible-hands-on-exercise" id="toc-a-reproducible-hands-on-exercise" class="nav-link" data-scroll-target="#a-reproducible-hands-on-exercise"><span class="header-section-number">11.6.3</span> A reproducible hands-on exercise</a></li>
+  </ul></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">11.7</span> FDA-cleared AI products</a></li>
-  <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">11.8</span> Open challenges</a></li>
-  <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">11.9</span> The agentic outlook</a></li>
+  <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">11.8</span> Open challenges</a>
+  <ul class="collapse">
+  <li><a href="#shortcuts-and-dataset-shift" id="toc-shortcuts-and-dataset-shift" class="nav-link" data-scroll-target="#shortcuts-and-dataset-shift"><span class="header-section-number">11.8.1</span> Shortcuts and dataset shift</a></li>
+  <li><a href="#labels-uncertainty-and-the-reference-standard" id="toc-labels-uncertainty-and-the-reference-standard" class="nav-link" data-scroll-target="#labels-uncertainty-and-the-reference-standard"><span class="header-section-number">11.8.2</span> Labels, uncertainty, and the reference standard</a></li>
+  <li><a href="#thresholds-prevalence-and-workload" id="toc-thresholds-prevalence-and-workload" class="nav-link" data-scroll-target="#thresholds-prevalence-and-workload"><span class="header-section-number">11.8.3</span> Thresholds, prevalence, and workload</a></li>
+  <li><a href="#small-findings-and-unusual-populations" id="toc-small-findings-and-unusual-populations" class="nav-link" data-scroll-target="#small-findings-and-unusual-populations"><span class="header-section-number">11.8.4</span> Small findings and unusual populations</a></li>
+  </ul></li>
+  <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">11.9</span> The agentic outlook</a>
+  <ul class="collapse">
+  <li><a href="#a-bounded-study-level-loop" id="toc-a-bounded-study-level-loop" class="nav-link" data-scroll-target="#a-bounded-study-level-loop"><span class="header-section-number">11.9.1</span> A bounded study-level loop</a></li>
+  <li><a href="#tools-state-and-human-decisions" id="toc-tools-state-and-human-decisions" class="nav-link" data-scroll-target="#tools-state-and-human-decisions"><span class="header-section-number">11.9.2</span> Tools, state, and human decisions</a></li>
+  <li><a href="#closing-a-loop-means-checking-the-outcome" id="toc-closing-a-loop-means-checking-the-outcome" class="nav-link" data-scroll-target="#closing-a-loop-means-checking-the-outcome"><span class="header-section-number">11.9.3</span> Closing a loop means checking the outcome</a></li>
+  </ul></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">11.10</span> Further reading</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/11-chest-xray.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -563,57 +661,505 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>A chest radiograph is a compact image of a complicated clinical situation. A single exposure can show lung opacities, pleural air, the cardiac silhouette, and the course of a support device. It can also hide disease behind the heart, exaggerate heart size through projection, and make unrelated processes look alike. This combination of accessibility and ambiguity makes chest X-ray (CXR) an excellent first modality for understanding imaging AI: the input is relatively simple, while the reasoning and workflow around it are not.</p>
+<p>This chapter follows the examination from acquisition to interpretation, then connects clinical tasks to datasets, models, commercial devices, and tool-calling systems. By the end, the reader should be able to define a CXR AI task, choose an appropriate reference standard, understand a product’s clearance, and design a small evaluation that measures something useful.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the engineer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>The unit of care is the <strong>study</strong>, which may contain several images and depend on earlier examinations. A PNG and a disease label discard much of that context. Always ask which view, patient population, and clinical question the data represent, and what information was available when the reference was produced.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the clinician
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A model can learn image-level findings, locations, anatomical outlines, or report text. These outputs need different labels and validation. A high pneumothorax score does not establish that the system has located pleural air, determined its clinical significance, or improved care.</p>
 </div>
 </div>
 <section id="what-is-a-chest-x-ray" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="what-is-a-chest-x-ray"><span class="header-section-number">11.1</span> What is a chest X-ray?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<section id="a-projection-not-a-slice" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="a-projection-not-a-slice"><span class="header-section-number">11.1.1</span> A projection, not a slice</h3>
+<p>An X-ray tube sends photons through the thorax to a detector. Tissue attenuates the beam, and the detector records the transmitted signal. In a simplified monoenergetic model, <span class="math inline">\(I = I_0 e^{-\int \mu(s)\,ds}\)</span>: transmission depends on attenuation integrated along the ray. Bone attenuates more than aerated lung; on the usual display, bone is light and lung is dark. Real systems use a spectrum of photon energies, scattered radiation, detector corrections, and display processing. The displayed gray value is not a standardized tissue measurement like a CT Hounsfield unit.</p>
+<p>Every pixel combines structures along a path through the body. Ribs overlap lungs; the heart overlaps the left lower thorax; a small opacity can blend with a vessel. A second projection can separate some overlapping structures but does not reconstruct a CT volume. A neural network cannot reliably recover information that the acquisition never resolved. Apparent success on hidden disease may instead reflect correlated visible findings or dataset shortcuts.</p>
+</section>
+<section id="pa-ap-and-lateral-views" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="pa-ap-and-lateral-views"><span class="header-section-number">11.1.2</span> PA, AP, and lateral views</h3>
+<p>In a <strong>posteroanterior (PA)</strong> examination, the beam travels from the patient’s back toward a detector against the anterior chest. An upright patient usually inspires and holds their breath. In an <strong>anteroposterior (AP)</strong> examination, the beam travels from front to back; this is common for portable imaging of patients who cannot attend the radiography room. The heart is farther from the detector in AP geometry and may appear magnified. A low-volume portable film is consequently a poor substitute for an upright PA image when judging apparent cardiac enlargement.</p>
+<p>The <strong>lateral</strong> projection supplies a different view of retrosternal, retrocardiac, and basal regions. PA and lateral views often form a two-image study, while a portable examination may contain one AP image. Position and acquisition quality remain part of interpretation, not merely metadata to strip away. <a href="#fig-cxr-projection" class="quarto-xref">Figure&nbsp;<span>11.1</span></a> illustrates the geometry; <a href="#fig-cxr-pa" class="quarto-xref">Figure&nbsp;<span>11.2</span></a> and <a href="#fig-cxr-lateral" class="quarto-xref">Figure&nbsp;<span>11.3</span></a> show real radiographs in complementary projections.</p>
+<div id="fig-cxr-projection" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two ray diagrams show a near-detector object with a smaller shadow and a farther object with a larger shadow.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cxr-projection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch11/projection-geometry.svg" class="img-fluid figure-img" alt="Two ray diagrams show a near-detector object with a smaller shadow and a farther object with a larger shadow.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cxr-projection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: Projection geometry. Increasing object-to-detector distance increases projected size when source-to-detector distance is fixed. This schematic isolates geometry; it is not a complete thoracic anatomy drawing.
+</figcaption>
+</figure>
+</div>
+<div id="fig-cxr-pa" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Frontal PA radiograph showing lungs, ribs, cardiac silhouette and diaphragms without added AI markings.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cxr-pa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch11/normal-pa.jpg" class="img-fluid figure-img" style="width:70.0%" alt="Frontal PA radiograph showing lungs, ribs, cardiac silhouette and diaphragms without added AI markings.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cxr-pa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.2: Real PA chest radiograph, described as normal by its contributor. Patient right is on the viewer’s left; source markers Dx and Sin indicate right and left. Mikael Häggström, CC0, via <a href="https://commons.wikimedia.org/wiki/File:Normal_posteroanterior_(PA)_chest_radiograph_(X-ray).jpg">Wikimedia Commons</a>.
+</figcaption>
+</figure>
+</div>
+<div id="fig-cxr-lateral" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Lateral chest radiograph showing overlapping ribs, the spine and the anterior cardiac silhouette.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cxr-lateral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch11/normal-lateral.jpg" class="img-fluid figure-img" style="width:60.0%" alt="Lateral chest radiograph showing overlapping ribs, the spine and the anterior cardiac silhouette.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cxr-lateral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.3: Real lateral radiograph from the same source examination. The contributor notes low field positioning and cropping, so this is not a positioning-quality exemplar. Mikael Häggström, CC0, via <a href="https://commons.wikimedia.org/wiki/File:Normal_lateral_chest_radiograph_(X-ray).jpg">Wikimedia Commons</a>.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="what-an-engineer-receives" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="what-an-engineer-receives"><span class="header-section-number">11.1.3</span> What an engineer receives</h3>
+<p>A clinical digital radiograph is a two-dimensional, usually single-channel image, often a few thousand pixels in each direction. Matrix size, detector pitch, stored bit depth, and compression vary. For scale, a <strong>hypothetical</strong> 3000 × 3000 image stored at 16 bits requires 18 million bytes, about 17.2 MiB, for uncompressed pixels alone. Two such views double that payload; headers, compression, and derived images change actual file size. A float32 tensor at the same size occupies about 34.3 MiB before batch dimensions and model activations.</p>
+<p>Research releases may downsample images or convert them to 8-bit JPEG/PNG. Those choices affect small nodules, fine interstitial markings, and device tips more than coarse global patterns. Preserve the source and record every conversion. Verify photometric interpretation, orientation, padding, and the model’s expected intensity transformation; a DICOM pixel array is not automatically a correctly displayed image. The hospital data model is developed in <a href="03-images-in-the-hospital.html" class="quarto-xref"><span>Chapter 3</span></a>.</p>
+</section>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">11.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>CXR often provides an initial structural assessment for respiratory symptoms, fever, chest injury, or suspected cardiopulmonary disease. It can also assess support-device position and complications. The clinical question matters: looking for a new opacity in a febrile patient, checking a tube, and assessing interval change in edema are different tasks even when the image format is identical. See the <a href="https://www.radiologyinfo.org/en/info/chestrad">ACR/RSNA overview</a> for common uses and limitations.</p>
+<p>An initial test does not close every diagnostic pathway. A normal radiograph does not exclude pulmonary embolism or a small malignancy. An opacity does not identify an organism or establish that infection explains the patient’s symptoms. Downstream decisions combine imaging with symptoms, examination, laboratory results, and earlier studies. An AI system should make its information boundary explicit: image-only evidence differs from a prediction conditioned on clinical context.</p>
+<p>Screening introduces another setting. The <a href="https://www.who.int/publications/i/item/9789240110373">WHO’s 2025 policy statement</a> describes CAD products meeting its standards for TB screening in people aged 15 years and older. This specific screening application is not a blanket authorization for autonomous general chest reporting. Radiographic screening belongs in a pathway that includes appropriate diagnostic testing and follow-up. Thresholds must fit the population and testing capacity; WHO provides <a href="https://tdr.who.int/activities/calibrating-computer-aided-detection-for-tb">local calibration guidance</a>.</p>
+<p>For development, write an intended-use sentence before collecting data. For example: “Prioritize eligible adult frontal chest studies with suspected pneumothorax for radiologist review.” That sentence specifies population, input, target, and action. “Read chest X-rays” specifies none of them. It leaves unanswered whether the system supports emergency care, screening, longitudinal monitoring, or documentation.</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">11.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<section id="findings-explanations-and-actions" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="findings-explanations-and-actions"><span class="header-section-number">11.3.1</span> Findings, explanations, and actions</h3>
+<p>Radiology describes visual evidence and interprets it. <strong>Consolidation</strong> is a pattern; <strong>pneumonia</strong> is a clinical diagnosis that may explain it. <strong>Pleural effusion</strong> describes fluid around the lung; its cause requires additional context. A model ontology should preserve these distinctions instead of treating every report noun as an equivalent disease class.</p>
+<p>This teaching taxonomy connects evidence to computational tasks. It is broader than any one benchmark’s label list and is not a diagnostic checklist for independent practice.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Finding family</th>
+<th>What the reader assesses</th>
+<th>Suitable target</th>
+<th>Important ambiguity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Airspace opacity</td>
+<td>Distribution, focality, air bronchograms</td>
+<td>Classification; localization</td>
+<td>Infection, edema, hemorrhage, and other processes overlap</td>
+</tr>
+<tr class="even">
+<td>Atelectasis</td>
+<td>Opacity with volume loss</td>
+<td>Finding plus location and extent</td>
+<td>Basal bands and low inspiration can be difficult to distinguish</td>
+</tr>
+<tr class="odd">
+<td>Interstitial abnormality</td>
+<td>Reticular or diffuse markings</td>
+<td>Pattern classification</td>
+<td>Chronicity and cause often need priors or CT</td>
+</tr>
+<tr class="even">
+<td>Pleural effusion</td>
+<td>Basal opacity and costophrenic contour</td>
+<td>Detection; laterality; extent</td>
+<td>Position changes appearance; a box is not a volume</td>
+</tr>
+<tr class="odd">
+<td>Pneumothorax</td>
+<td>Pleural line and peripheral absence of lung markings</td>
+<td>Detection; localization; triage</td>
+<td>Skin folds and supine positioning complicate interpretation</td>
+</tr>
+<tr class="even">
+<td>Cardiomediastinal change</td>
+<td>Cardiac silhouette and mediastinal contours</td>
+<td>Classification; measurement</td>
+<td>Projection and inspiration affect apparent size</td>
+</tr>
+<tr class="odd">
+<td>Nodule or mass</td>
+<td>Focal rounded opacity</td>
+<td>Lesion detection</td>
+<td>Overlap can conceal or imitate a lesion</td>
+</tr>
+<tr class="even">
+<td>Hyperinflation or chronic change</td>
+<td>Lung volumes and structural patterns</td>
+<td>Classification with comparison</td>
+<td>Radiography alone does not establish physiological impairment</td>
+</tr>
+<tr class="odd">
+<td>Devices and postoperative findings</td>
+<td>Course, tip location, configuration</td>
+<td>Detection; landmarks; anatomical relations</td>
+<td>Correctness depends on device type and intended position</td>
+</tr>
+<tr class="even">
+<td>Bones and soft tissues</td>
+<td>Fracture, surgical change, subcutaneous air</td>
+<td>Detection; localization</td>
+<td>Lung-only cropping removes relevant evidence</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A study may have several findings simultaneously. For fixed-label classification, independent sigmoid outputs are usually more natural than a softmax that forces mutually exclusive classes. Output semantics still matter: a score for “effusion” does not specify side, severity, or change. Those require explicit targets and annotations.</p>
+<p>“No finding” is particularly slippery. In a mined dataset it may mean the labeler found none of its target concepts, rather than a radiologist certified the image as entirely normal. A negative mention, an uncertain statement, and an unmentioned feature must not silently become the same label. Nor should “no acute abnormality” erase a chronic abnormality. Define these distinctions before computing prevalence or training a classifier.</p>
+</section>
+<section id="reading-as-a-structured-search" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="reading-as-a-structured-search"><span class="header-section-number">11.3.2</span> Reading as a structured search</h3>
+<p>A systematic review considers quality, lungs, pleura, heart and mediastinum, diaphragms, bones, soft tissues, and devices. The value for an AI developer is coverage: concentrating on the highest-scoring label can leave other abnormalities unexamined. Multi-label output does not itself guarantee a complete search.</p>
+<p>For longitudinal interpretation, attach change to a particular finding: a left effusion can improve while a right basal opacity appears. A single study-level “worse” label loses that structure. A useful representation stores finding, laterality, location, certainty, comparison date, and direction of change separately. This also makes drafting auditable: each sentence can be traced to supporting evidence.</p>
+</section>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">11.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<section id="acquisition-and-quality" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="acquisition-and-quality"><span class="header-section-number">11.4.1</span> Acquisition and quality</h3>
+<p>The referring team enters an order and indication. Scheduling or bedside logistics determine how the study is acquired. The technologist verifies identity, selects the protocol, positions the patient, acquires the image, and evaluates technical adequacy. Rotation, incomplete inspiration, motion, clipped anatomy, exposure problems, and external objects affect interpretation. A repeat decision belongs to the acquisition workflow and must account for patient condition and radiation exposure.</p>
+<p>For AI routing, validate actual images against the intended input. A description containing “chest” does not prove that the series is an eligible frontal radiograph. Check modality, view, image count, age eligibility where relevant, and successful decoding. If information is missing or contradictory, record an exception rather than translating it into a negative disease result. This distinction becomes essential when counting failures during validation.</p>
+</section>
+<section id="from-pacs-to-a-signed-report" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="from-pacs-to-a-signed-report"><span class="header-section-number">11.4.2</span> From PACS to a signed report</h3>
+<p>Images reach PACS and become available on a worklist. The radiologist reviews the current study, relevant priors, and the clinical question, then documents findings and an impression. Reports commonly separate examination details, indication, technique, comparison, findings, and impression, although local templates differ. The <a href="https://www.radiologyinfo.org/en/info/article-chest-xray-report">ACR/RSNA report guide</a> explains these sections and the signed-report handoff.</p>
+<p>An AI service may receive a routed copy or retrieve an eligible study, then return a case-level flag, measurements, overlays, or a draft. Outputs need a clear destination in the existing workflow. A separate dashboard creates another place to check, and a result arriving after interpretation may have little triage value. Identify exact studies, image instances, model versions, and processing times to prevent stale results attaching to repeated or corrected examinations.</p>
+<p>Turnaround expectations depend on setting and urgency; there is no universal CXR deadline. Measure acquisition-to-availability, availability-to-first-review, first-review-to-signature, and required communication intervals separately. Report distributions, including delayed cases, rather than only a mean. Fast inference cannot compensate for slow routing or an unacknowledged critical-result handoff.</p>
+</section>
+<section id="a-worked-workflow-example" class="level3" data-number="11.4.3">
+<h3 data-number="11.4.3" class="anchored" data-anchor-id="a-worked-workflow-example"><span class="header-section-number">11.4.3</span> A worked workflow example</h3>
+<p>Consider an invented evaluation case: an eligible portable AP study arrives, and a pneumothorax service returns a flag. The worklist displays that flag, a radiologist opens the complete study and relevant prior, and the radiologist decides whether the finding is present. If communication is needed, the established process records recipient, time, and acknowledgment. A rejected flag remains an auditable disagreement, not a silently deleted prediction.</p>
+<p>Now consider a timeout. The study must still reach the ordinary worklist. The result state is “unavailable,” not “negative.” This distinction affects both care and the denominator of an accuracy study. The agent loop later in this chapter extends these principles to retrieval and drafting without assuming that a triage clearance covers those additional actions.</p>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">11.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "cxr"). -->
+<p>This living table is filtered from <code>data/datasets.csv</code>. It describes representative resources, not an exhaustive catalog. <strong>CXR entries checked 4 September 2026.</strong> Counts refer to stated releases; images, studies, patients, and reports are different units. Access is governed by each resource’s agreement, not the shorthand “public.”</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Release size</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveat</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ChestX-ray14 (NIH)</td>
+<td>112,120 images, 30,805 patients</td>
+<td>14 findings (NLP-mined)</td>
+<td>Public research release; consult NIH terms</td>
+<td>Report-mined labels; single US center; release documentation governs splits</td>
+<td><a href="https://nihcc.app.box.com/v/ChestXray-NIHCC">Source</a></td>
+</tr>
+<tr class="even">
+<td>CheXpert</td>
+<td>224,316 images; 65,240 patients</td>
+<td>14 findings, uncertainty labels</td>
+<td>Access request and Stanford dataset agreement</td>
+<td>Single US center; report-mined training labels; expert evaluation</td>
+<td><a href="https://stanfordmlgroup.github.io/competitions/chexpert/">Source</a></td>
+</tr>
+<tr class="odd">
+<td>MIMIC-CXR</td>
+<td>377,110 images; 227,835 studies (v2 release)</td>
+<td>DICOM images and free-text reports</td>
+<td>PhysioNet credentialing; training; data-use agreement</td>
+<td>Single Boston center; JPG derivative overlaps this corpus</td>
+<td><a href="https://physionet.org/content/mimic-cxr/">Source</a></td>
+</tr>
+<tr class="even">
+<td>PadChest</td>
+<td>160,868 images</td>
+<td>174 findings; 27% manually labeled</td>
+<td>Research-use agreement; access request</td>
+<td>Spanish hospital; manual and automated annotations; restricted redistribution</td>
+<td><a href="https://bimcv.cipf.es/bimcv-projects/padchest/">Source</a></td>
+</tr>
+<tr class="odd">
+<td>VinDr-CXR</td>
+<td>18,000 images</td>
+<td>22 local findings with boxes; 6 global categories</td>
+<td>PhysioNet credentialing and data-use agreement</td>
+<td>Adult PA images from two Vietnamese hospitals; 15,000 train / 3,000 test</td>
+<td><a href="https://physionet.org/content/vindr-cxr/1.0.0/">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="choose-supervision-that-matches-the-task" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="choose-supervision-that-matches-the-task"><span class="header-section-number">11.5.1</span> Choose supervision that matches the task</h3>
+<p><strong>ChestX-ray14</strong> offers a widely used starting point for image-level classification, with report-mined labels. Consult the <a href="https://nihcc.app.box.com/v/ChestXray-NIHCC">NIH release</a> for its data dictionary and partitions. Mining reports makes scale possible but does not create a uniform image-level expert reference standard.</p>
+<p><strong>CheXpert</strong> explicitly represents uncertainty in report-derived observations. Its <a href="https://stanfordmlgroup.github.io/competitions/chexpert/">official description</a> distinguishes large-scale training supervision from expert evaluation. Decide how to handle uncertain labels before seeing test results. Masking them, assigning them to one class, or using soft targets answer different learning questions; report the choice by finding.</p>
+<p><strong>MIMIC-CXR</strong> provides DICOM images and free-text reports; <strong>MIMIC-CXR-JPG</strong> provides processed images, structured labels, and reference splits. These are related representations, not independent external datasets. Follow the <a href="https://physionet.org/content/mimic-cxr/">DICOM documentation</a> and <a href="https://physionet.org/content/mimic-cxr-jpg/">JPG documentation</a> rather than assuming identical report counts across versions. Access requires credentialing and a data-use agreement.</p>
+<p><strong>PadChest</strong> broadens geography and reporting language, but mixes manual and automated annotation. Its <a href="https://bimcv.cipf.es/bimcv-projects/padchest/padchest-dataset-research-use-agreement/">research-use agreement</a> restricts reuse; downloadable data are not automatically redistributable or commercially unrestricted. <strong>VinDr-CXR</strong> supplies local annotations and global labels from Vietnamese hospitals. Its <a href="https://physionet.org/content/vindr-cxr/1.0.0/">release</a> distinguishes 22 local findings from six global categories. Calling these “28 bounding-box findings” would misdescribe the supervision.</p>
+</section>
+<section id="split-patients-before-processing-images" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="split-patients-before-processing-images"><span class="header-section-number">11.5.2</span> Split patients before processing images</h3>
+<p>Repeated examinations are central to CXR. Keep a patient’s studies together when constructing independent partitions, including paired PA/lateral images. For longitudinal tasks, control the time boundary: a future report must not become context for an earlier prediction. Follow official splits when comparing with published benchmarks, and document additional exclusions.</p>
+<div id="fig-cxr-splits" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Patient groups remain intact in training, validation and test cohorts; an external site supplies a separate test.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cxr-splits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch11/evaluation-splits.svg" class="img-fluid figure-img" alt="Patient groups remain intact in training, validation and test cohorts; an external site supplies a separate test.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cxr-splits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.4: Evaluation partitions. Patient-grouped development data support training and validation; untouched internal and external tests answer separate questions. Several images belonging to one patient remain in one partition.
+</figcaption>
+</figure>
+</div>
+<p>External validation should challenge the intended use: a new site, later time period, different detector, or different clinical setting. Randomly holding out more images from the same archive is not sufficient. Document pretraining exposure too; a foundation model may have encountered a public benchmark. If this cannot be excluded, describe possible contamination instead of claiming unseen-site performance.</p>
+</section>
 </section>
 <section id="the-model-landscape" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">11.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "cxr"); open vs. closed. -->
+<p>The table is generated from <code>data/models.csv</code>, filtered to CXR. Model availability and deployment readiness are separate questions. An open code license, downloadable weights, training-data rights, and permission for clinical use are distinct. Pin the exact checkpoint and inspect its model card before running or adapting it.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / library</th>
+<th>Task</th>
+<th>Weights</th>
+<th>License / terms</th>
+<th>Interpretation</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CheXagent 2 (3B)</td>
+<td>CXR vision-language interpretation</td>
+<td>Open</td>
+<td>MIT (checkpoint metadata); research-only stated use</td>
+<td>Stanford AIMI; use checkpoint-specific tasks and interface</td>
+<td><a href="https://huggingface.co/StanfordAIMI/CheXagent-2-3b">Source</a></td>
+</tr>
+<tr class="even">
+<td>TorchXRayVision</td>
+<td>Classification (multi-label)</td>
+<td>Open</td>
+<td>Apache-2.0 code; inspect selected weights and data terms</td>
+<td>Research baseline; preserve documented intensity normalization</td>
+<td><a href="https://github.com/mlmed/torchxrayvision">Source</a></td>
+</tr>
+<tr class="odd">
+<td>MedGemma (medical multimodal family)</td>
+<td>VLM (general medical)</td>
+<td>Open (gated)</td>
+<td>Gemma license</td>
+<td>Development starting point; pin version; application-specific validation required</td>
+<td><a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="classifiers-localizers-and-language-models" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="classifiers-localizers-and-language-models"><span class="header-section-number">11.6.1</span> Classifiers, localizers, and language models</h3>
+<p><strong>TorchXRayVision</strong> is a practical research baseline for pretrained CXR classifiers and related tools. Its <a href="https://github.com/mlmed/torchxrayvision">repository</a> documents expected normalization and transformations. Reusing weights without matching preprocessing can create a valid-looking tensor and an invalid experiment. Classification is appropriate for fixed finding outputs; detection and segmentation require their own supervision and validation.</p>
+<p><strong>CheXagent</strong> targets CXR vision-language tasks. Stanford’s <a href="https://github.com/Stanford-AIMI/CheXagent">repository</a> identifies the work as research-only; its <a href="https://huggingface.co/collections/StanfordAIMI/chexagent">checkpoint collection</a> includes distinct releases and report-generation variants. Use the selected checkpoint’s supported interface and tasks. A name containing “agent” does not establish that a model manages PACS, executes a workflow, or has authority to issue reports.</p>
+<p><strong>MedGemma</strong> is a medical multimodal model family for downstream development. Google’s <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card">model card</a> describes intended use, limitations, and version-specific behavior. Outputs require adaptation and validation for the application; general medical image understanding is not validated longitudinal CXR reporting. Multi-image inputs, multi-turn interaction, and changed prompts need their own evaluation.</p>
+<p>Commercial systems may combine proprietary classifiers, routing, viewer integration, support, and monitoring. Their weights are often unavailable, so evaluation depends on the supplied version, interface, and independent testing. The next section identifies specific cleared examples. It is not a ranking against open models: tasks, populations, references, and permitted workflows differ too much for a single leaderboard to be meaningful.</p>
+</section>
+<section id="what-is-mature-and-what-remains-difficult" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="what-is-mature-and-what-remains-difficult"><span class="header-section-number">11.6.2</span> What is mature, and what remains difficult?</h3>
+<p>Fixed-label classification has established research tools and benchmarks; selected triage tasks have cleared products. General reporting, reliable comparison with priors, complete device assessment, and end-to-end autonomous interpretation require broader evidence. Fluent language is easier to demonstrate than complete, correctly grounded reporting across the clinical long tail.</p>
+<p>Report evaluation should separate omitted findings, unsupported findings, wrong location or laterality, incorrect certainty, and invented change. Text overlap can reward standard phrasing while missing a consequential negation. A report can resemble the reference yet say the opposite about pneumothorax. Human adjudication should examine factual errors and clinical importance alongside automated metrics.</p>
+</section>
+<section id="a-reproducible-hands-on-exercise" class="level3" data-number="11.6.3">
+<h3 data-number="11.6.3" class="anchored" data-anchor-id="a-reproducible-hands-on-exercise"><span class="header-section-number">11.6.3</span> A reproducible hands-on exercise</h3>
+<p>Start with a locally held, authorized research sample and a documented pretrained classifier. Define a narrow task and verify label mapping. Inspect source images in a viewer, apply documented transforms, and save predictions with identifiers and checkpoint information. The aim is to understand the experiment before scaling; this chapter’s illustrative radiographs are teaching images, not a validation set.</p>
+<p>Prepare a CSV with <code>patient_id</code>, <code>study_id</code>, <code>view</code>, <code>label</code>, <code>score</code>, and <code>split</code>. Keep uncertain labels separate, and record processing failures explicitly. Choose a threshold on validation data only, then lock it. This dependency-free calculation evaluates an already fixed operating point; it does not run a model or establish clinical validity.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> operating_point(labels, scores, threshold):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Binary adjudicated labels and a prespecified threshold."""</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> math</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(labels) <span class="op">!=</span> <span class="bu">len</span>(scores) <span class="kw">or</span> <span class="kw">not</span> labels:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Provide equal, nonempty sequences"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">any</span>(y <span class="kw">not</span> <span class="kw">in</span> (<span class="dv">0</span>, <span class="dv">1</span>) <span class="cf">for</span> y <span class="kw">in</span> labels):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Handle uncertain labels separately"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> math.isfinite(threshold) <span class="kw">or</span> <span class="kw">not</span> <span class="dv">0</span> <span class="op">&lt;=</span> threshold <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid threshold"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">any</span>(<span class="kw">not</span> math.isfinite(s) <span class="kw">or</span> <span class="kw">not</span> <span class="dv">0</span> <span class="op">&lt;=</span> s <span class="op">&lt;=</span> <span class="dv">1</span> <span class="cf">for</span> s <span class="kw">in</span> scores):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Scores must be finite and between zero and one"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    predicted <span class="op">=</span> [s <span class="op">&gt;=</span> threshold <span class="cf">for</span> s <span class="kw">in</span> scores]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    tp <span class="op">=</span> <span class="bu">sum</span>(y <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> p <span class="cf">for</span> y, p <span class="kw">in</span> <span class="bu">zip</span>(labels, predicted))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    fp <span class="op">=</span> <span class="bu">sum</span>(y <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> p <span class="cf">for</span> y, p <span class="kw">in</span> <span class="bu">zip</span>(labels, predicted))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    fn <span class="op">=</span> <span class="bu">sum</span>(y <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> <span class="kw">not</span> p <span class="cf">for</span> y, p <span class="kw">in</span> <span class="bu">zip</span>(labels, predicted))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    tn <span class="op">=</span> <span class="bu">sum</span>(y <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> <span class="kw">not</span> p <span class="cf">for</span> y, p <span class="kw">in</span> <span class="bu">zip</span>(labels, predicted))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    ratio <span class="op">=</span> <span class="kw">lambda</span> a, b: a <span class="op">/</span> b <span class="cf">if</span> b <span class="cf">else</span> <span class="va">None</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">"tp"</span>: tp, <span class="st">"fp"</span>: fp, <span class="st">"fn"</span>: fn, <span class="st">"tn"</span>: tn,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">"sensitivity"</span>: ratio(tp, tp <span class="op">+</span> fn),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">"specificity"</span>: ratio(tn, tn <span class="op">+</span> fp),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">"ppv"</span>: ratio(tp, tp <span class="op">+</span> fp)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Interpret counts alongside coverage and subgroup results. When patients contribute repeated studies, confidence intervals should respect grouping, for example through patient-level bootstrap resampling. The exercise is complete when exclusions, preprocessing, threshold choice, and failures are reproducible—not when it produces a striking AUROC.</p>
+</section>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="11.7">
 <h2 data-number="11.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">11.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "cxr"). -->
+<p>This living table uses <code>data/fda-products.csv</code>. <strong>These are selected historical clearances verified on 4 September 2026, not a complete current market inventory or a claim about each product’s latest version.</strong> Device identity, population, input restrictions, and indication must remain attached to the clearance number.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Clearance</th>
+<th>Scope</th>
+<th>Boundary</th>
+<th>FDA summary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Critical Care Suite</td>
+<td>GE HealthCare</td>
+<td>K183182 (2019)</td>
+<td>Frontal CXR pneumothorax triage; adult-size patients</td>
+<td>Notification only; physician image review retained; historical clearance checked 2026-09-04</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183182.pdf">Source</a></td>
+</tr>
+<tr class="even">
+<td>Red Dot</td>
+<td>Behold.ai</td>
+<td>K191556 (2020)</td>
+<td>Adult CXR suspected pneumothorax case prioritization</td>
+<td>Not localization or pneumothorax rule-out; historical clearance checked 2026-09-04</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf19/K191556.pdf">Source</a></td>
+</tr>
+<tr class="odd">
+<td>Lunit INSIGHT CXR Triage</td>
+<td>Lunit</td>
+<td>K211733 (2021)</td>
+<td>Adult CXR pleural effusion and/or pneumothorax triage</td>
+<td>Passive case-level prioritization; not standalone diagnosis; historical clearance checked 2026-09-04</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211733.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Read the indication before the brand. <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183182.pdf">Critical Care Suite K183182</a> concerns pneumothorax triage and notification in adult-size patients. <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf19/K191556.pdf">Red Dot K191556</a> concerns adult pneumothorax prioritization, not general abnormality detection. <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211733.pdf">Lunit INSIGHT CXR Triage K211733</a> concerns suspected pleural effusion and/or pneumothorax for adult case-level triage. Broader international marketing does not expand these specific US indications.</p>
+<p>Case-level prioritization does not automatically authorize lesion localization, disease exclusion, or autonomous diagnosis. Adding a language model that explains a flag creates a new behavior; the explanation is not made clinically valid by the underlying clearance. A drafting wrapper has its own failure modes and evidence requirements.</p>
+<p>For procurement or research review, extract the exact population, supported views, exclusions, intended user, output, and action from the labeling. Then ask whether your workflow matches. The <a href="https://www.fda.gov/medical-devices/510k-clearances/search-releasable-510k-database">FDA describes 510(k)</a> as a substantial-equivalence pathway; a cleared device is not a universal interpreter of chest pathology. The broader framework appears in <a href="10-from-model-to-product.html" class="quarto-xref"><span>Chapter 10</span></a>.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="11.8">
 <h2 data-number="11.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">11.8</span> Open challenges</h2>
+<section id="shortcuts-and-dataset-shift" class="level3" data-number="11.8.1">
+<h3 data-number="11.8.1" class="anchored" data-anchor-id="shortcuts-and-dataset-shift"><span class="header-section-number">11.8.1</span> Shortcuts and dataset shift</h3>
+<p>Portable markers, scanner processing, positioning, and support devices can correlate with illness or setting. Models may exploit these relationships instead of intended visual evidence. <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1002683">Zech and colleagues</a> demonstrated variable cross-hospital pneumonia performance and recognition of hospital-specific information. This motivates evaluating acquisition environments as well as disease labels.</p>
+<p>Use error review to formulate targeted checks: does performance change between PA and AP, with and without devices, or across sites? Associations do not prove a shortcut, but identify where controlled analysis is needed. Blindly removing corners or device-containing cases can remove relevant information or distort the population. Report interventions and compare performance on the intended population.</p>
+</section>
+<section id="labels-uncertainty-and-the-reference-standard" class="level3" data-number="11.8.2">
+<h3 data-number="11.8.2" class="anchored" data-anchor-id="labels-uncertainty-and-the-reference-standard"><span class="header-section-number">11.8.2</span> Labels, uncertainty, and the reference standard</h3>
+<p>The right reference depends on the claim. Image review may suit visible pneumothorax; pneumonia diagnosis may require clinical information; TB screening may use a microbiological reference. Agreement with report mining answers a different question from agreement with an adjudicated clinical endpoint. Preserve these distinctions when comparing papers.</p>
+<p>Reference readers also disagree. Record the annotation protocol, access to priors and clinical information, and disagreement resolution. If a model sees one image while the reader sees the entire study, acknowledge that information imbalance. Confidence scores should not hide uncertainty from missing information or an ambiguous reference.</p>
+</section>
+<section id="thresholds-prevalence-and-workload" class="level3" data-number="11.8.3">
+<h3 data-number="11.8.3" class="anchored" data-anchor-id="thresholds-prevalence-and-workload"><span class="header-section-number">11.8.3</span> Thresholds, prevalence, and workload</h3>
+<p>AUROC measures ranking over thresholds. It does not tell a department how many flags it will receive or how many contain true findings. Positive predictive value depends on prevalence as well as sensitivity and specificity:</p>
+<p><span class="math display">\[
+\mathrm{PPV} = \frac{\mathrm{sensitivity}\times p}{\mathrm{sensitivity}\times p + (1-\mathrm{specificity})(1-p)}.
+\]</span></p>
+<p>In a <strong>hypothetical</strong> cohort of 1,000 studies with 5% prevalence, 90% sensitivity, and 90% specificity, expected counts are 45 true positives, 5 false negatives, 95 false positives, and 855 true negatives. Only about 32% of 140 flags are true positives. <a href="#fig-cxr-workload" class="quarto-xref">Figure&nbsp;<span>11.5</span></a> visualizes this arithmetic; these are not measured results for any named model.</p>
+<div id="fig-cxr-workload" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Counts are 45 true positives, 95 false positives, 5 false negatives and 855 true negatives; PPV is 32.1 percent.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cxr-workload-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch11/triage-workload.svg" class="img-fluid figure-img" alt="Counts are 45 true positives, 95 false positives, 5 false negatives and 855 true negatives; PPV is 32.1 percent.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cxr-workload-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.5: Hypothetical workload: 45 true-positive and 95 false-positive flags among 1,000 studies. The same sensitivity and specificity have different operational consequences as prevalence changes.
+</figcaption>
+</figure>
+</div>
+<p>Evaluate sensitivity and specificity at the chosen threshold, predictive values, calibration, unsupported-input rate, and failures. Localization needs location-sensitive metrics; measurements need agreement and repeatability; reporting needs error adjudication. Deployment also needs time-to-review, communication completion, workload, and downstream consequences. No single scalar captures all of these.</p>
+</section>
+<section id="small-findings-and-unusual-populations" class="level3" data-number="11.8.4">
+<h3 data-number="11.8.4" class="anchored" data-anchor-id="small-findings-and-unusual-populations"><span class="header-section-number">11.8.4</span> Small findings and unusual populations</h3>
+<p>Downsampling can erase subtle signs; lung cropping can remove devices and extrapulmonary findings. Children, altered postoperative anatomy, unusual devices, and severe positioning limitations can differ substantially from development data. Eligibility checks define coverage, but excluding difficult cases without reporting them inflates apparent service performance.</p>
+<p>Monitor deployment over time. A detector upgrade, routing change, or new checkpoint can alter behavior without changing the interface. Store pipeline versions and examine drift in inputs, results, failures, and adjudicated outcomes. A stable average score distribution is not proof of stable clinical accuracy.</p>
+</section>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="11.9">
 <h2 data-number="11.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">11.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Autonomous triage queues that re-prioritize the worklist as studies arrive; agents that draft the report, pre-fill prior comparisons from PACS, flag discrepancies between the draft and the image findings, and track incidental findings to follow-up completion. CXR's volume and 2D simplicity make it the first modality where end-to-end agentic loops (detect → draft → route → follow up) will run at scale. -->
+<p>A useful CXR agent coordinates evidence and tasks: retrieving a prior, invoking an eligible model, assembling findings, preparing comparisons, and drafting language. These are <strong>proposed design patterns</strong>, not claims that current open checkpoints or listed clearances support autonomous end-to-end care. High throughput makes small workflow improvements attractive, but multiplies the consequences of recurring errors.</p>
+<section id="a-bounded-study-level-loop" class="level3" data-number="11.9.1">
+<h3 data-number="11.9.1" class="anchored" data-anchor-id="a-bounded-study-level-loop"><span class="header-section-number">11.9.1</span> A bounded study-level loop</h3>
+<div id="fig-cxr-agent" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Eligible studies proceed through evidence and drafting to clinician review; exceptions retain routine reading and approved actions enter tracked follow-up.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cxr-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch11/agent-workflow.svg" class="img-fluid figure-img" alt="Eligible studies proceed through evidence and drafting to clinician review; exceptions retain routine reading and approved actions enter tracked follow-up.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cxr-agent-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.6: Proposed agent workflow. Eligibility gates model use; retrieved evidence supports a draft; clinician review precedes signing and follow-up. Exceptions retain the ordinary reading pathway.
+</figcaption>
+</figure>
+</div>
+<p>Begin with a study event and eligibility decision. Retrieve current images and appropriate priors through authorized interfaces. Verify patient and study identity instead of matching display names. The model returns structured findings with image references and version information. A drafting component may express these findings, but must not manufacture comparisons, measurements, or communication events.</p>
+<p>A comparison component verifies that the prior arrived and is suitable. If unavailable, the draft should say so rather than produce “unchanged.” Separate evidence from language: observations should carry source images, methods, certainty, and comparison provenance. This lets reviewers assess support and reject unsupported claims quickly.</p>
+</section>
+<section id="tools-state-and-human-decisions" class="level3" data-number="11.9.2">
+<h3 data-number="11.9.2" class="anchored" data-anchor-id="tools-state-and-human-decisions"><span class="header-section-number">11.9.2</span> Tools, state, and human decisions</h3>
+<p>The orchestration layer needs explicit capabilities: query/retrieve images, call a model, read permitted context, write a draft, and propose a task. Keep final signing, communication, and follow-up authority consistent with clinical workflow. A tool schema provides a software interface, not a professional role or regulatory indication.</p>
+<p>Use persistent states such as received, eligible, processing, draft-ready, reviewed, and exception. Make repeated events idempotent: one study notification must not create duplicate drafts or follow-up tasks. Keep model failures distinct from negative findings. Record which image or report version a result refers to, so corrections invalidate or supersede stale material.</p>
+<p>Report text, image annotations, and retrieved documents are clinical content, not permission to execute tools. This matters when untrusted text resembles an instruction. Restrict tools to authorized context and log actions and evidence references. The audit record should remain useful without access to a model’s private reasoning.</p>
+</section>
+<section id="closing-a-loop-means-checking-the-outcome" class="level3" data-number="11.9.3">
+<h3 data-number="11.9.3" class="anchored" data-anchor-id="closing-a-loop-means-checking-the-outcome"><span class="header-section-number">11.9.3</span> Closing a loop means checking the outcome</h3>
+<p>An incidental-finding tracker could turn an approved recommendation into a task, associate an owner, and record completion or a documented decision not to proceed. “Message sent” and “follow-up completed” are different states. Track the recommendation the responsible clinician approved rather than creating obligations from unreviewed generated text.</p>
+<p>Test controlled scenarios: absent prior, wrong-patient candidate prior, duplicate arrival, incompatible image, unavailable model, rejected draft, amended report, and unacknowledged handoff. Measure omissions, incorrect change statements, duplicate actions, review time, and unresolved tasks. Start in a shadow workflow, then evaluate the clinician-plus-system process prospectively if moving toward use. The goal is dependable completion of a defined task with visible exceptions.</p>
+</section>
 </section>
 <section id="further-reading" class="level2" data-number="11.10">
 <h2 data-number="11.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">11.10</span> Further reading</h2>
+<p>For clinical orientation, read the <a href="https://www.radiologyinfo.org/en/info/chestrad">ACR/RSNA examination overview</a> and <a href="https://www.radiologyinfo.org/en/info/article-chest-xray-report">report guide</a>, then inspect a study in a viewer. For development, read labeling and partition documentation before a leaderboard. For deployment, read indications before performance headlines.</p>
+<ul>
+<li><strong>Datasets:</strong> <a href="https://stanfordmlgroup.github.io/competitions/chexpert/">CheXpert</a>, <a href="https://physionet.org/content/mimic-cxr/">MIMIC-CXR</a>, <a href="https://physionet.org/content/mimic-cxr-jpg/">MIMIC-CXR-JPG</a>, <a href="https://bimcv.cipf.es/bimcv-projects/padchest/">PadChest</a>, and <a href="https://physionet.org/content/vindr-cxr/1.0.0/">VinDr-CXR</a>.</li>
+<li><strong>Models:</strong> <a href="https://github.com/mlmed/torchxrayvision">TorchXRayVision</a>, <a href="https://github.com/Stanford-AIMI/CheXagent">CheXagent</a>, and <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card">MedGemma’s model card</a>.</li>
+<li><strong>Generalization:</strong> <a href="https://doi.org/10.1371/journal.pmed.1002683">Zech et al., PLOS Medicine, 2018</a>.</li>
+<li><strong>Screening:</strong> <a href="https://www.who.int/publications/i/item/9789240110373">WHO’s 2025 CAD policy</a> and <a href="https://tdr.who.int/activities/calibrating-computer-aided-detection-for-tb">TB calibration guidance</a>.</li>
+<li><strong>Regulatory scope:</strong> FDA summaries for <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K183182.pdf">GE</a>, <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf19/K191556.pdf">Behold.ai</a>, and <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf21/K211733.pdf">Lunit</a>, alongside <a href="10-from-model-to-product.html" class="quarto-xref"><span>Chapter 10</span></a>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Check your understanding">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Check your understanding
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Why can AP imaging exaggerate heart size? Why is MIMIC-CXR-JPG not an independent external test of a model trained on MIMIC-CXR? What does triage clearance leave unproven about a generated report? Why do false-positive flags outnumber true-positive flags in the worked example? These questions connect acquisition, evaluation, regulation, and workflow.</p>
+</div>
+</div>
 
 
 </section>
