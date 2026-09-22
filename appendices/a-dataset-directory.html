@@ -527,7 +527,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#before-choosing-a-dataset" id="toc-before-choosing-a-dataset" class="nav-link active" data-scroll-target="#before-choosing-a-dataset">Before choosing a dataset</a></li>
+  <li><a href="#community-dataset-sources" id="toc-community-dataset-sources" class="nav-link active" data-scroll-target="#community-dataset-sources">Community dataset sources</a>
+  <ul class="collapse">
+  <li><a href="#ct-68" id="toc-ct-68" class="nav-link" data-scroll-target="#ct-68">CT (68)</a></li>
+  <li><a href="#mri-60" id="toc-mri-60" class="nav-link" data-scroll-target="#mri-60">MRI (60)</a></li>
+  <li><a href="#ultrasound-20" id="toc-ultrasound-20" class="nav-link" data-scroll-target="#ultrasound-20">Ultrasound (20)</a></li>
+  <li><a href="#chest-radiography-4" id="toc-chest-radiography-4" class="nav-link" data-scroll-target="#chest-radiography-4">Chest radiography (4)</a></li>
+  <li><a href="#radiography-11" id="toc-radiography-11" class="nav-link" data-scroll-target="#radiography-11">Radiography (11)</a></li>
+  <li><a href="#mammography-1" id="toc-mammography-1" class="nav-link" data-scroll-target="#mammography-1">Mammography (1)</a></li>
+  <li><a href="#pet-and-nuclear-medicine-3" id="toc-pet-and-nuclear-medicine-3" class="nav-link" data-scroll-target="#pet-and-nuclear-medicine-3">PET and nuclear medicine (3)</a></li>
+  <li><a href="#ophthalmic-imaging-13" id="toc-ophthalmic-imaging-13" class="nav-link" data-scroll-target="#ophthalmic-imaging-13">Ophthalmic imaging (13)</a></li>
+  <li><a href="#pathology-8" id="toc-pathology-8" class="nav-link" data-scroll-target="#pathology-8">Pathology (8)</a></li>
+  <li><a href="#dermatology-3" id="toc-dermatology-3" class="nav-link" data-scroll-target="#dermatology-3">Dermatology (3)</a></li>
+  <li><a href="#endoscopy-and-surgical-video-10" id="toc-endoscopy-and-surgical-video-10" class="nav-link" data-scroll-target="#endoscopy-and-surgical-video-10">Endoscopy and surgical video (10)</a></li>
+  <li><a href="#microscopy-20" id="toc-microscopy-20" class="nav-link" data-scroll-target="#microscopy-20">Microscopy (20)</a></li>
+  <li><a href="#multimodal-5" id="toc-multimodal-5" class="nav-link" data-scroll-target="#multimodal-5">Multimodal (5)</a></li>
+  </ul></li>
+  <li><a href="#before-choosing-a-dataset" id="toc-before-choosing-a-dataset" class="nav-link" data-scroll-target="#before-choosing-a-dataset">Before choosing a dataset</a></li>
   <li><a href="#a-minimal-research-manifest" id="toc-a-minimal-research-manifest" class="nav-link" data-scroll-target="#a-minimal-research-manifest">A minimal research manifest</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/a-dataset-directory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -555,7 +571,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This selected directory is generated from <code>data/datasets.csv</code>. Counts describe the named release and unit; a frame, image, examination, slide, and patient are not interchangeable. Source-review scope and modality keys are documented in <code>data/README.md</code>. Entries reviewed for the remaining chapters on 22 September 2026 complement the earlier chest-radiography entries.</p>
+<p>The first table is the selected, source-reviewed directory generated from <code>data/datasets.csv</code>. Counts describe the named release and unit; a frame, image, examination, slide, and patient are not interchangeable. Source-review scope and modality keys are documented in <code>data/README.md</code>. Entries reviewed for the remaining chapters on 22 September 2026 complement the earlier chest-radiography entries.</p>
 <div class="table-responsive">
 <table class="caption-top table">
 <thead>
@@ -753,6 +769,1827 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
+<section id="community-dataset-sources" class="level2">
+<h2 class="anchored" data-anchor-id="community-dataset-sources">Community dataset sources</h2>
+<p>The larger directory below is a snapshot of the <a href="https://docs.google.com/spreadsheets/d/1QxjFs41eU6JG5KNhP576fc8MotrJ58KCrqH83HG-__E/edit?gid=2057737934#gid=2057737934">community medical-image dataset spreadsheet</a>, captured on 22 September 2026. It combines the organizer and participant dataset tabs, removes duplicate dataset–modality listings and submissions that are not identifiable datasets, and retains worksheet-row provenance. The sheet also has a model tab, which is not a dataset source. A dataset can appear in more than one modality group when the sheet lists different image types or releases.</p>
+<p>These links and modality/target descriptions are <strong>as supplied by the spreadsheet</strong>, not an independent review of release contents, current availability, licensing, or suitability. “Paper” means the sheet supplied a publication link but no dataset link. Consult the original source before downloading or using any dataset; the selected directory above remains the more carefully reviewed starting point.</p>
+<section id="ct-68" class="level3">
+<h3 class="anchored" data-anchor-id="ct-68">CT (68)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AbdomenAtlas</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Abdominal organs</td>
+<td><a href="https://huggingface.co/datasets/BodyMaps/AbdomenAtlas1.1MiniMask">Dataset</a> (organizers row 30)</td>
+</tr>
+<tr class="even">
+<td>AbdomenCT-1K</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Liver, Kidneys, Pancreas, Spleen</td>
+<td><a href="https://github.com/JunMa11/AbdomenCT-1K">Dataset</a> (organizers row 2)</td>
+</tr>
+<tr class="odd">
+<td>Adrenal-ACC-Ki67-Seg</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Adrenocortical carcinoma</td>
+<td><a href="https://doi.org/10.7937/1FPG-VM46">Dataset</a> (organizers row 3)</td>
+</tr>
+<tr class="even">
+<td>AeroPath</td>
+<td>Chest</td>
+<td>CT</td>
+<td>airways</td>
+<td><a href="https://github.com/raidionics/AeroPath?tab=readme-ov-file">Dataset</a> (organizers row 155)</td>
+</tr>
+<tr class="odd">
+<td>AMOS</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Abdominal organs</td>
+<td><a href="https://amos22.grand-challenge.org/">Dataset</a> (organizers row 4)</td>
+</tr>
+<tr class="even">
+<td>AortaSeg24</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Aorta</td>
+<td><a href="https://aortaseg24.grand-challenge.org">Dataset</a> (participants row 54)</td>
+</tr>
+<tr class="odd">
+<td>Aortic-Dissection</td>
+<td>Chest</td>
+<td>CTA</td>
+<td>true lumina, false lumina</td>
+<td><a href="https://figshare.com/articles/dataset/Aortic_Dissection_Dataset_and_Segmentations/22269091">Dataset</a> (organizers row 168)</td>
+</tr>
+<tr class="even">
+<td>ATM22</td>
+<td>Chest</td>
+<td>CT</td>
+<td>Airway trees</td>
+<td><a href="https://atm22.grand-challenge.org/">Dataset</a> (organizers row 51)</td>
+</tr>
+<tr class="odd">
+<td>BTCV</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>abdominal organs</td>
+<td><a href="https://www.synapse.org/#!Synapse:syn3193805/wiki/89480">Dataset</a> (participants row 3)</td>
+</tr>
+<tr class="even">
+<td>CHAOS</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Abdomen organs</td>
+<td><a href="https://zenodo.org/records/3431873">Dataset</a> (organizers row 62)</td>
+</tr>
+<tr class="odd">
+<td>Colorectal-Liver_Metastases</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Liver, Colorectal Liver Metastases</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/colorectal-liver-metastases/">Dataset</a> (organizers row 66)</td>
+</tr>
+<tr class="even">
+<td>COVID-19-20</td>
+<td>Chest</td>
+<td>CT</td>
+<td>COVID-19 lesions</td>
+<td><a href="https://covid-segmentation.grand-challenge.org/Data/">Dataset</a> (organizers row 7)</td>
+</tr>
+<tr class="odd">
+<td>COVID-19-20-CTSEG</td>
+<td>Chest</td>
+<td>CT</td>
+<td>COVID-19 Infections, left lung, right lung</td>
+<td><a href="https://zenodo.org/records/3757476">Dataset</a> (organizers row 8)</td>
+</tr>
+<tr class="even">
+<td>COVID-19-CT-Seg-Benchmark</td>
+<td>Chest</td>
+<td>CT</td>
+<td>Lungs</td>
+<td><a href="https://github.com/JunMa11/COVID-19-CT-Seg-Benchmark">Dataset</a> (organizers row 19)</td>
+</tr>
+<tr class="odd">
+<td>CT Lymph Nodes</td>
+<td>Chest, Abdomen</td>
+<td>CT</td>
+<td>lymph nodes</td>
+<td><a href="https://doi.org/10.7937/K9/TCIA.2015.AQIIDCNM">Dataset</a> (organizers row 20)</td>
+</tr>
+<tr class="even">
+<td>CT_ORG</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Abdominal organs</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/ct-org/">Dataset</a> (participants row 4)</td>
+</tr>
+<tr class="odd">
+<td>CURVAS</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>pancrease, kidney, liver</td>
+<td><a href="https://zenodo.org/records/13767408">Dataset</a> (organizers row 165)</td>
+</tr>
+<tr class="even">
+<td>DeepLesion-MedSAM2</td>
+<td>Whole-body lesions</td>
+<td>CT</td>
+<td>Lesion</td>
+<td><a href="https://huggingface.co/datasets/wanglab/CT_DeepLesion-MedSAM2">Dataset</a> (organizers row 173)</td>
+</tr>
+<tr class="odd">
+<td>FDG-PET-CT-Lesions (autoPET)</td>
+<td>whole body</td>
+<td>CT</td>
+<td>tumor</td>
+<td><a href="https://it-portal.med.uni-muenchen.de/autopet/Autopet_v1.1.tgz">Dataset</a> (organizers row 27)</td>
+</tr>
+<tr class="even">
+<td>GammaKnife-Hippocampal</td>
+<td>Brain</td>
+<td>CT</td>
+<td>brain organ</td>
+<td><a href="https://doi.org/10.7937/Q967-X166">Dataset</a> (organizers row 76)</td>
+</tr>
+<tr class="odd">
+<td>HCC-TACE-Seg</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Tumor</td>
+<td><a href="https://doi.org/10.7937/TCIA.5FNA-0924">Dataset</a> (organizers row 12)</td>
+</tr>
+<tr class="even">
+<td>INSTANCE22</td>
+<td>Head</td>
+<td>CT</td>
+<td>Intracranial Hemorrhage</td>
+<td><a href="https://instance.grand-challenge.org/Instance2022/">Dataset</a> (organizers row 10)</td>
+</tr>
+<tr class="odd">
+<td>Kipa22</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Kidney, Vessel, Tumor</td>
+<td><a href="https://kipa22.grand-challenge.org">Dataset</a> (participants row 64)</td>
+</tr>
+<tr class="even">
+<td>KiTS23</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Kidney Lesion</td>
+<td><a href="https://kits-challenge.org/kits23/">Dataset</a> (organizers row 11)</td>
+</tr>
+<tr class="odd">
+<td>LCTSC</td>
+<td>Chest</td>
+<td>CT</td>
+<td>Esophagus, Heart, Lungs, Spinal cord</td>
+<td><a href="https://doi.org/10.7937/K9/TCIA.2017.3R3FVZ08">Dataset</a> (organizers row 24)</td>
+</tr>
+<tr class="even">
+<td>LIDC-IDRI</td>
+<td>Chest</td>
+<td>CT</td>
+<td>Lung cancer</td>
+<td><a href="https://doi.org/10.7937/K9/TCIA.2015.LO9QL9SX">Dataset</a> (organizers row 88)</td>
+</tr>
+<tr class="odd">
+<td>LiTS</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Liver tumor</td>
+<td><a href="https://competitions.codalab.org/competitions/17094#learn_the_details-overview">Dataset</a> (participants row 5)</td>
+</tr>
+<tr class="even">
+<td>LNDb</td>
+<td>Lung</td>
+<td>CT</td>
+<td>Lung cancer</td>
+<td><a href="https://zenodo.org/records/8348419">Dataset</a> (participants row 7)</td>
+</tr>
+<tr class="odd">
+<td>LongCIU</td>
+<td>Chest</td>
+<td>CT</td>
+<td>ground glass opacities (GGO), consolidations</td>
+<td><a href="https://iro.uiowa.edu/esploro/outputs/dataset/9984632558202771">Dataset</a> (organizers row 135)</td>
+</tr>
+<tr class="even">
+<td>LUNA 16</td>
+<td>Chest</td>
+<td>CT</td>
+<td>Lung nodule</td>
+<td><a href="https://luna16.grand-challenge.org/Download/">Dataset</a> (organizers row 89)</td>
+</tr>
+<tr class="odd">
+<td>Mediastinal-Lymph-Node-SEG</td>
+<td>Chest</td>
+<td>CT</td>
+<td>lymph nodes</td>
+<td><a href="https://doi.org/10.7937/QVAZ-JA09">Dataset</a> (organizers row 21)</td>
+</tr>
+<tr class="even">
+<td>MedSeg_IVC</td>
+<td>—</td>
+<td>CT</td>
+<td>—</td>
+<td><a href="https://figshare.com/articles/dataset/MedSeg_Inferior_Vena_Cava_Dataset/15180192">Dataset</a> (organizers row 171)</td>
+</tr>
+<tr class="odd">
+<td>MedSeg_Liver-Segments</td>
+<td>—</td>
+<td>CT</td>
+<td>—</td>
+<td><a href="https://figshare.com/articles/dataset/MedSeg_Liver_segments_dataset/13643252">Dataset</a> (organizers row 170)</td>
+</tr>
+<tr class="even">
+<td>MSD-ColonCancer</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Colon Cancer Primaries</td>
+<td><a href="http://medicaldecathlon.com/#tasks">Dataset</a> (organizers row 6)</td>
+</tr>
+<tr class="odd">
+<td>MSD-HepaticVessels</td>
+<td>Vessel</td>
+<td>CT</td>
+<td>Hepatic vessels and tumour</td>
+<td><a href="http://medicaldecathlon.com/#tasks">Dataset</a> (organizers row 14)</td>
+</tr>
+<tr class="even">
+<td>MSD-LiverTumor</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Liver and tumour</td>
+<td><a href="http://medicaldecathlon.com/">Dataset</a> (organizers row 13)</td>
+</tr>
+<tr class="odd">
+<td>MSD-LungTumor</td>
+<td>Lung</td>
+<td>CT</td>
+<td>Lung tumor</td>
+<td><a href="http://medicaldecathlon.com/">Dataset</a> (organizers row 15)</td>
+</tr>
+<tr class="even">
+<td>MSD-Pancreastumor</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>pancreas and tumors</td>
+<td><a href="http://medicaldecathlon.com/#tasks">Dataset</a> (organizers row 22)</td>
+</tr>
+<tr class="odd">
+<td>MSD-Spleen</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Spleen</td>
+<td><a href="http://medicaldecathlon.com/#tasks">Dataset</a> (organizers row 95)</td>
+</tr>
+<tr class="even">
+<td>MSWAL</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>gallstones, kidney stones, liver tumors, kidney tumors, pancreatic cancer, liver cysts, and kidney cysts.</td>
+<td><a href="https://huggingface.co/datasets/zhaodongwu/MSWAL">Dataset</a> (participants row 74)</td>
+</tr>
+<tr class="odd">
+<td>NIH-Pancreas</td>
+<td>Pancreas</td>
+<td>CT</td>
+<td>Pancreas</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/pancreas-ct/">Dataset</a> (participants row 48)</td>
+</tr>
+<tr class="even">
+<td>NSCLC Radiogenomics</td>
+<td>Chest</td>
+<td>CT</td>
+<td>tumor</td>
+<td><a href="https://doi.org/10.7937/K9/TCIA.2017.7hs46erv">Dataset</a> (organizers row 16)</td>
+</tr>
+<tr class="odd">
+<td>NSCLC-PleuralEffusion</td>
+<td>Chest</td>
+<td>CT</td>
+<td>PleuralEffusion</td>
+<td><a href="https://doi.org/10.7937/tcia.2020.6c7y-gq39">Dataset</a> (organizers row 17)</td>
+</tr>
+<tr class="even">
+<td>NSCLC-Radiomics</td>
+<td>Chest</td>
+<td>CT</td>
+<td>tumor</td>
+<td><a href="https://doi.org/10.7937/K9/TCIA.2015.PF0M9REI">Dataset</a> (organizers row 18)</td>
+</tr>
+<tr class="odd">
+<td>OPC-Radiomics</td>
+<td>Head and Neck</td>
+<td>CT</td>
+<td>Oropharynx tumor</td>
+<td><a href="https://doi.org/10.7937/tcia.2019.8dho2gls">Dataset</a> (organizers row 98)</td>
+</tr>
+<tr class="even">
+<td>Pancreatic-CT-CBCT-SEG</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Organ at risk</td>
+<td><a href="https://doi.org/10.7937/TCIA.ESHQ-4D90">Dataset</a> (organizers row 100)</td>
+</tr>
+<tr class="odd">
+<td>PANORAMA</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Pancreas</td>
+<td><a href="https://panorama.grand-challenge.org/datasets-imaging-labels/">Dataset</a> (organizers row 128)</td>
+</tr>
+<tr class="even">
+<td>Parse 2022</td>
+<td>Chest</td>
+<td>CT</td>
+<td>Pulmonary Artery</td>
+<td><a href="https://parse2022.grand-challenge.org/Dataset/">Dataset</a> (organizers row 103)</td>
+</tr>
+<tr class="odd">
+<td>Pediatric-CT-SEG</td>
+<td>Chest, Abdomen, Pelvis</td>
+<td>CT</td>
+<td>Abdomen, Chest, Pelvic organs</td>
+<td><a href="https://doi.org/10.7937/TCIA.X0H0-1706">Dataset</a> (organizers row 104)</td>
+</tr>
+<tr class="even">
+<td>PENGWIN</td>
+<td>Pelvis</td>
+<td>CT</td>
+<td>Pelvic fracture</td>
+<td><a href="https://doi.org/10.5281/zenodo.10927452">Dataset</a> (organizers row 160)</td>
+</tr>
+<tr class="odd">
+<td>Prostate Anatomical Edge Cases</td>
+<td>Pelvis</td>
+<td>CT</td>
+<td>Prostate, rectum, bladder, and bilateral femoral heads</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/prostate-anatomical-edge-cases/">Dataset</a> (organizers row 105)</td>
+</tr>
+<tr class="even">
+<td>quan</td>
+<td>Lung</td>
+<td>CT</td>
+<td>Lung</td>
+<td><a href="https://covid-segmentation.grand-challenge.org/Data/">Dataset</a> (participants row 6)</td>
+</tr>
+<tr class="odd">
+<td>RibSeg</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Ribs</td>
+<td><a href="https://zenodo.org/records/5336592">Dataset</a> (participants row 50)</td>
+</tr>
+<tr class="even">
+<td>Seg.A.</td>
+<td>Vessel</td>
+<td>CTA</td>
+<td>Aorta</td>
+<td><a href="https://figshare.com/articles/dataset/Aortic_Vessel_Tree_AVT_CTA_Datasets_and_Segmentations/14806362">Dataset</a> (organizers row 5)</td>
+</tr>
+<tr class="odd">
+<td>SegRap</td>
+<td>Head</td>
+<td>CT</td>
+<td>Head-neck cancer</td>
+<td><a href="https://drive.google.com/drive/folders/115mzmNlZRIewnSR2QFDwW_-RkNM0LC9D">Dataset</a> (organizers row 23)</td>
+</tr>
+<tr class="even">
+<td>SegTHOR</td>
+<td>Heart</td>
+<td>CT</td>
+<td>Thoracic organs</td>
+<td><a href="https://competitions.codalab.org/competitions/21145#learn_the_details-terms_and_conditions">Dataset</a> (participants row 8)</td>
+</tr>
+<tr class="odd">
+<td>SpineMets</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Spine Mets</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/spine-mets-ct-seg/">Dataset</a> (participants row 60)</td>
+</tr>
+<tr class="even">
+<td>StructSeg</td>
+<td>Head and Neck</td>
+<td>CT</td>
+<td>22 OAR Head &amp; Neck Nasopharynx Cancer 6 OAR Lung</td>
+<td><a href="https://structseg2019.grand-challenge.org">Dataset</a> (participants row 46)</td>
+</tr>
+<tr class="odd">
+<td>STS-3D-Tooth</td>
+<td>Oral</td>
+<td>CBCT</td>
+<td>tooth</td>
+<td><a href="https://zenodo.org/records/10597292">Dataset</a> (organizers row 143)</td>
+</tr>
+<tr class="even">
+<td>TCGA-HNSC</td>
+<td>Head and Neck</td>
+<td>CT</td>
+<td>Head-neck cancer</td>
+<td><a href="https://doi.org/10.7937/K9/TCIA.2016.LXKQ47MS">Dataset</a> (organizers row 108)</td>
+</tr>
+<tr class="odd">
+<td>ToothFairy 2</td>
+<td>Head and Neck</td>
+<td>CT</td>
+<td>Dental Structures</td>
+<td><a href="https://ditto.ing.unimore.it/toothfairy2/">Dataset</a> (participants row 66)</td>
+</tr>
+<tr class="even">
+<td>TopCoW24</td>
+<td>Brain</td>
+<td>CTA</td>
+<td>vessel</td>
+<td><a href="https://topcow24.grand-challenge.org/">Dataset</a> (organizers row 124)</td>
+</tr>
+<tr class="odd">
+<td>TotalSegmentator</td>
+<td>WholeBody</td>
+<td>CT</td>
+<td>Whole body organs</td>
+<td><a href="https://zenodo.org/records/10047292">Dataset</a> (organizers row 25)</td>
+</tr>
+<tr class="even">
+<td>USL</td>
+<td>Chest, Abdomen, Pelvis</td>
+<td>CT</td>
+<td>lesion</td>
+<td><a href="https://github.com/MJJdG/ULS23/tree/main">Dataset</a> (organizers row 113)</td>
+</tr>
+<tr class="odd">
+<td>VERSE20</td>
+<td>Spine</td>
+<td>CT</td>
+<td>Vertebrae</td>
+<td><a href="https://github.com/anjany/verse?tab=readme-ov-file">Dataset</a> (organizers row 115)</td>
+</tr>
+<tr class="even">
+<td>VESSEL12</td>
+<td>Chest</td>
+<td>CT</td>
+<td>Lung Vessel</td>
+<td><a href="https://www.kaggle.com/datasets/andrewmvd/lung-vessel-segmentation">Dataset</a> (organizers row 116)</td>
+</tr>
+<tr class="odd">
+<td>WAW-TCE</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Liver Tumor</td>
+<td><a href="https://zenodo.org/records/12741586">Dataset</a> (organizers row 158)</td>
+</tr>
+<tr class="even">
+<td>WORD</td>
+<td>Abdomen</td>
+<td>CT</td>
+<td>Abdomen organs</td>
+<td><a href="https://github.com/HiLab-git/WORD">Dataset</a> (organizers row 117)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="mri-60" class="level3">
+<h3 class="anchored" data-anchor-id="mri-60">MRI (60)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ACDC</td>
+<td>Chest</td>
+<td>MR</td>
+<td>Right Ventricle, Left Ventricle, Myocardium</td>
+<td><a href="https://humanheart-project.creatis.insa-lyon.fr/database/#collection/637218c173e9f0047faa00fb">Dataset</a> (organizers row 31)</td>
+</tr>
+<tr class="even">
+<td>AMOS</td>
+<td>Abdomen</td>
+<td>MR</td>
+<td>Abdominal organs</td>
+<td><a href="https://amos22.grand-challenge.org/">Dataset</a> (organizers row 28)</td>
+</tr>
+<tr class="odd">
+<td>Aphasia Recovery Cohort (ARC) Dataset</td>
+<td>Head and Neck</td>
+<td>MR</td>
+<td>brain lesion</td>
+<td><a href="https://openneuro.org/datasets/ds004884/versions/1.0.1/download">Dataset</a> (participants row 23)</td>
+</tr>
+<tr class="even">
+<td>Atlas Bourgogne</td>
+<td>Abdomen</td>
+<td>MR</td>
+<td>Liver, Tumor</td>
+<td><a href="https://atlas-challenge.u-bourgogne.fr">Dataset</a> (participants row 61)</td>
+</tr>
+<tr class="odd">
+<td>BONBID-HIE</td>
+<td>Head</td>
+<td>MR</td>
+<td>Hypoxic ischemic encephalopathy lesions</td>
+<td><a href="https://zenodo.org/records/10602767">Dataset</a> (organizers row 147)</td>
+</tr>
+<tr class="even">
+<td>Brain TR-GammakKnife</td>
+<td>Brain</td>
+<td>MR</td>
+<td>brain lesion</td>
+<td><a href="https://doi.org/10.7937/xb6d-py67">Dataset</a> (organizers row 56)</td>
+</tr>
+<tr class="odd">
+<td>BrainMetShare</td>
+<td>Head and Neck</td>
+<td>MR</td>
+<td>Brain tumors</td>
+<td><a href="https://aimi.stanford.edu/brainmetshare">Dataset</a> (participants row 24)</td>
+</tr>
+<tr class="even">
+<td>BrainPTM</td>
+<td>Brain</td>
+<td>MR-T1</td>
+<td>White matter tracts</td>
+<td><a href="https://brainptm-2021.grand-challenge.org/Participation/">Dataset</a> (organizers row 57)</td>
+</tr>
+<tr class="odd">
+<td>BraTS</td>
+<td>Head</td>
+<td>MR-T1, T1Gd, T2, FLAIR</td>
+<td>Brain Lesion</td>
+<td><a href="http://braintumorsegmentation.org/">Dataset</a> (organizers row 29)</td>
+</tr>
+<tr class="even">
+<td>CAP</td>
+<td>Heart</td>
+<td>MR</td>
+<td>Left Ventricle</td>
+<td><a href="https://www.cardiacatlas.org/lv-segmentation-challenge/">Dataset</a> (participants row 58)</td>
+</tr>
+<tr class="odd">
+<td>cDEMRIS</td>
+<td>Heart</td>
+<td>CMR</td>
+<td>Left atrial wall</td>
+<td><a href="https://figshare.com/articles/dataset/CDEMRIS_fibrosis_scar_challenge_data_2012/4214532">Dataset</a> (participants row 2)</td>
+</tr>
+<tr class="even">
+<td>CHAOS</td>
+<td>Abdomen</td>
+<td>MR</td>
+<td>Abdomen organs</td>
+<td><a href="https://zenodo.org/records/3431873">Dataset</a> (organizers row 32)</td>
+</tr>
+<tr class="odd">
+<td>CrossMoDA</td>
+<td>Brain</td>
+<td>MR-T1-T2</td>
+<td>Tumor, Cochlea</td>
+<td><a href="https://crossmoda-challenge.ml/">Dataset</a> (organizers row 33)</td>
+</tr>
+<tr class="even">
+<td>Duke-Liver</td>
+<td>Abdomen</td>
+<td>MR</td>
+<td>Liver</td>
+<td><a href="https://zenodo.org/records/7774566">Dataset</a> (organizers row 72)</td>
+</tr>
+<tr class="odd">
+<td>EMIDEC</td>
+<td>Heart</td>
+<td>MRI</td>
+<td>Left-ventricular-cavity normal-myocardium myocardial infarction no-reflow</td>
+<td><a href="https://emidec.com">Dataset</a> (organizers row 166)</td>
+</tr>
+<tr class="even">
+<td>FaBiAN v2.0</td>
+<td>—</td>
+<td>MR</td>
+<td>—</td>
+<td><a href="https://zenodo.org/records/10940427">Dataset</a> (organizers row 164)</td>
+</tr>
+<tr class="odd">
+<td>FeTA</td>
+<td>Brain</td>
+<td>MR</td>
+<td>Brain organs</td>
+<td><a href="https://www.synapse.org/#!Synapse:syn25649159/wiki/610007">Dataset</a> (organizers row 73)</td>
+</tr>
+<tr class="even">
+<td>Figshare Brain Tumor Dataset</td>
+<td>Brain</td>
+<td>MR-T1ce</td>
+<td>meningioma; glioma; pituitary tumor</td>
+<td><a href="https://www.kaggle.com/datasets/ashkhagan/figshare-brain-tumor-dataset">Dataset</a> (organizers row 75)</td>
+</tr>
+<tr class="odd">
+<td>GammaKnife-Hippocampal</td>
+<td>Brain</td>
+<td>MR</td>
+<td>brain organ</td>
+<td><a href="https://doi.org/10.7937/Q967-X166">Dataset</a> (organizers row 77)</td>
+</tr>
+<tr class="even">
+<td>GBM-Reservoir</td>
+<td>Brain</td>
+<td>MR (FLAIR, T1, T1ce, T2)</td>
+<td>brain tumor (Enhancing tumor, Tumor core, Complete tumor extent/whole tumor)</td>
+<td><a href="https://figshare.com/articles/dataset/GBM-Reservoir_Dataset_and_Segmentations/28001450">Dataset</a> (organizers row 167)</td>
+</tr>
+<tr class="odd">
+<td>Hippo</td>
+<td>hippocampus</td>
+<td>MR</td>
+<td>hippocampal formation subfields (ERC, SUB, CA1, DG-CA4, CA2, CA3, the hippocampal tail)</td>
+<td><a href="https://plus.figshare.com/articles/dataset/A_paired_dataset_of_multi-modal_MRI_at_3_Tesla_and_7_Tesla_with_manual_hippocampal_subfield_segmentations_on_7T_T2-weighted_images/26075713/1">Dataset</a> (organizers row 139)</td>
+</tr>
+<tr class="even">
+<td>HNTSMRG</td>
+<td>Head</td>
+<td>MR</td>
+<td>Tumor</td>
+<td><a href="https://zenodo.org/records/11199559">Dataset</a> (organizers row 34)</td>
+</tr>
+<tr class="odd">
+<td>HVSMR</td>
+<td>Heart</td>
+<td>MR</td>
+<td>blood pool, ventricular myocardium</td>
+<td><a href="https://segchd.csail.mit.edu/data.html">Dataset</a> (organizers row 130)</td>
+</tr>
+<tr class="even">
+<td>I2CVB</td>
+<td>Pelvis</td>
+<td>MR</td>
+<td>Prostate Gland, Peripheral Zone, Central Gland, CaP</td>
+<td><a href="https://i2cvb.github.io/">Dataset</a> (organizers row 83)</td>
+</tr>
+<tr class="odd">
+<td>IBD</td>
+<td>Abdomen</td>
+<td>MRE</td>
+<td>stomach, duodenum, small intestine, appendix, cecum, ascending colon, transverse colon, descending colon, sigmoid colon, rectum</td>
+<td><a href="https://zenodo.org/records/13839321">Dataset</a> (organizers row 134)</td>
+</tr>
+<tr class="even">
+<td>ISBILesion2015</td>
+<td>Head and Neck</td>
+<td>MR</td>
+<td>MS Lesions</td>
+<td><a href="https://iacl.ece.jhu.edu/index.php/MSChallenge">Dataset</a> (participants row 45)</td>
+</tr>
+<tr class="odd">
+<td>ISLES</td>
+<td>Brain</td>
+<td>MR-DWI-ADC, FLAIR</td>
+<td>Ischemic stroke lesion</td>
+<td><a href="https://zenodo.org/records/7960856">Dataset</a> (organizers row 35)</td>
+</tr>
+<tr class="even">
+<td>LGGFLair</td>
+<td>Head and Neck</td>
+<td>FLAIR</td>
+<td>low-grade glioma brain tumor</td>
+<td><a href="https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation">Dataset</a> (participants row 13)</td>
+</tr>
+<tr class="odd">
+<td>LGGMRISeg</td>
+<td>Head and Neck</td>
+<td>MR</td>
+<td>Tumor</td>
+<td><a href="https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation/data">Dataset</a> (participants row 57)</td>
+</tr>
+<tr class="even">
+<td>LLD-MMRI-MedSAM2</td>
+<td>Abdomen</td>
+<td>MRI</td>
+<td>Liver lesion</td>
+<td><a href="https://huggingface.co/datasets/wanglab/LLD-MMRI-MedSAM2">Dataset</a> (organizers row 174)</td>
+</tr>
+<tr class="odd">
+<td>MAMA-MIA</td>
+<td>breast</td>
+<td>MR</td>
+<td>Breast Cancer lesions (primary tumors and non-mass-enhanced regions)</td>
+<td><a href="https://www.synapse.org/Synapse:syn60868042/wiki/628716">Dataset</a> (organizers row 133)</td>
+</tr>
+<tr class="even">
+<td>MedSeg_Lateral-Ventricles</td>
+<td>—</td>
+<td>MR</td>
+<td>—</td>
+<td><a href="https://figshare.com/articles/dataset/MedSeg_Ventricles_MRI_Dataset/19644636">Dataset</a> (organizers row 169)</td>
+</tr>
+<tr class="odd">
+<td>Meningioma-SEG-CLASS</td>
+<td>Brain</td>
+<td>MR</td>
+<td>Tumor (Meningioma)</td>
+<td><a href="https://doi.org/10.7937/0TKV-1A36">Dataset</a> (organizers row 91)</td>
+</tr>
+<tr class="even">
+<td>MMs-20-21</td>
+<td>Chest</td>
+<td>MR</td>
+<td>LV, Myocardium, RV</td>
+<td><a href="https://www.ub.edu/mnms/">Dataset</a> (organizers row 93)</td>
+</tr>
+<tr class="odd">
+<td>MSD-Hippocampus</td>
+<td>Head</td>
+<td>MR</td>
+<td>Hippocampus</td>
+<td><a href="http://medicaldecathlon.com/">Dataset</a> (organizers row 96)</td>
+</tr>
+<tr class="even">
+<td>MSD-LeftAtrium</td>
+<td>Chest</td>
+<td>MR</td>
+<td>Left Atrium</td>
+<td><a href="http://medicaldecathlon.com/#tasks">Dataset</a> (organizers row 36)</td>
+</tr>
+<tr class="odd">
+<td>MSD-Prostate</td>
+<td>Pelvis</td>
+<td>MR (T2, ADC)</td>
+<td>Prostate</td>
+<td><a href="http://medicaldecathlon.com/#tasks">Dataset</a> (organizers row 37)</td>
+</tr>
+<tr class="even">
+<td>NCI-ISBI</td>
+<td>Pelvis</td>
+<td>MR-T2</td>
+<td>Prostate</td>
+<td><a href="http://dx.doi.org/10.7937/K9/TCIA.2015.zF0vlOPv">Dataset</a> (organizers row 38)</td>
+</tr>
+<tr class="odd">
+<td>OASIS</td>
+<td>Brain</td>
+<td>MR</td>
+<td>cerebral spinal fluid, gray matter, white matter</td>
+<td><a href="https://sites.wustl.edu/oasisbrains/home/oasis-1/">Dataset</a> (organizers row 131)</td>
+</tr>
+<tr class="even">
+<td>PanSegData</td>
+<td>Abdomen</td>
+<td>MR</td>
+<td>Pancreas</td>
+<td><a href="https://osf.io/kysnj/">Dataset</a> (organizers row 39)</td>
+</tr>
+<tr class="odd">
+<td>PI-CAI</td>
+<td>Pelvis</td>
+<td>MR</td>
+<td>Prostate Cancer</td>
+<td><a href="https://zenodo.org/records/6624726">Dataset</a> (organizers row 109)</td>
+</tr>
+<tr class="even">
+<td>Pituitary_tumor</td>
+<td>Head and neck</td>
+<td>MR</td>
+<td>Pituitary Neuroendocrine Tumor, carotid</td>
+<td><a href="https://springernature.figshare.com/articles/dataset/Mapping_pituitary_neuroendocrine_tumors_an_annotated_MRI_dataset_profiling_tumor_and_carotid_characteristics/27894084">Dataset</a> (organizers row 148)</td>
+</tr>
+<tr class="odd">
+<td>PROMISE12</td>
+<td>Pelvis</td>
+<td>MR-T2</td>
+<td>Prostate</td>
+<td><a href="https://zenodo.org/records/8026660">Dataset</a> (organizers row 40)</td>
+</tr>
+<tr class="even">
+<td>PROSTATE-MRI</td>
+<td>Prostate</td>
+<td>MRI Histopathology</td>
+<td>Prostate tumor</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/prostate-mri/">Dataset</a> (participants row 69)</td>
+</tr>
+<tr class="odd">
+<td>ProstateX</td>
+<td>Prostate</td>
+<td>MR</td>
+<td>Prostate Lesion</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/prostatex/">Dataset</a> (participants row 49)</td>
+</tr>
+<tr class="even">
+<td>QIN-PROSTATE</td>
+<td>Pelvis</td>
+<td>MR</td>
+<td>Prostate and lesion</td>
+<td><a href="http://doi.org/10.7937/K9/TCIA.2018.MR1CKGND">Dataset</a> (organizers row 41)</td>
+</tr>
+<tr class="odd">
+<td>ReMIND</td>
+<td>Head and Neck</td>
+<td>MR</td>
+<td>Brain Cancer</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/remind/">Dataset</a> (participants row 67)</td>
+</tr>
+<tr class="even">
+<td>RESECT</td>
+<td>Brain</td>
+<td>MR</td>
+<td>tumor</td>
+<td><a href="https://osf.io/jv8bk/">Dataset</a> (organizers row 156)</td>
+</tr>
+<tr class="odd">
+<td>SCD</td>
+<td>Heart</td>
+<td>MR</td>
+<td>Heart anatomy</td>
+<td><a href="https://www.cardiacatlas.org/sunnybrook-cardiac-data/">Dataset</a> (participants row 25)</td>
+</tr>
+<tr class="even">
+<td>SegThy</td>
+<td>Neck</td>
+<td>MRI</td>
+<td>Thyroid, Carotid, Jugular Vein</td>
+<td><a href="https://www.cs.cit.tum.de/camp/publications/segthy-dataset/">Dataset</a> (organizers row 127)</td>
+</tr>
+<tr class="odd">
+<td>SPIDER</td>
+<td>Bone</td>
+<td>MR</td>
+<td>IVD</td>
+<td><a href="https://zenodo.org/records/10159290">Dataset</a> (organizers row 42)</td>
+</tr>
+<tr class="even">
+<td>SpineMR</td>
+<td>Bone</td>
+<td>MR</td>
+<td>Spine</td>
+<td><a href="https://www.cg.informatik.uni-siegen.de/en/spine-segmentation-and-analysis">Dataset</a> (organizers row 45)</td>
+</tr>
+<tr class="odd">
+<td>Stanford Knee MRI Multi-Task Evaluation (SKM-TEA) Dataset</td>
+<td>Knee</td>
+<td>MR</td>
+<td>Cartilage (Femur-Tibia-Patella) &amp; Meniscus</td>
+<td><a href="https://stanfordaimi.azurewebsites.net/datasets/4aaeafb9-c6e6-4e3c-9188-3aaaf0e0a9e7">Dataset</a> (participants row 42)</td>
+</tr>
+<tr class="even">
+<td>TCIA_CervicalCancer</td>
+<td>Pelvis</td>
+<td>MR</td>
+<td>Tumor</td>
+<td><a href="https://doi.org/10.7937/ERZ5-QZ59">Dataset</a> (organizers row 46)</td>
+</tr>
+<tr class="odd">
+<td>TOM500</td>
+<td>Head</td>
+<td>MR</td>
+<td>optic nerve, orbital fat, lacrimal gland, eyeball, superior rectus and levator palpebrae superioris complex, inferior rectus, medial rectus, lateral rectus, superior oblique</td>
+<td><a href="https://springernature.figshare.com/articles/dataset/TOM500_A_Multi-Organ_Annotated_Orbital_MRI_Dataset_for_Thyroid_Eye_Disease/27133389?file=49499655">Dataset</a> (organizers row 146)</td>
+</tr>
+<tr class="even">
+<td>TopCoW24</td>
+<td>Brain</td>
+<td>MRA</td>
+<td>vessel</td>
+<td><a href="https://topcow24.grand-challenge.org/">Dataset</a> (organizers row 125)</td>
+</tr>
+<tr class="odd">
+<td>TotalSegmentatorMR</td>
+<td>WholeBody</td>
+<td>MR</td>
+<td>Whole body organs</td>
+<td><a href="https://zenodo.org/records/14710732">Dataset</a> (organizers row 47)</td>
+</tr>
+<tr class="even">
+<td>TrackRAD</td>
+<td>Whole-body</td>
+<td>MRI</td>
+<td>Lesion</td>
+<td><a href="https://huggingface.co/datasets/LMUK-RADONC-PHYS-RES/TrackRAD2025">Dataset</a> (organizers row 129)</td>
+</tr>
+<tr class="odd">
+<td>UCSF-PDGM</td>
+<td>Brain</td>
+<td>MR</td>
+<td>brain lesion</td>
+<td><a href="https://doi.org/10.7937/tcia.bdgf-8v37">Dataset</a> (organizers row 110)</td>
+</tr>
+<tr class="even">
+<td>WMH</td>
+<td>Brain</td>
+<td>MR-T1, FLAIR</td>
+<td>White matter hyper-intensities</td>
+<td><a href="https://wmh.isi.uu.nl/">Dataset</a> (organizers row 48)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ultrasound-20" class="level3">
+<h3 class="anchored" data-anchor-id="ultrasound-20">Ultrasound (20)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AbdominalUS</td>
+<td>Abdomen</td>
+<td>Ultrasound</td>
+<td>Organs</td>
+<td><a href="https://www.kaggle.com/datasets/ignaciorlando/ussimandsegm">Dataset</a> (participants row 32)</td>
+</tr>
+<tr class="even">
+<td>ACOUSLIC</td>
+<td>Abdomen</td>
+<td>US</td>
+<td>Abdominal circumference</td>
+<td><a href="https://zenodo.org/records/12697994">Dataset</a> (organizers row 159)</td>
+</tr>
+<tr class="odd">
+<td>BUID</td>
+<td>Breast</td>
+<td>Ultrasound</td>
+<td>Tumors</td>
+<td><a href="https://scholar.cu.edu.eg/?q=afahmy/pages/dataset">Dataset</a> (participants row 35)</td>
+</tr>
+<tr class="even">
+<td>BUS-UCLM</td>
+<td>Breast</td>
+<td>Ultrasound</td>
+<td>breast lesions</td>
+<td><a href="https://data.mendeley.com/datasets/7fvgj4jsp7/3">Dataset</a> (organizers row 140)</td>
+</tr>
+<tr class="odd">
+<td>BUSI</td>
+<td>Chest</td>
+<td>US</td>
+<td>benign breast cancer malignant breast cancer</td>
+<td><a href="https://scholar.cu.edu.eg/?q=afahmy/pages/dataset">Dataset</a> (organizers row 59)</td>
+</tr>
+<tr class="even">
+<td>CAMUS</td>
+<td>Heart</td>
+<td>US</td>
+<td>left ventricle, myocardium, left atrium</td>
+<td><a href="https://www.creatis.insa-lyon.fr/Challenge/camus/index.html">Dataset</a> (organizers row 50)</td>
+</tr>
+<tr class="odd">
+<td>CT2US</td>
+<td>Abdomen</td>
+<td>Ultrasound</td>
+<td>Liver</td>
+<td><a href="https://www.kaggle.com/datasets/siatsyx/ct2usforkidneyseg">Dataset</a> (participants row 30)</td>
+</tr>
+<tr class="even">
+<td>CT2USforKidneySeg</td>
+<td>Abdomen</td>
+<td>US</td>
+<td>kidney</td>
+<td><a href="https://www.kaggle.com/datasets/siatsyx/ct2usforkidneyseg">Dataset</a> (organizers row 69)</td>
+</tr>
+<tr class="odd">
+<td>DDTI</td>
+<td>Head and Neck</td>
+<td>Ultrasound</td>
+<td>Thyroid</td>
+<td><a href="https://www.kaggle.com/datasets/dasmehdixtr/ddti-thyroid-ultrasound-images?select=100_1.jpg">Dataset</a> (participants row 33)</td>
+</tr>
+<tr class="even">
+<td>hc18</td>
+<td>Head</td>
+<td>US</td>
+<td>fetal head circumference</td>
+<td><a href="https://zenodo.org/record/1327317">Dataset</a> (organizers row 79)</td>
+</tr>
+<tr class="odd">
+<td>HMC-QU</td>
+<td>Chest</td>
+<td>US</td>
+<td>left ventricle</td>
+<td><a href="https://www.kaggle.com/datasets/aysendegerli/hmcqu-dataset">Dataset</a> (organizers row 80)</td>
+</tr>
+<tr class="even">
+<td>Leg-3D-US</td>
+<td>Low-limb leg</td>
+<td>US</td>
+<td>Soleus, Gastrocnemius Medialis, Gastrocnemius Lateralis</td>
+<td><a href="https://www.cs.cit.tum.de/camp/publications/leg-3d-us-dataset/">Dataset</a> (organizers row 49)</td>
+</tr>
+<tr class="odd">
+<td>Micro-Ultrasound-Prostate</td>
+<td>Prostate</td>
+<td>Micro-Ultrasound</td>
+<td>Prostate</td>
+<td><a href="https://zenodo.org/records/10475293">Dataset</a> (participants row 17)</td>
+</tr>
+<tr class="even">
+<td>MMOTU</td>
+<td>Pelvic Cavity</td>
+<td>Ultrasound</td>
+<td>Tumors</td>
+<td><a href="https://github.com/cv516Buaa/MMOTU_DS2Net">Dataset</a> (participants row 34)</td>
+</tr>
+<tr class="odd">
+<td>MuscleUS</td>
+<td>Leg, Biceps</td>
+<td>Ultrasound</td>
+<td>Muscles</td>
+<td><a href="https://data.mendeley.com/datasets/3jykz7wz8d/1">Dataset</a> (participants row 31)</td>
+</tr>
+<tr class="even">
+<td>ps-fh-aop-2023</td>
+<td>Pelvis</td>
+<td>Ultrasound</td>
+<td>Pubic symphysis Fetal head</td>
+<td><a href="https://zenodo.org/record/7851339#.ZEH6eHZBztU">Dataset</a> (organizers row 106)</td>
+</tr>
+<tr class="odd">
+<td>RESECT</td>
+<td>Brain</td>
+<td>US</td>
+<td>tumor</td>
+<td><a href="https://osf.io/jv8bk/">Dataset</a> (organizers row 157)</td>
+</tr>
+<tr class="even">
+<td>SegThy</td>
+<td>Neck</td>
+<td>US</td>
+<td>Thyroid, Carotid, Jugular Vein</td>
+<td><a href="https://www.cs.cit.tum.de/camp/publications/segthy-dataset/">Dataset</a> (organizers row 126)</td>
+</tr>
+<tr class="odd">
+<td>US simulation &amp; segmentation</td>
+<td>Abdomen</td>
+<td>Ultrasound</td>
+<td>Abdomen organs</td>
+<td><a href="https://www.kaggle.com/datasets/ignaciorlando/ussimandsegm">Dataset</a> (organizers row 111)</td>
+</tr>
+<tr class="even">
+<td>US-Nerve</td>
+<td>Neck</td>
+<td>US</td>
+<td>Brachial Plexus (BP)</td>
+<td><a href="https://www.kaggle.com/competitions/ultrasound-nerve-segmentation/data">Dataset</a> (organizers row 112)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="chest-radiography-4" class="level3">
+<h3 class="anchored" data-anchor-id="chest-radiography-4">Chest radiography (4)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chest X-Ray Pneumothorax</td>
+<td>Chest</td>
+<td>CXR</td>
+<td>Pneumothorax</td>
+<td><a href="https://www.kaggle.com/datasets/vbookshelf/pneumothorax-chest-xray-images-and-masks">Dataset</a> (organizers row 63)</td>
+</tr>
+<tr class="even">
+<td>Chest Xray Masks and Labels</td>
+<td>Chest</td>
+<td>CXR</td>
+<td>Lungs</td>
+<td><a href="https://www.kaggle.com/datasets/nikhilpandey360/chest-xray-masks-and-labels">Dataset</a> (organizers row 64)</td>
+</tr>
+<tr class="odd">
+<td>COVID-19 Radiography Database</td>
+<td>Chest</td>
+<td>CXR</td>
+<td>Lungs</td>
+<td><a href="https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database">Dataset</a> (organizers row 67)</td>
+</tr>
+<tr class="even">
+<td>COVID-QU-Ex</td>
+<td>Chest</td>
+<td>CXR</td>
+<td>Lungs</td>
+<td><a href="https://www.kaggle.com/datasets/anasmohammedtahir/covidqu">Dataset</a> (organizers row 68)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="radiography-11" class="level3">
+<h3 class="anchored" data-anchor-id="radiography-11">Radiography (11)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ARCADE</td>
+<td>Chest</td>
+<td>X-Ray</td>
+<td>Vessel</td>
+<td><a href="https://doi.org/10.5281/zenodo.10390295">Dataset</a> (organizers row 52)</td>
+</tr>
+<tr class="even">
+<td>ASOCA</td>
+<td>Vessel</td>
+<td>X-Ray</td>
+<td>Coronary Arteries</td>
+<td><a href="https://reshare.ukdataservice.ac.uk/855916/">Dataset</a> (organizers row 53)</td>
+</tr>
+<tr class="odd">
+<td>BTXRD</td>
+<td>Bone</td>
+<td>X-Ray</td>
+<td>Bone tumors</td>
+<td><a href="https://doi.org/10.6084/m9.figshare.27865398">Dataset</a> (organizers row 144)</td>
+</tr>
+<tr class="even">
+<td>DenPAR: Annotated Intra-Oral Periapical Radiographs Dataset for Machine Learning</td>
+<td>Tooth</td>
+<td>X-ray</td>
+<td>Tooth and teeth</td>
+<td><a href="https://zenodo.org/records/16645076">Dataset</a> (participants row 77)</td>
+</tr>
+<tr class="odd">
+<td>HipXRay</td>
+<td>Pelvic Cavity</td>
+<td>X-ray</td>
+<td>Bones</td>
+<td><a href="https://data.mendeley.com/datasets/zm6bxzhmfz/1">Dataset</a> (participants row 36)</td>
+</tr>
+<tr class="even">
+<td>PanDental</td>
+<td>Dental</td>
+<td>X-ray</td>
+<td>Teeth,Jaw</td>
+<td><a href="https://data.mendeley.com/datasets/hxt48yk462/2">Dataset</a> (participants row 40)</td>
+</tr>
+<tr class="odd">
+<td>PAXRay++</td>
+<td>Lung</td>
+<td>X-ray</td>
+<td>Thorax</td>
+<td><a href="https://github.com/ConstantinSeibold/ChestXRayAnatomySegmentation/">Dataset</a> (participants row 41)</td>
+</tr>
+<tr class="even">
+<td>PENGWIN</td>
+<td>Pelvis</td>
+<td>X-Ray</td>
+<td>Pelvic fracture</td>
+<td><a href="https://doi.org/10.5281/zenodo.10913195">Dataset</a> (organizers row 161)</td>
+</tr>
+<tr class="odd">
+<td>SCR (images from JSRT)</td>
+<td>Lung</td>
+<td>X-ray</td>
+<td>Lungs, heart, clavicle</td>
+<td><a href="https://zenodo.org/record/7056076">Dataset</a> (participants row 38)</td>
+</tr>
+<tr class="even">
+<td>STS-2D-Tooth</td>
+<td>Oral</td>
+<td>X-Ray</td>
+<td>tooth</td>
+<td><a href="https://zenodo.org/records/10597292">Dataset</a> (organizers row 142)</td>
+</tr>
+<tr class="odd">
+<td>ToothSeg</td>
+<td>Head and Neck</td>
+<td>X-ray</td>
+<td>Teeth</td>
+<td><a href="https://humansintheloop.org/resources/datasets/teeth-segmentation-dataset/">Dataset</a> (participants row 39)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="mammography-1" class="level3">
+<h3 class="anchored" data-anchor-id="mammography-1">Mammography (1)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CDD-CESM</td>
+<td>Chest</td>
+<td>Mammography</td>
+<td>lesion</td>
+<td><a href="https://doi.org/10.7937/29kw-ae92">Dataset</a> (organizers row 61)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pet-and-nuclear-medicine-3" class="level3">
+<h3 class="anchored" data-anchor-id="pet-and-nuclear-medicine-3">PET and nuclear medicine (3)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FDG-PET-CT-Lesions (autoPET)</td>
+<td>whole body</td>
+<td>PET</td>
+<td>tumor</td>
+<td><a href="https://it-portal.med.uni-muenchen.de/autopet/Autopet_v1.1.tgz">Dataset</a> (organizers row 26)</td>
+</tr>
+<tr class="even">
+<td>HECKTOR</td>
+<td>Head and Neck</td>
+<td>PET</td>
+<td>Head and Neck Tumor</td>
+<td><a href="https://hecktor.grand-challenge.org">Dataset</a> (participants row 52)</td>
+</tr>
+<tr class="odd">
+<td>Soft Tissue Sarcoma</td>
+<td>Abdomen</td>
+<td>PET</td>
+<td>Soft Tissue Sarcom</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/soft-tissue-sarcoma/">Dataset</a> (participants row 65)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ophthalmic-imaging-13" class="level3">
+<h3 class="anchored" data-anchor-id="ophthalmic-imaging-13">Ophthalmic imaging (13)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CHASE</td>
+<td>Retinal</td>
+<td>Fundus photography</td>
+<td>Veins</td>
+<td><a href="https://blogs.kingston.ac.uk/retinal/chasedb1/">Dataset</a> (participants row 16)</td>
+</tr>
+<tr class="even">
+<td>COph100</td>
+<td>Eye</td>
+<td>Fundus</td>
+<td>Retinal vessel</td>
+<td><a href="https://springernature.figshare.com/articles/dataset/COph100_A_Comprehensive_Fundus_Image_Registration_Dataset_from_Infants_constituting_the_RIDIRP_database/27061084?file=51235925">Dataset</a> (organizers row 145)</td>
+</tr>
+<tr class="odd">
+<td>Drive</td>
+<td>Vessel</td>
+<td>Fundus</td>
+<td>Fundus Blood vessel</td>
+<td><a href="https://www.dropbox.com/sh/z4hbbzqai0ilqht/AAARqnQhjq3wQcSVFNR__6xNa?dl=0">Dataset</a> (organizers row 71)</td>
+</tr>
+<tr class="even">
+<td>EOphtha</td>
+<td>Retinal</td>
+<td>Retinal</td>
+<td>Eye microaneurysms</td>
+<td><a href="https://www.adcis.net/en/third-party/e-ophtha/">Dataset</a> (participants row 29)</td>
+</tr>
+<tr class="odd">
+<td>FairSeg</td>
+<td>Eye</td>
+<td>Fundus</td>
+<td>Cup-Disc</td>
+<td><a href="https://github.com/Harvard-Ophthalmology-AI-Lab/FairSeg">Dataset</a> (participants row 76)</td>
+</tr>
+<tr class="even">
+<td>FIVES</td>
+<td>Eyes</td>
+<td>Fundus</td>
+<td>Vessel</td>
+<td><a href="https://figshare.com/articles/figure/FIVES_A_Fundus_Image_Dataset_for_AI-based_Vessel_Segmentation/19688169/1">Dataset</a> (participants row 15)</td>
+</tr>
+<tr class="odd">
+<td>IDRiD</td>
+<td>Eye</td>
+<td>Fundus</td>
+<td>Lesions and Optic Disc</td>
+<td><a href="https://ieee-dataport.org/open-access/indian-diabetic-retinopathy-image-dataset-idrid">Dataset</a> (organizers row 84)</td>
+</tr>
+<tr class="even">
+<td>Intraretinal Cystoid Fluid</td>
+<td>Eye</td>
+<td>OCT</td>
+<td>Cystoid Macular Edema</td>
+<td><a href="https://doi.org/10.1002/ima.22662">Paper</a> (organizers row 85)</td>
+</tr>
+<tr class="odd">
+<td>OCT5k</td>
+<td>retina</td>
+<td>Optical Coherence Tomography</td>
+<td>retinal layers</td>
+<td><a href="https://rdr.ucl.ac.uk/articles/dataset/OCT5k_A_dataset_of_multi-disease_and_multi-graded_annotations_for_retinal_layers/22128671?file=44436359">Dataset</a> (organizers row 138)</td>
+</tr>
+<tr class="even">
+<td>OCTA500</td>
+<td>Head and Neck</td>
+<td>OCT</td>
+<td>Veins</td>
+<td><a href="https://ieee-dataport.org/open-access/octa-500">Dataset</a> (participants row 28)</td>
+</tr>
+<tr class="odd">
+<td>PAPILA</td>
+<td>Eye</td>
+<td>Fundus</td>
+<td>Optic Disc (OD) Optic Cup (OC)</td>
+<td><a href="https://figshare.com/articles/dataset/PAPILA/14798004/1">Dataset</a> (organizers row 102)</td>
+</tr>
+<tr class="even">
+<td>RAVIR</td>
+<td>Eye</td>
+<td>Fundus</td>
+<td>Retinal Arteries and Veins</td>
+<td><a href="https://drive.google.com/file/d/1ZlZoSStvE9VCRq3bJiGhQH931EF0h3hh/view">Dataset</a> (organizers row 107)</td>
+</tr>
+<tr class="odd">
+<td>STARE</td>
+<td>Head and Neck</td>
+<td>Fundus</td>
+<td>Veins</td>
+<td><a href="https://cecas.clemson.edu/~ahoover/stare/">Dataset</a> (participants row 14)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pathology-8" class="level3">
+<h3 class="anchored" data-anchor-id="pathology-8">Pathology (8)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Automated Gleason Grading Challenge 2022</td>
+<td>Pelvis</td>
+<td>Pathology (H&amp;E stained)</td>
+<td>Prostate cancer</td>
+<td><a href="https://aggc22.grand-challenge.org/AGGC22/">Dataset</a> (organizers row 54)</td>
+</tr>
+<tr class="even">
+<td>Breast Cancer Segmentation</td>
+<td>Cell</td>
+<td>Pathology (H&amp;E stained)</td>
+<td>Breast cancer</td>
+<td><a href="https://github.com/PathologyDataScience/BCSS">Dataset</a> (organizers row 58)</td>
+</tr>
+<tr class="odd">
+<td>GlaS@MICCAI’2015</td>
+<td>Abdomen</td>
+<td>Pathology (H&amp;E stained)</td>
+<td>Gland</td>
+<td><a href="https://www.kaggle.com/datasets/sani84/glasmiccai2015-gland-segmentation">Dataset</a> (organizers row 78)</td>
+</tr>
+<tr class="even">
+<td>HuBMAP - Hacking the Kidney</td>
+<td>Abdomen</td>
+<td>Pathology (PAS Stained and H&amp;E stained)</td>
+<td>glomeruli FTU</td>
+<td><a href="https://www.kaggle.com/competitions/hubmap-kidney-segmentation/data?select=test">Dataset</a> (organizers row 81)</td>
+</tr>
+<tr class="odd">
+<td>HuBMAP - HPA</td>
+<td>Abdomen</td>
+<td>Pathology</td>
+<td>functional tissue unit (FTU)</td>
+<td><a href="https://www.kaggle.com/competitions/hubmap-organ-segmentation/">Dataset</a> (organizers row 82)</td>
+</tr>
+<tr class="even">
+<td>MonuSeg</td>
+<td>Chest</td>
+<td>Pathology (H&amp;E stained)</td>
+<td>tumor cell nuclei</td>
+<td><a href="https://www.kaggle.com/datasets/tuanledinh/monuseg2018">Dataset</a> (organizers row 94)</td>
+</tr>
+<tr class="odd">
+<td>PanNuke</td>
+<td>Cell</td>
+<td>Pathology (H&amp;E stained)</td>
+<td>nuclei</td>
+<td><a href="https://www.kaggle.com/datasets/andrewmvd/cancer-inst-segmentation-and-classification">Dataset</a> (organizers row 101)</td>
+</tr>
+<tr class="even">
+<td>Wsss4luad</td>
+<td>Chest</td>
+<td>Pathology (H&amp;E stained)</td>
+<td>Lung adenocarcinoma</td>
+<td><a href="https://wsss4luad.grand-challenge.org/License/">Dataset</a> (organizers row 118)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="dermatology-3" class="level3">
+<h3 class="anchored" data-anchor-id="dermatology-3">Dermatology (3)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ISIC2017</td>
+<td>Skin</td>
+<td>Dermoscopy</td>
+<td>Lesions</td>
+<td><a href="https://challenge.isic-archive.com/landing/2017/">Dataset</a> (participants row 12)</td>
+</tr>
+<tr class="even">
+<td>ISIC2018</td>
+<td>Skin</td>
+<td>Dermoscopy</td>
+<td>full lesion (Melanoma)</td>
+<td><a href="https://challenge.isic-archive.com/data/#2020">Dataset</a> (organizers row 86)</td>
+</tr>
+<tr class="odd">
+<td>uwaterloo skin cancer</td>
+<td>Skin</td>
+<td>Dermoscopy</td>
+<td>skin lesion (melanoma)</td>
+<td><a href="https://vip.uwaterloo.ca/skin-cancer-detection/">Dataset</a> (organizers row 114)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="endoscopy-and-surgical-video-10" class="level3">
+<h3 class="anchored" data-anchor-id="endoscopy-and-surgical-video-10">Endoscopy and surgical video (10)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BKAI-IGH NeoPolyp</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>neoplastic polyps non-neoplastic polyps</td>
+<td><a href="https://www.kaggle.com/competitions/bkai-igh-neopolyp/data">Dataset</a> (organizers row 55)</td>
+</tr>
+<tr class="even">
+<td>CholecSeg8k</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>Tissues and instruments</td>
+<td><a href="https://www.kaggle.com/datasets/newslab/cholecseg8k">Dataset</a> (organizers row 65)</td>
+</tr>
+<tr class="odd">
+<td>DFU</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>Liver</td>
+<td><a href="https://dfu-challenge.github.io/">Dataset</a> (organizers row 70)</td>
+</tr>
+<tr class="even">
+<td>Endoscapes2023</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>semantic segmentation (4 anatomical structures, 1 descriptor of surgical dissection, and 1 tool class)</td>
+<td><a href="https://github.com/CAMMA-public/Endoscapes">Dataset</a> (organizers row 136)</td>
+</tr>
+<tr class="odd">
+<td>FetoPlac</td>
+<td>Vessel</td>
+<td>Fetoscopic optical camera</td>
+<td>vessel</td>
+<td><a href="https://weiss-develop.cs.ucl.ac.uk/fetoscopy-data/fetoscopy-placenta-dataset/fetoscopy-placenta-dataset.zip">Dataset</a> (organizers row 74)</td>
+</tr>
+<tr class="even">
+<td>Kvasir-SEG</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>Polyp</td>
+<td><a href="https://www.kaggle.com/datasets/abdallahwagih/kvasir-dataset-for-classification-and-segmentation">Dataset</a> (organizers row 87)</td>
+</tr>
+<tr class="odd">
+<td>m2caiSeg</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>Tissues</td>
+<td><a href="https://www.kaggle.com/datasets/salmanmaq/m2caiseg">Dataset</a> (organizers row 90)</td>
+</tr>
+<tr class="even">
+<td>P2ILF</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>Liver</td>
+<td><a href="https://p2ilf.grand-challenge.org/">Dataset</a> (organizers row 99)</td>
+</tr>
+<tr class="odd">
+<td>SAR-RARP50</td>
+<td>Prostate Cancer</td>
+<td>laporoscopy</td>
+<td>Instruments</td>
+<td><a href="https://rdr.ucl.ac.uk/articles/dataset/SAR-RARP50_train_set/24932529">Dataset</a> (participants row 72)</td>
+</tr>
+<tr class="even">
+<td>SUN-SEG</td>
+<td>Abdomen</td>
+<td>Endoscopy</td>
+<td>Polyp</td>
+<td><a href="http://amed8k.sundatabase.org/">Dataset</a> (organizers row 132)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="microscopy-20" class="level3">
+<h3 class="anchored" data-anchor-id="microscopy-20">Microscopy (20)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AxonEM</td>
+<td>Cells</td>
+<td>Electron microscopy</td>
+<td>Axon</td>
+<td><a href="https://axonem.grand-challenge.org/">Dataset</a> (organizers row 152)</td>
+</tr>
+<tr class="even">
+<td>BBBC Collection (24,27,32,33,34,46,50)</td>
+<td>Cells</td>
+<td>Microscopy</td>
+<td>Cells</td>
+<td><a href="https://bbbc.broadinstitute.org/BBBC024">Dataset</a> (participants row 55)</td>
+</tr>
+<tr class="odd">
+<td>BBC038</td>
+<td>Cells</td>
+<td>Microscopy</td>
+<td>Cells</td>
+<td><a href="https://bbbc.broadinstitute.org/BBBC038">Dataset</a> (participants row 18)</td>
+</tr>
+<tr class="even">
+<td>CellTrackingChallenge (Fluo C3DH/N3DH)</td>
+<td>Cells</td>
+<td>Microscopy</td>
+<td>Cell</td>
+<td><a href="https://celltrackingchallenge.net/3d-datasets/">Dataset</a> (participants row 59)</td>
+</tr>
+<tr class="odd">
+<td>CREMI</td>
+<td>Drosophila brain</td>
+<td>Electron microscopy</td>
+<td>neuron</td>
+<td><a href="https://cremi.org/data/">Dataset</a> (organizers row 121)</td>
+</tr>
+<tr class="even">
+<td>Drosophila</td>
+<td>Drosophila</td>
+<td>Microscopy</td>
+<td>Mitochondria, Synapses</td>
+<td><a href="https://github.com/unidesigner/groundtruth-drosophila-vnc">Dataset</a> (participants row 56)</td>
+</tr>
+<tr class="odd">
+<td>ISBI_EM</td>
+<td>Cells</td>
+<td>Microscopy</td>
+<td>neurons</td>
+<td><a href="https://imagej.net/events/isbi-2012-segmentation-challenge">Dataset</a> (participants row 20)</td>
+</tr>
+<tr class="even">
+<td>LungVis1.0</td>
+<td>Lung</td>
+<td>light sheet fluorescence microscopy</td>
+<td>Airway</td>
+<td><a href="https://zenodo.org/records/7413818">Dataset</a> (organizers row 153)</td>
+</tr>
+<tr class="odd">
+<td>MUCIC_Colon Tissue</td>
+<td>Colon Tissue</td>
+<td>virtual microscope</td>
+<td>Cell nuclei</td>
+<td><a href="https://cbia.fi.muni.cz/datasets/">Dataset</a> (organizers row 151)</td>
+</tr>
+<tr class="even">
+<td>MUCIC_Granulocytes</td>
+<td>Cells</td>
+<td>virtual microscopy</td>
+<td>Cell nuclei</td>
+<td><a href="https://cbia.fi.muni.cz/datasets/">Dataset</a> (organizers row 150)</td>
+</tr>
+<tr class="odd">
+<td>MUCIC_HL60</td>
+<td>Cells</td>
+<td>virtual microscopy</td>
+<td>Cell nuclei</td>
+<td><a href="https://cbia.fi.muni.cz/datasets/">Dataset</a> (organizers row 149)</td>
+</tr>
+<tr class="even">
+<td>NeurIPS CellSeg</td>
+<td>Cell</td>
+<td>Microscopy</td>
+<td>cells</td>
+<td><a href="https://neurips22-cellseg.grand-challenge.org/">Dataset</a> (organizers row 97)</td>
+</tr>
+<tr class="odd">
+<td>NIS3D</td>
+<td>Cells</td>
+<td>Light Sheet Microscopy</td>
+<td>nuclei</td>
+<td><a href="https://zenodo.org/records/11456029">Dataset</a> (organizers row 154)</td>
+</tr>
+<tr class="even">
+<td>NucMM-Z</td>
+<td>zebrafish brain</td>
+<td>Electron microscopy</td>
+<td>nuclei</td>
+<td><a href="https://nucmm.grand-challenge.org/">Dataset</a> (organizers row 122)</td>
+</tr>
+<tr class="odd">
+<td>PCMMD</td>
+<td>Cells</td>
+<td>Microscopy</td>
+<td>plasma cells, non-plasma cell</td>
+<td><a href="https://data.mendeley.com/datasets/3v2nrxpr9s/1">Dataset</a> (organizers row 141)</td>
+</tr>
+<tr class="even">
+<td>SELMA3D</td>
+<td>Brain</td>
+<td>Light-sheet Microscopy</td>
+<td>neural activity</td>
+<td><a href="https://selma3d.grand-challenge.org/">Dataset</a> (organizers row 123)</td>
+</tr>
+<tr class="odd">
+<td>SLiMIA</td>
+<td>Cell</td>
+<td>Microscopy</td>
+<td>spheroid</td>
+<td><a href="https://figshare.com/collections/The_Spheroid_Light_Microscopy_Image_Atlas_SLiMIA_for_morphometrical_analysis_of_three_dimensional_cell_cultures/7486311">Dataset</a> (organizers row 137)</td>
+</tr>
+<tr class="even">
+<td>ssTEM</td>
+<td>Cells</td>
+<td>Microscopy</td>
+<td>cells</td>
+<td><a href="https://github.com/unidesigner/groundtruth-drosophila-vnc">Dataset</a> (participants row 19)</td>
+</tr>
+<tr class="odd">
+<td>UroCell</td>
+<td>Urinary bladders</td>
+<td>Electron microscopy</td>
+<td>Endolysosomes and mitochondria</td>
+<td><a href="https://github.com/MancaZerovnikMekuc/UroCell">Dataset</a> (organizers row 119)</td>
+</tr>
+<tr class="even">
+<td>WBC</td>
+<td>Cells</td>
+<td>Microscopy</td>
+<td>Nuceleus, Cytoplasm</td>
+<td><a href="https://github.com/zxaoyou/segmentation_WBC">Dataset</a> (participants row 21)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="multimodal-5" class="level3">
+<h3 class="anchored" data-anchor-id="multimodal-5">Multimodal (5)</h3>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Anatomy</th>
+<th>Modality as listed</th>
+<th>Segmentation target</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HaN-Seg</td>
+<td>Head and Neck</td>
+<td>CT + MR</td>
+<td>Head</td>
+<td><a href="https://zenodo.org/records/7442914">Dataset</a> (organizers row 9)</td>
+</tr>
+<tr class="even">
+<td>MedSeg</td>
+<td>All</td>
+<td>CT + MR</td>
+<td>Vasulature, Muscles, Regions</td>
+<td><a href="https://www.medseg.ai/database">Dataset</a> (participants row 70)</td>
+</tr>
+<tr class="odd">
+<td>MM-WHS</td>
+<td>Chest</td>
+<td>CT, MR</td>
+<td>Heart</td>
+<td><a href="https://zmiclab.github.io/zxh/0/mmwhs/">Dataset</a> (organizers row 92)</td>
+</tr>
+<tr class="even">
+<td>Qubiq</td>
+<td>Abdomen</td>
+<td>CT,MR</td>
+<td>Brain, kidney, pancreas, prostate</td>
+<td><a href="https://qubiq21.grand-challenge.org/participation/">Dataset</a> (participants row 11)</td>
+</tr>
+<tr class="odd">
+<td>TRUSTED</td>
+<td>—</td>
+<td>CT + ultrasound</td>
+<td>—</td>
+<td><a href="https://springernature.figshare.com/articles/dataset/TRUSTED_The_Paired_3D_Ultrasound_and_CT_Human_Data_for_Kidney_Segmentation_and_Registration_Research/27981050?file=51079133">Dataset</a> (organizers row 162)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
 <section id="before-choosing-a-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="before-choosing-a-dataset">Before choosing a dataset</h2>
 <p>Write down the target population, acquisition, task, and clinical unit of evaluation. Then check whether the collection actually supplies the required inputs and reference labels. A challenge release may contain preprocessed volumes that conceal the work needed to accept routine hospital data. A selected-image dataset may exclude the technical failures that dominate a live service.</p>
