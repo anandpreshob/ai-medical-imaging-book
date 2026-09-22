@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,8 +527,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dermatology-imaging" id="toc-dermatology-imaging" class="nav-link active" data-scroll-target="#dermatology-imaging"><span class="header-section-number">20.1</span> Dermatology imaging</a></li>
-  <li><a href="#dental-cbct" id="toc-dental-cbct" class="nav-link" data-scroll-target="#dental-cbct"><span class="header-section-number">20.2</span> Dental &amp; CBCT</a></li>
+  <li><a href="#dermatology-imaging" id="toc-dermatology-imaging" class="nav-link active" data-scroll-target="#dermatology-imaging"><span class="header-section-number">20.1</span> Dermatology imaging</a>
+  <ul class="collapse">
+  <li><a href="#acquisition-and-clinical-questions" id="toc-acquisition-and-clinical-questions" class="nav-link" data-scroll-target="#acquisition-and-clinical-questions"><span class="header-section-number">20.1.1</span> Acquisition and clinical questions</a></li>
+  <li><a href="#data-models-and-evidence" id="toc-data-models-and-evidence" class="nav-link" data-scroll-target="#data-models-and-evidence"><span class="header-section-number">20.1.2</span> Data, models, and evidence</a></li>
+  </ul></li>
+  <li><a href="#dental-cbct" id="toc-dental-cbct" class="nav-link" data-scroll-target="#dental-cbct"><span class="header-section-number">20.2</span> Dental &amp; CBCT</a>
+  <ul class="collapse">
+  <li><a href="#acquisition-and-clinical-questions-1" id="toc-acquisition-and-clinical-questions-1" class="nav-link" data-scroll-target="#acquisition-and-clinical-questions-1"><span class="header-section-number">20.2.1</span> Acquisition and clinical questions</a></li>
+  <li><a href="#data-and-implementation" id="toc-data-and-implementation" class="nav-link" data-scroll-target="#data-and-implementation"><span class="header-section-number">20.2.2</span> Data and implementation</a></li>
+  </ul></li>
   <li><a href="#dexa-and-opportunistic-screening" id="toc-dexa-and-opportunistic-screening" class="nav-link" data-scroll-target="#dexa-and-opportunistic-screening"><span class="header-section-number">20.3</span> DEXA and opportunistic screening</a></li>
   <li><a href="#ecg-as-an-image" id="toc-ecg-as-an-image" class="nav-link" data-scroll-target="#ecg-as-an-image"><span class="header-section-number">20.4</span> ECG as an image</a></li>
   <li><a href="#emerging-modalities" id="toc-emerging-modalities" class="nav-link" data-scroll-target="#emerging-modalities"><span class="header-section-number">20.5</span> Emerging modalities</a></li>
@@ -559,39 +567,136 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>The modalities in the preceding chapters cover much of hospital imaging, but the same principles extend to photographs, dental volumes, quantitative projection systems, physiological traces, and emerging optical methods. The useful question is not whether a foundation model can accept an image. It is what the image measures, what information was lost in its creation, and which clinical claim the resulting evidence supports.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Two ways to read this chapter">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>Two ways to read this chapter
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Clinicians can use the task and failure boundaries to assess product claims. Engineers can use the acquisition contracts to decide whether a general image pipeline is appropriate or whether native signal, geometry, or calibration must be preserved.</p>
 </div>
 </div>
-<!-- Condensed template treatment: dermatology imaging, dental/CBCT,
-     DEXA and opportunistic screening, ECG-as-image, emerging modalities. -->
 <section id="dermatology-imaging" class="level2" data-number="20.1">
 <h2 data-number="20.1" class="anchored" data-anchor-id="dermatology-imaging"><span class="header-section-number">20.1</span> Dermatology imaging</h2>
+<section id="acquisition-and-clinical-questions" class="level3" data-number="20.1.1">
+<h3 data-number="20.1.1" class="anchored" data-anchor-id="acquisition-and-clinical-questions"><span class="header-section-number">20.1.1</span> Acquisition and clinical questions</h3>
+<p>Clinical photographs show surface appearance under an uncontrolled combination of illumination, camera processing, distance, and skin context. Dermoscopy uses specialized optics and illumination to reveal additional structures. A smartphone photograph and a dermoscopic image are different domains, even when they depict the same lesion.</p>
+<p>Applications include lesion localization, image-quality assessment, differential-category support, longitudinal comparison, and triage. A photograph may omit palpation, symptoms, evolution, and the rest of the skin examination. Histopathology can provide a reference for a sampled lesion, but datasets enriched for biopsied lesions do not reproduce the distribution of all lesions presented in primary care.</p>
+</section>
+<section id="data-models-and-evidence" class="level3" data-number="20.1.2">
+<h3 data-number="20.1.2" class="anchored" data-anchor-id="data-models-and-evidence"><span class="header-section-number">20.1.2</span> Data, models, and evidence</h3>
+<p>The <a href="https://www.isic-archive.com/">International Skin Imaging Collaboration</a> provides a major research resource; verify each collection’s labels, rights, and patient or lesion identifiers. Keep repeat images of the same lesion together across splits, and group multiple lesions from one patient when required. Device, site, and acquisition markings can become shortcuts. A ruler or surgical marker may correlate with biopsy selection rather than malignancy.</p>
+<p>Image encoders and lesion-segmentation models are useful baselines, but crop selection and available context change the task. Evaluate on the intended acquisition mode, anatomical sites, skin appearances, and user population. Report ungradable images and uncertain outputs. Do not infer broad fairness from a small subgroup or from skin-color categories that were never reliably measured.</p>
+<p>Regulatory scope must be checked for the exact device and intended user; this book does not curate a specific dermatology authorization. A research classifier is not a substitute for a defined clinical pathway. An agent can guide capture, request a scale reference where appropriate, and assemble prior photographs, but should not claim to rule out disease from an inadequate image.</p>
+</section>
 </section>
 <section id="dental-cbct" class="level2" data-number="20.2">
 <h2 data-number="20.2" class="anchored" data-anchor-id="dental-cbct"><span class="header-section-number">20.2</span> Dental &amp; CBCT</h2>
+<section id="acquisition-and-clinical-questions-1" class="level3" data-number="20.2.1">
+<h3 data-number="20.2.1" class="anchored" data-anchor-id="acquisition-and-clinical-questions-1"><span class="header-section-number">20.2.1</span> Acquisition and clinical questions</h3>
+<p>Intraoral radiographs, panoramic images, and cone-beam CT (CBCT) have different geometry and diagnostic roles. Panoramic imaging has position-dependent distortion. CBCT provides volumetric information but is affected by scatter, metal artifacts, field of view, and system-specific reconstruction. Its gray values should not automatically be treated as calibrated conventional CT HU.</p>
+<p>Tasks include tooth localization and numbering, candidate caries or periapical findings, bone-level assessment, canal or nerve localization, and planning support. The relevant reference may require clinical examination, prior images, or operative findings. A model that numbers teeth must handle missing, impacted, supernumerary, restored, and deciduous teeth under an explicit numbering convention.</p>
+</section>
+<section id="data-and-implementation" class="level3" data-number="20.2.2">
+<h3 data-number="20.2.2" class="anchored" data-anchor-id="data-and-implementation"><span class="header-section-number">20.2.2</span> Data and implementation</h3>
+<p>Public dental datasets are fragmented across tasks, institutions, and annotation schemes. A useful release needs patient grouping, projection or volume type, physical geometry, and label definitions. The catalog makes no claim to a universal dental benchmark or a complete product inventory. Select a documented task-specific source before training rather than combining attractive images from unrelated collections.</p>
+<p>Detection models can support two-dimensional localization; segmentation frameworks can support CBCT structures after appropriate training. Preserve tooth identity and laterality when mapping results to a chart. An apparently correct box attached to the wrong tooth can generate an incorrect treatment record. For planning tasks, validate physical distances and boundaries in the original geometry, especially near metal artifacts.</p>
+<p>Regulatory review must distinguish detection assistance from treatment planning and from autonomous diagnosis. An agent can reconcile tooth labels, retrieve priors, and prepare measurements, but should flag uncertain numbering and incomplete field of view before exporting results.</p>
+</section>
 </section>
 <section id="dexa-and-opportunistic-screening" class="level2" data-number="20.3">
 <h2 data-number="20.3" class="anchored" data-anchor-id="dexa-and-opportunistic-screening"><span class="header-section-number">20.3</span> DEXA and opportunistic screening</h2>
+<p>Dual-energy X-ray absorptiometry, often abbreviated DXA or DEXA, uses measurements at different X-ray energies to estimate quantities such as areal bone mineral density under a calibrated acquisition and analysis method. A report image is only a rendered summary of that process. Extracting a displayed number with OCR is different from independently measuring bone density.</p>
+<p>Clinical interpretation depends on the measured site, reference population, quality, artifacts, and relevant patient factors. AI can support positioning or region analysis, quality checks, structured extraction, and comparison. A change in device, analysis region, or excluded vertebrae can affect longitudinal interpretation. Preserve units and the exact reported measure; a T-score and a Z-score are not interchangeable labels.</p>
+<p>Opportunistic screening uses an examination acquired for another purpose, such as CT, to estimate an additional risk marker or anatomical quantity. This can expand use of existing data but introduces protocol variation and selection bias. A CT-derived bone attenuation measure is not automatically a DXA-equivalent diagnosis. Contrast, reconstruction, vertebral selection, and calibration can influence the estimate.</p>
+<div id="fig-longtail-measurement" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-longtail-measurement-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch20/measurement.svg" class="img-fluid figure-img" alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-longtail-measurement-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20.1: Acquisition-derived measurements and extracted report values require different validation paths.
+</figcaption>
+</figure>
+</div>
+<p>Research data should include the reference examination, timing, measurement method, and patient grouping. A model trained against paired DXA values must account for the interval and population that received both tests. Evaluate measurement agreement and clinical-pathway consequences, not only correlation. This directory does not assert a specific authorized opportunistic-screening indication; review any proposed product’s actual labeling.</p>
+<p>An agent can identify potentially eligible examinations and prepare source-linked measurements for review. It should distinguish an incidental quantitative finding from an accepted clinical diagnosis and ensure any follow-up enters a responsible clinical workflow.</p>
 </section>
 <section id="ecg-as-an-image" class="level2" data-number="20.4">
 <h2 data-number="20.4" class="anchored" data-anchor-id="ecg-as-an-image"><span class="header-section-number">20.4</span> ECG as an image</h2>
+<p>An electrocardiogram is fundamentally a time series of electrical potential across defined leads. A scanned or rendered ECG is an image of that signal, including layout, gain, paper speed, grid, labels, and possible annotations. If the native waveform is available, preserving it usually avoids the information loss introduced by rasterization and redigitization.</p>
+<p>An ECG-image pipeline must identify lead layout, calibrate horizontal and vertical axes, separate the trace from grid lines and text, and handle clipping or overlap. A waveform extracted at the wrong paper speed can have plausible morphology but incorrect intervals. If a model operates directly on the image, it still needs robustness to layout and device changes.</p>
+<p><a href="https://physionet.org/content/ptb-xl/1.0.3/">PTB-XL</a> is a documented waveform resource with clinical labels. It is not a collection of naturally scanned paper ECGs. Rendering waveforms into synthetic paper layouts can support development, but validation on those renderings alone does not establish performance on photographs, folds, fax artifacts, or unknown printers.</p>
+<p>Applications include signal digitization, rhythm or morphology classification, and structured report support. Split by patient and keep rendered derivatives with the original waveform. Evaluate digitization in signal units and time alignment before relying on downstream classification. A classifier can appear accurate despite a poor reconstruction if it exploits report text or device layout.</p>
+<p>Regulatory claims must identify whether the device analyzes native signals, rendered images, or a particular acquisition system. This chapter does not curate a specific ECG-image authorization. An agent should prefer the source waveform when available and clearly mark a derived waveform or unreadable trace.</p>
 </section>
 <section id="emerging-modalities" class="level2" data-number="20.5">
 <h2 data-number="20.5" class="anchored" data-anchor-id="emerging-modalities"><span class="header-section-number">20.5</span> Emerging modalities</h2>
+<p>Photoacoustic imaging combines optical excitation with acoustic detection; hyperspectral systems sample wavelength-dependent information; optical microscopy and endomicroscopy provide other spatial scales and contrasts. These methods should not be reduced to ordinary RGB inputs without considering what their channels mean. Acquisition wavelength, calibration, tissue depth, and processing may be essential to interpretation.</p>
+<p>A small research collection can establish feasibility without establishing generalization. Early studies need patient-level splits, independent reference standards, and separation of instrument artifacts from biology. Code and model availability may be limited; absence from this book’s catalog means only that an entry has not been curated.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Representation</th>
+<th>Preserve before modeling</th>
+<th>Frequent category error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Clinical photograph</td>
+<td>Capture context and lesion identity</td>
+<td>Treating a photograph as a complete examination</td>
+</tr>
+<tr class="even">
+<td>Dental projection or CBCT</td>
+<td>Geometry, tooth identity, acquisition type</td>
+<td>Treating all gray values as CT HU</td>
+</tr>
+<tr class="odd">
+<td>DXA or derived screening measure</td>
+<td>Calibration, region, units, reference</td>
+<td>Equating a surrogate with an established diagnostic measure</td>
+</tr>
+<tr class="even">
+<td>ECG image</td>
+<td>Lead layout, time and voltage scales</td>
+<td>Treating pixels as an already calibrated waveform</td>
+</tr>
+<tr class="odd">
+<td>Spectral or optical acquisition</td>
+<td>Channel meaning and instrument calibration</td>
+<td>Treating every channel as an interchangeable color plane</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="20.6">
 <h2 data-number="20.6" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">20.6</span> The agentic outlook</h2>
-<!-- Cross-modality: the long tail of imaging is where generalist agents beat per-modality products — one harness, many tools. -->
+<p>The long tail benefits from reusable orchestration: identify the representation, verify prerequisites, choose a supported tool, preserve provenance, and route uncertainty. General orchestration does not imply general diagnostic competence. Each tool still needs its own task definition, validation, and authorization where applicable.</p>
+<div id="fig-longtail-router" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-longtail-router-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch20/router.svg" class="img-fluid figure-img" alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-longtail-router-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20.2: A cross-modality router chooses tools from verified representation and task metadata, with an explicit unsupported path.
+</figcaption>
+</figure>
+</div>
+<p>A practical agent should ask three questions before inference: is this the original measurement or a rendered derivative; are the required units and identity available; and is there a validated tool for this exact task? If any answer is unresolved, the agent can still organize the evidence without fabricating a clinical result.</p>
+<p><strong>Further reading.</strong> Start with the <a href="https://www.isic-archive.com/">ISIC archive</a>, <a href="https://physionet.org/content/ptb-xl/1.0.3/">PTB-XL release documentation</a>, and the <a href="https://www.dicomstandard.org/current">DICOM standard</a> for the relevant image or waveform object. These are entry points, not endorsements of every downstream model.</p>
+<p><strong>Review questions.</strong> Why is CBCT intensity not automatically HU? What information can an ECG screenshot lose? How would you distinguish an opportunistic risk marker from an established diagnostic measurement in a user interface?</p>
 
 
 </section>
@@ -1017,8 +1122,8 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/19-digital-pathology.html" class="pagination-link" aria-label="Digital Pathology &amp; Histology">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span>
+      <a href="../chapters/19-digital-pathology.html" class="pagination-link" aria-label="Digital Pathology">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

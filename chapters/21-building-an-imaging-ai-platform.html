@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -80,6 +115,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -419,7 +483,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +506,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,11 +591,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#anatomy-of-a-web-based-viewer" id="toc-anatomy-of-a-web-based-viewer" class="nav-link active" data-scroll-target="#anatomy-of-a-web-based-viewer"><span class="header-section-number">21.1</span> Anatomy of a web-based viewer</a></li>
-  <li><a href="#feature-flags-and-suites" id="toc-feature-flags-and-suites" class="nav-link" data-scroll-target="#feature-flags-and-suites"><span class="header-section-number">21.2</span> Feature flags and suites</a></li>
-  <li><a href="#talking-to-a-pacs" id="toc-talking-to-a-pacs" class="nav-link" data-scroll-target="#talking-to-a-pacs"><span class="header-section-number">21.3</span> Talking to a PACS</a></li>
-  <li><a href="#serving-models" id="toc-serving-models" class="nav-link" data-scroll-target="#serving-models"><span class="header-section-number">21.4</span> Serving models</a></li>
-  <li><a href="#adding-your-own-model" id="toc-adding-your-own-model" class="nav-link" data-scroll-target="#adding-your-own-model"><span class="header-section-number">21.5</span> Adding your own model</a></li>
+  <li><a href="#anatomy-of-a-web-based-viewer" id="toc-anatomy-of-a-web-based-viewer" class="nav-link active" data-scroll-target="#anatomy-of-a-web-based-viewer"><span class="header-section-number">21.1</span> Anatomy of a web-based viewer</a>
+  <ul class="collapse">
+  <li><a href="#separate-image-state-from-application-state" id="toc-separate-image-state-from-application-state" class="nav-link" data-scroll-target="#separate-image-state-from-application-state"><span class="header-section-number">21.1.1</span> Separate image state from application state</a></li>
+  </ul></li>
+  <li><a href="#feature-flags-and-suites" id="toc-feature-flags-and-suites" class="nav-link" data-scroll-target="#feature-flags-and-suites"><span class="header-section-number">21.2</span> Feature flags and suites</a>
+  <ul class="collapse">
+  <li><a href="#auto-detection-proposes-eligibility-decides" id="toc-auto-detection-proposes-eligibility-decides" class="nav-link" data-scroll-target="#auto-detection-proposes-eligibility-decides"><span class="header-section-number">21.2.1</span> Auto-detection proposes; eligibility decides</a></li>
+  </ul></li>
+  <li><a href="#talking-to-a-pacs" id="toc-talking-to-a-pacs" class="nav-link" data-scroll-target="#talking-to-a-pacs"><span class="header-section-number">21.3</span> Talking to a PACS</a>
+  <ul class="collapse">
+  <li><a href="#decide-when-a-study-is-ready" id="toc-decide-when-a-study-is-ready" class="nav-link" data-scroll-target="#decide-when-a-study-is-ready"><span class="header-section-number">21.3.1</span> Decide when a study is ready</a></li>
+  <li><a href="#return-appropriate-objects" id="toc-return-appropriate-objects" class="nav-link" data-scroll-target="#return-appropriate-objects"><span class="header-section-number">21.3.2</span> Return appropriate objects</a></li>
+  </ul></li>
+  <li><a href="#serving-models" id="toc-serving-models" class="nav-link" data-scroll-target="#serving-models"><span class="header-section-number">21.4</span> Serving models</a>
+  <ul class="collapse">
+  <li><a href="#single-container-or-separate-services" id="toc-single-container-or-separate-services" class="nav-link" data-scroll-target="#single-container-or-separate-services"><span class="header-section-number">21.4.1</span> Single container or separate services?</a></li>
+  <li><a href="#interactive-sessions-and-gpu-memory" id="toc-interactive-sessions-and-gpu-memory" class="nav-link" data-scroll-target="#interactive-sessions-and-gpu-memory"><span class="header-section-number">21.4.2</span> Interactive sessions and GPU memory</a></li>
+  </ul></li>
+  <li><a href="#adding-your-own-model" id="toc-adding-your-own-model" class="nav-link" data-scroll-target="#adding-your-own-model"><span class="header-section-number">21.5</span> Adding your own model</a>
+  <ul class="collapse">
+  <li><a href="#test-the-failures-that-can-change-a-result" id="toc-test-the-failures-that-can-change-a-result" class="nav-link" data-scroll-target="#test-the-failures-that-can-change-a-result"><span class="header-section-number">21.5.1</span> Test the failures that can change a result</a></li>
+  </ul></li>
   <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned"><span class="header-section-number">21.6</span> Lessons learned</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/21-building-an-imaging-ai-platform.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -559,43 +640,132 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
-</div>
-</div>
-<!-- What it takes to build a web-based imaging AI platform end to end. -->
+<p>An imaging AI platform connects acquisition, storage, viewing, computation, review, and the clinical record. Its central artifact is a traceable result: a specific model and configuration applied to specific source data, transformed in documented ways, and accepted or rejected by an authorized user. A polished viewer is only the visible part of that system.</p>
+<p>This chapter describes a reference architecture, not an existing application shipped with the book. Code examples are deliberately small design sketches. Library APIs and deployment requirements change; pin versions and consult the linked project documentation when implementing them.</p>
 <section id="anatomy-of-a-web-based-viewer" class="level2" data-number="21.1">
 <h2 data-number="21.1" class="anchored" data-anchor-id="anatomy-of-a-web-based-viewer"><span class="header-section-number">21.1</span> Anatomy of a web-based viewer</h2>
-<!-- Cornerstone3D, VTK.js, itk-wasm loaders. -->
+<p>A viewer needs image retrieval, decoding, spatial geometry, rendering, interaction tools, and state management. It must keep patient and study identity distinct from the currently displayed viewport. Switching studies should clear stale overlays, measurements, and interactive model sessions before the new images become actionable.</p>
+<p><a href="https://docs.ohif.org/">OHIF</a> provides a web-viewer framework and extension patterns. Cornerstone3D supports medical-image rendering and tools; <a href="https://kitware.github.io/vtk-js/">VTK.js</a> supports scientific visualization, including three-dimensional representations. <a href="https://docs.itk.org/projects/wasm/en/latest/">ITK-Wasm</a> provides image-processing and data interfaces that can run through WebAssembly. These components overlap in some capabilities but do not automatically form a complete clinical product when combined.</p>
+<section id="separate-image-state-from-application-state" class="level3" data-number="21.1.1">
+<h3 data-number="21.1.1" class="anchored" data-anchor-id="separate-image-state-from-application-state"><span class="header-section-number">21.1.1</span> Separate image state from application state</h3>
+<p>The image layer owns decoded pixels, geometry, windowing, camera position, and segmentation representation. The application layer owns identity, permissions, task eligibility, job status, result versions, and review state. A segmentation should be keyed to its source series and frame of reference, not merely to a viewport index such as “left panel.”</p>
+<p>A volume’s origin, spacing, and orientation define its relationship to physical space. Browser rendering conventions, NIfTI conventions, and DICOM patient coordinates may differ. Centralize transformations and verify them with known landmarks. A correct mask displayed with a left–right flip is a failed system regardless of model accuracy.</p>
+<p>Large images require progressive loading and cache limits. Keep interactive navigation responsive while background downloads continue, but distinguish a partially loaded volume from a complete inference input. Browser memory, GPU texture limits, and transfer syntax support can constrain the experience. Unsupported decoding should produce a clear error rather than a black image interpreted as normal anatomy.</p>
+<div id="fig-platform-architecture" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-platform-architecture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch21/architecture.svg" class="img-fluid figure-img" alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-platform-architecture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21.1: A reference architecture separates viewing, orchestration, model execution, and reviewed result export.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="feature-flags-and-suites" class="level2" data-number="21.2">
 <h2 data-number="21.2" class="anchored" data-anchor-id="feature-flags-and-suites"><span class="header-section-number">21.2</span> Feature flags and suites</h2>
-<!-- Boot-time feature registry; SuiteConfig; auto-detection from DICOM metadata. -->
+<p>A suite is a collection of tasks and tools appropriate to a workflow, such as CT segmentation or echo measurement. A feature flag controls availability; it does not establish clinical eligibility. Keep deployment configuration, user authorization, input compatibility, and validation status as separate checks.</p>
+<p>A boot-time registry can describe tasks using a stable internal schema:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Illustrative application configuration, not a library-specific API.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span><span class="kw">:</span><span class="at"> ct-organ-research</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">model_version</span><span class="kw">:</span><span class="at"> </span><span class="st">"1.0.0"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">input</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">modality</span><span class="kw">:</span><span class="at"> CT</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dimensions</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">anatomy</span><span class="kw">:</span><span class="at"> abdomen</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">contrast_policy</span><span class="kw">:</span><span class="at"> explicitly_supported_protocols</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> segmentation</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">coordinate_space</span><span class="kw">:</span><span class="at"> source_series</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">review_required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">export_enabled</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>An actual <code>SuiteConfig</code> type should validate this information and reject unknown or incomplete values. Avoid encoding compatibility only in a display name. Configuration changes deserve review and versioning because they can alter which patients receive an algorithm.</p>
+<section id="auto-detection-proposes-eligibility-decides" class="level3" data-number="21.2.1">
+<h3 data-number="21.2.1" class="anchored" data-anchor-id="auto-detection-proposes-eligibility-decides"><span class="header-section-number">21.2.1</span> Auto-detection proposes; eligibility decides</h3>
+<p>DICOM metadata can suggest modality, anatomy, sequence, and series role. Local descriptions are inconsistent, so auto-detection should return evidence and uncertainty. A task requiring a noncontrast head CT cannot be enabled solely because <code>Modality</code> equals <code>CT</code>. Confirm anatomy, contrast requirements, coverage, reconstruction, and other model prerequisites.</p>
+<p>The interface should explain why a task is unavailable: unsupported acquisition, incomplete series, insufficient permission, model offline, or missing review configuration. These are different operational states. Hiding all unavailable tools can make an incomplete examination look like a complete one with no useful AI tasks.</p>
+</section>
 </section>
 <section id="talking-to-a-pacs" class="level2" data-number="21.3">
 <h2 data-number="21.3" class="anchored" data-anchor-id="talking-to-a-pacs"><span class="header-section-number">21.3</span> Talking to a PACS</h2>
-<!-- Orthanc, DICOMweb proxying. -->
+<p>DICOMweb commonly separates query, retrieval, and storage operations through QIDO-RS, WADO-RS, and STOW-RS. <a href="https://orthanc.uclouvain.be/book/plugins/dicomweb.html">Orthanc’s DICOMweb plugin documentation</a> describes its implementation and configuration. Verify the specific operations and object types supported by each PACS and gateway; “supports DICOMweb” is not a complete interoperability contract.</p>
+<p>A browser should generally access an authenticated service boundary rather than hold privileged PACS credentials. The gateway can enforce authorization, audit access, constrain queries, and handle deployment-specific connectivity. TLS, identity integration, session expiration, and least-privilege service accounts belong in the design from the start. Avoid putting patient identifiers or access tokens in analytics events, exception traces, or unrestricted URLs.</p>
+<section id="decide-when-a-study-is-ready" class="level3" data-number="21.3.1">
+<h3 data-number="21.3.1" class="anchored" data-anchor-id="decide-when-a-study-is-ready"><span class="header-section-number">21.3.1</span> Decide when a study is ready</h3>
+<p>A storage notification means something arrived, not necessarily that the intended series is complete. Use a documented readiness policy based on the acquisition workflow and available metadata. Handle late images, retransmission, and corrected studies. A fixed quiet interval may be one signal but is not a universal guarantee of completeness.</p>
+<p>Create a manifest of selected source instances and hash or otherwise version the inputs. The job should operate on that immutable selection. If more relevant images arrive, create a new job or require review rather than silently changing the input underneath an active computation.</p>
+</section>
+<section id="return-appropriate-objects" class="level3" data-number="21.3.2">
+<h3 data-number="21.3.2" class="anchored" data-anchor-id="return-appropriate-objects"><span class="header-section-number">21.3.2</span> Return appropriate objects</h3>
+<p>A segmentation may be exported as DICOM SEG; measurements may fit an appropriate structured report; other outputs need a clearly defined representation. Preserve references to the source instances and the expected frame of reference. Validate interoperability with the receiving system, including display, units, and label semantics. A file passing syntactic validation does not prove that a clinician can review it correctly.</p>
+<p>Separate draft storage from clinical publication. A result can be available in the research workspace before it is accepted for the clinical record. Export should be idempotent and auditable, with duplicate suppression and a policy for superseding results. Do not overwrite a clinician-edited measurement when a retry completes.</p>
+</section>
 </section>
 <section id="serving-models" class="level2" data-number="21.4">
 <h2 data-number="21.4" class="anchored" data-anchor-id="serving-models"><span class="header-section-number">21.4</span> Serving models</h2>
-<!-- MONAI Label, microservices vs. single-container tiers, session-based
-     interactive segmentation, GPU memory budgeting. -->
+<p>A model server handles more than a forward pass: input retrieval, decoding, preprocessing, inference, postprocessing, quality checks, storage, and errors. <a href="https://github.com/Project-MONAI/MONAILabel">MONAI Label</a> provides patterns for interactive annotation and inference applications. Its abstractions can help organize tasks, but a clinical deployment still needs authentication, integration, validation, monitoring, and change control.</p>
+<section id="single-container-or-separate-services" class="level3" data-number="21.4.1">
+<h3 data-number="21.4.1" class="anchored" data-anchor-id="single-container-or-separate-services"><span class="header-section-number">21.4.1</span> Single container or separate services?</h3>
+<p>A single-container research deployment simplifies setup and can be suitable for a bounded demonstration. It also couples dependencies, resource use, and failure domains. Separate services support independent scaling and versioning but add network, authentication, queueing, and observability complexity. Choose the smallest architecture that meets actual isolation, reliability, and workload requirements.</p>
+<p>A queue should distinguish accepted, running, succeeded, failed, canceled, and expired jobs. Make retries safe. A useful idempotency key includes source selection, model version, and configuration. A timeout does not prove the worker stopped; cancellation needs cooperative checks and cleanup. Do not start duplicate expensive work merely because the browser refreshed.</p>
+<div id="fig-platform-lifecycle" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-platform-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch21/lifecycle.svg" class="img-fluid figure-img" alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-platform-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;21.2: A result lifecycle distinguishes computation from clinical acceptance and export.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="interactive-sessions-and-gpu-memory" class="level3" data-number="21.4.2">
+<h3 data-number="21.4.2" class="anchored" data-anchor-id="interactive-sessions-and-gpu-memory"><span class="header-section-number">21.4.2</span> Interactive sessions and GPU memory</h3>
+<p>Promptable segmentation may cache image embeddings or other state. Bind that state to user authorization, source series, model version, and session identity. A click from a new patient must never reuse the previous patient’s embedding. Expire idle sessions and clean up GPU memory even when a browser disconnects.</p>
+<p>Memory budgeting includes weights, activations, workspaces, input volumes, cached embeddings, and concurrency overhead. A rough capacity estimate is</p>
+<p><span class="math display">\[M_{required}=M_{weights}+M_{runtime}+\sum_{active\ jobs}M_{job}+M_{margin}.\]</span></p>
+<p>These terms depend on actual shapes and implementation. Measure peak use under representative worst cases and concurrent sessions. Limiting concurrency may be safer and cheaper than repeatedly recovering from out-of-memory failures. Mixed precision and tiling can reduce memory but require validation of numerical and boundary effects.</p>
+<p>Expose queue age, inference duration, failure reason, resource use, and result-review status. Keep operational telemetry separate from protected image content. A healthy HTTP endpoint does not prove the model can process a representative study; readiness should check the necessary runtime dependencies without running clinical data through unapproved paths.</p>
+</section>
 </section>
 <section id="adding-your-own-model" class="level2" data-number="21.5">
 <h2 data-number="21.5" class="anchored" data-anchor-id="adding-your-own-model"><span class="header-section-number">21.5</span> Adding your own model</h2>
-<!-- TaskConfig → InferTask → register → Dockerfile. -->
+<p>A practical integration proceeds from a task contract to a versioned adapter, then to a packaged and tested deployment. In MONAI Label-style applications, a <code>TaskConfig</code> can describe and construct a task, while an <code>InferTask</code> encapsulates inference behavior. Exact imports and signatures depend on the pinned release; consult that release’s examples rather than copying a timeless-looking skeleton.</p>
+<ol type="1">
+<li><strong>Define the contract.</strong> Name the population, acquisition, required metadata, output labels, units, exclusions, and failure states.</li>
+<li><strong>Implement preprocessing and inverse mapping.</strong> Test geometry and intensity handling on known inputs before assessing model performance.</li>
+<li><strong>Wrap inference.</strong> Load the pinned checkpoint, enforce input eligibility, run the model, and return output plus provenance and quality flags.</li>
+<li><strong>Register the task.</strong> Expose it through the suite registry with supported versions and permissions.</li>
+<li><strong>Package dependencies.</strong> Pin the base image, runtime, libraries, and checkpoint checksum in the Docker build or controlled artifact manifest. Keep secrets and patient data out of the image.</li>
+<li><strong>Validate the integrated path.</strong> Exercise retrieval, inference, display, editing, acceptance, export, retry, and failure recovery on representative nonclinical test material before the applicable clinical validation.</li>
+</ol>
+<p>A minimal result envelope might look like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"job_id"</span><span class="fu">:</span> <span class="st">"example-job"</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"status"</span><span class="fu">:</span> <span class="st">"draft"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"source_manifest_id"</span><span class="fu">:</span> <span class="st">"example-manifest"</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"model"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"organ-segmentation"</span><span class="fu">,</span> <span class="dt">"version"</span><span class="fu">:</span> <span class="st">"1.0.0"</span><span class="fu">},</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"configuration_digest"</span><span class="fu">:</span> <span class="st">"example-digest"</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"output"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"kind"</span><span class="fu">:</span> <span class="st">"segmentation"</span><span class="fu">,</span> <span class="dt">"space"</span><span class="fu">:</span> <span class="st">"source-series"</span><span class="fu">},</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"quality_flags"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"review"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"required"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span> <span class="dt">"state"</span><span class="fu">:</span> <span class="st">"pending"</span><span class="fu">}</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This example deliberately omits real identifiers and storage endpoints. In production, validate the schema, authorize object access, and retain the full transform and label metadata. An empty quality-flag list means only that implemented checks did not raise a flag; it is not a certificate of diagnostic accuracy.</p>
+<section id="test-the-failures-that-can-change-a-result" class="level3" data-number="21.5.1">
+<h3 data-number="21.5.1" class="anchored" data-anchor-id="test-the-failures-that-can-change-a-result"><span class="header-section-number">21.5.1</span> Test the failures that can change a result</h3>
+<p>Useful integration cases include shuffled instance order, inconsistent geometry, missing slices, unsupported transfer syntax, late-arriving images, interrupted jobs, duplicate submissions, stale browser sessions, and export retries. Verify that user edits survive retries and model updates. These tests address concrete risks that a unit test of the neural network cannot detect.</p>
+<p>A release package should contain the model and configuration versions, input/output contract, validation report, known limitations, installation requirements, rollback procedure, and monitoring plan. Reproducibility requires more than a checkpoint file.</p>
+</section>
 </section>
 <section id="lessons-learned" class="level2" data-number="21.6">
 <h2 data-number="21.6" class="anchored" data-anchor-id="lessons-learned"><span class="header-section-number">21.6</span> Lessons learned</h2>
+<p>The most costly bugs often cross boundaries: a correct model receives the wrong series, a correct mask is mapped to the wrong coordinates, or a correct draft is posted to the wrong patient. Make these relationships explicit in identifiers and schemas, and verify them at every transition.</p>
+<p>Start with one well-defined workflow and a complete review loop. Adding modalities before establishing provenance and lifecycle management multiplies ambiguity. Shared infrastructure should standardize identity, geometry, job state, and auditability while allowing modality-specific acquisition and interpretation requirements.</p>
+<p>Do not treat a feature flag as a clinical release process or a model update as an ordinary dependency bump. Changes to preprocessing, labels, supported inputs, or thresholds can alter behavior even when the network weights remain the same. Record them and assess the evidence needed before activation.</p>
+<p>Finally, optimize the user’s complete task. A model that saves ten seconds of inference but adds several minutes of correction may not help. Measure time to an accepted, reviewable result, failures requiring intervention, and successful integration into the intended workflow.</p>
+<p><strong>Further reading.</strong> <a href="https://docs.ohif.org/">OHIF</a>, <a href="https://github.com/cornerstonejs/cornerstone3D">Cornerstone3D</a>, <a href="https://kitware.github.io/vtk-js/">VTK.js</a>, <a href="https://docs.itk.org/projects/wasm/en/latest/">ITK-Wasm</a>, <a href="https://orthanc.uclouvain.be/book/plugins/dicomweb.html">Orthanc DICOMweb</a>, and <a href="https://github.com/Project-MONAI/MONAILabel">MONAI Label</a> provide implementation detail. Their availability does not replace application-specific clinical validation.</p>
+<p><strong>Review questions.</strong> What belongs in an inference idempotency key? How can a stale interactive session attach a correct mask to the wrong study? Which evidence distinguishes a successful export from a reviewable clinical result?</p>
 
 
 </section>

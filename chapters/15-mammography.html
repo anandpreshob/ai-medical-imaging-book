@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -529,10 +529,19 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#what-is-mammography" id="toc-what-is-mammography" class="nav-link active" data-scroll-target="#what-is-mammography"><span class="header-section-number">15.1</span> What is mammography?</a></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">15.2</span> Why and when it’s ordered</a></li>
-  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">15.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">15.4</span> How it works in a modern hospital</a></li>
+  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">15.3</span> What diagnoses are made from it</a>
+  <ul class="collapse">
+  <li><a href="#detection-probability-is-not-a-management-instruction" id="toc-detection-probability-is-not-a-management-instruction" class="nav-link" data-scroll-target="#detection-probability-is-not-a-management-instruction"><span class="header-section-number">15.3.1</span> Detection probability is not a management instruction</a></li>
+  </ul></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">15.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#integrating-marks-and-scores" id="toc-integrating-marks-and-scores" class="nav-link" data-scroll-target="#integrating-marks-and-scores"><span class="header-section-number">15.4.1</span> Integrating marks and scores</a></li>
+  </ul></li>
   <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">15.5</span> The data landscape</a></li>
-  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">15.6</span> The model landscape</a></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">15.6</span> The model landscape</a>
+  <ul class="collapse">
+  <li><a href="#evaluating-the-reading-strategy" id="toc-evaluating-the-reading-strategy" class="nav-link" data-scroll-target="#evaluating-the-reading-strategy"><span class="header-section-number">15.6.1</span> Evaluating the reading strategy</a></li>
+  </ul></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">15.7</span> FDA-cleared AI products</a></li>
   <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">15.8</span> Open challenges</a></li>
   <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">15.9</span> The agentic outlook</a></li>
@@ -563,57 +572,304 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Breast screening asks a difficult statistical question: how can a system help identify uncommon consequential disease while limiting unnecessary recall and investigation? An image-level score is only one part of that answer. The examination contains multiple views, often prior studies, and a clinical pathway that determines what happens after a suspicious finding.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the clinician
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Distinguish lesion detection, examination-level cancer assessment, and future-risk prediction. Their outputs may look like similar probabilities, but their target events, time horizons, and appropriate actions differ.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The unit of inference is usually an examination with laterality and view identity. Preserve left/right, craniocaudal/mediolateral-oblique identity, processing type, and prior-study timing throughout preprocessing.</p>
 </div>
 </div>
 <section id="what-is-mammography" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="what-is-mammography"><span class="header-section-number">15.1</span> What is mammography?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<p>Mammography uses low-energy X-rays and breast compression to depict tissue with high spatial detail. Compression reduces thickness and motion and helps separate overlapping structures. Full-field digital mammography produces projection images. Digital breast tomosynthesis (DBT) acquires projections over a limited angular range and reconstructs a stack of planes. A synthesized two-dimensional image derived from DBT is not the same acquisition as a conventional two-dimensional exposure. The <a href="https://www.radiologyinfo.org/en/info/mammo">ACR/RSNA overview</a> explains these methods in the examination context.</p>
+<p>Routine screening commonly includes craniocaudal (CC) and mediolateral-oblique (MLO) views of each breast, with additional views when needed. Diagnostic examinations may include spot compression, magnification, targeted ultrasound, or other imaging. Implants, prior surgery, and positioning can change the expected image set. Do not define completeness solely as “exactly four files.”</p>
+<div id="fig-mammo-views" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four labeled view slots: right CC, left CC, right MLO, and left MLO; each remains linked to its examination and laterality.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mammo-views-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch15/views.svg" class="img-fluid figure-img" alt="Four labeled view slots: right CC, left CC, right MLO, and left MLO; each remains linked to its examination and laterality.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mammo-views-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.1: A conventional four-view examination preserves breast laterality and view identity.
+</figcaption>
+</figure>
+</div>
+<p>Mammography’s fine spatial sampling creates large images. Aggressive downsampling can erase small calcifications. DICOM objects may distinguish images intended for processing from those intended for presentation. Vendor-specific processing and intensity conventions influence appearance, so a model’s accepted image type must be explicit. Keep original pixel data and metadata available for review even if inference uses a derived representation.</p>
+<p>DBT reduces some superposition but introduces many reconstructed planes and substantial reading and compute workloads. Adjacent planes are correlated. Treating every plane as an independent sample exaggerates dataset size and can leak information across splits.</p>
+<div id="fig-mammo-dbt" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A limited-angle projection set produces a correlated DBT stack and, optionally, a synthesized two-dimensional image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mammo-dbt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch15/dbt.svg" class="img-fluid figure-img" alt="A limited-angle projection set produces a correlated DBT stack and, optionally, a synthesized two-dimensional image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mammo-dbt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.2: DBT reconstructs depth planes from a limited-angle acquisition; its planes are not independent examinations.
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="15.2">
 <h2 data-number="15.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">15.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>Screening examines people without a specific presenting breast symptom according to an applicable clinical program. Diagnostic imaging evaluates symptoms, a screening recall, or a known finding. Their disease prevalence, image selection, and downstream decisions differ. A model evaluated on a diagnostic enrichment cohort cannot be assumed to have the same positive predictive value in routine screening.</p>
+<p>Screening recommendations vary by jurisdiction, age, risk, and clinical history; this chapter does not prescribe an interval. The engineering requirement is to encode the population and pathway for which the tool has evidence. Supplemental imaging and high-risk surveillance introduce additional modalities and should not be silently folded into a mammography-only claim.</p>
+<p>A cancer-free image at the time of acquisition can still contribute to prediction of future risk. Conversely, a high detection score might reflect an abnormality already present. These are different uses of the same data and require different outcome definitions and follow-up windows.</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="15.3">
 <h2 data-number="15.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">15.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<p>Readers assess masses, calcifications, architectural distortion, asymmetries, and associated changes. Distribution, morphology, location, comparison with priors, and clinical context influence assessment. A visible abnormality is not synonymous with malignancy; pathology and follow-up contribute to reference outcomes.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Output</th>
+<th>Appropriate evaluation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Candidate detection</td>
+<td>Marked region</td>
+<td>Lesion sensitivity and false marks per examination</td>
+</tr>
+<tr class="even">
+<td>Examination assessment</td>
+<td>Current-cancer score</td>
+<td>Sensitivity, specificity, calibration, and screening-pathway outcomes</td>
+</tr>
+<tr class="odd">
+<td>Density assessment</td>
+<td>Category or quantitative estimate</td>
+<td>Agreement, reproducibility, and consequences for the intended use</td>
+</tr>
+<tr class="even">
+<td>Future-risk estimation</td>
+<td>Risk over a specified horizon</td>
+<td>Time-aware calibration, discrimination, and subgroup performance</td>
+</tr>
+<tr class="odd">
+<td>Workflow prioritization</td>
+<td>Worklist order or reading allocation</td>
+<td>Delays, missed cancers, recalls, workload, and human interaction</td>
+</tr>
+</tbody>
+</table>
+<p>Reference labels need careful construction. A biopsy proves something about the sampled target, not automatically every region in both breasts. A negative screening examination needs an outcome ascertainment window if it is used as a cancer-negative reference. Interval cancers, incomplete follow-up, and care outside the health system complicate that definition.</p>
+<section id="detection-probability-is-not-a-management-instruction" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="detection-probability-is-not-a-management-instruction"><span class="header-section-number">15.3.1</span> Detection probability is not a management instruction</h3>
+<p>Suppose a hypothetical classifier has 90% sensitivity and 95% specificity in a population with 5 cancers per 1,000 examinations. Among 10,000 examinations, it would detect about 45 of 50 cancers and mark about 498 of 9,950 noncancer examinations positive. Its positive predictive value would be approximately 8.3%. These are invented teaching inputs, not performance claims about a product.</p>
+<p>The example shows why prevalence and the chosen operating point matter. It does not imply that every positive result should lead directly to biopsy. Human assessment and the diagnostic pathway mediate the action. A model’s value must be measured where it is actually inserted into that pathway.</p>
+<div id="fig-mammo-tasks" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Current-lesion detection is linked to the present examination; future-risk prediction is linked to an explicitly defined follow-up horizon.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mammo-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch15/tasks.svg" class="img-fluid figure-img" alt="Current-lesion detection is linked to the present examination; future-risk prediction is linked to an explicitly defined follow-up horizon.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mammo-tasks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.3: Detection and future-risk models answer different questions despite using related images.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="15.4">
 <h2 data-number="15.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">15.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<p>The technologist verifies identity, obtains appropriately positioned views, and checks image quality. Images enter PACS or a specialized breast workstation with prior examinations. Depending on the program, interpretation may involve one reader, multiple readers, arbitration, or computer assistance. AI can operate concurrently, as a second reader, or in a workflow-specific triage role, but evidence from one configuration does not automatically transfer to another.</p>
+<p>An input assembler should identify patient, examination, breast, view, acquisition type, and processing type. It should recognize supplementary and repeated views and preserve a documented selection policy. A missing MLO view, a unilateral examination, or a prior mastectomy should produce an explicit supported or unsupported state rather than a fabricated four-view input.</p>
+<p>Prior-image retrieval requires correct temporal ordering. Never let a model evaluated at the index screening date see a later diagnostic study or pathology result. If a prior is unavailable, record that fact. A system trained only on complete longitudinal pairs may fail disproportionately for people entering a new health system.</p>
+<section id="integrating-marks-and-scores" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="integrating-marks-and-scores"><span class="header-section-number">15.4.1</span> Integrating marks and scores</h3>
+<p>Display a candidate mark on the correct source image and breast. If inference used a crop or resized image, maintain the inverse coordinate mapping. Mark size should communicate what the algorithm localized; a single point is not a lesion boundary. Overlays must be easy to toggle so that the underlying image remains inspectable.</p>
+<p>Scores need names and units that match their calibration. A ranking score between zero and one is not necessarily a probability of cancer. If a report incorporates an AI result, identify the version and intended task and preserve the clinician’s final assessment. Do not let an unread AI mark silently populate a diagnosis field.</p>
+<div id="fig-mammo-workflow" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Acquisition quality and eligible image assembly precede AI assistance and reader assessment; follow-up and outcome ascertainment close the evaluation loop.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mammo-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch15/workflow.svg" class="img-fluid figure-img" alt="Acquisition quality and eligible image assembly precede AI assistance and reader assessment; follow-up and outcome ascertainment close the evaluation loop.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mammo-workflow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15.4: A screening workflow separates quality review, interpretation, and diagnostic follow-up.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="15.5">
 <h2 data-number="15.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">15.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "mammo"). -->
+<p>Public datasets differ in acquisition era, modality, population, and reference labels. Digitized film is useful for research but does not reproduce the processing and image characteristics of current digital systems. A dataset of annotated suspicious findings may be enriched relative to screening practice.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>VinDr-Mammo v1.0.0</td>
+<td>5,000 four-view examinations; 20,000 images</td>
+<td>Breast-level assessments and finding annotations</td>
+<td>PhysioNet credentialing and data-use agreement</td>
+<td>Full-field digital mammography; not DBT</td>
+<td><a href="https://physionet.org/content/vindr-mammo/1.0.0/">Source</a></td>
+</tr>
+<tr class="even">
+<td>CBIS-DDSM</td>
+<td>Curated mass and calcification subsets</td>
+<td>Lesion annotations and pathology-linked labels</td>
+<td>TCIA collection terms</td>
+<td>Digitized film; do not describe as modern digital acquisition</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/cbis-ddsm/">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="https://physionet.org/content/vindr-mammo/1.0.0/">VinDr-Mammo</a> supplies a defined full-field digital mammography release with expert annotations. CBIS-DDSM is a curated derivative of a digitized-film collection. Neither should be described as a universal modern DBT benchmark. Dataset access conditions and rights to redistribute images differ from the license of accompanying code.</p>
+<p>Split by patient, keeping both breasts, all views, and longitudinal studies together where required by the evaluation design. Deduplicate derived versions and crops. For lesion tasks, maintain the relationship between an annotation, its source view, breast, and clinical outcome. For risk prediction, record censoring and follow-up rather than labeling everyone without a recorded cancer as a long-term negative.</p>
+<p>External evaluation should include the acquisition systems and populations that matter to deployment. Assess performance across age, breast density, prior surgery, and relevant demographic groups when valid data and adequate sample sizes are available. Missing demographic data and incomplete outcome capture limit the claims that can be made.</p>
 </section>
 <section id="the-model-landscape" class="level2" data-number="15.6">
 <h2 data-number="15.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">15.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "mammo"); open vs. closed. -->
+<p>Multi-view architectures combine complementary projections. Some systems aggregate image features at the examination level; others detect local candidates and integrate them with global context. DBT models must manage depth and image volume without discarding the detail needed for small findings. Temporal models compare current and prior examinations, adding both potential value and opportunities for leakage.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mirai</td>
+<td>Future breast-cancer risk</td>
+<td>Released research model</td>
+<td>MIT; authors specify research rather than clinical use</td>
+<td>Future-risk task; original code requires supported four-view presentation images</td>
+<td><a href="https://github.com/yala/Mirai">Source</a></td>
+</tr>
+<tr class="even">
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="odd">
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="even">
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="odd">
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Mirai is an example of research on future breast-cancer risk. It belongs to a different task category from a concurrent lesion-detection aid. General-purpose segmentation tools may support annotation or breast-region extraction, but their presence in the catalog is not evidence of validated mammographic cancer detection.</p>
+<section id="evaluating-the-reading-strategy" class="level3" data-number="15.6.1">
+<h3 data-number="15.6.1" class="anchored" data-anchor-id="evaluating-the-reading-strategy"><span class="header-section-number">15.6.1</span> Evaluating the reading strategy</h3>
+<p>Retrospective discrimination is an early step. Reader studies assess whether clinicians using the tool perform differently, but case enrichment, reading conditions, and memory effects can limit generalization. Prospective workflow studies address actual recall, cancer detection, interval outcomes, delays, and workload. The appropriate design depends on the claim.</p>
+<p>Report per-examination metrics at a prespecified operating point, with uncertainty. If AI changes which cases receive a second read, evaluate the whole allocation policy. Saving reading time on most cases is not sufficient if the remaining failures are harder to detect. Record technical exclusions and how excluded examinations are routed.</p>
+<p>For risk models, assess calibration over the stated horizon and in the intended population. A high-risk group should have an observed event rate compatible with the stated estimate, subject to follow-up and censoring. Changes in screening intensity can affect which cancers are observed, making causal interpretation difficult.</p>
+</section>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="15.7">
 <h2 data-number="15.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">15.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "mammo"). -->
+<p>The table cites a specific historical version, rather than treating a product name as an unlimited claim.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Submission</th>
+<th>Indication summary</th>
+<th>Boundary</th>
+<th>FDA record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Transpara 2.1.0</td>
+<td>ScreenPoint Medical</td>
+<td>K241831; 510(k)</td>
+<td>Physician reading assistance for supported screening mammography and DBT</td>
+<td>Concurrent assistance; not autonomous management or universal scanner support</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf24/K241831.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf24/K241831.pdf">Transpara 2.1.0 summary</a> describes physician assistance with supported screening mammography and DBT inputs. Its locations and scores support interpretation; they do not make autonomous patient-management decisions. Supported manufacturers, acquisition modes, and software versions must be checked in current labeling before implementation. An authorization for concurrent reading does not by itself establish a safe no-reader pathway.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="15.8">
 <h2 data-number="15.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">15.8</span> Open challenges</h2>
+<p>The hardest endpoints often emerge after the initial examination. Interval cancers and missed disease require reliable follow-up, while false-positive recalls impose immediate burden. A deployment evaluation needs both near-term workflow measures and a plan for delayed outcomes. Otherwise, early operational success may conceal a clinically important tradeoff.</p>
+<p>AI can also change reader behavior. Frequent low-value marks can create alert fatigue; highly persuasive scores can produce anchoring. Interface design, training, and the order in which AI is shown should be evaluated as part of the system. Readers need a clear way to disagree and document the accepted interpretation.</p>
+<p>Future-risk prediction raises questions about actionability and equity. A model can be statistically informative without establishing which intervention improves outcomes. Differences in access to follow-up imaging or biopsy can widen inequity even if image-level performance is similar. Measure completion of downstream care where the application is intended to improve screening outcomes.</p>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="15.9">
 <h2 data-number="15.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">15.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Screening-population agents: managing recall workflows, combining current AI scores with prior exams and risk models to personalize screening intervals, and drafting BI-RADS-structured results letters. -->
+<p>A breast-imaging agent can verify view completeness, retrieve priors, reconcile laterality, route supported examinations, and prepare a comparison workspace. It can track whether a recommendation has entered the appropriate follow-up process, within authorized clinical systems and roles.</p>
+<p>It should not merge current-detection and future-risk scores into a single unexplained recommendation. Each output needs its own target, horizon, source images, and validated action pathway. Uncertain identity, laterality, or input compatibility should stop automated result posting. The useful agent is a reliable coordinator of evidence and tasks, with final clinical assessment assigned to the appropriate professional.</p>
 </section>
 <section id="further-reading" class="level2" data-number="15.10">
 <h2 data-number="15.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">15.10</span> Further reading</h2>
+<ul>
+<li><a href="https://www.radiologyinfo.org/en/info/mammo">ACR/RSNA: mammography</a>.</li>
+<li><a href="https://physionet.org/content/vindr-mammo/1.0.0/">VinDr-Mammo version 1.0.0</a>.</li>
+<li><a href="https://www.cancerimagingarchive.net/collection/cbis-ddsm/">CBIS-DDSM at TCIA</a>.</li>
+<li><a href="https://github.com/yala/Mirai">Mirai research implementation</a>.</li>
+<li><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf24/K241831.pdf">Transpara 2.1.0 FDA summary</a>.</li>
+</ul>
+<p><strong>Review questions.</strong> Why does prevalence change positive predictive value? What evidence would justify moving from concurrent assistance to autonomous screening? How would you prevent temporal leakage when using prior examinations?</p>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>17&nbsp; Ophthalmic Imaging: Fundus &amp; OCT – AI in Medical Imaging</title>
+<title>17&nbsp; Ophthalmic Imaging – AI in Medical Imaging</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-chest-xray.html">III — Diagnostic Imaging, Modality by Modality</a></li><li class="breadcrumb-item"><a href="../chapters/17-ophthalmic-imaging.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-chest-xray.html">III — Diagnostic Imaging, Modality by Modality</a></li><li class="breadcrumb-item"><a href="../chapters/17-ophthalmic-imaging.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,12 +527,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-fundus-photography-and-oct" id="toc-what-is-fundus-photography-and-oct" class="nav-link active" data-scroll-target="#what-is-fundus-photography-and-oct"><span class="header-section-number">17.1</span> What is fundus photography and OCT?</a></li>
+  <li><a href="#what-is-ophthalmic-imaging" id="toc-what-is-ophthalmic-imaging" class="nav-link active" data-scroll-target="#what-is-ophthalmic-imaging"><span class="header-section-number">17.1</span> What is ophthalmic imaging?</a></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">17.2</span> Why and when it’s ordered</a></li>
   <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">17.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">17.4</span> How it works in a modern hospital</a></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">17.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#eye-level-inference-and-patient-level-action" id="toc-eye-level-inference-and-patient-level-action" class="nav-link" data-scroll-target="#eye-level-inference-and-patient-level-action"><span class="header-section-number">17.4.1</span> Eye-level inference and patient-level action</a></li>
+  </ul></li>
   <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">17.5</span> The data landscape</a></li>
-  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">17.6</span> The model landscape</a></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">17.6</span> The model landscape</a>
+  <ul class="collapse">
+  <li><a href="#evaluate-the-full-screening-service" id="toc-evaluate-the-full-screening-service" class="nav-link" data-scroll-target="#evaluate-the-full-screening-service"><span class="header-section-number">17.6.1</span> Evaluate the full screening service</a></li>
+  </ul></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">17.7</span> FDA-cleared AI products</a></li>
   <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">17.8</span> Open challenges</a></li>
   <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">17.9</span> The agentic outlook</a></li>
@@ -544,9 +550,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-chest-xray.html">III — Diagnostic Imaging, Modality by Modality</a></li><li class="breadcrumb-item"><a href="../chapters/17-ophthalmic-imaging.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/11-chest-xray.html">III — Diagnostic Imaging, Modality by Modality</a></li><li class="breadcrumb-item"><a href="../chapters/17-ophthalmic-imaging.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-ophthalmic-imaging" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></h1>
+<h1 class="title"><span id="sec-ophthalmic-imaging" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></h1>
 </div>
 
 
@@ -563,57 +569,288 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Ophthalmic imaging combines accessible optical anatomy with several distinct measurement systems. A fundus photograph shows a surface view; optical coherence tomography (OCT) resolves depth; angiographic methods depict vascular information. They are complementary, not interchangeable. The central engineering problem is to preserve which eye, modality, location, and visit each observation describes.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the clinician
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>An automated screening result answers a defined referral question in a defined population. It does not automatically constitute a comprehensive eye examination or exclude unrelated ocular disease.</p>
 </div>
 </div>
-<section id="what-is-fundus-photography-and-oct" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="what-is-fundus-photography-and-oct"><span class="header-section-number">17.1</span> What is fundus photography and OCT?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Both eyes and repeated visits belong to one patient. Splitting images independently creates leakage. An unreadable image is a workflow outcome, not a healthy-eye label.</p>
+</div>
+</div>
+<section id="what-is-ophthalmic-imaging" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="what-is-ophthalmic-imaging"><span class="header-section-number">17.1</span> What is ophthalmic imaging?</h2>
+<p>Color fundus photography depicts the retina, optic disc, and visible vessels through the pupil. Field of view, illumination, pigmentation, focus, media clarity, and camera characteristics affect appearance. A macula-centered image differs from a disc-centered image; a wide-field system covers different anatomy. Image dimensions alone do not describe the field examined.</p>
+<p>OCT uses optical interference to estimate depth-resolved reflectivity. A cross-sectional B-scan is assembled from depth profiles; a volume combines many B-scans. Retinal layer boundaries, fluid spaces, and other structural features can be assessed in this geometry. OCT angiography derives motion-related vascular contrast from repeated acquisitions. It is not equivalent to a color photograph or dye angiography.</p>
+<div id="fig-eye-modalities" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three panels distinguish a surface fundus view, an OCT depth section, and a derived vascular map; these are conceptual illustrations, not clinical scans.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eye-modalities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch17/modalities.svg" class="img-fluid figure-img" alt="Three panels distinguish a surface fundus view, an OCT depth section, and a derived vascular map; these are conceptual illustrations, not clinical scans.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-modalities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.1: Fundus photography, OCT, and OCT angiography represent different views of ocular structure and vasculature.
+</figcaption>
+</figure>
+</div>
+<p>OCT exports may include raw or proprietary volumes, rendered B-scans, segmentation lines, thickness maps, and reports. A screenshot can lose spacing, scan position, signal-quality information, and the relationship between B-scans. Preserve native geometry and the device’s acquisition context when developing quantitative tools.</p>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="17.2">
 <h2 data-number="17.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">17.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>Retinal imaging supports diabetic-eye screening, assessment of macular disease, glaucoma evaluation, vascular disease, and longitudinal treatment monitoring. The selected modality depends on the question. A photograph may show visible retinopathy lesions, while OCT provides structural information about retinal layers and fluid. A model validated on one cannot claim the full scope of the other.</p>
+<p>Screening is particularly attractive for AI because image acquisition can occur outside a specialist clinic and the output can be a defined referral recommendation. The benefit depends on completing the pathway: acquiring adequate images, producing a valid result, communicating it, and obtaining follow-up care. A highly accurate classifier that increases unresolved referrals may not improve outcomes.</p>
+<p>Monitoring presents a different challenge. Small changes in layer thickness or fluid volume require consistent scan placement, segmentation definitions, and image quality. A new device or scan pattern can change the apparent measurement without a corresponding biological change.</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="17.3">
 <h2 data-number="17.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">17.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clinical question</th>
+<th>Potential output</th>
+<th>Scope boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diabetic-retinopathy screening</td>
+<td>Grade or referral category</td>
+<td>Depends on image adequacy, population, and defined target disease</td>
+</tr>
+<tr class="even">
+<td>Macular disease monitoring</td>
+<td>Fluid or layer segmentation</td>
+<td>Structural change needs clinical interpretation</td>
+</tr>
+<tr class="odd">
+<td>Glaucoma assessment</td>
+<td>Disc features or layer measurements</td>
+<td>No single image feature replaces a complete glaucoma assessment</td>
+</tr>
+<tr class="even">
+<td>Vascular abnormality assessment</td>
+<td>Candidate lesion or vascular measure</td>
+<td>Acquisition artifacts can resemble pathology</td>
+</tr>
+<tr class="odd">
+<td>Image quality</td>
+<td>Gradable/ungradable decision with reason</td>
+<td>Quality is task-specific; some findings may still be visible</td>
+</tr>
+</tbody>
+</table>
+<p>A grade is a label under a grading system, not a universal physical quantity. Map training labels to the intended referral threshold explicitly. If two datasets use different severity scales or adjudication procedures, combining their integers without reconciliation can create contradictory supervision.</p>
+<p>Similarly, a segmentation label such as “fluid” may combine intraretinal, subretinal, or other spaces with different clinical implications. State the compartments, annotation protocol, and treatment context. A model that measures one compartment should not silently report total disease activity.</p>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">17.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<p>Acquisition may occur in an ophthalmology clinic, screening service, primary-care site, or mobile program. Identity and laterality must be verified at capture. The examination may include multiple fields per eye, repeated images after quality review, and additional modalities. Images then enter a local imaging system, PACS, or vendor platform, with varying interoperability.</p>
+<p>A screening pipeline should first check supported camera and field, laterality, and image quality. Reacquisition can resolve some failures. Persistent inability to obtain an adequate image needs a defined clinical pathway. Do not repeatedly select the most favorable score from multiple attempts without a validated aggregation policy.</p>
+<div id="fig-eye-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image acquisition leads to quality assessment; adequate images proceed to a supported screening model, while inadequate images lead to reacquisition or a defined referral pathway.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eye-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch17/quality.svg" class="img-fluid figure-img" alt="Image acquisition leads to quality assessment; adequate images proceed to a supported screening model, while inadequate images lead to reacquisition or a defined referral pathway.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.2: A screening pathway treats ungradable images as a separate outcome requiring action.
+</figcaption>
+</figure>
+</div>
+<section id="eye-level-inference-and-patient-level-action" class="level3" data-number="17.4.1">
+<h3 data-number="17.4.1" class="anchored" data-anchor-id="eye-level-inference-and-patient-level-action"><span class="header-section-number">17.4.1</span> Eye-level inference and patient-level action</h3>
+<p>A model may operate on one field, one eye, or a complete examination. The service must define how these outputs become a patient-level result. If either eye meets a referral criterion, the resulting action may differ from a policy that averages scores. Such aggregation is part of the validated product, not a convenient implementation detail.</p>
+<p>For OCT, record scan location, spacing, laterality, and segmentation version. If a follow-up scan does not cover the same region, declare limited comparability. Return masks or layer boundaries on the correct B-scans, and let reviewers inspect failures caused by shadows, motion, poor signal, or unusual anatomy.</p>
+<div id="fig-eye-grouping" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Patient identity contains visits, each containing right and left eyes with fields or OCT volumes; split assignment is made at the patient level.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eye-grouping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch17/grouping.svg" class="img-fluid figure-img" alt="Patient identity contains visits, each containing right and left eyes with fields or OCT volumes; split assignment is made at the patient level.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-grouping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.3: The data hierarchy keeps both eyes and every visit linked to the same patient.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="17.5">
 <h2 data-number="17.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">17.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "ophtho"). -->
+<p>Public fundus datasets have enabled substantial research, but camera, population, grading, and image-quality distributions vary. Some labels are eye-level while files are image-level. Some releases contain several fields or repeated captures. Reconstruct these relationships before splitting or evaluating.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EyePACS diabetic-retinopathy competition</td>
+<td>Competition-specific train and test releases</td>
+<td>DR severity grades</td>
+<td>Kaggle competition and data terms</td>
+<td>Keep both eyes and repeated captures grouped; inspect quality exclusions</td>
+<td><a href="https://www.kaggle.com/c/diabetic-retinopathy-detection">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The EyePACS competition resource is a useful fundus benchmark, but competition labels and distributions are not a substitute for a prospective screening reference standard. For OCT, use a source with documented patient grouping and acquisition geometry when the goal is volumetric analysis. A collection of isolated B-scans may not support claims about whole-volume fluid burden.</p>
+<p>Report whether ungradable images were excluded during dataset construction. Exclusion can inflate apparent performance and hide a major deployment burden. External validation should examine camera changes, pigmentation, media opacity, age range, and prior treatment as appropriate to the task. Small subgroup counts should be reported with uncertainty rather than converted into confident generalizations.</p>
+<p>A screening reference may require expert adjudication and additional imaging not visible to the model. Document those inputs. For longitudinal outcomes, specify follow-up and whether care outside the dataset’s health system could cause missed event ascertainment.</p>
 </section>
 <section id="the-model-landscape" class="level2" data-number="17.6">
 <h2 data-number="17.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">17.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "ophtho"); open vs. closed. -->
+<p>Fundus models often begin with image encoders and task-specific classification heads. OCT models may operate on B-scans, volumes, or segmented layers. Multimodal models combine these representations with clinical data, but must account for missing modalities and timing. A fundus image and OCT acquired months apart are not automatically a paired contemporaneous sample.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RETFound</td>
+<td>Retinal representation learning</td>
+<td>Checkpoint-specific access</td>
+<td>Checkpoint-specific terms; inspect model card</td>
+<td>Adapt and validate a task head; not an autonomous screening device</td>
+<td><a href="https://github.com/rmaphoh/RETFound">Source</a></td>
+</tr>
+<tr class="even">
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="odd">
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="even">
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="odd">
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="https://github.com/rmaphoh/RETFound">RETFound</a> is a research foundation-model resource for retinal imaging. Its representation must be adapted and evaluated for the intended task; pretraining does not confer an autonomous screening indication. Review the exact checkpoint, preprocessing, training data, and terms rather than assuming all versions share the same conditions.</p>
+<section id="evaluate-the-full-screening-service" class="level3" data-number="17.6.1">
+<h3 data-number="17.6.1" class="anchored" data-anchor-id="evaluate-the-full-screening-service"><span class="header-section-number">17.6.1</span> Evaluate the full screening service</h3>
+<p>Report sensitivity and specificity at the prespecified referral threshold, patient-level aggregation, technical failure rate, and the proportion completing follow-up. Include ungradable examinations in an explicit denominator. Positive predictive value changes with disease prevalence, so a benchmark result should not be transplanted into a new population without considering calibration and operating point.</p>
+<p>For OCT segmentation, report boundary or compartment errors and their effect on derived measurements. A high average Dice score can conceal failure on a small but important fluid pocket. Longitudinal reproducibility requires consistent scan location and annotation definitions, not just a strong per-image metric.</p>
+<p>An illustrative service might return three states: target condition detected, target condition not detected in an adequate supported examination, or no valid result. Those labels should not be collapsed into a binary database field. The third state is essential for safe follow-up and honest evaluation.</p>
+<div id="fig-eye-referral" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A valid screening result enters patient communication and appropriate follow-up, with completion and unresolved cases tracked separately.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eye-referral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch17/referral.svg" class="img-fluid figure-img" alt="A valid screening result enters patient communication and appropriate follow-up, with completion and unresolved cases tracked separately.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-referral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17.4: The patient pathway continues beyond an AI result to communication and completed follow-up.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="17.7">
 <h2 data-number="17.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">17.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "ophtho"). -->
+<p>The selected record illustrates a narrowly specified autonomous screening use. Autonomous does not mean unrestricted.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Submission</th>
+<th>Indication summary</th>
+<th>Boundary</th>
+<th>FDA record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>IDx-DR</td>
+<td>IDx</td>
+<td>DEN180001; De Novo</td>
+<td>Autonomous DR screening in the specified adult diabetic population</td>
+<td>Original indication includes age 22 or older and no prior DR diagnosis; compatible camera required</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN180001.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The original <a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN180001.pdf">IDx-DR De Novo review</a> defines a diabetic-retinopathy screening application for a specified adult diabetic population, compatible imaging system, and use conditions. It is not a general eye-disease detector. Its authorization cannot be transferred to a research fundus classifier because the two systems produce similar-looking grades. Later branding and product changes require review of the applicable labeling.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="17.8">
 <h2 data-number="17.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">17.8</span> Open challenges</h2>
+<p>Acquisition access and referral access are separate problems. A program may expand screening while leaving patients unable to obtain specialist care. Evaluate the distribution of technical failures, referrals, and completed care across sites and populations, not just model accuracy among usable images.</p>
+<p>OCT interoperability remains difficult because acquisition, processing, and exports differ across devices. A layer measurement may depend on a vendor’s segmentation convention. Harmonization needs a clearly defined target and validation against that target; it should not hide the original measurement method.</p>
+<p>Longitudinal models can also learn treatment patterns rather than disease biology. If treatment decisions appear in the input, a model may predict clinician behavior or access to care. Define whether the target is morphology, future disease, treatment need, or observed treatment, and avoid presenting one as another.</p>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="17.9">
 <h2 data-number="17.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">17.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Autonomous screening at the point of care is already FDA-cleared here; the agentic step is closing the loop — scheduling ophthalmology referrals, tracking whether patients attend, and re-screening on schedule without human dispatch. -->
+<p>An ophthalmic agent can check image quality, guide reacquisition, reconcile laterality, assemble prior scans, and track the completion of a defined screening pathway. It can summarize which images and measurements support a referral, while leaving the scope of the validated classifier intact.</p>
+<p>The agent should preserve the no-result state and avoid falsely reassuring language when images are inadequate. It should also distinguish screening referral from urgency decisions that require additional clinical context. For longitudinal OCT, a useful agent prepares matched views and highlights changed measurements with source links, then asks the responsible clinician to accept or revise the interpretation.</p>
 </section>
 <section id="further-reading" class="level2" data-number="17.10">
 <h2 data-number="17.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">17.10</span> Further reading</h2>
+<ul>
+<li><a href="https://www.kaggle.com/c/diabetic-retinopathy-detection">EyePACS diabetic-retinopathy competition data</a>.</li>
+<li><a href="https://github.com/rmaphoh/RETFound">RETFound repository</a>.</li>
+<li><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN180001.pdf">IDx-DR FDA review</a>.</li>
+<li><a href="https://dicom.nema.org/medical/dicom/current/output/chtml/part03/PS3.3.html">DICOM ophthalmic imaging information objects</a> — consult the object appropriate to the acquisition rather than assuming every export is a generic photograph.</li>
+</ul>
+<p><strong>Review questions.</strong> Why must both eyes stay together during dataset splitting? How should ungradable examinations enter performance reporting? What distinguishes autonomous screening from a comprehensive eye examination?</p>
 
 
 </section>

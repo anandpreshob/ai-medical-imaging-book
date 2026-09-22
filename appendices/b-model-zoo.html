@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -522,8 +522,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-model-is-more-than-its-weights" id="toc-a-model-is-more-than-its-weights" class="nav-link active" data-scroll-target="#a-model-is-more-than-its-weights">A model is more than its weights</a></li>
+  <li><a href="#compare-models-under-one-task-contract" id="toc-compare-models-under-one-task-contract" class="nav-link" data-scroll-target="#compare-models-under-one-task-contract">Compare models under one task contract</a></li>
+  <li><a href="#a-compact-model-card-for-local-use" id="toc-a-compact-model-card-for-local-use" class="nav-link" data-scroll-target="#a-compact-model-card-for-local-use">A compact model card for local use</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/b-model-zoo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -548,145 +556,221 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
-</div>
-</div>
-<!-- Master living table rendered from data/models.csv. -->
+<p>This directory is generated from <code>data/models.csv</code>. It includes task-specific models, reusable encoders, and development frameworks. These are different kinds of resources. A framework can help train a model without providing a suitable pretrained checkpoint; a foundation checkpoint can provide features without a validated clinical decision rule.</p>
+<div class="table-responsive">
 <table class="caption-top table">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>modality</th>
-<th>task</th>
-<th>model</th>
-<th>weights</th>
-<th>license</th>
-<th>link</th>
-<th>notes</th>
+<th>Modality</th>
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>cxr</td>
-<td>Detection + report generation</td>
 <td>CheXagent 2 (3B)</td>
+<td>CXR vision-language interpretation</td>
 <td>Open</td>
-<td>Apache-2.0</td>
-<td>https://huggingface.co/StanfordAIMI/CheXagent-2-3b</td>
-<td>Chest X-ray foundation model from Stanford AIMI</td>
+<td>MIT (checkpoint metadata); research-only stated use</td>
+<td>Stanford AIMI; use checkpoint-specific tasks and interface</td>
+<td><a href="https://huggingface.co/StanfordAIMI/CheXagent-2-3b">Source</a></td>
 </tr>
 <tr class="even">
 <td>cxr</td>
-<td>Classification (multi-label)</td>
 <td>TorchXRayVision</td>
+<td>Classification (multi-label)</td>
 <td>Open</td>
-<td>Apache-2.0</td>
-<td>https://github.com/mlmed/torchxrayvision</td>
-<td>Pretrained across 8+ CXR datasets</td>
+<td>Apache-2.0 code; inspect selected weights and data terms</td>
+<td>Research baseline; preserve documented intensity normalization</td>
+<td><a href="https://github.com/mlmed/torchxrayvision">Source</a></td>
 </tr>
 <tr class="odd">
 <td>cxr</td>
+<td>MedGemma (medical multimodal family)</td>
 <td>VLM (general medical)</td>
-<td>MedGemma</td>
 <td>Open (gated)</td>
 <td>Gemma license</td>
-<td>https://deepmind.google/models/gemma/medgemma/</td>
-<td>Google; CXR-strong VLM</td>
+<td>Development starting point; pin version; application-specific validation required</td>
+<td><a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card">Source</a></td>
 </tr>
 <tr class="even">
 <td>ct</td>
-<td>Segmentation (117 structures)</td>
 <td>TotalSegmentator</td>
-<td>Open</td>
-<td>Apache-2.0</td>
-<td>https://github.com/wasserth/TotalSegmentator</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>any</td>
-<td>Text-prompted segmentation</td>
-<td>BiomedParse</td>
-<td>Open</td>
-<td>Apache-2.0 (weights: MSR terms)</td>
-<td>https://github.com/microsoft/BiomedParse</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>any</td>
-<td>Interactive segmentation</td>
-<td>MedSAM2</td>
-<td>Open</td>
-<td>Apache-2.0</td>
-<td>https://github.com/bowang-lab/MedSAM2</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>any</td>
-<td>Interactive segmentation</td>
-<td>nnInteractive</td>
-<td>Open</td>
-<td>Apache-2.0</td>
-<td>https://github.com/MIC-DKFZ/nnInteractive</td>
-<td>DKFZ</td>
-</tr>
-<tr class="even">
-<td>any</td>
-<td>Self-configuring segmentation</td>
-<td>nnU-Net</td>
-<td>Open</td>
-<td>Apache-2.0</td>
-<td>https://github.com/MIC-DKFZ/nnUNet</td>
-<td>The segmentation workhorse</td>
-</tr>
-<tr class="odd">
-<td>path</td>
-<td>Slide-level foundation model</td>
-<td>UNI / UNI2</td>
-<td>Open (gated)</td>
-<td>CC BY-NC 4.0</td>
-<td>https://huggingface.co/MahmoodLab/UNI</td>
-<td>Mahmood Lab</td>
-</tr>
-<tr class="even">
-<td>path</td>
-<td>Slide-level foundation model</td>
-<td>Prov-GigaPath</td>
-<td>Open (gated)</td>
-<td>Research</td>
-<td>https://github.com/prov-gigapath/prov-gigapath</td>
-<td>Microsoft/Providence</td>
+<td>Anatomical segmentation</td>
+<td>Default task weights available</td>
+<td>Apache-2.0 default model; other tasks may have separate terms</td>
+<td>Default CT task has 117 structures; inspect task-specific input and license</td>
+<td><a href="https://github.com/wasserth/TotalSegmentator">Source</a></td>
 </tr>
 <tr class="odd">
 <td>mri</td>
-<td>Reconstruction</td>
 <td>fastMRI baselines</td>
-<td>Open</td>
-<td>MIT</td>
-<td>https://github.com/facebookresearch/fastMRI</td>
-<td>Reference implementations</td>
+<td>Reconstruction</td>
+<td>Reference implementations and release-specific checkpoints</td>
+<td>MIT code; dataset agreement separate</td>
+<td>Research reconstruction baseline; pin sampling and coil setup</td>
+<td><a href="https://github.com/facebookresearch/fastMRI">Source</a></td>
+</tr>
+<tr class="even">
+<td>us</td>
+<td>EchoNet-Dynamic</td>
+<td>Video function estimation and segmentation</td>
+<td>Reference code and documented model resources</td>
+<td>Inspect repository and data/checkpoint terms separately</td>
+<td>Apical four-chamber research; not complete echo interpretation</td>
+<td><a href="https://github.com/echonet/dynamic">Source</a></td>
+</tr>
+<tr class="odd">
+<td>mammo</td>
+<td>Mirai</td>
+<td>Future breast-cancer risk</td>
+<td>Released research model</td>
+<td>MIT; authors specify research rather than clinical use</td>
+<td>Future-risk task; original code requires supported four-view presentation images</td>
+<td><a href="https://github.com/yala/Mirai">Source</a></td>
+</tr>
+<tr class="even">
+<td>ophtho</td>
+<td>RETFound</td>
+<td>Retinal representation learning</td>
+<td>Checkpoint-specific access</td>
+<td>Checkpoint-specific terms; inspect model card</td>
+<td>Adapt and validate a task head; not an autonomous screening device</td>
+<td><a href="https://github.com/rmaphoh/RETFound">Source</a></td>
+</tr>
+<tr class="odd">
+<td>video</td>
+<td>TeCNO</td>
+<td>Surgical phase recognition</td>
+<td>Reference implementation and linked resources</td>
+<td>Repository and checkpoint terms apply</td>
+<td>Causal temporal research model; phase labels do not assess surgical safety</td>
+<td><a href="https://github.com/tobiascz/TeCNO">Source</a></td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td>UNI family</td>
+<td>Pathology representation learning</td>
+<td>Gated checkpoints</td>
+<td>Checkpoint-specific noncommercial/research terms</td>
+<td>Pin model generation; patch representations need downstream task validation</td>
+<td><a href="https://github.com/mahmoodlab/UNI">Source</a></td>
+</tr>
+<tr class="odd">
+<td>path</td>
+<td>Prov-GigaPath</td>
+<td>Pathology representation learning</td>
+<td>Gated model resources</td>
+<td>Research terms; inspect selected artifacts</td>
+<td>Tile and slide representations; validate tissue and stain scope</td>
+<td><a href="https://github.com/prov-gigapath/prov-gigapath">Source</a></td>
+</tr>
+<tr class="even">
+<td>any</td>
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="odd">
+<td>any</td>
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="even">
+<td>any</td>
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="odd">
+<td>any</td>
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
 </tr>
 </tbody>
 </table>
+</div>
+<section id="a-model-is-more-than-its-weights" class="level2">
+<h2 class="anchored" data-anchor-id="a-model-is-more-than-its-weights">A model is more than its weights</h2>
+<p>A reproducible model package includes architecture, checkpoint checksum, input selection, preprocessing, label map, postprocessing, thresholds, software dependencies, and the inverse mapping to source coordinates. A change in normalization can alter results even when the checkpoint is unchanged.</p>
+<p>Treat code, weights, and data licenses separately. Gated access is not itself a license category, and downloadable weights do not imply permission for every commercial or clinical use. Check the exact model card and artifact version. The <code>any</code> category means broadly reusable development resources, not universal validated input support.</p>
+</section>
+<section id="compare-models-under-one-task-contract" class="level2">
+<h2 class="anchored" data-anchor-id="compare-models-under-one-task-contract">Compare models under one task contract</h2>
+<p>Fix the dataset split, input availability, reference labels, operating point, and evaluation unit before comparing architectures. Include a strong simple baseline. Measure errors that matter to the intended workflow: lesion sensitivity, false-positive review burden, measurement agreement, technical failures, latency, and correction time as applicable.</p>
+<p>Record hardware and peak resource use on representative inputs. A model that fits one cropped volume may not fit a full examination with concurrent sessions. Include download and preprocessing in operational timing when they contribute to the user’s wait.</p>
+</section>
+<section id="a-compact-model-card-for-local-use" class="level2">
+<h2 class="anchored" data-anchor-id="a-compact-model-card-for-local-use">A compact model card for local use</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Required content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Identity</td>
+<td>Name, version, source, checkpoint checksum</td>
+</tr>
+<tr class="even">
+<td>Intended use</td>
+<td>Population, modality, task, user, clinical role</td>
+</tr>
+<tr class="odd">
+<td>Inputs</td>
+<td>Acquisition requirements, units, geometry, missing-input policy</td>
+</tr>
+<tr class="even">
+<td>Outputs</td>
+<td>Labels, scores, calibration, coordinate system, failure states</td>
+</tr>
+<tr class="odd">
+<td>Evidence</td>
+<td>Dataset releases, split policy, metrics, intervals, external evaluation</td>
+</tr>
+<tr class="even">
+<td>Limitations</td>
+<td>Unsupported cases, known failures, abstention and escalation</td>
+</tr>
+<tr class="odd">
+<td>Operations</td>
+<td>Dependencies, hardware, concurrency, monitoring, rollback</td>
+</tr>
+<tr class="even">
+<td>Rights</td>
+<td>Code, weights, data, redistribution, and use restrictions</td>
+</tr>
+</tbody>
+</table>
+<p>A model-zoo entry is a starting point for investigation. It is not a clinical endorsement or a substitute for validation of the deployed acquisition-to-result chain.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1114,8 +1198,8 @@ Note
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../appendices/c-fda-product-index.html" class="pagination-link" aria-label="FDA-Cleared AI Product Index">
-        <span class="nav-page-text">FDA-Cleared AI Product Index</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../appendices/c-fda-product-index.html" class="pagination-link" aria-label="FDA Product Index">
+        <span class="nav-page-text">FDA Product Index</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1127,7 +1211,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/b-model-zoo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/b-model-zoo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
 </div>

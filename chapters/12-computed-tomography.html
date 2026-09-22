@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -80,6 +115,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -419,7 +483,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +506,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,14 +591,35 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-ct" id="toc-what-is-ct" class="nav-link active" data-scroll-target="#what-is-ct"><span class="header-section-number">12.1</span> What is CT?</a></li>
+  <li><a href="#what-is-ct" id="toc-what-is-ct" class="nav-link active" data-scroll-target="#what-is-ct"><span class="header-section-number">12.1</span> What is CT?</a>
+  <ul class="collapse">
+  <li><a href="#attenuation-reconstruction-and-hounsfield-units" id="toc-attenuation-reconstruction-and-hounsfield-units" class="nav-link" data-scroll-target="#attenuation-reconstruction-and-hounsfield-units"><span class="header-section-number">12.1.1</span> Attenuation, reconstruction, and Hounsfield units</a></li>
+  <li><a href="#dimensions-spacing-and-memory" id="toc-dimensions-spacing-and-memory" class="nav-link" data-scroll-target="#dimensions-spacing-and-memory"><span class="header-section-number">12.1.2</span> Dimensions, spacing, and memory</a></li>
+  </ul></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">12.2</span> Why and when it’s ordered</a></li>
-  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">12.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">12.4</span> How it works in a modern hospital</a></li>
-  <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">12.5</span> The data landscape</a></li>
-  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">12.6</span> The model landscape</a></li>
+  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">12.3</span> What diagnoses are made from it</a>
+  <ul class="collapse">
+  <li><a href="#measurement-is-not-response-classification" id="toc-measurement-is-not-response-classification" class="nav-link" data-scroll-target="#measurement-is-not-response-classification"><span class="header-section-number">12.3.1</span> Measurement is not response classification</a></li>
+  </ul></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">12.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#an-implementable-research-pipeline" id="toc-an-implementable-research-pipeline" class="nav-link" data-scroll-target="#an-implementable-research-pipeline"><span class="header-section-number">12.4.1</span> An implementable research pipeline</a></li>
+  </ul></li>
+  <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">12.5</span> The data landscape</a>
+  <ul class="collapse">
+  <li><a href="#a-dataset-manifest-that-survives-reuse" id="toc-a-dataset-manifest-that-survives-reuse" class="nav-link" data-scroll-target="#a-dataset-manifest-that-survives-reuse"><span class="header-section-number">12.5.1</span> A dataset manifest that survives reuse</a></li>
+  </ul></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">12.6</span> The model landscape</a>
+  <ul class="collapse">
+  <li><a href="#what-to-measure-beyond-dice" id="toc-what-to-measure-beyond-dice" class="nav-link" data-scroll-target="#what-to-measure-beyond-dice"><span class="header-section-number">12.6.1</span> What to measure beyond Dice</a></li>
+  </ul></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">12.7</span> FDA-cleared AI products</a></li>
-  <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">12.8</span> Open challenges</a></li>
+  <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">12.8</span> Open challenges</a>
+  <ul class="collapse">
+  <li><a href="#reconstruction-shift-and-artifact" id="toc-reconstruction-shift-and-artifact" class="nav-link" data-scroll-target="#reconstruction-shift-and-artifact"><span class="header-section-number">12.8.1</span> Reconstruction shift and artifact</a></li>
+  <li><a href="#longitudinal-identity-and-geometry" id="toc-longitudinal-identity-and-geometry" class="nav-link" data-scroll-target="#longitudinal-identity-and-geometry"><span class="header-section-number">12.8.2</span> Longitudinal identity and geometry</a></li>
+  <li><a href="#a-worked-measurement-audit" id="toc-a-worked-measurement-audit" class="nav-link" data-scroll-target="#a-worked-measurement-audit"><span class="header-section-number">12.8.3</span> A worked measurement audit</a></li>
+  </ul></li>
   <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">12.9</span> The agentic outlook</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading"><span class="header-section-number">12.10</span> Further reading</a></li>
   </ul>
@@ -563,57 +648,363 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>CT turns many X-ray projections into a spatial description of the body. Its speed makes it central to emergency imaging; its coverage makes it central to cancer staging; its calibrated attenuation values make it attractive for quantitative analysis. None of these advantages makes a CT study a single standardized tensor. One examination may contain a localizer, several contrast phases, thin and thick reconstructions, different kernels, and reformatted images. Selecting the right series is part of the task.</p>
+<p>This chapter develops a CT pipeline from acquisition through clinical action. The running example is a hypothetical abdominal organ and lesion measurement service. The same principles apply to head-CT triage, lung nodules, vascular analysis, and treatment-response assessment, but the input requirements and evidence differ.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the clinician
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>A segmentation is an anatomical hypothesis on a particular image grid. It becomes a measurement only after geometry, units, structure definition, and coverage have been checked. An attractive three-dimensional rendering can conceal a missing superior slice or a wrong contrast phase.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A study contains candidate inputs, not a ready-made volume. Record why a series was selected and preserve its original identifiers. Never use file order as a substitute for spatial geometry.</p>
 </div>
 </div>
 <section id="what-is-ct" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="what-is-ct"><span class="header-section-number">12.1</span> What is CT?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<section id="attenuation-reconstruction-and-hounsfield-units" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="attenuation-reconstruction-and-hounsfield-units"><span class="header-section-number">12.1.1</span> Attenuation, reconstruction, and Hounsfield units</h3>
+<p>A rotating X-ray source and detector measure transmission from many angles. Reconstruction estimates spatial attenuation. Helical acquisition combines rotation with table movement; different reconstruction settings can produce several image series from the same underlying acquisition. The <a href="https://www.radiologyinfo.org/en/info/bodyct">ACR/RSNA CT overview</a> describes its clinical role and acquisition context.</p>
+<p>The familiar intensity scale is the Hounsfield unit (HU):</p>
+<p><span class="math display">\[HU = 1000\frac{\mu-\mu_{water}}{\mu_{water}}.\]</span></p>
+<p>Water is approximately 0 HU and air approximately −1000 HU. These anchors are useful, but do not make all tissue measurements invariant. Tube energy, contrast material, reconstruction kernel, patient size, artifacts, and calibration influence observed values. In conventional DICOM CT, stored values commonly require a rescale slope and intercept before they represent HU. Enhanced objects and quantitative maps can require additional interpretation; the DICOM appendix explains why blindly applying one formula to every image is unsafe.</p>
+<p><strong>Windowing</strong> maps an attenuation interval to a display range. It does not change the underlying CT values. A narrow soft-tissue window displays subtle differences over a smaller interval; lung and bone displays use different ranges. For learning, either use a documented HU transformation or construct defined windows as channels. A screenshot discards much of the quantitative range and may introduce annotations and display-specific processing.</p>
+<div id="fig-ct-windows" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three clipped linear intensity curves illustrate different CT display window widths and centers.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-windows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch12/windows.svg" class="img-fluid figure-img" alt="Three clipped linear intensity curves illustrate different CT display window widths and centers.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-windows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.1: The same numerical CT signal can be displayed through different windows. These curves are illustrative mappings, not diagnostic presets.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="dimensions-spacing-and-memory" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="dimensions-spacing-and-memory"><span class="header-section-number">12.1.2</span> Dimensions, spacing, and memory</h3>
+<p>A reconstructed CT series is usually a 3D array, but its voxels need not be isotropic. A hypothetical 512 × 512 × 400 series stored with two bytes per voxel occupies 200 MiB before compression and headers. Its float32 representation occupies 400 MiB; intermediate model activations, masks, copies, and multiple phases add substantially more. Memory planning based only on the compressed archive size will fail.</p>
+<p>Slice thickness describes reconstruction extent along the slice direction; it is not necessarily the distance between adjacent slice centers. Overlapping reconstructions can have smaller spacing than thickness. Determine positions from image geometry, sort along the slice normal, and check for missing or duplicate locations. A NIfTI affine preserves spatial relationships only if conversion was correct.</p>
+<p>Resampling is a modeling choice. Isotropic voxels simplify 3D processing but do not restore resolution absent from a thick-slice acquisition. Interpolate continuous images and discrete masks differently. Save the transform back to source geometry, because a result aligned in a model workspace must still overlay the correct patient anatomy in the viewer.</p>
+<div id="fig-ct-geometry" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An anisotropic source grid and an isotropic model grid share a physical frame, with an explicit inverse mapping for outputs.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch12/geometry.svg" class="img-fluid figure-img" alt="An anisotropic source grid and an isotropic model grid share a physical frame, with an explicit inverse mapping for outputs.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.2: A physical volume has a voxel grid and a coordinate system. Resampling changes the grid while preserving the intended physical locations.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">12.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>CT supports assessment of trauma, acute neurological presentations, chest and abdominal disease, vascular pathology, and malignancy. The clinical question determines anatomy, acquisition timing, and reconstruction. A noncontrast head CT, a CT pulmonary angiogram, and a portal-venous abdominal CT are not interchangeable samples of one general task.</p>
+<p>Contrast phase is especially important. Iodinated contrast changes the attenuation of vessels and perfused tissues over time. A lesion’s conspicuity and apparent boundary can differ between phases. A pulmonary arterial study seeks a different enhancement pattern from a study intended to assess liver lesions. An agent can suggest a protocol for review, but cannot infer that every contrast-enhanced series satisfies every vascular task.</p>
+<p>Screening also changes the denominator. Lung-cancer screening examines an eligible population with a planned downstream pathway; evaluation on a lesion-enriched collection does not estimate screening workload. Opportunistic measurements use images acquired for another reason, which introduces a selection process that should be described. People who receive abdominal CT are not a random sample of the population.</p>
+<p>The intended-use statement should name both output and action: “Measure liver volume on eligible complete abdominal CT for research review” is narrower and more testable than “Analyze the abdomen.” If a tool excludes postoperative anatomy or incomplete coverage, the system must recognize and report those exclusions, not quietly generate numbers.</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">12.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<p>CT tasks span detection, anatomical segmentation, quantification, and temporal comparison. The distinction matters because an organ mask does not diagnose a lesion inside it, and a lesion detector does not establish histology.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clinical question</th>
+<th>Computational representation</th>
+<th>Suitable evaluation</th>
+<th>Common failure</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Suspected intracranial hemorrhage</td>
+<td>Case-level flag or localized hemorrhage</td>
+<td>Sensitivity at fixed alert burden; time to review</td>
+<td>Calcification or postoperative material mistaken for blood</td>
+</tr>
+<tr class="even">
+<td>Large-vessel occlusion on CTA</td>
+<td>Eligible-study triage output</td>
+<td>Patient-level sensitivity and workflow timing</td>
+<td>Inappropriate phase or incomplete coverage</td>
+</tr>
+<tr class="odd">
+<td>Pulmonary nodule</td>
+<td>3D lesion candidates with size</td>
+<td>Lesion sensitivity versus false positives per scan</td>
+<td>Vessels, scars, and small lesions</td>
+</tr>
+<tr class="even">
+<td>Organ volume</td>
+<td>Anatomical mask in physical space</td>
+<td>Volume agreement and contour error</td>
+<td>Truncation, surgical change, wrong label</td>
+</tr>
+<tr class="odd">
+<td>Cancer burden</td>
+<td>Linked lesions and measurements</td>
+<td>Lesion correspondence; measurement repeatability</td>
+<td>New lesion omitted or wrong prior matched</td>
+</tr>
+<tr class="even">
+<td>Vascular anatomy</td>
+<td>Centerlines, lumen masks, measurements</td>
+<td>Landmark and diameter agreement</td>
+<td>Calcification and contrast mixing</td>
+</tr>
+</tbody>
+</table>
+<p>A system also needs an explicit vocabulary for uncertainty and non-evaluability. “Not detected,” “outside coverage,” and “uninterpretable because of artifact” are different outcomes. Collapsing them into zero produces biased datasets and misleading reports.</p>
+<section id="measurement-is-not-response-classification" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="measurement-is-not-response-classification"><span class="header-section-number">12.3.1</span> Measurement is not response classification</h3>
+<p>For a segmented structure, volume equals the sum of included voxel volumes. If spacing is uniform and orthogonal, <span class="math inline">\(V=N\Delta x\Delta y\Delta z\)</span>; divide cubic millimeters by 1000 to obtain milliliters. For irregular geometry, integration requires more care. A model’s output array shape alone is insufficient.</p>
+<p>Oncologic response adds lesion selection, measurement conventions, timepoint rules, new-lesion assessment, and non-target disease. A change in one automatically segmented mass is not a complete response determination. <a href="https://recist.eortc.org/">RECIST guidance</a> should govern a RECIST implementation, including exceptions; this chapter does not substitute a simplified volume rule for that standard.</p>
+</section>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="12.4">
 <h2 data-number="12.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">12.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<p>The order is protocolled, patient and contrast considerations are reviewed, the examination is acquired, and reconstructed series are sent to PACS. Radiologists examine appropriate windows, multiplanar views, and priors. Urgent findings require communication through established local procedures, while quantitative outputs may feed a structured report or a research database.</p>
+<p>An AI router must wait for an adequate input set. “First image arrived” does not mean “series complete.” Conversely, waiting for every optional reconstruction may delay an urgent service. Define task-specific readiness: the required series, expected coverage, geometry checks, and an inactivity or completion event. If a late image changes the input, decide whether the previous result is superseded and reprocessing is required.</p>
+<div id="fig-ct-routing" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A study inventory branches to noncontrast head, angiographic and abdominal analysis only after task-specific eligibility checks.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-routing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch12/routing.svg" class="img-fluid figure-img" alt="A study inventory branches to noncontrast head, angiographic and abdominal analysis only after task-specific eligibility checks.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-routing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.3: CT routing depends on series eligibility. Different clinical tasks receive different acquisitions; a failed eligibility check returns an explicit exception.
+</figcaption>
+</figure>
+</div>
+<section id="an-implementable-research-pipeline" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="an-implementable-research-pipeline"><span class="header-section-number">12.4.1</span> An implementable research pipeline</h3>
+<p>For the hypothetical abdominal service, construct an inventory of series and select one eligible phase. Decode pixels, verify HU conversion, inspect coverage, and convert to the model grid. Run anatomical segmentation, map results back, and compute physical measurements. Save a machine-readable result containing source UIDs, software version, transforms, labels, units, and quality state. Review overlays in at least two planes before accepting a measurement.</p>
+<p>A research command can be simple while its surrounding validation is substantial. The <a href="https://github.com/wasserth/TotalSegmentator">TotalSegmentator documentation</a> provides a CT interface such as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">TotalSegmentator</span> <span class="at">-i</span> eligible_ct.nii.gz <span class="at">-o</span> segmentations</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Pin the installed version and task. The command does not verify that your study fits your intended measurement claim. Inspect task-specific licenses, expected labels, geometry, and outputs. The project’s documentation explicitly distinguishes the research software from an independently validated medical-device implementation.</p>
+<p>Keep the original acquisition and any corrected output separately. A reviewer editing a mask creates a new annotation version, which should remain linked to the original prediction. Otherwise a later audit cannot distinguish model quality from the quality of human-corrected results.</p>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="12.5">
 <h2 data-number="12.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">12.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "ct"). -->
+<p>The live catalog below selects CT datasets. Counts and licenses are release-specific. These resources address different targets and should not be treated as one interchangeable benchmark.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>LIDC-IDRI</td>
+<td>1,018 CT scans</td>
+<td>Multi-reader lung nodule annotations</td>
+<td>TCIA collection terms</td>
+<td>Reader disagreement is part of the reference</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/lidc-idri/">Source</a></td>
+</tr>
+<tr class="even">
+<td>TotalSegmentator CT v2</td>
+<td>1,228 CT scans</td>
+<td>117 anatomical structures</td>
+<td>CC BY 4.0; release terms</td>
+<td>Pin label map and release; CT dataset differs from MR release</td>
+<td><a href="https://zenodo.org/records/10047292">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>LIDC-IDRI provides a classic setting for lung-nodule analysis with multiple readers. Reader disagreement is valuable information: an apparently precise contour may not be a unique truth. The original <a href="https://doi.org/10.1118/1.3528204">LIDC-IDRI study</a> describes the annotation design. TotalSegmentator provides anatomical segmentation data; its available label set and release must be distinguished from the evolving software task list. KiTS provides a kidney-tumor setting rather than comprehensive abdominal diagnosis; use the <a href="https://kits-challenge.org/">challenge documentation</a> for edition-specific definitions.</p>
+<section id="a-dataset-manifest-that-survives-reuse" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="a-dataset-manifest-that-survives-reuse"><span class="header-section-number">12.5.1</span> A dataset manifest that survives reuse</h3>
+<p>At minimum, record patient group, study, selected series, contrast status, reconstruction properties, body coverage, reference source, split, and exclusion reason. Hash the manifest and version it with the experiment. Store an adjudication note when two reasonable candidates exist instead of silently choosing one by filename.</p>
+<p>Split patients before selecting slices or patches. Keep reconstructions from one acquisition together. If a site contributes both thin and thick versions, placing one in training and one in testing is leakage even when their image files differ. For external validation, use a genuinely separate population and document any overlap with foundation-model pretraining.</p>
+<p>Annotation scope also matters. A dataset labeled for kidney tumors may contain other abnormalities without labels. Those regions are not automatically verified negative examples for another task. A research repository’s convenience should not redefine the medical question.</p>
+</section>
 </section>
 <section id="the-model-landscape" class="level2" data-number="12.6">
 <h2 data-number="12.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">12.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "ct"); open vs. closed. -->
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TotalSegmentator</td>
+<td>Anatomical segmentation</td>
+<td>Default task weights available</td>
+<td>Apache-2.0 default model; other tasks may have separate terms</td>
+<td>Default CT task has 117 structures; inspect task-specific input and license</td>
+<td><a href="https://github.com/wasserth/TotalSegmentator">Source</a></td>
+</tr>
+<tr class="even">
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="odd">
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="even">
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="odd">
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>TotalSegmentator is useful as anatomical infrastructure. nnU-Net is a framework for training supervised segmentation pipelines, not a universal pretrained diagnostic model. Promptable segmentation can help a reviewer delineate a known target, but an interactive model’s performance depends on how prompts are created and how much corrective effort is allowed. Compare automatic and interactive workflows separately.</p>
+<p>For nodule detection, a two-stage system may generate 3D candidates and then classify them with local and broader context. For organ segmentation, patch-based 3D inference is common because complete scans may exceed memory. Overlapping patches require an aggregation policy, and boundary artifacts should be checked. A fast 2D model may be appropriate for a constrained task, but its speed does not resolve inconsistent through-plane predictions.</p>
+<p>Commercial CT platforms often supply several modules under a common interface. Evaluate the exact module, version, input, and service—not just the platform brand. Sharing a viewer does not imply a shared validation population. The same caution applies to broad research model collections.</p>
+<section id="what-to-measure-beyond-dice" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="what-to-measure-beyond-dice"><span class="header-section-number">12.6.1</span> What to measure beyond Dice</h3>
+<p>A large liver can achieve a strong Dice score while a small but important lesion is missed. For lesion tasks, match predicted and reference objects under a prespecified rule, then report missed lesions and false positives per scan. For measurements, examine bias and limits of agreement. For triage, measure coverage, false-alert workload, and time to clinical review.</p>
+<p>For repeated scans, measurement noise limits detectable change. In an illustrative case, a 2 mL change means little if repeated processing under plausible acquisition differences varies by 10 mL. Establish repeatability before turning every numerical delta into a statement about biology.</p>
+</section>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="12.7">
 <h2 data-number="12.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">12.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "ct"). -->
+<p>This table contains selected historical FDA authorizations, checked against the linked records. It is not a comprehensive market inventory, and “authorized” includes De Novo grants as well as 510(k) clearances.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Submission</th>
+<th>Indication summary</th>
+<th>Boundary</th>
+<th>FDA record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ContaCT</td>
+<td>Viz.ai</td>
+<td>DEN170073; De Novo</td>
+<td>Parallel notification of suspected LVO on supported brain CTA</td>
+<td>Triage; diagnostic image review retained; original historical indication</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN170073.pdf">Source</a></td>
+</tr>
+<tr class="even">
+<td>BriefCase</td>
+<td>Aidoc</td>
+<td>K180647; 510(k)</td>
+<td>Suspected intracranial hemorrhage triage on noncontrast head CT</td>
+<td>This record is not a combined ICH/PE indication</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K180647.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN170073.pdf">ContaCT, DEN170073</a>, analyzes brain CTA for suspected large-vessel occlusion to support a parallel notification workflow. Its original indication is not autonomous diagnosis or a decision to perform thrombectomy. <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K180647.pdf">BriefCase, K180647</a>, is a specific head-CT triage example; do not combine that submission with separate pulmonary-embolism modules under an undifferentiated brand entry.</p>
+<p>Anatomical quantification, acute triage, and reconstruction are different intended uses. If one service chains them, assess the combined behavior. A cleared upstream module does not validate an added report generator or a new treatment-response rule. Reading the submission’s indication is more informative than counting how many AI tools a vendor sells.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="12.8">
 <h2 data-number="12.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">12.8</span> Open challenges</h2>
+<section id="reconstruction-shift-and-artifact" class="level3" data-number="12.8.1">
+<h3 data-number="12.8.1" class="anchored" data-anchor-id="reconstruction-shift-and-artifact"><span class="header-section-number">12.8.1</span> Reconstruction shift and artifact</h3>
+<p>Sharper kernels increase apparent edge detail and noise; smoother kernels alter texture. Metal streak, motion, beam hardening, and incomplete coverage can create systematic errors. An algorithm may be robust to scanner variation in its training distribution yet fail on an acquisition deliberately optimized for another task. Compare performance by relevant protocol groups, not just scanner manufacturer.</p>
+<p>Dose reduction introduces a second ambiguity: an image can look smoother after learned processing while task-relevant detail changes. Pixel similarity does not establish preserved lesion detection. Evaluate the diagnostic target and quantitative stability in addition to visual preference, including small or low-contrast findings.</p>
+</section>
+<section id="longitudinal-identity-and-geometry" class="level3" data-number="12.8.2">
+<h3 data-number="12.8.2" class="anchored" data-anchor-id="longitudinal-identity-and-geometry"><span class="header-section-number">12.8.2</span> Longitudinal identity and geometry</h3>
+<p>Registration can help align anatomy, but deformation is not proof that two regions represent the same lesion. A lesion can merge, split, disappear, or be resected. Reviewable lesion identity is a separate data object from the spatial transform. Avoid assigning the nearest detected region to the previous lesion without recording uncertainty.</p>
+<div id="fig-ct-longitudinal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two visits contain matched, new and unresolved lesion identities rather than a forced one-to-one nearest-neighbor match.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ct-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch12/longitudinal.svg" class="img-fluid figure-img" alt="Two visits contain matched, new and unresolved lesion identities rather than a forced one-to-one nearest-neighbor match.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12.4: Lesion identity persists across visits only when supported by evidence. New, resolved and uncertain matches must remain distinguishable.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="a-worked-measurement-audit" class="level3" data-number="12.8.3">
+<h3 data-number="12.8.3" class="anchored" data-anchor-id="a-worked-measurement-audit"><span class="header-section-number">12.8.3</span> A worked measurement audit</h3>
+<p>Suppose a hypothetical liver mask contains 1,500,000 voxels at 1 mm isotropic spacing. The volume is 1,500 mL. If the same count is mistakenly interpreted using a 2 mm slice spacing, the reported volume doubles. This is an engineering error, not model uncertainty. Include a geometry sanity check that compares the stored mask grid with its referenced source.</p>
+<p>Next suppose the superior liver is outside the acquired field. A plausible 1,100 mL result is still incomplete. The correct output is a qualified or non-evaluable measurement, depending on the protocol, rather than an unqualified normal-looking number. Finally, inspect a postoperative case: a model may hallucinate a familiar organ boundary in altered anatomy. These cases illustrate why mask appearance, numerical range, and task eligibility must be reviewed together.</p>
+<p>For a pilot, prespecify accepted inputs, annotation conventions, failure handling, reviewer effort, and error thresholds. Lock the model and preprocessing before evaluation. Include consecutive eligible studies, retain exclusions in the flow diagram, and report performance at the patient or study level with confidence intervals that respect repeated examinations.</p>
+</section>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="12.9">
 <h2 data-number="12.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">12.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Agents that protocol the scan from the order text, monitor acquisition for repeat-worthy artifacts, trigger the right segmentation models per body part, assemble volumetric comparisons across timepoints, and draft structured oncologic response assessments (RECIST) automatically. -->
+<p>A CT agent can inventory series, propose task routing, retrieve priors, invoke approved analysis tools, and assemble a measurement dossier. It can check that a requested phase is present before analysis and flag missing coverage. These are proposed workflow capabilities; they are not claims that existing general models can independently protocol patients or interpret arbitrary CT.</p>
+<p>The most useful agent output is often an exception explained in concrete terms: “No eligible angiographic series found,” “Prior unavailable,” or “Segmentation requires review at the surgical bed.” Such output supports the clinical team without converting missing evidence into a negative diagnosis.</p>
+<p>For longitudinal oncology, maintain a lesion registry, measurement history, protocol version, and reviewer decisions. Let the agent draft a comparison only from verified evidence. Any response framework should be implemented as explicit, versioned rules with clinician review, not improvised from memory by a language model. Preserve the standard reading pathway during timeouts or model failure.</p>
 </section>
 <section id="further-reading" class="level2" data-number="12.10">
 <h2 data-number="12.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">12.10</span> Further reading</h2>
+<p>Read <a href="https://www.radiologyinfo.org/en/info/bodyct">ACR/RSNA’s CT introduction</a> for clinical orientation, the <a href="https://doi.org/10.1118/1.3528204">LIDC-IDRI publication</a> for reader annotations, <a href="https://github.com/wasserth/TotalSegmentator">TotalSegmentator</a> and <a href="https://github.com/MIC-DKFZ/nnUNet">nnU-Net</a> for implementation, and <a href="https://recist.eortc.org/">RECIST</a> for standardized response assessment. The catalog’s FDA links document the precise historical product scope.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Check your understanding">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Check your understanding
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Why is slice thickness not always slice spacing? How can the wrong contrast phase invalidate a technically successful segmentation? Why can a high organ Dice score coexist with poor lesion detection? Design one test that distinguishes missing coverage from a genuinely small organ.</p>
+</div>
+</div>
 
 
 </section>

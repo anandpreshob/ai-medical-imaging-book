@@ -80,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -419,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +529,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -529,10 +558,20 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#what-is-ultrasound" id="toc-what-is-ultrasound" class="nav-link active" data-scroll-target="#what-is-ultrasound"><span class="header-section-number">14.1</span> What is ultrasound?</a></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">14.2</span> Why and when it’s ordered</a></li>
-  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">14.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">14.4</span> How it works in a modern hospital</a></li>
+  <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">14.3</span> What diagnoses are made from it</a>
+  <ul class="collapse">
+  <li><a href="#a-measurement-example-ejection-fraction" id="toc-a-measurement-example-ejection-fraction" class="nav-link" data-scroll-target="#a-measurement-example-ejection-fraction"><span class="header-section-number">14.3.1</span> A measurement example: ejection fraction</a></li>
+  </ul></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">14.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#acquisition-precedes-inference" id="toc-acquisition-precedes-inference" class="nav-link" data-scroll-target="#acquisition-precedes-inference"><span class="header-section-number">14.4.1</span> Acquisition precedes inference</a></li>
+  <li><a href="#preserve-temporal-and-spatial-calibration" id="toc-preserve-temporal-and-spatial-calibration" class="nav-link" data-scroll-target="#preserve-temporal-and-spatial-calibration"><span class="header-section-number">14.4.2</span> Preserve temporal and spatial calibration</a></li>
+  </ul></li>
   <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">14.5</span> The data landscape</a></li>
-  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">14.6</span> The model landscape</a></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">14.6</span> The model landscape</a>
+  <ul class="collapse">
+  <li><a href="#evaluation-at-several-levels" id="toc-evaluation-at-several-levels" class="nav-link" data-scroll-target="#evaluation-at-several-levels"><span class="header-section-number">14.6.1</span> Evaluation at several levels</a></li>
+  </ul></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">14.7</span> FDA-cleared AI products</a></li>
   <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">14.8</span> Open challenges</a></li>
   <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">14.9</span> The agentic outlook</a></li>
@@ -563,57 +602,315 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Ultrasound is an interaction between an operator, a patient, a probe, and a changing acoustic window. The image is only one product of that interaction. A model trained on selected still images may never encounter the difficult moments that determine whether an examination is diagnostic. Useful AI therefore spans acquisition guidance, view recognition, quality assessment, measurement, and interpretation, with a different evidence requirement for each.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the clinician
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>A correct measurement on a foreshortened or poorly selected view can still misrepresent physiology. Review acquisition quality and contour conventions before accepting an automated number.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Treat a clip as a timed signal with provenance. Frame rate, pixel calibration, view, ECG timing when available, and the operator’s selection process can matter as much as the pixel values.</p>
 </div>
 </div>
 <section id="what-is-ultrasound" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="what-is-ultrasound"><span class="header-section-number">14.1</span> What is ultrasound?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<p>A transducer emits acoustic pulses and receives echoes from tissue interfaces and scatterers. Echo timing helps estimate depth; echo amplitude contributes to brightness in B-mode imaging. The familiar image is produced through beamforming and extensive signal processing, not by directly photographing anatomy. Frequency trades penetration against spatial resolution, while probe geometry and the acoustic window affect coverage. The <a href="https://www.radiologyinfo.org/en/info/genus">ACR/RSNA ultrasound overview</a> describes common acquisition methods and uses.</p>
+<p>B-mode shows anatomy. M-mode displays motion along a selected line over time. Doppler techniques estimate motion-related frequency shifts and support assessment of flow; the measured component depends on beam–flow geometry. Color maps, spectral Doppler traces, and grayscale clips are different input types. Their rendered colors and overlays should not be interpreted as a universal physical scale without metadata and system context.</p>
+<div id="fig-us-acquisition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Probe and acoustic window feed beam formation, B-mode or Doppler processing, and a quality-reviewed image or clip.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-us-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch14/acquisition.svg" class="img-fluid figure-img" alt="Probe and acoustic window feed beam formation, B-mode or Doppler processing, and a quality-reviewed image or clip.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: The acquisition chain links probe position and acoustic window to the resulting image.
+</figcaption>
+</figure>
+</div>
+<p>Speckle is an intrinsic feature of coherent acoustic imaging. Shadowing, reverberation, attenuation, and enhancement can obscure anatomy or provide useful clues. A generic denoiser may remove features relevant to interpretation. Gain, depth, dynamic range, focus, and machine presets influence appearance. Cropping away interface decorations can reduce shortcuts, but must preserve necessary calibration and orientation information elsewhere.</p>
+<p>A study may contain still images, short cine loops, Doppler traces, measurements, and structured reports. Some exports contain only rendered video with burned-in text. Others preserve calibrated DICOM ultrasound regions. Know which representation you actually possess before promising physical measurements.</p>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">14.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>Ultrasound is portable, provides real-time imaging, and uses no ionizing radiation. It supports abdominal and pelvic assessment, obstetrics, vascular evaluation, musculoskeletal examinations, procedural guidance, and point-of-care questions. Echocardiography focuses on cardiac structure, function, valves, and hemodynamics. A comprehensive transthoracic examination differs from a focused bedside assessment or a transesophageal study.</p>
+<p>The operator adapts the examination to the patient and question. Body habitus, bowel gas, pain, wounds, breathing, and positioning influence access. A model can only interpret the anatomy represented in its inputs. “No abnormality detected” in a narrow clip is not equivalent to a complete negative examination.</p>
+<p>A workflow should specify whether AI is intended to help acquire a view, quantify a visible structure, flag an abnormality, or support a final interpretation. Combining these claims into “AI ultrasound” hides the most important clinical distinction: can the user trust that the necessary anatomy was adequately examined?</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">14.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Application</th>
+<th>Potential AI task</th>
+<th>Principal limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cardiac systolic function</td>
+<td>Chamber segmentation and ejection-fraction estimation</td>
+<td>View quality, loading conditions, rhythm, and method affect interpretation</td>
+</tr>
+<tr class="even">
+<td>Valve assessment</td>
+<td>View selection and measurement assistance</td>
+<td>A single grayscale clip cannot replace a complete Doppler examination</td>
+</tr>
+<tr class="odd">
+<td>Venous thrombosis assessment</td>
+<td>Anatomy recognition and compression guidance</td>
+<td>Required segments and adequate compression must be demonstrated</td>
+</tr>
+<tr class="even">
+<td>Obstetric imaging</td>
+<td>Standard-plane recognition and biometry</td>
+<td>Gestational context and full examination remain necessary</td>
+</tr>
+<tr class="odd">
+<td>Thyroid or breast imaging</td>
+<td>Nodule segmentation and feature assessment</td>
+<td>Risk classification requires the relevant features and clinical pathway</td>
+</tr>
+<tr class="even">
+<td>Point-of-care assessment</td>
+<td>Focused view adequacy or finding detection</td>
+<td>Scope is limited to the specified bedside question</td>
+</tr>
+</tbody>
+</table>
+<p>An end-to-end diagnostic label can conceal acquisition failure. Separate “view not obtained,” “view inadequate,” “finding absent,” and “finding present.” These states require different actions. In a screening workflow, technical failure may warrant reacquisition or referral; it must not be counted as a negative diagnostic result.</p>
+<section id="a-measurement-example-ejection-fraction" class="level3" data-number="14.3.1">
+<h3 data-number="14.3.1" class="anchored" data-anchor-id="a-measurement-example-ejection-fraction"><span class="header-section-number">14.3.1</span> A measurement example: ejection fraction</h3>
+<p>Left-ventricular ejection fraction is conventionally expressed as</p>
+<p><span class="math display">\[EF = \frac{EDV-ESV}{EDV}\times100\%,\]</span></p>
+<p>where EDV and ESV are end-diastolic and end-systolic volumes. If a hypothetical examination yields 120 mL and 50 mL, the calculated EF is about 58%. This arithmetic does not validate the contours, view, cardiac-cycle selection, or clinical interpretation.</p>
+<div id="fig-echo-ef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="End-diastolic volume 120 milliliters and end-systolic volume 50 milliliters produce an illustrative ejection fraction of about 58 percent.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-echo-ef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch14/ef.svg" class="img-fluid figure-img" alt="End-diastolic volume 120 milliliters and end-systolic volume 50 milliliters produce an illustrative ejection fraction of about 58 percent.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-echo-ef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: Illustrative ejection-fraction arithmetic separates measured volumes from the derived percentage.
+</figcaption>
+</figure>
+</div>
+<p>A two-dimensional area change is not automatically a volume-based EF. If a model directly predicts EF from a clip, explain whether its reference was a clinician’s reported value, a particular measurement method, or another modality. These targets have different error and reproducibility properties. Arrhythmia and variable image quality can make one selected beat unrepresentative.</p>
+</section>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="14.4">
 <h2 data-number="14.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">14.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<section id="acquisition-precedes-inference" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="acquisition-precedes-inference"><span class="header-section-number">14.4.1</span> Acquisition precedes inference</h3>
+<p>A sonographer, clinician, or other trained operator acquires the examination, stores representative material, and records measurements. Images and clips reach PACS or a dedicated cardiovascular system; a specialist interprets them with clinical context. At the bedside, storage and reporting may be less standardized, which makes governance more important rather than optional.</p>
+<p>An acquisition assistant needs a fast local feedback loop. It should recognize the target view, assess quality, and provide bounded guidance without overwhelming the operator. Guidance should be evaluated by the quality and completeness of the resulting examination, not merely by frame classification accuracy. A confusing prompt can worsen acquisition even if its underlying classifier is accurate.</p>
+<div id="fig-us-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="View availability branches to missing, inadequate, or adequate; only an adequate supported view proceeds to measurement.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-us-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch14/quality.svg" class="img-fluid figure-img" alt="View availability branches to missing, inadequate, or adequate; only an adequate supported view proceeds to measurement.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.3: Quality assessment distinguishes a missing view from an inadequate view and an adequate view ready for measurement.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="preserve-temporal-and-spatial-calibration" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="preserve-temporal-and-spatial-calibration"><span class="header-section-number">14.4.2</span> Preserve temporal and spatial calibration</h3>
+<p>For cine analysis, retain frame timestamps or validated frame timing. Converting variable-rate video to a fixed rate can change the implied duration. If frames are sampled for inference, preserve the mapping to source frames. ECG overlays may aid phase selection but can also become shortcuts if training labels correlate with acquisition systems.</p>
+<p>For length and area measurements, inspect ultrasound region calibration rather than assuming one pixel spacing applies to the entire rendered image. Spectral traces and grayscale regions may use different axes and units. A millimeter scale burned into an image is not a safe substitute for calibrated metadata unless a dedicated, validated extraction method is part of the pipeline.</p>
+<p>Return contours on the original clip, identify selected end-diastolic and end-systolic frames, and let the reviewer adjust them. Save the original prediction and the accepted measurement separately. If a reviewer changes a frame selection, recompute derived values and preserve the relationship between the revised contours and result.</p>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">14.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "us"). -->
+<p>Public echo datasets are valuable but often narrower than routine practice. A collection of selected apical four-chamber clips cannot establish performance across all views, congenital abnormalities, devices, and acquisition systems. Patient-level sampling, selection criteria, and label derivation are central to interpretation.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EchoNet-Dynamic</td>
+<td>10,030 apical four-chamber videos</td>
+<td>EF and selected ventricular tracings</td>
+<td>Research data agreement</td>
+<td>Selected clips; not a complete live-acquisition dataset</td>
+<td><a href="https://echonet.github.io/dynamic/">Source</a></td>
+</tr>
+<tr class="even">
+<td>CAMUS</td>
+<td>500 patients</td>
+<td>Two- and four-chamber contours at defined phases</td>
+<td>Challenge access and terms</td>
+<td>Keep all views and phases from a patient together</td>
+<td><a href="https://www.creatis.insa-lyon.fr/Challenge/camus/">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="https://echonet.github.io/dynamic/">EchoNet-Dynamic</a> supports research on ventricular function from apical four-chamber videos. <a href="https://www.creatis.insa-lyon.fr/Challenge/camus/">CAMUS</a> provides another setting for chamber segmentation using two- and four-chamber views. They answer related but distinct questions. Mixing them requires explicit reconciliation of contour definitions, timing, image characteristics, and patient grouping.</p>
+<p>Split by patient and examination before extracting frames. Adjacent frames are extremely similar; distributing them across train and test sets can create impressive but meaningless performance. If the clinical goal is real-time acquisition assistance, include unselected acquisition footage in evaluation. A dataset of saved clips has already passed through an operator’s quality filter.</p>
+<p>Labels may be measurements from clinical reports rather than independent image annotations. The report might have used additional views unavailable to the model. Document this information asymmetry. For disease classification, avoid using text overlays or acquisition presets that reveal the referral question or diagnosis.</p>
 </section>
 <section id="the-model-landscape" class="level2" data-number="14.6">
 <h2 data-number="14.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">14.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "us"); open vs. closed. -->
+<p>Video encoders can learn motion and appearance jointly. Frame-based models with temporal aggregation provide simpler baselines. Segmentation approaches can produce interpretable contours and derived measures, while direct regression can learn a reported value without exposing the intermediate anatomy. Neither approach is intrinsically clinically superior; compare errors, failure visibility, and review effort.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>EchoNet-Dynamic</td>
+<td>Video function estimation and segmentation</td>
+<td>Reference code and documented model resources</td>
+<td>Inspect repository and data/checkpoint terms separately</td>
+<td>Apical four-chamber research; not complete echo interpretation</td>
+<td><a href="https://github.com/echonet/dynamic">Source</a></td>
+</tr>
+<tr class="even">
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="odd">
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="even">
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="odd">
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>General segmentation frameworks are relevant to development but need ultrasound-specific training and evaluation. A checkpoint trained on CT anatomy should not be assumed to understand speckle, acoustic shadows, or cardiac phase. Interactive segmentation can assist annotation, but the distribution of human prompts is part of the method.</p>
+<section id="evaluation-at-several-levels" class="level3" data-number="14.6.1">
+<h3 data-number="14.6.1" class="anchored" data-anchor-id="evaluation-at-several-levels"><span class="header-section-number">14.6.1</span> Evaluation at several levels</h3>
+<p>For view recognition, report confusion between clinically similar views and the frequency of unsupported inputs. For quality assessment, assess whether the output predicts measurement reliability or expert adequacy. For segmentation, report contour and measurement errors. For EF regression, report bias, dispersion of paired errors, clinically relevant misclassification where justified, and performance across rhythm and image-quality groups.</p>
+<p>Correlation is not agreement. Predictions can correlate strongly with reference EF while consistently overestimating low values. Bland–Altman-style analysis and error distributions expose patterns a single correlation coefficient hides. Repeated examinations can help characterize reproducibility, but disease and loading conditions may genuinely change between studies.</p>
+<p>Real-time tools also need operational metrics: end-to-end latency, frame-drop rate, stability of prompts, reacquisition frequency, and task completion. A detector that is accurate on retrospectively sampled clips may lag behind the live scene. Evaluate on the hardware, capture pathway, and operator population intended for use.</p>
+<div id="fig-us-live" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Live frames enter a bounded queue and model; current guidance returns to the operator while accepted clips and measurements enter the clinical record.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-us-live-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch14/live-loop.svg" class="img-fluid figure-img" alt="Live frames enter a bounded queue and model; current guidance returns to the operator while accepted clips and measurements enter the clinical record.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-live-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.4: The live ultrasound loop has separate acquisition, inference, feedback, and accepted-result paths.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="14.7">
 <h2 data-number="14.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">14.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "us"). -->
+<p>The selected record below illustrates acquisition assistance. It does not establish that every output of the vendor’s wider product family has the same authorization.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Submission</th>
+<th>Indication summary</th>
+<th>Boundary</th>
+<th>FDA record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Caption Guidance</td>
+<td>Bay Labs / Caption Health</td>
+<td>DEN190040; De Novo</td>
+<td>Guidance for acquiring specified adult 2D transthoracic echo views</td>
+<td>Supported hardware and users; acquisition assistance rather than diagnosis</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN190040.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The original <a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN190040.pdf">Caption Guidance De Novo review</a> describes guidance for acquiring specified adult transthoracic echocardiographic views within a supported system. Acquisition guidance is distinct from autonomous interpretation of a complete echocardiogram. The operator remains responsible for the examination, and the reader must assess diagnostic adequacy. Check the exact device version, compatible hardware, users, and intended population.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="14.8">
 <h2 data-number="14.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">14.8</span> Open challenges</h2>
+<p>The strongest domain shift may occur before an image is saved. Operators respond to anatomy, patient discomfort, machine feedback, and their own experience. A new guidance system changes this behavior, so retrospective image validation alone cannot characterize its full effect. Prospective human-factors assessment is especially important for less experienced users.</p>
+<p>Quality is also task-specific. A clip adequate for identifying a large effusion may be inadequate for precise chamber measurement. Avoid a universal “good image” score unless its meaning is clear. Systems should explain which requirement failed: missing apex, incomplete border visibility, incorrect view, insufficient temporal coverage, or unsupported acquisition.</p>
+<p>Portable devices broaden access but introduce heterogeneous screens, compression, battery constraints, and connectivity. Offline operation needs local identity checks, secure storage, and safe synchronization. A delayed upload must not attach yesterday’s result to today’s patient session.</p>
+<p>Performance monitoring should track technical failures and examination completion as well as accepted predictions. Excluding failures from the denominator can make a system appear more effective precisely where access is most difficult. When a model declines a case, record the reason and whether the patient ultimately obtained the intended assessment.</p>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="14.9">
 <h2 data-number="14.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">14.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Real-time guidance agents that coach acquisition (probe placement, view completeness), auto-measure as the exam proceeds, and assemble the worksheet before the sonographer finishes — collapsing the acquire-measure-report loop into one pass. -->
+<p>An ultrasound agent can manage a checklist of required views, recognize incomplete acquisition, retrieve prior measurements, and prepare a structured worksheet. It can coordinate specialized models for view recognition, contouring, and measurement while preserving each model’s input requirements.</p>
+<p>The safest architecture keeps the fast acquisition loop separate from slower administrative tasks. A network language-model call should not block live probe feedback. A bounded state machine can mark views as pending, adequate, accepted, or requiring review. Only an authorized user should finalize the examination and its clinical interpretation.</p>
+<p>A useful agent also recognizes when assistance has failed. Repeated unsuccessful prompts should trigger a clear escalation path rather than an endless loop. Evaluate whether the combined system improves diagnostic-quality acquisition, reduces operator burden, and preserves appropriate referral, not whether it produces more automated text.</p>
 </section>
 <section id="further-reading" class="level2" data-number="14.10">
 <h2 data-number="14.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">14.10</span> Further reading</h2>
+<ul>
+<li><a href="https://www.radiologyinfo.org/en/info/genus">ACR/RSNA: general ultrasound</a>.</li>
+<li><a href="https://echonet.github.io/dynamic/">EchoNet-Dynamic</a> — video-based cardiac function research.</li>
+<li><a href="https://www.creatis.insa-lyon.fr/Challenge/camus/">CAMUS</a> — cardiac ultrasound segmentation data.</li>
+<li><a href="https://github.com/echonet/dynamic">EchoNet reference implementation</a> — inspect preprocessing and evaluation alongside the model.</li>
+<li><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN190040.pdf">Caption Guidance FDA review</a> — a concrete acquisition-assistance indication.</li>
+</ul>
+<p><strong>Review questions.</strong> Why can selected clips overestimate acquisition-assistance performance? What makes correlation insufficient for validating EF estimates? How should a system represent an examination in which a required view was never obtained?</p>
 
 
 </section>

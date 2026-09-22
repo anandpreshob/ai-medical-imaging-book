@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -522,8 +522,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#before-choosing-a-dataset" id="toc-before-choosing-a-dataset" class="nav-link active" data-scroll-target="#before-choosing-a-dataset">Before choosing a dataset</a></li>
+  <li><a href="#a-minimal-research-manifest" id="toc-a-minimal-research-manifest" class="nav-link" data-scroll-target="#a-minimal-research-manifest">A minimal research manifest</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/a-dataset-directory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -548,39 +555,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
-</div>
-</div>
-<!-- Master living table rendered from data/datasets.csv. -->
+<p>This selected directory is generated from <code>data/datasets.csv</code>. Counts describe the named release and unit; a frame, image, examination, slide, and patient are not interchangeable. Source-review scope and modality keys are documented in <code>data/README.md</code>. Entries reviewed for the remaining chapters on 22 September 2026 complement the earlier chest-radiography entries.</p>
+<div class="table-responsive">
 <table class="caption-top table">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>modality</th>
-<th>name</th>
-<th>size</th>
-<th>labels</th>
-<th>license/access</th>
-<th>link</th>
-<th>notes</th>
+<th>Modality</th>
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
@@ -589,113 +575,235 @@ Note
 <td>ChestX-ray14 (NIH)</td>
 <td>112,120 images, 30,805 patients</td>
 <td>14 findings (NLP-mined)</td>
-<td>Open</td>
-<td>https://nihcc.app.box.com/v/ChestXray-NIHCC</td>
-<td>Label noise from report mining</td>
+<td>Public research release; consult NIH terms</td>
+<td>Report-mined labels; single US center; release documentation governs splits</td>
+<td><a href="https://nihcc.app.box.com/v/ChestXray-NIHCC">Source</a></td>
 </tr>
 <tr class="even">
 <td>cxr</td>
 <td>CheXpert</td>
-<td>224,316 images</td>
+<td>224,316 images; 65,240 patients</td>
 <td>14 findings, uncertainty labels</td>
-<td>Credentialed (free)</td>
-<td>https://stanfordmlgroup.github.io/competitions/chexpert/</td>
-<td>Stanford; official test set held out</td>
+<td>Access request and Stanford dataset agreement</td>
+<td>Single US center; report-mined training labels; expert evaluation</td>
+<td><a href="https://stanfordmlgroup.github.io/competitions/chexpert/">Source</a></td>
 </tr>
 <tr class="odd">
 <td>cxr</td>
 <td>MIMIC-CXR</td>
-<td>377,110 images + free-text reports</td>
-<td>Reports + CheXpert labels</td>
-<td>PhysioNet credentialed</td>
-<td>https://physionet.org/content/mimic-cxr/</td>
-<td>Largest public CXR+report corpus</td>
+<td>377,110 images; 227,835 studies (v2 release)</td>
+<td>DICOM images and free-text reports</td>
+<td>PhysioNet credentialing; training; data-use agreement</td>
+<td>Single Boston center; JPG derivative overlaps this corpus</td>
+<td><a href="https://physionet.org/content/mimic-cxr/">Source</a></td>
 </tr>
 <tr class="even">
 <td>cxr</td>
 <td>PadChest</td>
 <td>160,868 images</td>
 <td>174 findings; 27% manually labeled</td>
-<td>Open (registration)</td>
-<td>https://bimcv.cipf.es/bimcv-projects/padchest/</td>
-<td>Spanish reports</td>
+<td>Research-use agreement; access request</td>
+<td>Spanish hospital; manual and automated annotations; restricted redistribution</td>
+<td><a href="https://bimcv.cipf.es/bimcv-projects/padchest/">Source</a></td>
 </tr>
 <tr class="odd">
 <td>cxr</td>
 <td>VinDr-CXR</td>
 <td>18,000 images</td>
-<td>Radiologist bounding boxes; 28 findings</td>
-<td>PhysioNet credentialed</td>
-<td>https://physionet.org/content/vindr-cxr/</td>
-<td>Box-level labels — rare and valuable</td>
+<td>22 local findings with boxes; 6 global categories</td>
+<td>PhysioNet credentialing and data-use agreement</td>
+<td>Adult PA images from two Vietnamese hospitals; 15,000 train / 3,000 test</td>
+<td><a href="https://physionet.org/content/vindr-cxr/1.0.0/">Source</a></td>
 </tr>
 <tr class="even">
 <td>ct</td>
 <td>LIDC-IDRI</td>
 <td>1,018 CT scans</td>
-<td>Lung nodule contours (4 readers)</td>
-<td>Open (TCIA)</td>
-<td>https://www.cancerimagingarchive.net/collection/lidc-idri/</td>
-<td>Classic nodule benchmark</td>
+<td>Multi-reader lung nodule annotations</td>
+<td>TCIA collection terms</td>
+<td>Reader disagreement is part of the reference</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/lidc-idri/">Source</a></td>
 </tr>
 <tr class="odd">
 <td>ct</td>
-<td>TotalSegmentator dataset</td>
+<td>TotalSegmentator CT v2</td>
 <td>1,228 CT scans</td>
 <td>117 anatomical structures</td>
-<td>CC BY 4.0</td>
-<td>https://zenodo.org/records/10047292</td>
-<td>Powers the model of the same name</td>
+<td>CC BY 4.0; release terms</td>
+<td>Pin label map and release; CT dataset differs from MR release</td>
+<td><a href="https://zenodo.org/records/10047292">Source</a></td>
 </tr>
 <tr class="even">
 <td>mri</td>
 <td>fastMRI</td>
-<td>~8,400 knee/brain volumes + raw k-space</td>
-<td>Reconstruction targets</td>
-<td>Open (registration)</td>
-<td>https://fastmri.med.nyu.edu/</td>
-<td>NYU/Meta; reconstruction benchmark</td>
+<td>Release-specific knee and brain collections</td>
+<td>Raw k-space and reconstruction references</td>
+<td>Registration and dataset agreement</td>
+<td>Do not combine release counts; preserve coil and acquisition metadata</td>
+<td><a href="https://fastmri.med.nyu.edu/">Source</a></td>
 </tr>
 <tr class="odd">
 <td>mri</td>
 <td>BraTS</td>
-<td>~2,000+ multi-sequence brain MRI</td>
-<td>Glioma sub-region segmentations</td>
-<td>Challenge registration</td>
-<td>https://www.synapse.org/brats</td>
-<td>Annual challenge since 2012</td>
+<td>Annual task-specific releases</td>
+<td>Defined brain-tumor subregions</td>
+<td>Challenge-specific access and terms</td>
+<td>Pin year/task; preprocessing and populations vary</td>
+<td><a href="https://www.synapse.org/brats">Source</a></td>
 </tr>
 <tr class="even">
-<td>ophtho</td>
-<td>EyePACS / Kaggle DR</td>
-<td>88,702 fundus images</td>
-<td>DR grade 0–4</td>
-<td>Kaggle terms</td>
-<td>https://www.kaggle.com/c/diabetic-retinopathy-detection</td>
-<td>Screening-grade labels</td>
+<td>us</td>
+<td>EchoNet-Dynamic</td>
+<td>10,030 apical four-chamber videos</td>
+<td>EF and selected ventricular tracings</td>
+<td>Research data agreement</td>
+<td>Selected clips; not a complete live-acquisition dataset</td>
+<td><a href="https://echonet.github.io/dynamic/">Source</a></td>
 </tr>
 <tr class="odd">
-<td>path</td>
-<td>CAMELYON16/17</td>
-<td>~1,400 whole-slide images</td>
-<td>Breast-cancer lymph-node metastases</td>
-<td>Open</td>
-<td>https://camelyon17.grand-challenge.org/</td>
-<td>WSI MIL benchmark</td>
+<td>us</td>
+<td>CAMUS</td>
+<td>500 patients</td>
+<td>Two- and four-chamber contours at defined phases</td>
+<td>Challenge access and terms</td>
+<td>Keep all views and phases from a patient together</td>
+<td><a href="https://www.creatis.insa-lyon.fr/Challenge/camus/">Source</a></td>
 </tr>
 <tr class="even">
+<td>mammo</td>
+<td>VinDr-Mammo v1.0.0</td>
+<td>5,000 four-view examinations; 20,000 images</td>
+<td>Breast-level assessments and finding annotations</td>
+<td>PhysioNet credentialing and data-use agreement</td>
+<td>Full-field digital mammography; not DBT</td>
+<td><a href="https://physionet.org/content/vindr-mammo/1.0.0/">Source</a></td>
+</tr>
+<tr class="odd">
+<td>mammo</td>
+<td>CBIS-DDSM</td>
+<td>Curated mass and calcification subsets</td>
+<td>Lesion annotations and pathology-linked labels</td>
+<td>TCIA collection terms</td>
+<td>Digitized film; do not describe as modern digital acquisition</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/cbis-ddsm/">Source</a></td>
+</tr>
+<tr class="even">
+<td>nm</td>
+<td>FDG-PET-CT-Lesions / autoPET source</td>
+<td>Release-specific whole-body PET/CT collection</td>
+<td>FDG-avid lesion segmentations</td>
+<td>TCIA collection and challenge terms</td>
+<td>Pin release and split; FDG evidence does not transfer to other tracers</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/">Source</a></td>
+</tr>
+<tr class="odd">
+<td>ophtho</td>
+<td>EyePACS diabetic-retinopathy competition</td>
+<td>Competition-specific train and test releases</td>
+<td>DR severity grades</td>
+<td>Kaggle competition and data terms</td>
+<td>Keep both eyes and repeated captures grouped; inspect quality exclusions</td>
+<td><a href="https://www.kaggle.com/c/diabetic-retinopathy-detection">Source</a></td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td>CAMELYON16 / CAMELYON17</td>
+<td>Separate challenge releases</td>
+<td>Lymph-node metastasis; release-specific region and case labels</td>
+<td>Challenge release terms</td>
+<td>Do not pool without checking patient grouping and overlap</td>
+<td><a href="https://camelyon17.grand-challenge.org/">Source</a></td>
+</tr>
+<tr class="odd">
 <td>video</td>
 <td>Cholec80</td>
 <td>80 cholecystectomy videos</td>
-<td>Phase + tool annotations</td>
-<td>Research license</td>
-<td>http://camma.u-strasbg.fr/datasets</td>
-<td>Surgical-phase benchmark</td>
+<td>Surgical phase and instrument annotations</td>
+<td>Research access agreement</td>
+<td>Split by procedure; distinguish causal from offline evaluation</td>
+<td><a href="https://camma.unistra.fr/datasets/">Source</a></td>
+</tr>
+<tr class="even">
+<td>video</td>
+<td>Kvasir-SEG</td>
+<td>1,000 polyp images</td>
+<td>Segmentation masks</td>
+<td>Dataset-specific terms; inspect source release</td>
+<td>Selected still images do not validate live event detection</td>
+<td><a href="https://github.com/DebeshJha/Kvasir-SEG">Source</a></td>
+</tr>
+<tr class="odd">
+<td>derm</td>
+<td>ISIC archive</td>
+<td>Collection-specific releases</td>
+<td>Lesion metadata and task-specific labels</td>
+<td>Image- and collection-specific licenses</td>
+<td>Keep repeated lesion images together; verify patient grouping</td>
+<td><a href="https://www.isic-archive.com/">Source</a></td>
+</tr>
+<tr class="even">
+<td>ecg</td>
+<td>PTB-XL v1.0.3</td>
+<td>Versioned 12-lead ECG waveform collection</td>
+<td>Clinical ECG statements</td>
+<td>PhysioNet release license and attribution</td>
+<td>Native waveforms; rendered derivatives are not naturally scanned ECGs</td>
+<td><a href="https://physionet.org/content/ptb-xl/1.0.3/">Source</a></td>
 </tr>
 </tbody>
 </table>
+</div>
+<section id="before-choosing-a-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="before-choosing-a-dataset">Before choosing a dataset</h2>
+<p>Write down the target population, acquisition, task, and clinical unit of evaluation. Then check whether the collection actually supplies the required inputs and reference labels. A challenge release may contain preprocessed volumes that conceal the work needed to accept routine hospital data. A selected-image dataset may exclude the technical failures that dominate a live service.</p>
+<p>Record the exact release, download date, license or agreement, file checksums, label dictionary, split manifest, and preprocessing. Keep patient and source-examination identifiers in a protected linkage system when permitted, while using appropriate research identifiers in analysis. Never assume two differently named datasets are independent; derivatives and repeated releases can overlap.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>What to record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Who is represented?</td>
+<td>Sites, inclusion criteria, population, exclusions, missingness</td>
+</tr>
+<tr class="even">
+<td>What was acquired?</td>
+<td>Modality, device, protocol, image type, geometry, timing</td>
+</tr>
+<tr class="odd">
+<td>What is the reference?</td>
+<td>Annotators, adjudication, clinical outcome, information available to labelers</td>
+</tr>
+<tr class="even">
+<td>What is independent?</td>
+<td>Patient, examination, procedure, specimen, and derivative relationships</td>
+</tr>
+<tr class="odd">
+<td>What use is permitted?</td>
+<td>Access agreement, redistribution, commercial use, retention obligations</td>
+</tr>
+<tr class="even">
+<td>What does the test set establish?</td>
+<td>Target population, fixed operating point, external validity, uncertainty</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="a-minimal-research-manifest" class="level2">
+<h2 class="anchored" data-anchor-id="a-minimal-research-manifest">A minimal research manifest</h2>
+<p>Use one row per defined source unit, with separate linked tables if the hierarchy is complex. Useful fields include a research patient key, examination key, source file or object identifiers, acquisition type, label version, split assignment, and exclusion reason. Do not put identifying clinical information into a public manifest.</p>
+<p>Patient-level splitting is a starting point, not a complete validation strategy. Site-held-out, temporal, device-held-out, or prospective evaluation may be needed for the intended claim. Keep the final test set untouched while selecting models and thresholds. Report technical exclusions with denominators instead of quietly removing them.</p>
+<p>A dataset absent from this directory may still be useful. Add it only after documenting the release, task, access terms, and primary source. Avoid aggregate counts that mix incompatible editions or count correlated derivatives as independent cases.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1136,7 +1244,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/a-dataset-directory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/a-dataset-directory.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
 </div>

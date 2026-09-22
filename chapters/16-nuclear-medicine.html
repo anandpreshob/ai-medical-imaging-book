@@ -80,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -419,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +529,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,10 +556,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-petspect" id="toc-what-is-petspect" class="nav-link active" data-scroll-target="#what-is-petspect"><span class="header-section-number">16.1</span> What is PET/SPECT?</a></li>
+  <li><a href="#what-is-nuclear-medicine" id="toc-what-is-nuclear-medicine" class="nav-link active" data-scroll-target="#what-is-nuclear-medicine"><span class="header-section-number">16.1</span> What is nuclear medicine?</a>
+  <ul class="collapse">
+  <li><a href="#quantification-and-suv" id="toc-quantification-and-suv" class="nav-link" data-scroll-target="#quantification-and-suv"><span class="header-section-number">16.1.1</span> Quantification and SUV</a></li>
+  </ul></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">16.2</span> Why and when it’s ordered</a></li>
   <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">16.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">16.4</span> How it works in a modern hospital</a></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">16.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#fusion-is-a-hypothesis-to-inspect" id="toc-fusion-is-a-hypothesis-to-inspect" class="nav-link" data-scroll-target="#fusion-is-a-hypothesis-to-inspect"><span class="header-section-number">16.4.1</span> Fusion is a hypothesis to inspect</a></li>
+  <li><a href="#an-illustrative-comparison" id="toc-an-illustrative-comparison" class="nav-link" data-scroll-target="#an-illustrative-comparison"><span class="header-section-number">16.4.2</span> An illustrative comparison</a></li>
+  </ul></li>
   <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">16.5</span> The data landscape</a></li>
   <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">16.6</span> The model landscape</a></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">16.7</span> FDA-cleared AI products</a></li>
@@ -563,57 +599,289 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Nuclear medicine measures the distribution of an administered radiopharmaceutical over time. The image reflects a biological process, tracer kinetics, acquisition, and reconstruction. It is not simply a bright-region map of disease. AI applications must preserve that chain of meaning, especially when they produce quantitative measurements or combine functional and anatomical images.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the clinician
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Ask whether an automated uptake value is comparable across examinations and whether every high-uptake focus is actually part of the target disease. Physiologic activity, treatment effects, and technical artifacts can all influence the result.</p>
 </div>
 </div>
-<section id="what-is-petspect" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="what-is-petspect"><span class="header-section-number">16.1</span> What is PET/SPECT?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tracer identity, timing, units, calibration, corrections, and reconstruction are model inputs even when they are not tensor channels. PET and CT in a hybrid examination are related but not guaranteed to be perfectly aligned.</p>
+</div>
+</div>
+<section id="what-is-nuclear-medicine" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="what-is-nuclear-medicine"><span class="header-section-number">16.1</span> What is nuclear medicine?</h2>
+<p>In PET, a positron-emitting tracer produces annihilation photons detected in coincidence. Reconstruction estimates tracer distribution from the recorded events, with corrections for effects such as attenuation, scatter, and random coincidences. SPECT detects emitted gamma photons through collimation and reconstructs their distribution from projections. Hybrid PET/CT, PET/MRI, and SPECT/CT combine functional and anatomical information. The <a href="https://www.radiologyinfo.org/en/info/pet">ACR/RSNA PET overview</a> describes common clinical uses and examination steps.</p>
+<p>Different tracers interrogate different processes. FDG is related to glucose metabolism; other tracers target different biological pathways. A model trained on FDG oncology studies should not be assumed to work on another tracer, even if both datasets use PET and have similar array dimensions. The distribution of normal uptake and the clinical target can change substantially.</p>
+<div id="fig-pet-acquisition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Administration and timing lead to coincidence measurements, correction and reconstruction, and a quantitative image with documented units.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pet-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch16/acquisition.svg" class="img-fluid figure-img" alt="Administration and timing lead to coincidence measurements, correction and reconstruction, and a quantitative image with documented units.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16.1: A PET examination connects radiopharmaceutical administration, event acquisition, corrections, and reconstruction.
+</figcaption>
+</figure>
+</div>
+<p>The accompanying CT may serve attenuation correction and anatomical localization, or may be a diagnostic examination with its own protocol. These roles matter. A low-dose noncontrast localization CT cannot silently replace a diagnostic contrast-enhanced CT in a downstream model. Respiratory motion and differences in acquisition timing can cause misregistration, particularly near the diaphragm.</p>
+<section id="quantification-and-suv" class="level3" data-number="16.1.1">
+<h3 data-number="16.1.1" class="anchored" data-anchor-id="quantification-and-suv"><span class="header-section-number">16.1.1</span> Quantification and SUV</h3>
+<p>A simplified body-weight standardized uptake value is</p>
+<p><span class="math display">\[SUV_{bw}=\frac{C(t)}{A_{ref}/m},\]</span></p>
+<p>where <span class="math inline">\(C(t)\)</span> is activity concentration at an appropriate reference time, <span class="math inline">\(A_{ref}\)</span> is administered activity represented at a consistent decay reference, and <span class="math inline">\(m\)</span> is body mass. Unit consistency is essential. Alternative normalization conventions exist; an exported number should specify which was used.</p>
+<p>This equation is not an implementation recipe for every DICOM object. Quantitative units, decay-correction status, administration time, residual activity handling, scanner calibration, and metadata conventions must be interpreted correctly. Some images already contain normalized values. Applying a second conversion can produce plausible but wrong measurements.</p>
+<div id="fig-pet-suv" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Activity concentration, administered activity and decay reference, body-mass normalization, and unit checks combine into a documented SUV convention.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pet-suv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch16/suv.svg" class="img-fluid figure-img" alt="Activity concentration, administered activity and decay reference, body-mass normalization, and unit checks combine into a documented SUV convention.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-suv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16.2: Quantitative uptake requires aligned units and timing, not just pixel values.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="16.2">
 <h2 data-number="16.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">16.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>PET and SPECT support questions in oncology, cardiology, neurology, infection and inflammation, and other areas. The indication determines tracer choice, preparation, acquisition timing, coverage, and interpretation. Oncology studies may support staging or treatment-response assessment; cardiac nuclear studies address different physiological questions and use different acquisition and analysis pathways.</p>
+<p>Preparation and timing can influence comparability. For example, an FDG study’s clinical interpretation considers factors beyond visible lesions, including physiologic uptake and patient preparation. This chapter does not prescribe a preparation protocol; the AI system should record whether the required clinical protocol was followed and whether deviations affect eligibility.</p>
+<p>A disease-specific examination may contain multiple bed positions, reconstructions, attenuation-corrected and noncorrected series, CT, and derived displays. A maximum-intensity projection is a useful overview but discards depth and is not a substitute for the quantitative volume used by a lesion-measurement model.</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="16.3">
 <h2 data-number="16.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">16.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Candidate output</th>
+<th>Key ambiguity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Lesion detection</td>
+<td>Candidate abnormal uptake focus</td>
+<td>Physiologic and inflammatory uptake can resemble target disease</td>
+</tr>
+<tr class="even">
+<td>Disease-burden measurement</td>
+<td>Lesion masks and aggregate volume</td>
+<td>Lesion inclusion and boundary conventions change the result</td>
+</tr>
+<tr class="odd">
+<td>Treatment comparison</td>
+<td>Matched lesions and uptake changes</td>
+<td>Timing, therapy, acquisition, and criteria affect interpretation</td>
+</tr>
+<tr class="even">
+<td>Image enhancement</td>
+<td>Denoised or accelerated reconstruction</td>
+<td>Smoother images may alter small lesions or uptake extrema</td>
+</tr>
+<tr class="odd">
+<td>Organ quantification</td>
+<td>Regional uptake or functional measures</td>
+<td>Tracer, reference region, calibration, and task must match</td>
+</tr>
+</tbody>
+</table>
+<p>A lesion mask is not merely a thresholded bright region. Segmentation can depend on background activity, lesion size, contrast, reconstruction, and the reference protocol. If a dataset labels only malignant lesions, the model must learn to exclude physiologic and unrelated uptake. If annotations omit difficult lesions, evaluation may reward that omission.</p>
+<p>Derived measures such as total lesion volume or total lesion glycolysis need explicit definitions. State which lesions are included, which uptake summary is used, and how partial coverage or uncertain foci are handled. A number without that policy is difficult to compare across software or visits.</p>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="16.4">
 <h2 data-number="16.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">16.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<p>The nuclear-medicine workflow includes radiopharmaceutical handling, administration records, an uptake or dynamic acquisition period as applicable, scanning, reconstruction, and interpretation. The patient, administration, acquisition, and reconstructed series must remain correctly linked. A missing administration record can invalidate quantitative post-processing even when an image is visually readable.</p>
+<p>A robust input manifest records tracer, relevant times and time zones, quantitative units, correction information, reconstruction, coverage, and paired anatomical series. Do not select the largest series or the one whose name contains “PET” without checking its role. Derived screenshots, noncorrected images, and quantitative reconstructions are not interchangeable.</p>
+<section id="fusion-is-a-hypothesis-to-inspect" class="level3" data-number="16.4.1">
+<h3 data-number="16.4.1" class="anchored" data-anchor-id="fusion-is-a-hypothesis-to-inspect"><span class="header-section-number">16.4.1</span> Fusion is a hypothesis to inspect</h3>
+<p>Hybrid acquisition improves correspondence but does not eliminate motion. Verify registration before using CT anatomy to classify a PET focus or transferring a PET mask into CT coordinates. Resampling must preserve physical geometry, and interpolation can affect small structures and maximum values. Keep native-resolution measurements where required by the validated method.</p>
+<div id="fig-pet-partial" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A conceptual narrow source profile becomes broader and lower after limited-resolution imaging; the curves are illustrative, not patient measurements.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pet-partial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch16/partial-volume.svg" class="img-fluid figure-img" alt="A conceptual narrow source profile becomes broader and lower after limited-resolution imaging; the curves are illustrative, not patient measurements.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-partial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16.3: Partial-volume effects can make a small hot structure appear less intense and less sharply bounded.
+</figcaption>
+</figure>
+</div>
+<p>Return lesion overlays on both functional and anatomical images, identify the source reconstruction, and expose quality flags. A reviewer should be able to exclude physiologic uptake, correct a boundary, or mark a focus indeterminate. Preserve edits and recompute aggregate measures from the accepted lesion set.</p>
+</section>
+<section id="an-illustrative-comparison" class="level3" data-number="16.4.2">
+<h3 data-number="16.4.2" class="anchored" data-anchor-id="an-illustrative-comparison"><span class="header-section-number">16.4.2</span> An illustrative comparison</h3>
+<p>Suppose a lesion has a reported SUV of 8.0 at one visit and 6.0 at another. The arithmetic decrease is 25%. That alone does not establish treatment response. Check the uptake measure, tracer, timing, reconstruction, patient preparation, lesion identity, and the response framework used by the clinical service. A change in which voxel supplies the maximum can affect an extreme-value measure even when the underlying lesion changes little.</p>
+<div id="fig-pet-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two visits undergo tracer, timing, reconstruction, and registration checks before lesion matching and a clinically interpreted change estimate.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pet-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch16/comparison.svg" class="img-fluid figure-img" alt="Two visits undergo tracer, timing, reconstruction, and registration checks before lesion matching and a clinically interpreted change estimate.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16.4: Longitudinal PET comparison requires compatible acquisition and a reviewed lesion inventory.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="16.5">
 <h2 data-number="16.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">16.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "nm"). -->
+<p>Public PET/CT resources often focus on a particular tracer and oncology population. The autoPET family of challenges demonstrates the distinction between recognizing uptake and segmenting the target lesion set. Dataset editions and challenge tasks can change; record exactly which release and splits are used.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FDG-PET-CT-Lesions / autoPET source</td>
+<td>Release-specific whole-body PET/CT collection</td>
+<td>FDG-avid lesion segmentations</td>
+<td>TCIA collection and challenge terms</td>
+<td>Pin release and split; FDG evidence does not transfer to other tracers</td>
+<td><a href="https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Patient-level grouping is essential. Keep repeated visits and derivative reconstructions from crossing partitions in a way that leaks identity or outcome information. For multimodal models, verify that all channels describe the same acquisition episode and that preprocessing did not lose registration. Store missing metadata explicitly rather than replacing it with a population average and forgetting the substitution.</p>
+<p>References may combine expert review with follow-up, pathology, or a defined segmentation protocol. There is no universal ground-truth contour for every uptake focus. Evaluate lesion inclusion and boundary agreement separately when possible. A model can achieve a high voxel overlap by segmenting a few large lesions while missing several small but clinically relevant lesions.</p>
 </section>
 <section id="the-model-landscape" class="level2" data-number="16.6">
 <h2 data-number="16.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">16.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "nm"); open vs. closed. -->
+<p>Three-dimensional segmentation models can combine PET and CT channels. Their success depends on channel semantics and normalization, not just architecture. Some approaches first segment organs or identify likely physiologic uptake; others learn an end-to-end lesion mask. A two-stage pipeline offers intermediate checks but can propagate upstream errors.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="even">
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="odd">
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="even">
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Self-configuring segmentation frameworks provide useful baselines for an appropriately curated PET/CT task. General interactive tools may help curate lesions, but a model’s availability does not establish quantitative validity. Image-enhancement models require an especially clear distinction between visually improved appearance and preserved lesion detectability and uptake measurements.</p>
+<p>Evaluation should include lesion sensitivity, false-positive burden, segmentation agreement, and errors in the quantities actually used. Stratify by lesion size and location, disease burden, tracer, and acquisition settings within the intended scope. Report performance on examinations with no target lesions. A system that labels normal uptake as disease can impose substantial review burden.</p>
+<p>For reduced-count or shorter-acquisition methods, test the deployed acquisition–enhancement chain. Retrospective count reduction is useful but may not reproduce all effects of a different clinical acquisition. Assess small lesions and out-of-distribution appearances explicitly. Do not validate a denoiser solely with image-similarity metrics against another reconstruction.</p>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="16.7">
 <h2 data-number="16.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">16.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "nm"). -->
+<p>The selected product illustrates image processing rather than autonomous lesion diagnosis.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Submission</th>
+<th>Indication summary</th>
+<th>Boundary</th>
+<th>FDA record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SubtlePET</td>
+<td>Subtle Medical</td>
+<td>K182336; 510(k)</td>
+<td>Processing including noise reduction for specified FDG and amyloid PET images</td>
+<td>Supported PET and hybrid inputs; not general tracer diagnosis</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K182336.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The original <a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K182336.pdf">SubtlePET summary</a> describes processing that includes noise reduction for specified PET images, including supported hybrid workflows. Its indication should not be expanded into authorization to diagnose cancer, quantify every tracer, or choose a treatment. Check the specific supported inputs and current labeling for any contemplated implementation.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="16.8">
 <h2 data-number="16.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">16.8</span> Open challenges</h2>
+<p>Small lesions are difficult because image resolution and partial-volume effects blur boundaries and reduce apparent uptake. Reconstruction changes can alter both lesion visibility and quantitative summaries. Consistency across time is therefore an acquisition and software problem as well as a segmentation problem.</p>
+<p>Multitracer generalization is another frontier. A useful system should identify the tracer and either select an appropriately validated model or abstain. Training a general model on mixed tracers requires enough examples and labels to distinguish normal biodistribution from disease for each setting; a modality tag alone is insufficient.</p>
+<p>Whole-body disease burden creates a challenging review problem. A patient may have many lesions, confluent disease, or uncertain foci. The interface needs efficient lesion inventory management and a clear definition of what was counted. Aggregate scores should remain traceable to individual regions.</p>
+<p>Finally, quantitative metadata are often less portable than pixels. A service that works on one scanner’s exports may fail after a software upgrade or transfer between institutions. Include metadata validation and known-value checks in commissioning and revalidation.</p>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="16.9">
 <h2 data-number="16.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">16.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Agents that reconcile PET findings with the CT anatomy automatically, compute SUV deltas across studies, and draft response assessments against trial criteria — the most quantification-heavy modality benefits most from agents that never miss a measurement. -->
+<p>A nuclear-medicine agent can reconcile administration and acquisition records, verify quantitative prerequisites, identify compatible prior examinations, and prepare a lesion comparison workspace. It can flag incompatible tracers, missing units, or suspicious timing before a measurement is accepted.</p>
+<p>It should separate technical computation from clinical response classification. A bounded agent can calculate a change from reviewed measurements and cite the chosen rule; it should not invent comparability or silently select a response framework. When prerequisites are unresolved, “comparison unavailable” is a useful result.</p>
+<p>A mature workflow retains the original reconstruction, enhanced images if used, model masks, human revisions, and the final accepted measurement. This makes it possible to determine whether a discrepancy arose from acquisition, enhancement, segmentation, lesion selection, or interpretation.</p>
 </section>
 <section id="further-reading" class="level2" data-number="16.10">
 <h2 data-number="16.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">16.10</span> Further reading</h2>
+<ul>
+<li><a href="https://www.radiologyinfo.org/en/info/pet">ACR/RSNA: PET/CT</a>.</li>
+<li><a href="https://www.cancerimagingarchive.net/collection/fdg-pet-ct-lesions/">FDG-PET-CT-Lesions collection at TCIA</a>.</li>
+<li><a href="https://autopet.grand-challenge.org/">autoPET challenge portal</a> — inspect the task and release rather than assuming all editions are identical.</li>
+<li><a href="https://github.com/MIC-DKFZ/nnUNet">nnU-Net</a>.</li>
+<li><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf18/K182336.pdf">SubtlePET FDA summary</a>.</li>
+</ul>
+<p><strong>Review questions.</strong> Which metadata are needed before computing SUV? Why can PET/CT fusion be inaccurate despite hybrid acquisition? What additional evidence is needed to interpret a fall in an uptake value as treatment response?</p>
 
 
 </section>
@@ -1044,8 +1312,8 @@ Agents that reconcile PET findings with the CT anatomy automatically, compute SU
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/17-ophthalmic-imaging.html" class="pagination-link" aria-label="Ophthalmic Imaging: Fundus &amp; OCT">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/17-ophthalmic-imaging.html" class="pagination-link" aria-label="Ophthalmic Imaging">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

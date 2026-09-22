@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,12 +527,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-mri" id="toc-what-is-mri" class="nav-link active" data-scroll-target="#what-is-mri"><span class="header-section-number">13.1</span> What is MRI?</a></li>
+  <li><a href="#what-is-mri" id="toc-what-is-mri" class="nav-link active" data-scroll-target="#what-is-mri"><span class="header-section-number">13.1</span> What is MRI?</a>
+  <ul class="collapse">
+  <li><a href="#from-spins-to-images" id="toc-from-spins-to-images" class="nav-link" data-scroll-target="#from-spins-to-images"><span class="header-section-number">13.1.1</span> From spins to images</a></li>
+  <li><a href="#reconstruction-is-a-different-task-from-interpretation" id="toc-reconstruction-is-a-different-task-from-interpretation" class="nav-link" data-scroll-target="#reconstruction-is-a-different-task-from-interpretation"><span class="header-section-number">13.1.2</span> Reconstruction is a different task from interpretation</a></li>
+  </ul></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">13.2</span> Why and when it’s ordered</a></li>
   <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">13.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">13.4</span> How it works in a modern hospital</a></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">13.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#build-a-sequence-inventory" id="toc-build-a-sequence-inventory" class="nav-link" data-scroll-target="#build-a-sequence-inventory"><span class="header-section-number">13.4.1</span> Build a sequence inventory</a></li>
+  <li><a href="#align-without-destroying-provenance" id="toc-align-without-destroying-provenance" class="nav-link" data-scroll-target="#align-without-destroying-provenance"><span class="header-section-number">13.4.2</span> Align without destroying provenance</a></li>
+  <li><a href="#return-an-interpretable-result" id="toc-return-an-interpretable-result" class="nav-link" data-scroll-target="#return-an-interpretable-result"><span class="header-section-number">13.4.3</span> Return an interpretable result</a></li>
+  </ul></li>
   <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">13.5</span> The data landscape</a></li>
-  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">13.6</span> The model landscape</a></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">13.6</span> The model landscape</a>
+  <ul class="collapse">
+  <li><a href="#evaluate-the-claim-not-just-the-mask" id="toc-evaluate-the-claim-not-just-the-mask" class="nav-link" data-scroll-target="#evaluate-the-claim-not-just-the-mask"><span class="header-section-number">13.6.1</span> Evaluate the claim, not just the mask</a></li>
+  <li><a href="#worked-longitudinal-example" id="toc-worked-longitudinal-example" class="nav-link" data-scroll-target="#worked-longitudinal-example"><span class="header-section-number">13.6.2</span> Worked longitudinal example</a></li>
+  </ul></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">13.7</span> FDA-cleared AI products</a></li>
   <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">13.8</span> Open challenges</a></li>
   <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">13.9</span> The agentic outlook</a></li>
@@ -563,57 +576,326 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>An MRI examination is a collection of experiments on the same anatomy. One sequence emphasizes fluid, another diffusion, another susceptibility, and another the response to contrast material. A model that receives the wrong experiment can return a plausible answer to the wrong question. Sequence identity, spatial alignment, and acquisition quality therefore belong inside the inference contract.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the clinician
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>Ask which sequences the model requires, how missing sequences are handled, and whether its measurements remain comparable after a scanner or protocol change. A successful brain segmentation is not an explanation for a patient’s symptoms.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>MRI signal values generally lack the universal physical scale that conventional CT approximates with HU. Preserve sequence and acquisition metadata; do not assume a fixed intensity threshold has the same meaning across scanners.</p>
 </div>
 </div>
 <section id="what-is-mri" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="what-is-mri"><span class="header-section-number">13.1</span> What is MRI?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<section id="from-spins-to-images" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="from-spins-to-images"><span class="header-section-number">13.1.1</span> From spins to images</h3>
+<p>A strong magnetic field establishes a net magnetization. Radiofrequency pulses perturb it, and receiver coils measure signals as magnetization evolves. Magnetic-field gradients encode position. The sampled spatial-frequency data, called <strong>k-space</strong>, are reconstructed into images. Repetition time, echo time, flip angle, preparation pulses, sampling pattern, and reconstruction all influence the result. The <a href="https://www.radiologyinfo.org/en/info/bodymr">ACR/RSNA MRI overview</a> introduces the examination and its safety considerations.</p>
+<p>T1-weighted, T2-weighted, and fluid-attenuated inversion recovery (FLAIR) images are contrasts, not interchangeable photographs. FLAIR suppresses much of the cerebrospinal-fluid signal to make some adjacent abnormalities more conspicuous. Diffusion-weighted imaging depends on water motion and acquisition settings; the apparent diffusion coefficient (ADC) is a derived quantitative estimate. Bright diffusion-weighted signal alone does not establish restricted diffusion: interpretation uses the ADC map and other sequences. Susceptibility-sensitive imaging responds to local field variation. Post-contrast imaging requires the agent, timing, and pre-contrast comparison to be understood.</p>
+<div id="fig-mri-sequences" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four MRI sequence cards covering T1 anatomy, T2 and FLAIR fluid sensitivity, diffusion and ADC, and susceptibility.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mri-sequences-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch13/sequences.svg" class="img-fluid figure-img" alt="Four MRI sequence cards covering T1 anatomy, T2 and FLAIR fluid sensitivity, diffusion and ADC, and susceptibility.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-sequences-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1: Conceptual comparison of MRI sequence families and the information they emphasize. The cards describe acquisition contrasts, not diagnostic rules or patient images.
+</figcaption>
+</figure>
+</div>
+<p>Images may be acquired as two-dimensional slices with gaps or as three-dimensional volumes. A stack of thick slices is not equivalent to an isotropic volume simply because software resamples it into cubes. Partial-volume effects and missing information remain. A routine study may contain hundreds or thousands of images across sequences, while raw multicoil k-space can be much larger than the reconstructed images. Storage and compute requirements must be measured on the intended protocol.</p>
+</section>
+<section id="reconstruction-is-a-different-task-from-interpretation" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="reconstruction-is-a-different-task-from-interpretation"><span class="header-section-number">13.1.2</span> Reconstruction is a different task from interpretation</h3>
+<p>Reconstruction estimates an image from measurements. Segmentation estimates an anatomical label from an image. Disease classification estimates a clinical category. These operations have different reference standards. A reconstruction model with excellent pixel similarity can still alter a small lesion; a lesion classifier cannot validate the fidelity of every reconstructed structure.</p>
+<p>Undersampling reduces acquired measurements and can shorten examinations, but creates an inverse problem. Learned priors help choose among possible images consistent with the measurements. Data consistency constrains that choice; it does not by itself prove that all diagnostically relevant information has been preserved. Evaluation should include the acquisition pattern, coils, scanner field strength, anatomy, and abnormalities expected in deployment.</p>
+<div id="fig-mri-reconstruction" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Measured k-space enters reconstruction with a data-consistency check; the resulting image undergoes image-quality and clinical-task assessment.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mri-reconstruction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch13/reconstruction.svg" class="img-fluid figure-img" alt="Measured k-space enters reconstruction with a data-consistency check; the resulting image undergoes image-quality and clinical-task assessment.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-reconstruction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2: MRI reconstruction separates measured k-space from an estimated image and downstream interpretation.
+</figcaption>
+</figure>
+</div>
+</section>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">13.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>MRI provides soft-tissue contrast without ionizing radiation. Common questions involve the brain and spine, joints and soft tissues, liver and pelvis, breast, and heart. Its value depends on the question and protocol: an abbreviated screening examination, a dedicated epilepsy study, and a multiparametric prostate examination should not share a generic eligibility rule.</p>
+<p>Acquisition is comparatively sensitive to motion and often requires the patient to remain still for a sustained period. Implant conditions, metallic foreign bodies, monitoring equipment, claustrophobia, and the need for sedation or contrast can affect feasibility. These are clinical screening responsibilities. A scheduling assistant can collect documented information and highlight unresolved checks, but cannot infer implant safety from a device name found in free text.</p>
+<p>The ordering question also determines what constitutes success. In a multiple-sclerosis follow-up study, detecting new lesions and comparing prior examinations may matter more than an exact whole-brain mask. In preoperative planning, boundaries near eloquent anatomy matter. In a dementia work-up, regional volumes are one piece of a broader assessment; normative percentiles do not independently establish a diagnosis.</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">13.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<p>MRI supports recognition and characterization of many conditions, but a useful model specification names a narrower task.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clinical question</th>
+<th>Possible model output</th>
+<th>Necessary boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Acute neurologic deficit</td>
+<td>Candidate diffusion abnormality</td>
+<td>Correlate with ADC, other sequences, symptoms, and timing</td>
+</tr>
+<tr class="even">
+<td>Brain tumor follow-up</td>
+<td>Enhancing and nonenhancing lesion masks</td>
+<td>Treatment effect and tumor progression can overlap in appearance</td>
+</tr>
+<tr class="odd">
+<td>Demyelinating disease</td>
+<td>Lesion burden and candidate new lesions</td>
+<td>Registration and protocol differences can mimic change</td>
+</tr>
+<tr class="even">
+<td>Neurodegeneration assessment</td>
+<td>Regional brain volumes</td>
+<td>Normative reference and clinical interpretation remain essential</td>
+</tr>
+<tr class="odd">
+<td>Musculoskeletal injury</td>
+<td>Structure localization or suspected lesion</td>
+<td>Anatomy, sequence, and reference diagnosis must match the task</td>
+</tr>
+<tr class="even">
+<td>Cardiac function</td>
+<td>Chamber contours across cine frames</td>
+<td>Temporal phase, contour convention, and image quality affect measurements</td>
+</tr>
+</tbody>
+</table>
+<p>A label called “tumor” may combine viable tumor, edema, necrosis, or a challenge-specific union of regions. If a training dataset defines one composite label and the clinical application needs another, no amount of model accuracy repairs the semantic mismatch. Include a label dictionary with every exported mask.</p>
+<p>For a longitudinal lesion service, distinguish three questions: did the algorithm delineate the visible lesion correctly; did it match the same lesion across visits; and does the observed change imply clinically meaningful progression? These require separate evidence. A lesion can have a reproducible volume without a reliable biological interpretation.</p>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="13.4">
 <h2 data-number="13.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">13.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<section id="build-a-sequence-inventory" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="build-a-sequence-inventory"><span class="header-section-number">13.4.1</span> Build a sequence inventory</h3>
+<p>The technologist selects a protocol, checks safety, positions the patient and coils, and acquires sequences. Images are reconstructed and sent to PACS. Radiologists interpret the examination with prior studies and clinical information. Some protocols evolve during acquisition when a finding or quality problem warrants additional sequences.</p>
+<p>An AI service should build an inventory before selecting inputs. Useful metadata include modality, body region, acquisition type, repetition and echo times, inversion time, flip angle, diffusion parameters, image type, and contrast information when available. Series descriptions help but are not standardized enough to be the sole source of truth. Local naming conventions, derived images, motion-corrected series, and repeat acquisitions create ambiguity.</p>
+<p>For each required input, record a status such as present, missing, ambiguous, or inadequate. Do not silently replace post-contrast T1 with pre-contrast T1, or a calculated image with an acquired image. A classifier may assist sequence identification, but uncertain classifications need an explicit fallback.</p>
+</section>
+<section id="align-without-destroying-provenance" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="align-without-destroying-provenance"><span class="header-section-number">13.4.2</span> Align without destroying provenance</h3>
+<p>Multi-sequence models often require registration, orientation normalization, resampling, and intensity normalization. Their order and parameters are part of the model. Rigid registration may suffice for some within-session brain tasks; deformable registration introduces stronger assumptions and can distort disease-related anatomy. Brain extraction may fail after surgery or with unusual anatomy.</p>
+<div id="fig-mri-alignment" class="quarto-float quarto-figure quarto-figure-center anchored" alt="T1, T2, FLAIR, and diffusion inputs are checked for completeness, aligned to a documented reference, processed, and mapped back to source coordinates.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mri-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch13/alignment.svg" class="img-fluid figure-img" alt="T1, T2, FLAIR, and diffusion inputs are checked for completeness, aligned to a documented reference, processed, and mapped back to source coordinates.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.3: A sequence inventory precedes alignment and multi-sequence inference. Outputs are returned to the original reference grid.
+</figcaption>
+</figure>
+</div>
+<p>Keep the original images immutable. Store transforms, interpolation methods, reference-series identity, and the inverse mapping used for output. Use nearest-neighbor interpolation for categorical labels where appropriate; do not linearly interpolate class IDs. Quantitative maps need their own unit and interpolation policy. Inspect overlays in all three planes and on the source sequence that makes the abnormality visible.</p>
+</section>
+<section id="return-an-interpretable-result" class="level3" data-number="13.4.3">
+<h3 data-number="13.4.3" class="anchored" data-anchor-id="return-an-interpretable-result"><span class="header-section-number">13.4.3</span> Return an interpretable result</h3>
+<p>A result should identify the selected sequences, unsupported or missing inputs, measured structures, units, model version, and quality flags. If a downstream viewer cannot show the relevant sequence or overlay, the result is not reviewable. A report should distinguish automated measurement from clinician interpretation and preserve edited versions of masks instead of overwriting the original model output.</p>
+<p>For a hypothetical lesion-burden service, define an idempotent job key from the study, selected series, model version, and configuration. Repeated sends from PACS should not generate duplicate clinical findings. A revised sequence selection must generate a new traceable result, with the earlier result marked superseded rather than deleted.</p>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="13.5">
 <h2 data-number="13.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">13.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "mri"). -->
+<p>MRI datasets frequently answer different questions despite sharing an anatomical region. Raw-data collections support reconstruction research; annotated image collections support segmentation or classification. Challenge datasets may be registered, skull-stripped, and resampled before release. A model trained on those inputs has not demonstrated that it can perform the missing preprocessing on routine hospital examinations.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fastMRI</td>
+<td>Release-specific knee and brain collections</td>
+<td>Raw k-space and reconstruction references</td>
+<td>Registration and dataset agreement</td>
+<td>Do not combine release counts; preserve coil and acquisition metadata</td>
+<td><a href="https://fastmri.med.nyu.edu/">Source</a></td>
+</tr>
+<tr class="even">
+<td>BraTS</td>
+<td>Annual task-specific releases</td>
+<td>Defined brain-tumor subregions</td>
+<td>Challenge-specific access and terms</td>
+<td>Pin year/task; preprocessing and populations vary</td>
+<td><a href="https://www.synapse.org/brats">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <a href="https://github.com/facebookresearch/fastMRI">fastMRI project</a> provides reconstruction resources and baseline implementations. The specific release, anatomy, coil configuration, and split matter more than an aggregate image count. BraTS is a family of tasks and releases, not one timeless dataset. Record the edition, tumor population, preprocessing, available sequences, and definition of each target region.</p>
+<p>Split data by patient before creating patches, slices, or augmented examples. Repeated scans from the same person belong together unless the evaluation explicitly models a prospective temporal deployment and prevents future information from leaking backward. For multisite work, reserve an external site or scanner/protocol combination when possible. Report performance on missing-sequence and postoperative cases separately if they are within scope.</p>
+<p>Reference labels also have uncertainty. Expert contours vary at infiltrative tumor margins, poorly defined lesions, and partial-volume boundaries. A consensus mask is a useful target, but it does not remove biological ambiguity. Document annotator expertise, adjudication, and whether the reference was established with access to follow-up or additional imaging unavailable to the model.</p>
 </section>
 <section id="the-model-landscape" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">13.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "mri"); open vs. closed. -->
+<p>Reconstruction models operate on complex-valued measurements or reconstructed images, sometimes with explicit coil-sensitivity modeling and iterative data-consistency steps. Segmentation models range from task-specific three-dimensional networks to self-configuring frameworks and interactive foundation models. A promptable model can accelerate annotation, but its output still depends on prompts, anatomy, and sequence characteristics.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>fastMRI baselines</td>
+<td>Reconstruction</td>
+<td>Reference implementations and release-specific checkpoints</td>
+<td>MIT code; dataset agreement separate</td>
+<td>Research reconstruction baseline; pin sampling and coil setup</td>
+<td><a href="https://github.com/facebookresearch/fastMRI">Source</a></td>
+</tr>
+<tr class="even">
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="odd">
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="even">
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="odd">
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Start with a strong task-specific baseline and an explicit preprocessing contract. <a href="https://github.com/MIC-DKFZ/nnUNet">nnU-Net</a> is useful for assessing whether additional architectural complexity improves the actual task. General frameworks listed here are development tools, not evidence that every checkpoint supports every MRI sequence.</p>
+<section id="evaluate-the-claim-not-just-the-mask" class="level3" data-number="13.6.1">
+<h3 data-number="13.6.1" class="anchored" data-anchor-id="evaluate-the-claim-not-just-the-mask"><span class="header-section-number">13.6.1</span> Evaluate the claim, not just the mask</h3>
+<p>For segmentation, report overlap and boundary metrics alongside structure-level volume error and failures. For small lesions, lesion-wise sensitivity and false positives per examination can be more informative than a single global Dice score. For longitudinal analysis, test matching accuracy and change estimates. For reconstruction, combine image-fidelity metrics with blinded clinical assessment appropriate to the proposed use.</p>
+<p>A practical validation matrix includes scanner vendor and field strength, protocol, pathology burden, age range, image quality, and prior surgery. Small subgroups yield uncertain estimates; show the number of patients and intervals rather than interpreting every difference as established bias. Thresholds and preprocessing should be fixed before evaluating a held-out set.</p>
+</section>
+<section id="worked-longitudinal-example" class="level3" data-number="13.6.2">
+<h3 data-number="13.6.2" class="anchored" data-anchor-id="worked-longitudinal-example"><span class="header-section-number">13.6.2</span> Worked longitudinal example</h3>
+<p>Suppose a lesion mask measures 2.0 mL at baseline and 2.3 mL at follow-up. The arithmetic change is 15%. This is an illustrative calculation, not a progression criterion. Before interpreting it, check whether both masks describe the same target, whether contrast timing differs, whether registration aligns the lesion rather than merely the skull, and whether boundary disagreement is large relative to 0.3 mL.</p>
+<div id="fig-mri-longitudinal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Baseline and follow-up studies each pass protocol and quality checks before registration, lesion matching, and a reviewed change estimate.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mri-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch13/longitudinal.svg" class="img-fluid figure-img" alt="Baseline and follow-up studies each pass protocol and quality checks before registration, lesion matching, and a reviewed change estimate.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.4: A longitudinal comparison requires consistent acquisition, spatial matching, and uncertainty-aware measurement.
+</figcaption>
+</figure>
+</div>
+<p>If the follow-up sequence is absent, the correct outcome may be “not comparable.” If the lesion is new, it has no baseline volume. If surgery changed the anatomy, a routine matching algorithm may be inappropriate. These states should be represented explicitly rather than coerced into a numeric percentage.</p>
+</section>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="13.7">
 <h2 data-number="13.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">13.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "mri"). -->
+<p>The table gives selected historical US authorizations with links to the actual submission. It is not a comprehensive current inventory or an endorsement. Not every automated imaging product uses deep learning, and a quantitative post-processing authorization is not an authorization for autonomous diagnosis.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Submission</th>
+<th>Indication summary</th>
+<th>Boundary</th>
+<th>FDA record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NeuroQuant</td>
+<td>CorTechs Labs</td>
+<td>K061855; 510(k)</td>
+<td>Labeling and volumetric quantification of brain structures on MR images</td>
+<td>Original quantitative software record; not autonomous etiologic diagnosis</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf6/K061855.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The original NeuroQuant record describes automated labeling, visualization, and volumetric quantification of brain structures. Its scope should not be rewritten as a claim to diagnose dementia or another cause of symptoms. Subsequent product versions require their own review. Check supported image acquisition and the population represented by any normative reference before clinical use.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="13.8">
 <h2 data-number="13.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">13.8</span> Open challenges</h2>
+<p>MRI domain shift is multidimensional: field strength, coils, sequences, reconstruction software, motion, and patient anatomy can all change simultaneously. Intensity harmonization may improve robustness but can also suppress meaningful information. A harmonization method belongs in validation, not in an unrecorded deployment patch.</p>
+<p>Missing sequences create another challenge. Training with simulated missing inputs can improve tolerance, but cannot establish that a clinically essential contrast is dispensable. Report which input combinations were evaluated and which require abstention. A model that accepts all tensors syntactically may still be semantically unsupported.</p>
+<p>Measurement drift deserves ongoing monitoring. A scanner upgrade may alter apparent tissue contrast without changing a protocol name. Track failure rates, volume distributions, and selected-series characteristics by site and version. Distribution changes are signals for investigation, not automatic proof of degraded diagnostic performance.</p>
+<p>Finally, accelerated reconstruction creates coupled systems: a downstream detector may behave differently after the reconstruction method changes. Validate the combined acquisition–reconstruction–interpretation chain when that combination is the deployed product.</p>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="13.9">
 <h2 data-number="13.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">13.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Sequence-aware agents that verify protocol completeness before the patient leaves the scanner, route each sequence to the right model, reconcile multi-sequence findings into one narrative, and manage longitudinal lesion tracking across visits. -->
+<p>A bounded MRI agent can check protocol completeness while the patient is still available, gather prior examinations, propose sequence matches, launch approved tasks, and assemble a traceable comparison. It should expose the reason for every routing decision. Missing safety information or unsupported inputs should trigger a defined human review path.</p>
+<p>The agent should not independently add contrast, authorize an implant, or translate a segmentation into a disease diagnosis outside the validated workflow. A useful state machine is: inventory, eligibility check, preprocessing, inference, quality review, clinician acceptance, and export. Failures should stop at the appropriate state while retaining acquired images and logs.</p>
+<p>For deployment, measure whether the system actually reduces repeat processing, missed comparisons, or reporting burden. Counting successful model calls says little about clinical usefulness. An agent that reliably recognizes an incomplete examination may be more valuable than one that confidently summarizes it.</p>
 </section>
 <section id="further-reading" class="level2" data-number="13.10">
 <h2 data-number="13.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">13.10</span> Further reading</h2>
+<ul>
+<li><a href="https://www.radiologyinfo.org/en/info/bodymr">ACR/RSNA: MRI of the body</a> — acquisition and patient-facing context.</li>
+<li><a href="https://github.com/facebookresearch/fastMRI">fastMRI</a> — reconstruction data interfaces and reference implementations.</li>
+<li><a href="https://www.synapse.org/brats">BraTS challenge portal</a> — choose the specific task and release used in an experiment.</li>
+<li><a href="https://github.com/MIC-DKFZ/nnUNet">nnU-Net</a> — reproducible segmentation baseline.</li>
+<li><a href="https://www.accessdata.fda.gov/cdrh_docs/pdf6/K061855.pdf">Original NeuroQuant FDA summary</a> — the boundary between quantification and diagnosis.</li>
+</ul>
+<p><strong>Review questions.</strong> Why is a FLAIR image not an acceptable silent substitute for T2? Which information must be preserved to return a mask to its original grid? What additional evidence is needed before interpreting a 15% lesion-volume change?</p>
 
 
 </section>

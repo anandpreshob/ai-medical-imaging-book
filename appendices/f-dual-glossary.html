@@ -418,7 +418,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -441,7 +441,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -499,7 +499,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -521,8 +521,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#clinical-and-imaging-terms-for-engineers" id="toc-clinical-and-imaging-terms-for-engineers" class="nav-link active" data-scroll-target="#clinical-and-imaging-terms-for-engineers">Clinical and imaging terms for engineers</a></li>
+  <li><a href="#machine-learning-terms-for-clinicians" id="toc-machine-learning-terms-for-clinicians" class="nav-link" data-scroll-target="#machine-learning-terms-for-clinicians">Machine-learning terms for clinicians</a></li>
+  <li><a href="#words-to-clarify-in-every-project" id="toc-words-to-clarify-in-every-project" class="nav-link" data-scroll-target="#words-to-clarify-in-every-project">Words to clarify in every project</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/f-dual-glossary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -547,22 +555,275 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
-</div>
-</div>
-<!-- Clinical terms for engineers / ML terms for clinicians. -->
+<p>The same word can mean different things in clinical practice and machine learning. This glossary pairs a concise definition with the distinction most likely to affect an imaging AI project.</p>
+<section id="clinical-and-imaging-terms-for-engineers" class="level2">
+<h2 class="anchored" data-anchor-id="clinical-and-imaging-terms-for-engineers">Clinical and imaging terms for engineers</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Meaning and practical distinction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Screening</td>
+<td>Assessment of a defined population without a specific presenting symptom; prevalence and follow-up differ from diagnostic cohorts.</td>
+</tr>
+<tr class="even">
+<td>Diagnostic examination</td>
+<td>Imaging directed at a clinical question, symptom, or prior finding; not interchangeable with screening.</td>
+</tr>
+<tr class="odd">
+<td>Indication</td>
+<td>The clinical reason for an examination, or the specified authorized use of a device; identify which meaning is intended.</td>
+</tr>
+<tr class="even">
+<td>Finding</td>
+<td>An observation such as an opacity or lesion; it is not necessarily a diagnosis.</td>
+</tr>
+<tr class="odd">
+<td>Differential diagnosis</td>
+<td>Plausible explanations for findings in context, not a list of independently established diseases.</td>
+</tr>
+<tr class="even">
+<td>Reference standard</td>
+<td>The method used to establish the evaluation target; it may combine expert review, pathology, follow-up, or other evidence.</td>
+</tr>
+<tr class="odd">
+<td>Incidental finding</td>
+<td>An observation outside the original examination question; it still needs an appropriate review and follow-up pathway.</td>
+</tr>
+<tr class="even">
+<td>Triage</td>
+<td>Prioritization of attention or workflow; a negative triage result does not automatically rule out disease.</td>
+</tr>
+<tr class="odd">
+<td>Recall</td>
+<td>A request for additional assessment after screening; not synonymous with a cancer diagnosis.</td>
+</tr>
+<tr class="even">
+<td>Lesion</td>
+<td>A localized abnormality; its definition and boundaries depend on the task.</td>
+</tr>
+<tr class="odd">
+<td>Longitudinal</td>
+<td>Across time for the same person or target; requires correct identity, timing, and comparability.</td>
+</tr>
+<tr class="even">
+<td>Acquisition protocol</td>
+<td>The settings and sequence of measurements used to obtain an examination.</td>
+</tr>
+<tr class="odd">
+<td>Series</td>
+<td>A grouping of DICOM objects; one study may contain many series with different roles.</td>
+</tr>
+<tr class="even">
+<td>Reconstruction</td>
+<td>Producing an image from measured signals; distinct from generating a report or classifying disease.</td>
+</tr>
+<tr class="odd">
+<td>Windowing</td>
+<td>Mapping an intensity range to display brightness; generally not a change to the underlying measurement.</td>
+</tr>
+<tr class="even">
+<td>Voxel</td>
+<td>A sample in a volumetric grid; its physical dimensions may differ along each axis.</td>
+</tr>
+<tr class="odd">
+<td>Registration</td>
+<td>Estimating spatial correspondence between images; registration error can masquerade as biological change.</td>
+</tr>
+<tr class="even">
+<td>Partial-volume effect</td>
+<td>Mixing of contributions within limited spatial resolution, affecting boundaries and measurements.</td>
+</tr>
+<tr class="odd">
+<td>Contrast phase</td>
+<td>Timing of acquisition relative to contrast administration; different phases are different model inputs.</td>
+</tr>
+<tr class="even">
+<td>Hounsfield unit</td>
+<td>CT attenuation scale relative to water; not a universal scale for all tomographic imaging.</td>
+</tr>
+<tr class="odd">
+<td>SUV</td>
+<td>A normalized PET uptake measure with a specified convention, units, and timing assumptions.</td>
+</tr>
+<tr class="even">
+<td>Ejection fraction</td>
+<td>Fraction of end-diastolic ventricular volume ejected; the arithmetic depends on valid source measurements.</td>
+</tr>
+<tr class="odd">
+<td>Whole-slide image</td>
+<td>A digitized tissue section, often a multiresolution pyramid; it is not the complete specimen or case.</td>
+</tr>
+<tr class="even">
+<td>Grading</td>
+<td>Categorizing severity or morphology under a defined system; integer labels may not be comparable across systems.</td>
+</tr>
+<tr class="odd">
+<td>Ungradable</td>
+<td>Inadequate for the specified assessment; it must not be relabeled as normal.</td>
+</tr>
+<tr class="even">
+<td>PACS / RIS / LIS</td>
+<td>Picture archive, radiology information system, and laboratory information system; their identities and workflow roles must be integrated.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="machine-learning-terms-for-clinicians" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-terms-for-clinicians">Machine-learning terms for clinicians</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Meaning and practical distinction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Training / validation / test</td>
+<td>Data used to fit a model, select its settings, and estimate held-out performance; repeated tuning on the test set undermines independence.</td>
+</tr>
+<tr class="even">
+<td>Data leakage</td>
+<td>Information unavailable at the intended decision point enters development or evaluation, inflating apparent performance.</td>
+</tr>
+<tr class="odd">
+<td>Domain shift</td>
+<td>A change in the input or clinical setting between development and use, such as a different scanner or population.</td>
+</tr>
+<tr class="even">
+<td>Distribution drift</td>
+<td>A change over deployment time; it is a signal for investigation, not automatically proof of clinical harm.</td>
+</tr>
+<tr class="odd">
+<td>Classification</td>
+<td>Assigning a category or score to an input; it does not necessarily localize the evidence.</td>
+</tr>
+<tr class="even">
+<td>Detection</td>
+<td>Identifying candidate locations or events; a box is not a precise boundary or histological diagnosis.</td>
+</tr>
+<tr class="odd">
+<td>Segmentation</td>
+<td>Assigning labels to pixels or voxels; labels require anatomical and coordinate definitions.</td>
+</tr>
+<tr class="even">
+<td>Regression</td>
+<td>Predicting a numerical quantity; correlation with a reference does not guarantee agreement.</td>
+</tr>
+<tr class="odd">
+<td>Embedding</td>
+<td>A learned numerical representation; dimensions are not usually directly interpretable clinical measurements.</td>
+</tr>
+<tr class="even">
+<td>Foundation model</td>
+<td>A broadly pretrained model adapted to downstream tasks; breadth of pretraining is not validation for a specific clinical use.</td>
+</tr>
+<tr class="odd">
+<td>Fine-tuning</td>
+<td>Updating model parameters for a new task or dataset; it can improve specialization and introduce new failure modes.</td>
+</tr>
+<tr class="even">
+<td>Checkpoint</td>
+<td>A saved parameter state; preprocessing, labels, and dependencies are still needed to reproduce a result.</td>
+</tr>
+<tr class="odd">
+<td>Calibration</td>
+<td>Agreement between predicted probabilities and observed frequencies in a defined setting.</td>
+</tr>
+<tr class="even">
+<td>Discrimination</td>
+<td>Ability to rank or separate outcomes; good discrimination does not imply good calibration.</td>
+</tr>
+<tr class="odd">
+<td>Operating point</td>
+<td>The selected threshold or policy at which sensitivity, specificity, and workload are evaluated.</td>
+</tr>
+<tr class="even">
+<td>Sensitivity / specificity</td>
+<td>Positive detection among reference positives and negative detection among reference negatives; specify the unit and population.</td>
+</tr>
+<tr class="odd">
+<td>Positive predictive value</td>
+<td>Fraction of positive outputs that are reference positive; depends on prevalence and operating point.</td>
+</tr>
+<tr class="even">
+<td>AUROC</td>
+<td>Ranking performance across thresholds; it does not select a clinically acceptable threshold.</td>
+</tr>
+<tr class="odd">
+<td>AUPRC</td>
+<td>Area under the precision–recall curve; its interpretation depends strongly on positive prevalence.</td>
+</tr>
+<tr class="even">
+<td>Dice score</td>
+<td>Overlap measure for masks; a high average can conceal missed small lesions or important boundary errors.</td>
+</tr>
+<tr class="odd">
+<td>Uncertainty</td>
+<td>Lack of confidence due to data, labels, or model limitations; a score is useful only if its interpretation is validated.</td>
+</tr>
+<tr class="even">
+<td>Abstention</td>
+<td>An explicit refusal to produce a supported result; requires a defined downstream action.</td>
+</tr>
+<tr class="odd">
+<td>Weak supervision</td>
+<td>Training labels are indirect or coarse, such as report-mined labels or slide-level labels for tiles.</td>
+</tr>
+<tr class="even">
+<td>Multiple-instance learning</td>
+<td>Learning from groups of instances with a group-level label, common in whole-slide analysis.</td>
+</tr>
+<tr class="odd">
+<td>Explainability</td>
+<td>Methods intended to help understand outputs; a heatmap is not automatically a causal explanation.</td>
+</tr>
+<tr class="even">
+<td>Hallucination</td>
+<td>Generated content unsupported by the available evidence; fluent wording does not make it factual.</td>
+</tr>
+<tr class="odd">
+<td>Agent</td>
+<td>A system that selects and sequences tools or actions; permissions and stopping conditions are part of its safety.</td>
+</tr>
+<tr class="even">
+<td>Latency / throughput</td>
+<td>Delay for one task versus tasks processed per unit time; optimizing one may worsen the other.</td>
+</tr>
+<tr class="odd">
+<td>Idempotency</td>
+<td>Repeating the same request does not create unintended duplicate effects.</td>
+</tr>
+<tr class="even">
+<td>Provenance</td>
+<td>The traceable relationship among source data, transformations, model versions, outputs, and review.</td>
+</tr>
+<tr class="odd">
+<td>Rollback</td>
+<td>Returning to a previously controlled version or workflow after a problematic change.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="words-to-clarify-in-every-project" class="level2">
+<h2 class="anchored" data-anchor-id="words-to-clarify-in-every-project">Words to clarify in every project</h2>
+<p><strong>Accuracy</strong> may refer to a classification metric, measurement agreement, or general correctness. Name the actual endpoint. <strong>Validation</strong> may mean a development split, technical verification, external clinical evaluation, or an institutional acceptance process. State which one was performed. <strong>Approved</strong> may mean internal permission or a particular regulatory pathway; do not use it as a generic synonym for model availability. <strong>Normal</strong> may mean no target finding in an adequate examination, not the absence of every disease.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1000,7 +1261,7 @@ Note
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/f-dual-glossary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/appendices/f-dual-glossary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p><a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
 </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>19&nbsp; Digital Pathology &amp; Histology – AI in Medical Imaging</title>
+<title>19&nbsp; Digital Pathology – AI in Medical Imaging</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/18-surgical-endoscopic-video.html">IV — Interventional, Lab-Based &amp; Video</a></li><li class="breadcrumb-item"><a href="../chapters/19-digital-pathology.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/18-surgical-endoscopic-video.html">IV — Interventional, Lab-Based &amp; Video</a></li><li class="breadcrumb-item"><a href="../chapters/19-digital-pathology.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -419,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +442,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +500,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,12 +527,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-is-whole-slide-imaging" id="toc-what-is-whole-slide-imaging" class="nav-link active" data-scroll-target="#what-is-whole-slide-imaging"><span class="header-section-number">19.1</span> What is whole-slide imaging?</a></li>
+  <li><a href="#what-is-digital-pathology" id="toc-what-is-digital-pathology" class="nav-link active" data-scroll-target="#what-is-digital-pathology"><span class="header-section-number">19.1</span> What is digital pathology?</a></li>
   <li><a href="#why-and-when-its-ordered" id="toc-why-and-when-its-ordered" class="nav-link" data-scroll-target="#why-and-when-its-ordered"><span class="header-section-number">19.2</span> Why and when it’s ordered</a></li>
   <li><a href="#what-diagnoses-are-made-from-it" id="toc-what-diagnoses-are-made-from-it" class="nav-link" data-scroll-target="#what-diagnoses-are-made-from-it"><span class="header-section-number">19.3</span> What diagnoses are made from it</a></li>
-  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">19.4</span> How it works in a modern hospital</a></li>
+  <li><a href="#how-it-works-in-a-modern-hospital" id="toc-how-it-works-in-a-modern-hospital" class="nav-link" data-scroll-target="#how-it-works-in-a-modern-hospital"><span class="header-section-number">19.4</span> How it works in a modern hospital</a>
+  <ul class="collapse">
+  <li><a href="#from-a-slide-to-model-inputs" id="toc-from-a-slide-to-model-inputs" class="nav-link" data-scroll-target="#from-a-slide-to-model-inputs"><span class="header-section-number">19.4.1</span> From a slide to model inputs</a></li>
+  <li><a href="#keep-the-clinical-record-coherent" id="toc-keep-the-clinical-record-coherent" class="nav-link" data-scroll-target="#keep-the-clinical-record-coherent"><span class="header-section-number">19.4.2</span> Keep the clinical record coherent</a></li>
+  </ul></li>
   <li><a href="#the-data-landscape" id="toc-the-data-landscape" class="nav-link" data-scroll-target="#the-data-landscape"><span class="header-section-number">19.5</span> The data landscape</a></li>
-  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">19.6</span> The model landscape</a></li>
+  <li><a href="#the-model-landscape" id="toc-the-model-landscape" class="nav-link" data-scroll-target="#the-model-landscape"><span class="header-section-number">19.6</span> The model landscape</a>
+  <ul class="collapse">
+  <li><a href="#evaluate-at-the-clinical-unit" id="toc-evaluate-at-the-clinical-unit" class="nav-link" data-scroll-target="#evaluate-at-the-clinical-unit"><span class="header-section-number">19.6.1</span> Evaluate at the clinical unit</a></li>
+  </ul></li>
   <li><a href="#fda-cleared-ai-products" id="toc-fda-cleared-ai-products" class="nav-link" data-scroll-target="#fda-cleared-ai-products"><span class="header-section-number">19.7</span> FDA-cleared AI products</a></li>
   <li><a href="#open-challenges" id="toc-open-challenges" class="nav-link" data-scroll-target="#open-challenges"><span class="header-section-number">19.8</span> Open challenges</a></li>
   <li><a href="#the-agentic-outlook" id="toc-the-agentic-outlook" class="nav-link" data-scroll-target="#the-agentic-outlook"><span class="header-section-number">19.9</span> The agentic outlook</a></li>
@@ -544,9 +551,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/18-surgical-endoscopic-video.html">IV — Interventional, Lab-Based &amp; Video</a></li><li class="breadcrumb-item"><a href="../chapters/19-digital-pathology.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/18-surgical-endoscopic-video.html">IV — Interventional, Lab-Based &amp; Video</a></li><li class="breadcrumb-item"><a href="../chapters/19-digital-pathology.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-digital-pathology" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></h1>
+<h1 class="title"><span id="sec-digital-pathology" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></h1>
 </div>
 
 
@@ -563,57 +570,302 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Digital pathology begins long before scanning. Tissue selection, fixation, processing, sectioning, and staining determine what the image contains. A whole-slide image is a high-resolution record of a prepared section, not an exhaustive representation of a patient or even an entire specimen. AI must preserve the connection between pixels and the specimen pathway.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="For the clinician">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>For the clinician
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
+<p>A negative slide-level prediction cannot exclude disease in tissue that was not sampled, not present on the section, or not adequately scanned. Review the intended specimen, stain, and workflow before interpreting a score.</p>
 </div>
 </div>
-<section id="what-is-whole-slide-imaging" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="what-is-whole-slide-imaging"><span class="header-section-number">19.1</span> What is whole-slide imaging?</h2>
-<!-- Physics in one page: what the image measures, dimensionality, typical resolution and file sizes. -->
+<div class="callout callout-style-default callout-tip callout-titled" title="For the engineer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>For the engineer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The patient–case–specimen–block–slide–tile hierarchy defines both provenance and leakage risk. Tile counts are not independent patient counts. Preserve physical scale and slide coordinates when extracting patches.</p>
+</div>
+</div>
+<section id="what-is-digital-pathology" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="what-is-digital-pathology"><span class="header-section-number">19.1</span> What is digital pathology?</h2>
+<p>A scanner captures a glass slide as a whole-slide image (WSI), often stored as a multiresolution pyramid. The highest-resolution level preserves fine detail; lower-resolution levels support navigation and overview. Large slides can contain billions of pixels and require gigabytes of storage, depending on tissue area, sampling, and compression. Efficient applications read regions and pyramid levels instead of loading the entire slide into memory.</p>
+<p>Hematoxylin and eosin (H&amp;E), immunohistochemical stains, and special stains provide different information. A model trained on one stain and specimen type is not automatically valid on another. Apparent magnification alone is an incomplete scale descriptor: micrometers per pixel and scanner metadata determine the physical field represented by a tile.</p>
+<div id="fig-path-pyramid" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three resolution levels of a slide pyramid lead to selected high-resolution tiles, each retaining its source coordinates and physical scale.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-path-pyramid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch19/pyramid.svg" class="img-fluid figure-img" alt="Three resolution levels of a slide pyramid lead to selected high-resolution tiles, each retaining its source coordinates and physical scale.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-pyramid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.1: A whole-slide pyramid supports overview navigation and high-resolution regional analysis.
+</figcaption>
+</figure>
+</div>
+<p>Artifacts include folds, tears, chatter, bubbles, pen marks, out-of-focus areas, staining variation, and tissue fragments. Some can be detected automatically, but quality control should be tied to the downstream task. A small focal defect may be tolerable for a broad tissue classifier and unacceptable if it obscures the only suspicious gland.</p>
 </section>
 <section id="why-and-when-its-ordered" class="level2" data-number="19.2">
 <h2 data-number="19.2" class="anchored" data-anchor-id="why-and-when-its-ordered"><span class="header-section-number">19.2</span> Why and when it’s ordered</h2>
-<!-- Clinical indications; where this sits in the diagnostic pathway. -->
+<p>Pathology evaluates tissue or cells obtained through biopsy, surgery, or other sampling procedures. Diagnosis integrates morphology with clinical history, specimen location, ancillary studies, and sometimes molecular findings. Digital workflows support remote review, consultation, archiving, quantification, education, and computational analysis.</p>
+<p>The AI opportunity ranges from finding suspicious regions to counting cells, segmenting structures, assessing a defined biomarker, or predicting a slide-level label. These are not equivalent claims. A model trained to predict a molecular association from H&amp;E has not replaced a molecular assay unless the intended clinical use is separately established.</p>
+<p>Sampling is a central limitation. A slide contains a section from a block, which represents part of a specimen. A case may include many blocks and stains. The absence of a target in one scanned section is not the same as a case-level negative diagnosis. The software should expose which slides were included and which were missing or excluded.</p>
 </section>
 <section id="what-diagnoses-are-made-from-it" class="level2" data-number="19.3">
 <h2 data-number="19.3" class="anchored" data-anchor-id="what-diagnoses-are-made-from-it"><span class="header-section-number">19.3</span> What diagnoses are made from it</h2>
-<!-- The finding taxonomy a model would need to learn. -->
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Model output</th>
+<th>Required reference and scope</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tumor detection</td>
+<td>Suspicious regions or slide score</td>
+<td>Defined tissue, stain, specimen, and expert reference</td>
+</tr>
+<tr class="even">
+<td>Grading assistance</td>
+<td>Pattern or grade estimate</td>
+<td>Grading system, aggregation rule, and observer variability</td>
+</tr>
+<tr class="odd">
+<td>Cell or structure quantification</td>
+<td>Counts, density, or area</td>
+<td>Cell definition, physical scale, and region-selection policy</td>
+</tr>
+<tr class="even">
+<td>Biomarker scoring</td>
+<td>Positive fraction or score</td>
+<td>Assay, stain, compartment, and scoring convention</td>
+</tr>
+<tr class="odd">
+<td>Prognostic or molecular prediction</td>
+<td>Patient-level estimate</td>
+<td>Independent clinical endpoint, follow-up, and external validation</td>
+</tr>
+</tbody>
+</table>
+<p>A patch label inherited from a positive slide is weak supervision. Most patches from that slide may contain normal tissue. Conversely, a negative patch label derived from a case summary may be unreliable if the region was never explicitly reviewed. Annotation provenance should distinguish region contours, point labels, slide diagnoses, and case-level outcomes.</p>
+<p>For a detection aid, the clinical value may be finding a small suspicious region that a reader would otherwise miss. For a quantification tool, the key issue may be reproducible region selection. An accurate cell counter can still produce a misleading biomarker score if it counts the wrong tissue compartment.</p>
 </section>
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="19.4">
 <h2 data-number="19.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">19.4</span> How it works in a modern hospital</h2>
-<!-- Acquisition protocol, PACS/RIS flow, who reads it, reporting conventions, turnaround. -->
+<p>Specimens enter the laboratory information system, are processed into blocks and slides, and are scanned under a quality process. The pathologist reviews the available material with the clinical record and ancillary studies. Digital image management must maintain accession, specimen, block, slide, stain, and version relationships.</p>
+<div id="fig-path-hierarchy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Patient, case, specimen, block, slide, and tile form a nested provenance hierarchy; train-test assignment is made above the tile level.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-path-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch19/hierarchy.svg" class="img-fluid figure-img" alt="Patient, case, specimen, block, slide, and tile form a nested provenance hierarchy; train-test assignment is made above the tile level.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.2: The specimen hierarchy preserves provenance and keeps correlated material together during evaluation.
+</figcaption>
+</figure>
+</div>
+<section id="from-a-slide-to-model-inputs" class="level3" data-number="19.4.1">
+<h3 data-number="19.4.1" class="anchored" data-anchor-id="from-a-slide-to-model-inputs"><span class="header-section-number">19.4.1</span> From a slide to model inputs</h3>
+<p>A typical pipeline detects tissue at low resolution, excludes unsupported or poor-quality regions, extracts tiles at a specified physical scale, runs an encoder, and aggregates outputs. Each stage has failure modes. A tissue detector can exclude pale tissue or tiny fragments. A stain-normalization procedure can alter diagnostically relevant appearance. A tile sampler can miss a small focus.</p>
+<p>Store the slide identifier, level, level-zero coordinates, tile dimensions, micrometers per pixel, preprocessing version, and exclusion reason. Return heatmaps in the viewer’s coordinate system and allow the reviewer to inspect the original region at diagnostic resolution. A compressed thumbnail alone cannot verify a suspicious microscopic feature.</p>
+<p>Libraries such as <a href="https://github.com/openslide/openslide">OpenSlide</a> provide access to supported WSI formats, but format support and metadata completeness differ. Test the scanners and files in the intended workflow. A reader successfully opening one slide does not prove that physical scale, color, or all pyramid levels were interpreted correctly.</p>
+</section>
+<section id="keep-the-clinical-record-coherent" class="level3" data-number="19.4.2">
+<h3 data-number="19.4.2" class="anchored" data-anchor-id="keep-the-clinical-record-coherent"><span class="header-section-number">19.4.2</span> Keep the clinical record coherent</h3>
+<p>If a slide is rescanned, the new image must not silently overwrite a result generated from the old scan. If additional levels or stains arrive, case completeness changes. An AI result should identify the exact source slides and whether it is preliminary, reviewed, or superseded.</p>
+<p>The laboratory system and image viewer need an explicit result contract. A candidate heatmap is different from a signed diagnostic report. Preserve the pathologist’s accepted interpretation and any corrections without erasing the original model output. This supports quality review and investigation of disagreements.</p>
+</section>
 </section>
 <section id="the-data-landscape" class="level2" data-number="19.5">
 <h2 data-number="19.5" class="anchored" data-anchor-id="the-data-landscape"><span class="header-section-number">19.5</span> The data landscape</h2>
-<!-- Living table filtered from data/datasets.csv (modality == "path"). -->
+<p>Public WSI resources vary in specimen type, stain, scanner, annotation granularity, and endpoint. Challenge labels are often designed for one task and should not be generalized to all pathology. Metastasis detection in lymph-node sections is different from prostate grading or molecular prediction.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Size / release</th>
+<th>Supervision</th>
+<th>Access / terms</th>
+<th>Caveats</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CAMELYON16 / CAMELYON17</td>
+<td>Separate challenge releases</td>
+<td>Lymph-node metastasis; release-specific region and case labels</td>
+<td>Challenge release terms</td>
+<td>Do not pool without checking patient grouping and overlap</td>
+<td><a href="https://camelyon17.grand-challenge.org/">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The CAMELYON resources support research on breast-cancer metastases in lymph-node slides. Choose the exact release and patient grouping. Combining editions without checking overlap or provenance can create leakage. For other tasks, require explicit links between slides, cases, patients, and outcomes before claiming patient-level validation.</p>
+<p>Split by patient, with all blocks, slides, stains, rescans, and tiles kept in the appropriate partition. Site-level validation is valuable because staining and scanner signatures can act as shortcuts. If outcome labels correlate with the originating institution, a model may learn the site rather than the intended biological target.</p>
+<p>An endpoint such as survival requires a time origin, follow-up, censoring policy, and adjustment for the intended clinical setting. A tile-level split cannot validate a patient-level prognostic claim. Treatment and case selection may confound associations, so predictive performance does not establish biological causation.</p>
 </section>
 <section id="the-model-landscape" class="level2" data-number="19.6">
 <h2 data-number="19.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">19.6</span> The model landscape</h2>
-<!-- Living table filtered from data/models.csv (modality == "path"); open vs. closed. -->
+<p>Patch encoders transform local tissue into features. Slide-level aggregation combines those features. In multiple-instance learning (MIL), a slide or case is treated as a bag of instances with a higher-level label. Attention can weight patches, but an attention map is not automatically a calibrated tumor-probability map or a causal explanation.</p>
+<div id="fig-path-mil" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tiles from one slide enter a shared encoder, producing feature vectors that are aggregated into a slide score; attention weights are distinguished from lesion probabilities.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-path-mil-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch19/mil.svg" class="img-fluid figure-img" alt="Tiles from one slide enter a shared encoder, producing feature vectors that are aggregated into a slide score; attention weights are distinguished from lesion probabilities.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-mil-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.3: Multiple-instance learning aggregates tile representations under a slide-level label.
+</figcaption>
+</figure>
+</div>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model / framework</th>
+<th>Task</th>
+<th>Weights</th>
+<th>Terms</th>
+<th>Scope</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>UNI family</td>
+<td>Pathology representation learning</td>
+<td>Gated checkpoints</td>
+<td>Checkpoint-specific noncommercial/research terms</td>
+<td>Pin model generation; patch representations need downstream task validation</td>
+<td><a href="https://github.com/mahmoodlab/UNI">Source</a></td>
+</tr>
+<tr class="even">
+<td>Prov-GigaPath</td>
+<td>Pathology representation learning</td>
+<td>Gated model resources</td>
+<td>Research terms; inspect selected artifacts</td>
+<td>Tile and slide representations; validate tissue and stain scope</td>
+<td><a href="https://github.com/prov-gigapath/prov-gigapath">Source</a></td>
+</tr>
+<tr class="odd">
+<td>nnU-Net</td>
+<td>Self-configuring segmentation</td>
+<td>Framework; train or obtain task-specific weights</td>
+<td>Apache-2.0 code; task weights and data terms separate</td>
+<td>Framework availability does not establish a validated modality checkpoint</td>
+<td><a href="https://github.com/MIC-DKFZ/nnUNet">Source</a></td>
+</tr>
+<tr class="even">
+<td>nnInteractive</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and model license</td>
+<td>Prompt and input-domain validation required</td>
+<td><a href="https://github.com/MIC-DKFZ/nnInteractive">Source</a></td>
+</tr>
+<tr class="odd">
+<td>BiomedParse</td>
+<td>Prompted biomedical segmentation</td>
+<td>Released model resources</td>
+<td>Code and checkpoint terms differ; inspect model release</td>
+<td>Only use supported representations; not universal modality validation</td>
+<td><a href="https://github.com/microsoft/BiomedParse">Source</a></td>
+</tr>
+<tr class="even">
+<td>MedSAM2</td>
+<td>Interactive segmentation</td>
+<td>Released model resources</td>
+<td>Inspect pinned code and checkpoint terms</td>
+<td>Task-specific prompts and evaluation required</td>
+<td><a href="https://github.com/bowang-lab/MedSAM2">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="https://github.com/mahmoodlab/UNI">UNI</a> and <a href="https://github.com/prov-gigapath/prov-gigapath">Prov-GigaPath</a> illustrate reusable pathology representations. The exact checkpoint and license matter; a permissive surrounding codebase does not necessarily confer unrestricted rights to weights or training data. Downstream validation remains necessary for every tissue, stain, and intended task.</p>
+<p>A useful baseline freezes a suitable encoder and trains a simple aggregation head under a patient-level split. More complex fine-tuning should be justified by held-out performance and operational cost. Cache embeddings with the slide and preprocessing version so that stale features cannot be mixed with a new encoder.</p>
+<section id="evaluate-at-the-clinical-unit" class="level3" data-number="19.6.1">
+<h3 data-number="19.6.1" class="anchored" data-anchor-id="evaluate-at-the-clinical-unit"><span class="header-section-number">19.6.1</span> Evaluate at the clinical unit</h3>
+<p>For region detection, assess lesion sensitivity and false-positive regions, including small foci. For slide classification, report slide-level metrics and the policy for combining slides into a case. For quantification, compare accepted measurements under a defined region-selection method. For case-level predictions, use case or patient as the statistical unit and account for correlated material.</p>
+<p>Measure quality exclusions and review time. A model may be accurate on accepted slides but reject a large fraction from one scanner or specimen type. A heatmap that requires extensive false-positive navigation may not improve the pathologist’s work despite a strong area under the ROC curve.</p>
+<p>As an illustrative resource calculation, 10,000 tile embeddings with 1,024 float32 values require about 41 MB in decimal units, before metadata and overhead. This is far smaller than repeatedly retaining all high-resolution tiles, but caching only features prevents revisiting preprocessing errors. Keep source slides and reproducible extraction instructions under the applicable retention policy.</p>
+</section>
 </section>
 <section id="fda-cleared-ai-products" class="level2" data-number="19.7">
 <h2 data-number="19.7" class="anchored" data-anchor-id="fda-cleared-ai-products"><span class="header-section-number">19.7</span> FDA-cleared AI products</h2>
-<!-- Living table filtered from data/fda-products.csv (modality == "path"). -->
+<p>The selected record concerns a specific assistive pathology workflow.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Device</th>
+<th>Vendor</th>
+<th>Submission</th>
+<th>Indication summary</th>
+<th>Boundary</th>
+<th>FDA record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Paige Prostate</td>
+<td>Paige.AI</td>
+<td>DEN200080; De Novo</td>
+<td>Aid for cancer detection in specified prostate needle-biopsy H&amp;E WSI</td>
+<td>Original workflow follows pathologist review; not grading or tumor measurement</td>
+<td><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN200080.pdf">Source</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN200080.pdf">Paige Prostate De Novo review</a> describes assistance for specified prostate needle-biopsy H&amp;E whole-slide images in a supported scanning and viewing workflow. The original workflow places pathologist review before use of the aid. The product’s detection role should not be rewritten as autonomous diagnosis, cancer grading, or tumor measurement. Hardware and workflow compatibility are part of the indication.</p>
 </section>
 <section id="open-challenges" class="level2" data-number="19.8">
 <h2 data-number="19.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">19.8</span> Open challenges</h2>
+<p>Stain and scanner variation are visible sources of domain shift, but specimen processing and patient selection are equally important. Color normalization can reduce some variation while leaving biological and workflow differences untouched. Validate the complete pipeline across the intended sites rather than assuming normalization solves transfer.</p>
+<div id="fig-path-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Source-slide quality review precedes optional documented stain processing, tile inference, and review on the original image.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-path-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch19/quality.svg" class="img-fluid figure-img" alt="Source-slide quality review precedes optional documented stain processing, tile inference, and review on the original image.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19.4: Quality and stain processing are explicit stages whose effects must be checked against the target task.
+</figcaption>
+</figure>
+</div>
+<p>Small foci challenge both sampling and aggregation. A slide-level average can dilute a rare malignant region; a maximum score can amplify one artifact. The aggregation rule should reflect the task and be evaluated on low-burden cases. Explainability should support finding and reviewing the relevant tissue, not merely decorate a slide with color.</p>
+<p>Multimodal pathology models introduce further alignment problems. A molecular result may describe a different block or time point. Clinical text can leak the diagnosis being predicted. Preserve specimen and temporal relationships, and define which information would actually be available at the intended decision point.</p>
 </section>
 <section id="the-agentic-outlook" class="level2" data-number="19.9">
 <h2 data-number="19.9" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">19.9</span> The agentic outlook</h2>
-<!-- How agent harnesses change this modality's workflow. Seed ideas:
-Agents that pre-screen slides overnight, order recuts or stains when a region is ambiguous, integrate genomics with morphology, and assemble tumor-board-ready case summaries across pathology, radiology, and the chart. -->
+<p>A pathology agent can assemble the case, check slide completeness and scan quality, route supported stains to appropriate models, and prepare a review workspace with candidate regions. It can track rescans and additional levels and invalidate stale results when the source material changes.</p>
+<p>The agent should not infer that all tissue has been examined because one slide was negative. It should state which material supports each output and what remains unavailable. Draft reports need source-linked facts, explicit uncertainty, and review by the responsible pathologist. The strongest early value is often reliable case organization and measurement support rather than unconstrained diagnostic prose.</p>
 </section>
 <section id="further-reading" class="level2" data-number="19.10">
 <h2 data-number="19.10" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">19.10</span> Further reading</h2>
+<ul>
+<li><a href="https://github.com/openslide/openslide">OpenSlide</a> — WSI access and supported formats.</li>
+<li><a href="https://camelyon17.grand-challenge.org/">CAMELYON17</a> — task and release documentation.</li>
+<li><a href="https://github.com/mahmoodlab/UNI">UNI</a> and <a href="https://github.com/prov-gigapath/prov-gigapath">Prov-GigaPath</a> — pathology representation learning.</li>
+<li><a href="https://www.accessdata.fda.gov/cdrh_docs/reviews/DEN200080.pdf">Paige Prostate FDA review</a>.</li>
+</ul>
+<p><strong>Review questions.</strong> Why is a tile-level test split misleading? What must a heatmap preserve to support microscopic review? Why does a negative slide prediction not establish a negative case?</p>
 
 
 </section>

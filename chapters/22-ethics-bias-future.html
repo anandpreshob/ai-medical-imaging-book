@@ -80,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -419,7 +448,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging: Fundus &amp; OCT</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
   </div>
 </li>
       </ul>
@@ -442,7 +471,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology &amp; Histology</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -500,7 +529,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FDA-Cleared AI Product Index</span></a>
+ <span class="menu-text">FDA Product Index</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -527,9 +556,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#fairness-across-populations" id="toc-fairness-across-populations" class="nav-link active" data-scroll-target="#fairness-across-populations"><span class="header-section-number">22.1</span> Fairness across populations</a></li>
-  <li><a href="#automation-bias-and-humanai-teaming" id="toc-automation-bias-and-humanai-teaming" class="nav-link" data-scroll-target="#automation-bias-and-humanai-teaming"><span class="header-section-number">22.2</span> Automation bias and human–AI teaming</a></li>
-  <li><a href="#liability-and-accountability" id="toc-liability-and-accountability" class="nav-link" data-scroll-target="#liability-and-accountability"><span class="header-section-number">22.3</span> Liability and accountability</a></li>
+  <li><a href="#fairness-across-populations" id="toc-fairness-across-populations" class="nav-link active" data-scroll-target="#fairness-across-populations"><span class="header-section-number">22.1</span> Fairness across populations</a>
+  <ul class="collapse">
+  <li><a href="#choose-the-unit-of-benefit-and-harm" id="toc-choose-the-unit-of-benefit-and-harm" class="nav-link" data-scroll-target="#choose-the-unit-of-benefit-and-harm"><span class="header-section-number">22.1.1</span> Choose the unit of benefit and harm</a></li>
+  <li><a href="#avoid-easy-statistical-fixes-to-structural-problems" id="toc-avoid-easy-statistical-fixes-to-structural-problems" class="nav-link" data-scroll-target="#avoid-easy-statistical-fixes-to-structural-problems"><span class="header-section-number">22.1.2</span> Avoid easy statistical fixes to structural problems</a></li>
+  </ul></li>
+  <li><a href="#automation-bias-and-humanai-teaming" id="toc-automation-bias-and-humanai-teaming" class="nav-link" data-scroll-target="#automation-bias-and-humanai-teaming"><span class="header-section-number">22.2</span> Automation bias and human–AI teaming</a>
+  <ul class="collapse">
+  <li><a href="#design-for-informed-disagreement" id="toc-design-for-informed-disagreement" class="nav-link" data-scroll-target="#design-for-informed-disagreement"><span class="header-section-number">22.2.1</span> Design for informed disagreement</a></li>
+  </ul></li>
+  <li><a href="#liability-and-accountability" id="toc-liability-and-accountability" class="nav-link" data-scroll-target="#liability-and-accountability"><span class="header-section-number">22.3</span> Liability and accountability</a>
+  <ul class="collapse">
+  <li><a href="#privacy-and-secondary-use" id="toc-privacy-and-secondary-use" class="nav-link" data-scroll-target="#privacy-and-secondary-use"><span class="header-section-number">22.3.1</span> Privacy and secondary use</a></li>
+  <li><a href="#preserve-the-evidence-needed-to-investigate" id="toc-preserve-the-evidence-needed-to-investigate" class="nav-link" data-scroll-target="#preserve-the-evidence-needed-to-investigate"><span class="header-section-number">22.3.2</span> Preserve the evidence needed to investigate</a></li>
+  </ul></li>
   <li><a href="#the-economics-and-sustainability-of-imaging-ai" id="toc-the-economics-and-sustainability-of-imaging-ai" class="nav-link" data-scroll-target="#the-economics-and-sustainability-of-imaging-ai"><span class="header-section-number">22.4</span> The economics and sustainability of imaging AI</a></li>
   <li><a href="#foundation-model-consolidation-and-agentic-radiology" id="toc-foundation-model-consolidation-and-agentic-radiology" class="nav-link" data-scroll-target="#foundation-model-consolidation-and-agentic-radiology"><span class="header-section-number">22.5</span> Foundation-model consolidation and agentic radiology</a></li>
   <li><a href="#what-to-watch-next" id="toc-what-to-watch-next" class="nav-link" data-scroll-target="#what-to-watch-next"><span class="header-section-number">22.6</span> What to watch next</a></li>
@@ -559,36 +599,127 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><em>Draft chapter — outline only. Content coming soon.</em></p>
-</div>
-</div>
+<p>Imaging AI changes who receives attention, which evidence is emphasized, and how clinical work is distributed. Its ethical evaluation therefore extends beyond model accuracy. A system can improve average performance while increasing failures for one population, shifting burden onto an understaffed service, or making an uncertain finding appear authoritative.</p>
+<p>The practical response is to define the intended benefit, identify plausible harms, assign responsibility, and collect evidence throughout the system’s life. The <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> offers a general structure for governing, mapping, measuring, and managing AI risks. Clinical implementation also requires the applicable institutional and regulatory processes.</p>
 <section id="fairness-across-populations" class="level2" data-number="22.1">
 <h2 data-number="22.1" class="anchored" data-anchor-id="fairness-across-populations"><span class="header-section-number">22.1</span> Fairness across populations</h2>
+<p>Bias can enter through access to imaging, acquisition quality, labels, sampling, model development, and downstream care. A dataset reflects who was examined and how their outcomes were recorded. If some patients receive less follow-up, their labels may be less complete. If an algorithm rejects more images from a particular setting, reporting accuracy only among accepted images hides a meaningful disparity.</p>
+<section id="choose-the-unit-of-benefit-and-harm" class="level3" data-number="22.1.1">
+<h3 data-number="22.1.1" class="anchored" data-anchor-id="choose-the-unit-of-benefit-and-harm"><span class="header-section-number">22.1.1</span> Choose the unit of benefit and harm</h3>
+<p>Fairness is not one universal scalar. Relevant outcomes can include missed disease, false-positive investigations, delays, technical failure, time to specialist care, and patient costs. Similar area under the ROC curve across groups does not imply similar sensitivity at the deployed threshold or equal access to follow-up.</p>
+<p>Select subgroup analyses based on the clinical task and plausible mechanisms, including acquisition site and device as well as patient characteristics where appropriate and lawfully available. Explain how attributes were measured, what is missing, and how small samples limit conclusions. Do not infer a person’s race or other sensitive characteristics from an image to fill a convenient evaluation column.</p>
+<p>Intersectional analysis can reveal problems hidden in broad averages, but rapidly creates small groups and uncertain estimates. Report denominators and intervals. A lack of statistical significance is not proof of equivalence; a noisy apparent difference is not automatically evidence of a stable disparity. Use findings to direct further data collection and investigation.</p>
+<div id="fig-ethics-fairness" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ethics-fairness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch22/fairness.svg" class="img-fluid figure-img" alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ethics-fairness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22.1: Fairness assessment follows the patient pathway, including failures before and after inference.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="avoid-easy-statistical-fixes-to-structural-problems" class="level3" data-number="22.1.2">
+<h3 data-number="22.1.2" class="anchored" data-anchor-id="avoid-easy-statistical-fixes-to-structural-problems"><span class="header-section-number">22.1.2</span> Avoid easy statistical fixes to structural problems</h3>
+<p>Reweighting, augmentation, calibration, and threshold adjustments can help particular problems, but they cannot repair missing access to care or an invalid reference standard. A threshold chosen separately for groups also raises clinical and governance questions that must be justified in the intended setting. Evaluate the complete policy and its consequences rather than treating a fairness metric as a tuning target detached from patients.</p>
+<p>A deployment report should include technical exclusions and unresolved cases. If the model works well where equipment is newest but fails at smaller sites, those failures belong in the assessment of the service. Monitoring should identify whether improvements in one stage shift burden to another.</p>
+</section>
 </section>
 <section id="automation-bias-and-humanai-teaming" class="level2" data-number="22.2">
 <h2 data-number="22.2" class="anchored" data-anchor-id="automation-bias-and-humanai-teaming"><span class="header-section-number">22.2</span> Automation bias and human–AI teaming</h2>
+<p>People can anchor on a confident suggestion, accept a plausible explanation without inspecting its source, or treat an absent alert as reassurance. Conversely, repeated false alarms can cause useful output to be ignored. These are properties of the combined interface, workflow, and user population, not simply defects in individual judgment.</p>
+<p>A human in the loop is meaningful only if that person has time, expertise, access to source evidence, and authority to disagree. A nominal approval click under severe workload may provide little protection. Define what the reviewer is expected to verify and make the relevant images, measurements, and limitations available at that moment.</p>
+<section id="design-for-informed-disagreement" class="level3" data-number="22.2.1">
+<h3 data-number="22.2.1" class="anchored" data-anchor-id="design-for-informed-disagreement"><span class="header-section-number">22.2.1</span> Design for informed disagreement</h3>
+<p>Show source-linked outputs, distinguish a score from a calibrated probability, and represent no-result states explicitly. Make overlays reversible and corrections easy. Avoid presenting a generated paragraph with more certainty than the underlying evidence. If the model did not assess a finding, the report should not imply that it was absent.</p>
+<p>The timing of assistance matters. Showing an answer before independent review may influence attention differently from presenting it afterward. Neither ordering is universally best; evaluate the intended interaction. Reader and operator studies should measure errors, time, correction burden, and relevant downstream actions under realistic conditions.</p>
+<p>Consider a hypothetical triage model with high sensitivity but frequent false alerts. It may accelerate some positive cases while delaying unflagged cases and exhausting the receiving team. A study should examine the distribution of reporting times and missed cases, not only the mean time for alerted patients. The intervention is the worklist policy plus the model, not the classifier alone.</p>
+</section>
 </section>
 <section id="liability-and-accountability" class="level2" data-number="22.3">
 <h2 data-number="22.3" class="anchored" data-anchor-id="liability-and-accountability"><span class="header-section-number">22.3</span> Liability and accountability</h2>
+<p>Responsibility should be assigned before deployment. Who owns the intended-use definition? Who approves a model update? Who responds when input compatibility changes? Who investigates an incorrect exported result? A vendor contract, a hospital policy, and a clinician’s professional duties may allocate different responsibilities; legal obligations depend on jurisdiction and circumstances.</p>
+<p>This chapter provides a governance framework, not jurisdiction-specific legal advice. The <a href="https://www.fda.gov/medical-devices/artificial-intelligence-enabled-medical-devices/list-artificial-intelligence-enabled-medical-devices">FDA’s AI-enabled device list</a> links to public authorization records and explicitly describes its coverage limits. An entry on a list does not establish suitability for every local workflow. Review the actual device indication, labeling, and version.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Responsibility</th>
+<th>Concrete artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Clinical owner</td>
+<td>Intended use, acceptance criteria, escalation pathway</td>
+</tr>
+<tr class="even">
+<td>Technical owner</td>
+<td>Versioned pipeline, access controls, monitoring, rollback</td>
+</tr>
+<tr class="odd">
+<td>Data steward</td>
+<td>Permitted uses, retention, provenance, access review</td>
+</tr>
+<tr class="even">
+<td>Quality or safety lead</td>
+<td>Incident process, change assessment, corrective actions</td>
+</tr>
+<tr class="odd">
+<td>End user</td>
+<td>Defined review task and documented accepted result</td>
+</tr>
+</tbody>
+</table>
+<p>The organization may assign these roles differently, but none should be left implicit. A failure spanning systems should have a clear incident owner rather than being passed indefinitely between the PACS team, model vendor, and clinical service.</p>
+<section id="privacy-and-secondary-use" class="level3" data-number="22.3.1">
+<h3 data-number="22.3.1" class="anchored" data-anchor-id="privacy-and-secondary-use"><span class="header-section-number">22.3.1</span> Privacy and secondary use</h3>
+<p>Removing a name is not sufficient de-identification. DICOM metadata, private fields, burned-in text, dates, facial anatomy, slide labels, and video audio can retain identifying information. The <a href="https://dicom.nema.org/medical/dicom/current/output/chtml/part15/chapter_E.html">DICOM confidentiality profiles</a> describe technical approaches and options. In the US, <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/de-identification/index.html">HHS guidance</a> explains the HIPAA de-identification framework. Other jurisdictions and institutional agreements may impose different requirements.</p>
+<p>Technical de-identification does not automatically grant permission for every secondary use or redistribution. Dataset agreements, consent where applicable, institutional approvals, and model-provider terms must be considered. Keep a record of where data and derived artifacts came from and which uses are permitted. External model calls require an approved data flow, not merely a technically functioning API.</p>
+</section>
+<section id="preserve-the-evidence-needed-to-investigate" class="level3" data-number="22.3.2">
+<h3 data-number="22.3.2" class="anchored" data-anchor-id="preserve-the-evidence-needed-to-investigate"><span class="header-section-number">22.3.2</span> Preserve the evidence needed to investigate</h3>
+<p>An audit trail should identify source data, preprocessing, model and configuration versions, output, human edits, acceptance, and export. Logs should be access-controlled and minimize unnecessary sensitive content. Retaining everything indefinitely is not a substitute for a reasoned retention policy.</p>
+<p>When an incident occurs, distinguish acquisition failure, routing error, model error, display error, and workflow failure. Corrective action should address the mechanism. Retraining the model will not repair a laterality mapping bug or a duplicate export race.</p>
+</section>
 </section>
 <section id="the-economics-and-sustainability-of-imaging-ai" class="level2" data-number="22.4">
 <h2 data-number="22.4" class="anchored" data-anchor-id="the-economics-and-sustainability-of-imaging-ai"><span class="header-section-number">22.4</span> The economics and sustainability of imaging AI</h2>
+<p>The relevant cost is the complete service: integration, licensing or development, compute, storage, security, validation, training, monitoring, review, and maintenance. Open weights can reduce one cost while leaving the others unchanged. A model with low inference cost may create expensive downstream investigations or additional review work.</p>
+<p>A simple planning model is</p>
+<p><span class="math display">\[C_{annual}=C_{fixed}+N(C_{compute}+C_{review}+C_{followup})+C_{maintenance},\]</span></p>
+<p>where <span class="math inline">\(N\)</span> is the number of examinations and each term must be defined for the intended pathway. This is a budgeting structure, not a reimbursement forecast. Costs may fall on different organizations or patients, so a local saving can be a transfer rather than a system-wide benefit.</p>
+<p>Estimate benefits with the same care. Time saved matters only if it translates into usable capacity, better access, reduced delay, or improved quality. Avoid multiplying a laboratory timing difference by annual examination volume without accounting for interruptions, correction, and workflow adoption. Evaluate costs and outcomes at plausible utilization levels, including technical failures.</p>
+<p>Environmental impact depends on training, inference, hardware utilization, data transfer, and storage over time. Measure the workload before optimizing. Smaller task-specific models, cached reusable features, sensible retention, and efficient scheduling may reduce resource use, but any change affecting outputs needs appropriate validation. Sustainability and reliability can align when unnecessary computation and duplicate processing are removed.</p>
 </section>
 <section id="foundation-model-consolidation-and-agentic-radiology" class="level2" data-number="22.5">
 <h2 data-number="22.5" class="anchored" data-anchor-id="foundation-model-consolidation-and-agentic-radiology"><span class="header-section-number">22.5</span> Foundation-model consolidation and agentic radiology</h2>
+<p>Foundation models can reduce the need to train every representation from scratch. They may support multiple tasks, modalities, and interactions through a common interface. That convenience can also concentrate dependency on a small number of checkpoints, providers, data sources, and licensing terms.</p>
+<p>A general model’s breadth does not establish equal competence across tasks. Evaluate each intended use, including rare and unsupported inputs. Benchmark contamination, incomplete training-data disclosure, and changing hosted versions can make evidence difficult to interpret. Prefer versioned interfaces, recorded configuration, and an evaluation set that reflects the actual workflow.</p>
+<p>Agents add tool selection and sequencing. This can make failures compositional: a correct model is called on the wrong series, a unit conversion is omitted, or a valid measurement is attached to an incorrect report. The agent needs constrained permissions, typed inputs and outputs, provenance, and explicit stopping conditions. Tool success is not the same as clinical success.</p>
+<div id="fig-ethics-lifecycle" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ethics-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figures/ch22/lifecycle.svg" class="img-fluid figure-img" alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ethics-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;22.2: Change control connects a proposed update to evaluation, controlled release, monitoring, and rollback.
+</figcaption>
+</figure>
+</div>
+<p>Claims about future autonomous practice should remain conditional. A system that reliably gathers priors and detects unsupported inputs may provide substantial benefit before a system can safely complete an entire diagnostic workflow. Progress should be judged by demonstrated improvements in defined tasks and patient pathways.</p>
 </section>
 <section id="what-to-watch-next" class="level2" data-number="22.6">
 <h2 data-number="22.6" class="anchored" data-anchor-id="what-to-watch-next"><span class="header-section-number">22.6</span> What to watch next</h2>
+<p>Watch for evidence that moves beyond retrospective leaderboards: prospective multicenter evaluations, realistic human–AI studies, subgroup analyses with adequate denominators, transparent failure reporting, and assessments of downstream outcomes. Stronger evidence should clarify when a tool helps, when it fails, and what resources its use requires.</p>
+<p>Interoperability will also determine value. Standardized result objects, source references, calibration metadata, and review-state exchange can make AI outputs portable and inspectable. A high-performing model trapped in a brittle proprietary workflow may be less useful than a modest model integrated reliably into care.</p>
+<p>Change management will grow more important as models and agents update frequently. Organizations need to know what changed, which evidence remains applicable, and how to return to a known working version. A continuously improving service still needs a stable definition of its intended use and a controlled way to expand it.</p>
+<p>Finally, include patients and front-line staff in evaluating whether the system solves the right problem. Access, understandable communication, timely follow-up, and the ability to correct errors are part of quality. The goal is a dependable clinical service whose benefits and limitations can be explained and checked.</p>
+<p><strong>Review questions.</strong> Which denominators reveal unequal technical failure? What makes human review substantive rather than ceremonial? How would you determine whether an AI deployment saves total work or merely transfers it to another team?</p>
 
 
 </section>
