@@ -601,13 +601,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="19.1" class="anchored" data-anchor-id="what-is-digital-pathology"><span class="header-section-number">19.1</span> What is digital pathology?</h2>
 <p>A scanner captures a glass slide as a whole-slide image (WSI), often stored as a multiresolution pyramid. The highest-resolution level preserves fine detail; lower-resolution levels support navigation and overview. Large slides can contain billions of pixels and require gigabytes of storage, depending on tissue area, sampling, and compression. Efficient applications read regions and pyramid levels instead of loading the entire slide into memory.</p>
 <p>Hematoxylin and eosin (H&amp;E), immunohistochemical stains, and special stains provide different information. A model trained on one stain and specimen type is not automatically valid on another. Apparent magnification alone is an incomplete scale descriptor: micrometers per pixel and scanner metadata determine the physical field represented by a tile.</p>
-<div id="fig-path-pyramid" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three resolution levels of a slide pyramid lead to selected high-resolution tiles, each retaining its source coordinates and physical scale.">
+<div id="fig-path-pyramid" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An H-and-E whole-slide image is magnified into a tissue region and then a high-power glandular field.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-path-pyramid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch19/pyramid.svg" class="img-fluid figure-img" alt="Three resolution levels of a slide pyramid lead to selected high-resolution tiles, each retaining its source coordinates and physical scale.">
+<img src="../figures/ch19/pyramid.png" class="img-fluid figure-img" alt="An H-and-E whole-slide image is magnified into a tissue region and then a high-power glandular field.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-pyramid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.1: A whole-slide pyramid supports overview navigation and high-resolution regional analysis.
+Figure&nbsp;19.1: A whole-slide image supports navigation from slide overview to a tissue region and high-power cellular detail while retaining source coordinates.
 </figcaption>
 </figure>
 </div>
@@ -668,13 +668,13 @@ Figure&nbsp;19.1: A whole-slide pyramid supports overview navigation and high-re
 <section id="how-it-works-in-a-modern-hospital" class="level2" data-number="19.4">
 <h2 data-number="19.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">19.4</span> How it works in a modern hospital</h2>
 <p>Specimens enter the laboratory information system, are processed into blocks and slides, and are scanned under a quality process. The pathologist reviews the available material with the clinical record and ancillary studies. Digital image management must maintain accession, specimen, block, slide, stain, and version relationships.</p>
-<div id="fig-path-hierarchy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Patient, case, specimen, block, slide, and tile form a nested provenance hierarchy; train-test assignment is made above the tile level.">
+<div id="fig-path-hierarchy" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A photographic sequence shows a surgical specimen, tissue block, H-and-E glass slide, digital whole-slide image, and high-power tile.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-path-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch19/hierarchy.svg" class="img-fluid figure-img" alt="Patient, case, specimen, block, slide, and tile form a nested provenance hierarchy; train-test assignment is made above the tile level.">
+<img src="../figures/ch19/hierarchy.png" class="img-fluid figure-img" alt="A photographic sequence shows a surgical specimen, tissue block, H-and-E glass slide, digital whole-slide image, and high-power tile.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-hierarchy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.2: The specimen hierarchy preserves provenance and keeps correlated material together during evaluation.
+Figure&nbsp;19.2: Pathology provenance connects the gross specimen to its paraffin block, glass slide, whole-slide scan, and extracted image tiles.
 </figcaption>
 </figure>
 </div>
@@ -724,13 +724,13 @@ Figure&nbsp;19.2: The specimen hierarchy preserves provenance and keeps correlat
 <section id="the-model-landscape" class="level2" data-number="19.6">
 <h2 data-number="19.6" class="anchored" data-anchor-id="the-model-landscape"><span class="header-section-number">19.6</span> The model landscape</h2>
 <p>Patch encoders transform local tissue into features. Slide-level aggregation combines those features. In multiple-instance learning (MIL), a slide or case is treated as a bag of instances with a higher-level label. Attention can weight patches, but an attention map is not automatically a calibrated tumor-probability map or a causal explanation.</p>
-<div id="fig-path-mil" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tiles from one slide enter a shared encoder, producing feature vectors that are aggregated into a slide score; attention weights are distinguished from lesion probabilities.">
+<div id="fig-path-mil" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A whole-slide H-and-E image supplies four high-power tiles with attention borders before a slide-level result is produced.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-path-mil-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch19/mil.svg" class="img-fluid figure-img" alt="Tiles from one slide enter a shared encoder, producing feature vectors that are aggregated into a slide score; attention weights are distinguished from lesion probabilities.">
+<img src="../figures/ch19/mil.png" class="img-fluid figure-img" alt="A whole-slide H-and-E image supplies four high-power tiles with attention borders before a slide-level result is produced.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-mil-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.3: Multiple-instance learning aggregates tile representations under a slide-level label.
+Figure&nbsp;19.3: Multiple-instance learning samples real tissue tiles from a whole slide and aggregates their representations into a slide-level result; attention is not a lesion contour.
 </figcaption>
 </figure>
 </div>
@@ -839,13 +839,13 @@ Figure&nbsp;19.3: Multiple-instance learning aggregates tile representations und
 <section id="open-challenges" class="level2" data-number="19.8">
 <h2 data-number="19.8" class="anchored" data-anchor-id="open-challenges"><span class="header-section-number">19.8</span> Open challenges</h2>
 <p>Stain and scanner variation are visible sources of domain shift, but specimen processing and patient selection are equally important. Color normalization can reduce some variation while leaving biological and workflow differences untouched. Validate the complete pipeline across the intended sites rather than assuming normalization solves transfer.</p>
-<div id="fig-path-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Source-slide quality review precedes optional documented stain processing, tile inference, and review on the original image.">
+<div id="fig-path-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="H-and-E crops demonstrate in-focus tissue, blur, a tissue fold, stain variation, and a larger source image with restrained nucleus overlays.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-path-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch19/quality.svg" class="img-fluid figure-img" alt="Source-slide quality review precedes optional documented stain processing, tile inference, and review on the original image.">
+<img src="../figures/ch19/quality.png" class="img-fluid figure-img" alt="H-and-E crops demonstrate in-focus tissue, blur, a tissue fold, stain variation, and a larger source image with restrained nucleus overlays.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-path-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;19.4: Quality and stain processing are explicit stages whose effects must be checked against the target task.
+Figure&nbsp;19.4: Focus, folds, and stain variation are visible source-image problems; accepted model overlays should be reviewed on the original slide.
 </figcaption>
 </figure>
 </div>

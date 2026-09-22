@@ -600,13 +600,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="17.1" class="anchored" data-anchor-id="what-is-ophthalmic-imaging"><span class="header-section-number">17.1</span> What is ophthalmic imaging?</h2>
 <p>Color fundus photography depicts the retina, optic disc, and visible vessels through the pupil. Field of view, illumination, pigmentation, focus, media clarity, and camera characteristics affect appearance. A macula-centered image differs from a disc-centered image; a wide-field system covers different anatomy. Image dimensions alone do not describe the field examined.</p>
 <p>OCT uses optical interference to estimate depth-resolved reflectivity. A cross-sectional B-scan is assembled from depth profiles; a volume combines many B-scans. Retinal layer boundaries, fluid spaces, and other structural features can be assessed in this geometry. OCT angiography derives motion-related vascular contrast from repeated acquisitions. It is not equivalent to a color photograph or dye angiography.</p>
-<div id="fig-eye-modalities" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three panels distinguish a surface fundus view, an OCT depth section, and a derived vascular map; these are conceptual illustrations, not clinical scans.">
+<div id="fig-eye-modalities" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three clinical panels show a color fundus photograph, macular OCT B-scan, and OCT angiography vascular map.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eye-modalities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch17/modalities.svg" class="img-fluid figure-img" alt="Three panels distinguish a surface fundus view, an OCT depth section, and a derived vascular map; these are conceptual illustrations, not clinical scans.">
+<img src="../figures/ch17/modalities.png" class="img-fluid figure-img" alt="Three clinical panels show a color fundus photograph, macular OCT B-scan, and OCT angiography vascular map.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-modalities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.1: Fundus photography, OCT, and OCT angiography represent different views of ocular structure and vasculature.
+Figure&nbsp;17.1: Fundus photography, OCT, and OCT angiography provide complementary clinical views of retinal structure and vasculature.
 </figcaption>
 </figure>
 </div>
@@ -668,13 +668,13 @@ Figure&nbsp;17.1: Fundus photography, OCT, and OCT angiography represent differe
 <h2 data-number="17.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">17.4</span> How it works in a modern hospital</h2>
 <p>Acquisition may occur in an ophthalmology clinic, screening service, primary-care site, or mobile program. Identity and laterality must be verified at capture. The examination may include multiple fields per eye, repeated images after quality review, and additional modalities. Images then enter a local imaging system, PACS, or vendor platform, with varying interoperability.</p>
 <p>A screening pipeline should first check supported camera and field, laterality, and image quality. Reacquisition can resolve some failures. Persistent inability to obtain an adequate image needs a defined clinical pathway. Do not repeatedly select the most favorable score from multiple attempts without a validated aggregation policy.</p>
-<div id="fig-eye-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Image acquisition leads to quality assessment; adequate images proceed to a supported screening model, while inadequate images lead to reacquisition or a defined referral pathway.">
+<div id="fig-eye-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three fundus images show an adequate view, a motion-blurred image requiring reacquisition, and a retina obscured by media opacity.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eye-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch17/quality.svg" class="img-fluid figure-img" alt="Image acquisition leads to quality assessment; adequate images proceed to a supported screening model, while inadequate images lead to reacquisition or a defined referral pathway.">
+<img src="../figures/ch17/quality.png" class="img-fluid figure-img" alt="Three fundus images show an adequate view, a motion-blurred image requiring reacquisition, and a retina obscured by media opacity.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.2: A screening pathway treats ungradable images as a separate outcome requiring action.
+Figure&nbsp;17.2: Gradability is a clinical outcome: adequate images proceed, recoverable capture failures are reacquired, and persistent opacity produces no valid result.
 </figcaption>
 </figure>
 </div>
@@ -682,13 +682,13 @@ Figure&nbsp;17.2: A screening pathway treats ungradable images as a separate out
 <h3 data-number="17.4.1" class="anchored" data-anchor-id="eye-level-inference-and-patient-level-action"><span class="header-section-number">17.4.1</span> Eye-level inference and patient-level action</h3>
 <p>A model may operate on one field, one eye, or a complete examination. The service must define how these outputs become a patient-level result. If either eye meets a referral criterion, the resulting action may differ from a policy that averages scores. Such aggregation is part of the validated product, not a convenient implementation detail.</p>
 <p>For OCT, record scan location, spacing, laterality, and segmentation version. If a follow-up scan does not cover the same region, declare limited comparability. Return masks or layer boundaries on the correct B-scans, and let reviewers inspect failures caused by shadows, motion, poor signal, or unusual anatomy.</p>
-<div id="fig-eye-grouping" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Patient identity contains visits, each containing right and left eyes with fields or OCT volumes; split assignment is made at the patient level.">
+<div id="fig-eye-grouping" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A clinical contact sheet groups right- and left-eye fundus and OCT images across two visits for the same patient.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eye-grouping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch17/grouping.svg" class="img-fluid figure-img" alt="Patient identity contains visits, each containing right and left eyes with fields or OCT volumes; split assignment is made at the patient level.">
+<img src="../figures/ch17/grouping.png" class="img-fluid figure-img" alt="A clinical contact sheet groups right- and left-eye fundus and OCT images across two visits for the same patient.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-grouping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.3: The data hierarchy keeps both eyes and every visit linked to the same patient.
+Figure&nbsp;17.3: The data hierarchy keeps both eyes, their fundus photographs and OCT scans, and every visit linked to the same patient.
 </figcaption>
 </figure>
 </div>
@@ -790,13 +790,13 @@ Figure&nbsp;17.3: The data hierarchy keeps both eyes and every visit linked to t
 <p>Report sensitivity and specificity at the prespecified referral threshold, patient-level aggregation, technical failure rate, and the proportion completing follow-up. Include ungradable examinations in an explicit denominator. Positive predictive value changes with disease prevalence, so a benchmark result should not be transplanted into a new population without considering calibration and operating point.</p>
 <p>For OCT segmentation, report boundary or compartment errors and their effect on derived measurements. A high average Dice score can conceal failure on a small but important fluid pocket. Longitudinal reproducibility requires consistent scan location and annotation definitions, not just a strong per-image metric.</p>
 <p>An illustrative service might return three states: target condition detected, target condition not detected in an adequate supported examination, or no valid result. Those labels should not be collapsed into a binary database field. The third state is essential for safe follow-up and honest evaluation.</p>
-<div id="fig-eye-referral" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A valid screening result enters patient communication and appropriate follow-up, with completion and unresolved cases tracked separately.">
+<div id="fig-eye-referral" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A retinal screening encounter shows fundus capture, workstation review, and a clinician discussing follow-up with the patient.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eye-referral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch17/referral.svg" class="img-fluid figure-img" alt="A valid screening result enters patient communication and appropriate follow-up, with completion and unresolved cases tracked separately.">
+<img src="../figures/ch17/referral.png" class="img-fluid figure-img" alt="A retinal screening encounter shows fundus capture, workstation review, and a clinician discussing follow-up with the patient.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eye-referral-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;17.4: The patient pathway continues beyond an AI result to communication and completed follow-up.
+Figure&nbsp;17.4: The patient pathway continues from image capture through reviewed screening results to communicated and completed follow-up.
 </figcaption>
 </figure>
 </div>

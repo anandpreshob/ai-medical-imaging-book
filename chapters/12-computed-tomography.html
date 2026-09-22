@@ -685,13 +685,13 @@ window.Quarto = {
 <p><span class="math display">\[HU = 1000\frac{\mu-\mu_{water}}{\mu_{water}}.\]</span></p>
 <p>Water is approximately 0 HU and air approximately −1000 HU. These anchors are useful, but do not make all tissue measurements invariant. Tube energy, contrast material, reconstruction kernel, patient size, artifacts, and calibration influence observed values. In conventional DICOM CT, stored values commonly require a rescale slope and intercept before they represent HU. Enhanced objects and quantitative maps can require additional interpretation; the DICOM appendix explains why blindly applying one formula to every image is unsafe.</p>
 <p><strong>Windowing</strong> maps an attenuation interval to a display range. It does not change the underlying CT values. A narrow soft-tissue window displays subtle differences over a smaller interval; lung and bone displays use different ranges. For learning, either use a documented HU transformation or construct defined windows as channels. A screenshot discards much of the quantitative range and may introduce annotations and display-specific processing.</p>
-<div id="fig-ct-windows" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three clipped linear intensity curves illustrate different CT display window widths and centers.">
+<div id="fig-ct-windows" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The same axial chest CT slice displayed with lung, soft-tissue, and bone windows.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ct-windows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch12/windows.svg" class="img-fluid figure-img" alt="Three clipped linear intensity curves illustrate different CT display window widths and centers.">
+<img src="../figures/ch12/windows.png" class="img-fluid figure-img" alt="The same axial chest CT slice displayed with lung, soft-tissue, and bone windows.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-windows-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.1: The same numerical CT signal can be displayed through different windows. These curves are illustrative mappings, not diagnostic presets.
+Figure&nbsp;12.1: The same numerical CT signal can be displayed through different windows. These views show the same slice in lung, soft-tissue, and bone windows.
 </figcaption>
 </figure>
 </div>
@@ -701,13 +701,13 @@ Figure&nbsp;12.1: The same numerical CT signal can be displayed through differen
 <p>A reconstructed CT series is usually a 3D array, but its voxels need not be isotropic. A hypothetical 512 × 512 × 400 series stored with two bytes per voxel occupies 200 MiB before compression and headers. Its float32 representation occupies 400 MiB; intermediate model activations, masks, copies, and multiple phases add substantially more. Memory planning based only on the compressed archive size will fail.</p>
 <p>Slice thickness describes reconstruction extent along the slice direction; it is not necessarily the distance between adjacent slice centers. Overlapping reconstructions can have smaller spacing than thickness. Determine positions from image geometry, sort along the slice normal, and check for missing or duplicate locations. A NIfTI affine preserves spatial relationships only if conversion was correct.</p>
 <p>Resampling is a modeling choice. Isotropic voxels simplify 3D processing but do not restore resolution absent from a thick-slice acquisition. Interpolate continuous images and discrete masks differently. Save the transform back to source geometry, because a result aligned in a model workspace must still overlay the correct patient anatomy in the viewer.</p>
-<div id="fig-ct-geometry" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An anisotropic source grid and an isotropic model grid share a physical frame, with an explicit inverse mapping for outputs.">
+<div id="fig-ct-geometry" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Matched coronal CT images compare thick anisotropic source slices with a smoother isotropically resampled grid.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ct-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch12/geometry.svg" class="img-fluid figure-img" alt="An anisotropic source grid and an isotropic model grid share a physical frame, with an explicit inverse mapping for outputs.">
+<img src="../figures/ch12/geometry.png" class="img-fluid figure-img" alt="Matched coronal CT images compare thick anisotropic source slices with a smoother isotropically resampled grid.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-geometry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.2: A physical volume has a voxel grid and a coordinate system. Resampling changes the grid while preserving the intended physical locations.
+Figure&nbsp;12.2: Thick source slices produce stair-step multiplanar anatomy; isotropic resampling changes the grid while preserving physical locations.
 </figcaption>
 </figure>
 </div>
@@ -788,13 +788,13 @@ Figure&nbsp;12.2: A physical volume has a voxel grid and a coordinate system. Re
 <h2 data-number="12.4" class="anchored" data-anchor-id="how-it-works-in-a-modern-hospital"><span class="header-section-number">12.4</span> How it works in a modern hospital</h2>
 <p>The order is protocolled, patient and contrast considerations are reviewed, the examination is acquired, and reconstructed series are sent to PACS. Radiologists examine appropriate windows, multiplanar views, and priors. Urgent findings require communication through established local procedures, while quantitative outputs may feed a structured report or a research database.</p>
 <p>An AI router must wait for an adequate input set. “First image arrived” does not mean “series complete.” Conversely, waiting for every optional reconstruction may delay an urgent service. Define task-specific readiness: the required series, expected coverage, geometry checks, and an inactivity or completion event. If a late image changes the input, decide whether the previous result is superseded and reprocessing is required.</p>
-<div id="fig-ct-routing" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A study inventory branches to noncontrast head, angiographic and abdominal analysis only after task-specific eligibility checks.">
+<div id="fig-ct-routing" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three clinical CT examples show a noncontrast head CT, chest CT angiogram, and portal-venous abdominal CT.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ct-routing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch12/routing.svg" class="img-fluid figure-img" alt="A study inventory branches to noncontrast head, angiographic and abdominal analysis only after task-specific eligibility checks.">
+<img src="../figures/ch12/routing.png" class="img-fluid figure-img" alt="Three clinical CT examples show a noncontrast head CT, chest CT angiogram, and portal-venous abdominal CT.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-routing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.3: CT routing depends on series eligibility. Different clinical tasks receive different acquisitions; a failed eligibility check returns an explicit exception.
+Figure&nbsp;12.3: CT routing depends on series eligibility: noncontrast head CT, angiographic CT, and portal-venous abdominal CT are visibly different inputs for different tasks.
 </figcaption>
 </figure>
 </div>
@@ -965,13 +965,13 @@ Figure&nbsp;12.3: CT routing depends on series eligibility. Different clinical t
 <section id="longitudinal-identity-and-geometry" class="level3" data-number="12.8.2">
 <h3 data-number="12.8.2" class="anchored" data-anchor-id="longitudinal-identity-and-geometry"><span class="header-section-number">12.8.2</span> Longitudinal identity and geometry</h3>
 <p>Registration can help align anatomy, but deformation is not proof that two regions represent the same lesion. A lesion can merge, split, disappear, or be resected. Reviewable lesion identity is a separate data object from the spatial transform. Avoid assigning the nearest detected region to the previous lesion without recording uncertainty.</p>
-<div id="fig-ct-longitudinal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two visits contain matched, new and unresolved lesion identities rather than a forced one-to-one nearest-neighbor match.">
+<div id="fig-ct-longitudinal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Baseline and follow-up lung CT images show a matched nodule, a new nodule, and an uncertain focus with restrained colored circles.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ct-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch12/longitudinal.svg" class="img-fluid figure-img" alt="Two visits contain matched, new and unresolved lesion identities rather than a forced one-to-one nearest-neighbor match.">
+<img src="../figures/ch12/longitudinal.png" class="img-fluid figure-img" alt="Baseline and follow-up lung CT images show a matched nodule, a new nodule, and an uncertain focus with restrained colored circles.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ct-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12.4: Lesion identity persists across visits only when supported by evidence. New, resolved and uncertain matches must remain distinguishable.
+Figure&nbsp;12.4: Lesion identity persists across visits only when supported by evidence. The comparison keeps matched, new, and uncertain pulmonary findings distinct.
 </figcaption>
 </figure>
 </div>

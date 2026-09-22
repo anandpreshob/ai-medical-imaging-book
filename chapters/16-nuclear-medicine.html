@@ -630,13 +630,13 @@ window.Quarto = {
 <h2 data-number="16.1" class="anchored" data-anchor-id="what-is-nuclear-medicine"><span class="header-section-number">16.1</span> What is nuclear medicine?</h2>
 <p>In PET, a positron-emitting tracer produces annihilation photons detected in coincidence. Reconstruction estimates tracer distribution from the recorded events, with corrections for effects such as attenuation, scatter, and random coincidences. SPECT detects emitted gamma photons through collimation and reconstructs their distribution from projections. Hybrid PET/CT, PET/MRI, and SPECT/CT combine functional and anatomical information. The <a href="https://www.radiologyinfo.org/en/info/pet">ACR/RSNA PET overview</a> describes common clinical uses and examination steps.</p>
 <p>Different tracers interrogate different processes. FDG is related to glucose metabolism; other tracers target different biological pathways. A model trained on FDG oncology studies should not be assumed to work on another tracer, even if both datasets use PET and have similar array dimensions. The distribution of normal uptake and the clinical target can change substantially.</p>
-<div id="fig-pet-acquisition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Administration and timing lead to coincidence measurements, correction and reconstruction, and a quantitative image with documented units.">
+<div id="fig-pet-acquisition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A clinical sequence shows radiotracer injection, PET/CT scanning, and resulting whole-body and fused PET/CT images.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pet-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch16/acquisition.svg" class="img-fluid figure-img" alt="Administration and timing lead to coincidence measurements, correction and reconstruction, and a quantitative image with documented units.">
+<img src="../figures/ch16/acquisition.png" class="img-fluid figure-img" alt="A clinical sequence shows radiotracer injection, PET/CT scanning, and resulting whole-body and fused PET/CT images.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.1: A PET examination connects radiopharmaceutical administration, event acquisition, corrections, and reconstruction.
+Figure&nbsp;16.1: A PET examination connects radiopharmaceutical administration, scanner acquisition, and the reconstructed quantitative image.
 </figcaption>
 </figure>
 </div>
@@ -647,13 +647,13 @@ Figure&nbsp;16.1: A PET examination connects radiopharmaceutical administration,
 <p><span class="math display">\[SUV_{bw}=\frac{C(t)}{A_{ref}/m},\]</span></p>
 <p>where <span class="math inline">\(C(t)\)</span> is activity concentration at an appropriate reference time, <span class="math inline">\(A_{ref}\)</span> is administered activity represented at a consistent decay reference, and <span class="math inline">\(m\)</span> is body mass. Unit consistency is essential. Alternative normalization conventions exist; an exported number should specify which was used.</p>
 <p>This equation is not an implementation recipe for every DICOM object. Quantitative units, decay-correction status, administration time, residual activity handling, scanner calibration, and metadata conventions must be interpreted correctly. Some images already contain normalized values. Applying a second conversion can produce plausible but wrong measurements.</p>
-<div id="fig-pet-suv" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Activity concentration, administered activity and decay reference, body-mass normalization, and unit checks combine into a documented SUV convention.">
+<div id="fig-pet-suv" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A fused axial chest PET/CT shows a hot pulmonary lesion with a region of interest and a panel listing injected activity, uptake time, body weight, and SUVmax.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pet-suv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch16/suv.svg" class="img-fluid figure-img" alt="Activity concentration, administered activity and decay reference, body-mass normalization, and unit checks combine into a documented SUV convention.">
+<img src="../figures/ch16/suv.png" class="img-fluid figure-img" alt="A fused axial chest PET/CT shows a hot pulmonary lesion with a region of interest and a panel listing injected activity, uptake time, body weight, and SUVmax.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-suv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.2: Quantitative uptake requires aligned units and timing, not just pixel values.
+Figure&nbsp;16.2: Quantitative uptake is measured on the fused PET/CT only after injected activity, uptake time, normalization, and units are defined.
 </figcaption>
 </figure>
 </div>
@@ -718,13 +718,13 @@ Figure&nbsp;16.2: Quantitative uptake requires aligned units and timing, not jus
 <section id="fusion-is-a-hypothesis-to-inspect" class="level3" data-number="16.4.1">
 <h3 data-number="16.4.1" class="anchored" data-anchor-id="fusion-is-a-hypothesis-to-inspect"><span class="header-section-number">16.4.1</span> Fusion is a hypothesis to inspect</h3>
 <p>Hybrid acquisition improves correspondence but does not eliminate motion. Verify registration before using CT anatomy to classify a PET focus or transferring a PET mask into CT coordinates. Resampling must preserve physical geometry, and interpolation can affect small structures and maximum values. Keep native-resolution measurements where required by the validated method.</p>
-<div id="fig-pet-partial" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A conceptual narrow source profile becomes broader and lower after limited-resolution imaging; the curves are illustrative, not patient measurements.">
+<div id="fig-pet-partial" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three fused PET/CT crops show equally avid lesions at 20, 10, and 5 millimeters, with reduced apparent recovery as size decreases.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pet-partial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch16/partial-volume.svg" class="img-fluid figure-img" alt="A conceptual narrow source profile becomes broader and lower after limited-resolution imaging; the curves are illustrative, not patient measurements.">
+<img src="../figures/ch16/partial-volume.png" class="img-fluid figure-img" alt="Three fused PET/CT crops show equally avid lesions at 20, 10, and 5 millimeters, with reduced apparent recovery as size decreases.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-partial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.3: Partial-volume effects can make a small hot structure appear less intense and less sharply bounded.
+Figure&nbsp;16.3: Partial-volume effects make smaller hot structures appear less intense and less sharply bounded even when true uptake is unchanged.
 </figcaption>
 </figure>
 </div>
@@ -733,13 +733,13 @@ Figure&nbsp;16.3: Partial-volume effects can make a small hot structure appear l
 <section id="an-illustrative-comparison" class="level3" data-number="16.4.2">
 <h3 data-number="16.4.2" class="anchored" data-anchor-id="an-illustrative-comparison"><span class="header-section-number">16.4.2</span> An illustrative comparison</h3>
 <p>Suppose a lesion has a reported SUV of 8.0 at one visit and 6.0 at another. The arithmetic decrease is 25%. That alone does not establish treatment response. Check the uptake measure, tracer, timing, reconstruction, patient preparation, lesion identity, and the response framework used by the clinical service. A change in which voxel supplies the maximum can affect an extreme-value measure even when the underlying lesion changes little.</p>
-<div id="fig-pet-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two visits undergo tracer, timing, reconstruction, and registration checks before lesion matching and a clinically interpreted change estimate.">
+<div id="fig-pet-comparison" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Baseline and follow-up whole-body PET images and fused axial insets show reduced uptake in the same matched lesion.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-pet-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch16/comparison.svg" class="img-fluid figure-img" alt="Two visits undergo tracer, timing, reconstruction, and registration checks before lesion matching and a clinically interpreted change estimate.">
+<img src="../figures/ch16/comparison.png" class="img-fluid figure-img" alt="Baseline and follow-up whole-body PET images and fused axial insets show reduced uptake in the same matched lesion.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pet-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;16.4: Longitudinal PET comparison requires compatible acquisition and a reviewed lesion inventory.
+Figure&nbsp;16.4: Longitudinal PET comparison requires compatible acquisition and a reviewed matched-lesion inventory.
 </figcaption>
 </figure>
 </div>

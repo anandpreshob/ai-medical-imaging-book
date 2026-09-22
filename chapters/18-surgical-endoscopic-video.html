@@ -601,13 +601,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="18.1" class="anchored" data-anchor-id="what-is-surgical-and-endoscopic-video"><span class="header-section-number">18.1</span> What is surgical and endoscopic video?</h2>
 <p>Endoscopes and surgical cameras record reflected light from a scene shaped by illumination, optics, tissue, instruments, fluids, and camera motion. The appearance changes with distance, viewpoint, insufflation, smoke, blood, irrigation, and image enhancement. White-light, fluorescence, and other imaging modes have different semantics. A model should identify or be restricted to supported modes.</p>
 <p>The data are sequences of frames with timing, compression, and sometimes audio or device telemetry. A nominal frame rate does not guarantee constant spacing between decoded frames. Dropped frames, buffering, transcoding, and network transport can all alter timing. Video can also contain patient identifiers, staff speech, and external-room views, making privacy review broader than pixel de-identification alone.</p>
-<div id="fig-video-timescales" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Frame detection, short temporal events, surgical phases, and complete procedures occupy progressively longer time scales.">
+<div id="fig-video-timescales" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Laparoscopic cholecystectomy frames illustrate the nested scales of one frame, a clip-application event, a dissection phase, and the entire procedure.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-video-timescales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch18/timescales.svg" class="img-fluid figure-img" alt="Frame detection, short temporal events, surgical phases, and complete procedures occupy progressively longer time scales.">
+<img src="../figures/ch18/timescales.png" class="img-fluid figure-img" alt="Laparoscopic cholecystectomy frames illustrate the nested scales of one frame, a clip-application event, a dissection phase, and the entire procedure.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-video-timescales-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18.1: Video tasks operate at different time scales, from a single frame to an entire procedure.
+Figure&nbsp;18.1: Surgical video tasks operate at different time scales, from one annotated frame through an event and phase to the complete procedure.
 </figcaption>
 </figure>
 </div>
@@ -675,13 +675,13 @@ Figure&nbsp;18.1: Video tasks operate at different time scales, from a single fr
 <section id="design-for-freshness" class="level3" data-number="18.4.1">
 <h3 data-number="18.4.1" class="anchored" data-anchor-id="design-for-freshness"><span class="header-section-number">18.4.1</span> Design for freshness</h3>
 <p>Measure latency from the acquisition timestamp to the displayed output, including capture, queueing, preprocessing, inference, postprocessing, and rendering. Report the distribution and worst relevant cases rather than only average neural-network time. If inference falls behind, an unbounded queue can show accurate results for an increasingly old scene.</p>
-<div id="fig-video-latency" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Capture, queue, preprocessing, inference, and display each contribute to total latency; stale frames trigger a defined drop or suppress policy.">
+<div id="fig-video-latency" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An operating-room monitor and three laparoscopic frames compare camera capture, the current frame, and a stale displayed instrument overlay.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-video-latency-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch18/latency.svg" class="img-fluid figure-img" alt="Capture, queue, preprocessing, inference, and display each contribute to total latency; stale frames trigger a defined drop or suppress policy.">
+<img src="../figures/ch18/latency.png" class="img-fluid figure-img" alt="An operating-room monitor and three laparoscopic frames compare camera capture, the current frame, and a stale displayed instrument overlay.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-video-latency-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18.2: End-to-end latency includes queueing and display, not only neural-network inference.
+Figure&nbsp;18.2: End-to-end latency can make an otherwise accurate overlay stale relative to the current instrument position.
 </figcaption>
 </figure>
 </div>
@@ -730,13 +730,13 @@ Figure&nbsp;18.2: End-to-end latency includes queueing and display, not only neu
 </div>
 <p><a href="https://camma.unistra.fr/datasets/">Cholec80</a> supports research on laparoscopic cholecystectomy workflow. Kvasir-SEG provides annotated polyp images for segmentation research. Their tasks and units differ: one is procedural video, the other an image collection. A method that performs well on either needs additional evidence for a live clinical claim.</p>
 <p>Split by patient and procedure, with surgeon or site held out when relevant. Do not put neighboring frames from one operation into both training and test sets. Keep edited clips, alternate encodings, and extracted stills with their source procedure. Record whether the model sees the entire procedure or only a causal prefix.</p>
-<div id="fig-video-splits" class="quarto-float quarto-figure quarto-figure-center anchored" alt="All clips, stills, and alternate encodings from a procedure remain in one partition; site-level evaluation is a separate generalization test.">
+<div id="fig-video-splits" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three grouped laparoscopic filmstrips place complete procedures and their derivatives in train, validation, or test sets.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-video-splits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch18/splits.svg" class="img-fluid figure-img" alt="All clips, stills, and alternate encodings from a procedure remain in one partition; site-level evaluation is a separate generalization test.">
+<img src="../figures/ch18/splits.png" class="img-fluid figure-img" alt="Three grouped laparoscopic filmstrips place complete procedures and their derivatives in train, validation, or test sets.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-video-splits-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18.3: Procedure-level splitting keeps correlated frames and derivatives together.
+Figure&nbsp;18.3: Procedure-level splitting keeps every frame, clip, still, and derivative from each operation in one partition.
 </figcaption>
 </figure>
 </div>
@@ -802,13 +802,13 @@ Figure&nbsp;18.3: Procedure-level splitting keeps correlated frames and derivati
 </table>
 </div>
 <p><a href="https://github.com/tobiascz/TeCNO">TeCNO</a> is a research example of temporal surgical-phase recognition. A causal architecture uses information available up to the current time; an offline bidirectional method can use future context. Their scores should not be compared as though they answer the same operational question.</p>
-<div id="fig-video-causality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A timeline marks past, current, and future frames, with a causal window ending at the current frame and an offline window extending beyond it.">
+<div id="fig-video-causality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Seven sequential endoscopic frames show a real-time context window ending at now and an offline window extending into future frames.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-video-causality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch18/causality.svg" class="img-fluid figure-img" alt="A timeline marks past, current, and future frames, with a causal window ending at the current frame and an offline window extending beyond it.">
+<img src="../figures/ch18/causality.png" class="img-fluid figure-img" alt="Seven sequential endoscopic frames show a real-time context window ending at now and an offline window extending into future frames.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-video-causality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;18.4: Causal inference uses current and past frames; offline analysis may also use future frames.
+Figure&nbsp;18.4: Causal inference uses current and past endoscopic frames; offline analysis may also use future frames.
 </figcaption>
 </figure>
 </div>

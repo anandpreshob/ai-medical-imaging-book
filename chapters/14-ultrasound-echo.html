@@ -633,13 +633,13 @@ window.Quarto = {
 <h2 data-number="14.1" class="anchored" data-anchor-id="what-is-ultrasound"><span class="header-section-number">14.1</span> What is ultrasound?</h2>
 <p>A transducer emits acoustic pulses and receives echoes from tissue interfaces and scatterers. Echo timing helps estimate depth; echo amplitude contributes to brightness in B-mode imaging. The familiar image is produced through beamforming and extensive signal processing, not by directly photographing anatomy. Frequency trades penetration against spatial resolution, while probe geometry and the acoustic window affect coverage. The <a href="https://www.radiologyinfo.org/en/info/genus">ACR/RSNA ultrasound overview</a> describes common acquisition methods and uses.</p>
 <p>B-mode shows anatomy. M-mode displays motion along a selected line over time. Doppler techniques estimate motion-related frequency shifts and support assessment of flow; the measured component depends on beam–flow geometry. Color maps, spectral Doppler traces, and grayscale clips are different input types. Their rendered colors and overlays should not be interpreted as a universal physical scale without metadata and system context.</p>
-<div id="fig-us-acquisition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Probe and acoustic window feed beam formation, B-mode or Doppler processing, and a quality-reviewed image or clip.">
+<div id="fig-us-acquisition" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A sonographer acquires an apical cardiac view while the monitor displays a four-chamber echocardiogram and an inset shows probe orientation.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-us-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch14/acquisition.svg" class="img-fluid figure-img" alt="Probe and acoustic window feed beam formation, B-mode or Doppler processing, and a quality-reviewed image or clip.">
+<img src="../figures/ch14/acquisition.png" class="img-fluid figure-img" alt="A sonographer acquires an apical cardiac view while the monitor displays a four-chamber echocardiogram and an inset shows probe orientation.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.1: The acquisition chain links probe position and acoustic window to the resulting image.
+Figure&nbsp;14.1: Probe position and acoustic window directly shape the resulting ultrasound image.
 </figcaption>
 </figure>
 </div>
@@ -706,13 +706,13 @@ Figure&nbsp;14.1: The acquisition chain links probe position and acoustic window
 <p>Left-ventricular ejection fraction is conventionally expressed as</p>
 <p><span class="math display">\[EF = \frac{EDV-ESV}{EDV}\times100\%,\]</span></p>
 <p>where EDV and ESV are end-diastolic and end-systolic volumes. If a hypothetical examination yields 120 mL and 50 mL, the calculated EF is about 58%. This arithmetic does not validate the contours, view, cardiac-cycle selection, or clinical interpretation.</p>
-<div id="fig-echo-ef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="End-diastolic volume 120 milliliters and end-systolic volume 50 milliliters produce an illustrative ejection fraction of about 58 percent.">
+<div id="fig-echo-ef" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Matched echocardiographic frames show end-diastolic and end-systolic left-ventricular contours with illustrative volumes and ejection fraction.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-echo-ef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch14/ef.svg" class="img-fluid figure-img" alt="End-diastolic volume 120 milliliters and end-systolic volume 50 milliliters produce an illustrative ejection fraction of about 58 percent.">
+<img src="../figures/ch14/ef.png" class="img-fluid figure-img" alt="Matched echocardiographic frames show end-diastolic and end-systolic left-ventricular contours with illustrative volumes and ejection fraction.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-echo-ef-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.2: Illustrative ejection-fraction arithmetic separates measured volumes from the derived percentage.
+Figure&nbsp;14.2: Ejection fraction is derived from traced ventricular volumes at end diastole and end systole.
 </figcaption>
 </figure>
 </div>
@@ -725,13 +725,13 @@ Figure&nbsp;14.2: Illustrative ejection-fraction arithmetic separates measured v
 <h3 data-number="14.4.1" class="anchored" data-anchor-id="acquisition-precedes-inference"><span class="header-section-number">14.4.1</span> Acquisition precedes inference</h3>
 <p>A sonographer, clinician, or other trained operator acquires the examination, stores representative material, and records measurements. Images and clips reach PACS or a dedicated cardiovascular system; a specialist interprets them with clinical context. At the bedside, storage and reporting may be less standardized, which makes governance more important rather than optional.</p>
 <p>An acquisition assistant needs a fast local feedback loop. It should recognize the target view, assess quality, and provide bounded guidance without overwhelming the operator. Guidance should be evaluated by the quality and completeness of the resulting examination, not merely by frame classification accuracy. A confusing prompt can worsen acquisition even if its underlying classifier is accurate.</p>
-<div id="fig-us-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="View availability branches to missing, inadequate, or adequate; only an adequate supported view proceeds to measurement.">
+<div id="fig-us-quality" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three echocardiographic panels show missing anatomy, an inadequate foreshortened cardiac view, and an adequate apical four-chamber view.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-us-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch14/quality.svg" class="img-fluid figure-img" alt="View availability branches to missing, inadequate, or adequate; only an adequate supported view proceeds to measurement.">
+<img src="../figures/ch14/quality.png" class="img-fluid figure-img" alt="Three echocardiographic panels show missing anatomy, an inadequate foreshortened cardiac view, and an adequate apical four-chamber view.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-quality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.3: Quality assessment distinguishes a missing view from an inadequate view and an adequate view ready for measurement.
+Figure&nbsp;14.3: Quality assessment distinguishes a missing view, an inadequate foreshortened view, and an adequate four-chamber view ready for measurement.
 </figcaption>
 </figure>
 </div>
@@ -847,13 +847,13 @@ Figure&nbsp;14.3: Quality assessment distinguishes a missing view from an inadeq
 <p>For view recognition, report confusion between clinically similar views and the frequency of unsupported inputs. For quality assessment, assess whether the output predicts measurement reliability or expert adequacy. For segmentation, report contour and measurement errors. For EF regression, report bias, dispersion of paired errors, clinically relevant misclassification where justified, and performance across rhythm and image-quality groups.</p>
 <p>Correlation is not agreement. Predictions can correlate strongly with reference EF while consistently overestimating low values. Bland–Altman-style analysis and error distributions expose patterns a single correlation coefficient hides. Repeated examinations can help characterize reproducibility, but disease and loading conditions may genuinely change between studies.</p>
 <p>Real-time tools also need operational metrics: end-to-end latency, frame-drop rate, stability of prompts, reacquisition frequency, and task completion. A detector that is accurate on retrospectively sampled clips may lag behind the live scene. Evaluate on the hardware, capture pathway, and operator population intended for use.</p>
-<div id="fig-us-live" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Live frames enter a bounded queue and model; current guidance returns to the operator while accepted clips and measurements enter the clinical record.">
+<div id="fig-us-live" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A clinician scans a patient while a monitor displays a live cardiac ultrasound, view-quality guidance, and a separate accepted clip.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-us-live-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch14/live-loop.svg" class="img-fluid figure-img" alt="Live frames enter a bounded queue and model; current guidance returns to the operator while accepted clips and measurements enter the clinical record.">
+<img src="../figures/ch14/live-loop.png" class="img-fluid figure-img" alt="A clinician scans a patient while a monitor displays a live cardiac ultrasound, view-quality guidance, and a separate accepted clip.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-us-live-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14.4: The live ultrasound loop has separate acquisition, inference, feedback, and accepted-result paths.
+Figure&nbsp;14.4: Live ultrasound guidance must remain current while accepted clips and measurements enter a separate reviewed record.
 </figcaption>
 </figure>
 </div>

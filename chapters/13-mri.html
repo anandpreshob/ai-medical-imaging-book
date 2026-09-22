@@ -609,13 +609,13 @@ ul.task-list li input[type="checkbox"] {
 <h3 data-number="13.1.1" class="anchored" data-anchor-id="from-spins-to-images"><span class="header-section-number">13.1.1</span> From spins to images</h3>
 <p>A strong magnetic field establishes a net magnetization. Radiofrequency pulses perturb it, and receiver coils measure signals as magnetization evolves. Magnetic-field gradients encode position. The sampled spatial-frequency data, called <strong>k-space</strong>, are reconstructed into images. Repetition time, echo time, flip angle, preparation pulses, sampling pattern, and reconstruction all influence the result. The <a href="https://www.radiologyinfo.org/en/info/bodymr">ACR/RSNA MRI overview</a> introduces the examination and its safety considerations.</p>
 <p>T1-weighted, T2-weighted, and fluid-attenuated inversion recovery (FLAIR) images are contrasts, not interchangeable photographs. FLAIR suppresses much of the cerebrospinal-fluid signal to make some adjacent abnormalities more conspicuous. Diffusion-weighted imaging depends on water motion and acquisition settings; the apparent diffusion coefficient (ADC) is a derived quantitative estimate. Bright diffusion-weighted signal alone does not establish restricted diffusion: interpretation uses the ADC map and other sequences. Susceptibility-sensitive imaging responds to local field variation. Post-contrast imaging requires the agent, timing, and pre-contrast comparison to be understood.</p>
-<div id="fig-mri-sequences" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four MRI sequence cards covering T1 anatomy, T2 and FLAIR fluid sensitivity, diffusion and ADC, and susceptibility.">
+<div id="fig-mri-sequences" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Matched axial brain MRI images show T1, T2, FLAIR, and DWI with an ADC inset.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mri-sequences-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch13/sequences.svg" class="img-fluid figure-img" alt="Four MRI sequence cards covering T1 anatomy, T2 and FLAIR fluid sensitivity, diffusion and ADC, and susceptibility.">
+<img src="../figures/ch13/sequences.png" class="img-fluid figure-img" alt="Matched axial brain MRI images show T1, T2, FLAIR, and DWI with an ADC inset.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-sequences-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.1: Conceptual comparison of MRI sequence families and the information they emphasize. The cards describe acquisition contrasts, not diagnostic rules or patient images.
+Figure&nbsp;13.1: The same brain level across T1, T2, FLAIR, and diffusion/ADC demonstrates how sequence choice changes visible tissue contrast and pathology.
 </figcaption>
 </figure>
 </div>
@@ -625,13 +625,13 @@ Figure&nbsp;13.1: Conceptual comparison of MRI sequence families and the informa
 <h3 data-number="13.1.2" class="anchored" data-anchor-id="reconstruction-is-a-different-task-from-interpretation"><span class="header-section-number">13.1.2</span> Reconstruction is a different task from interpretation</h3>
 <p>Reconstruction estimates an image from measurements. Segmentation estimates an anatomical label from an image. Disease classification estimates a clinical category. These operations have different reference standards. A reconstruction model with excellent pixel similarity can still alter a small lesion; a lesion classifier cannot validate the fidelity of every reconstructed structure.</p>
 <p>Undersampling reduces acquired measurements and can shorten examinations, but creates an inverse problem. Learned priors help choose among possible images consistent with the measurements. Data consistency constrains that choice; it does not by itself prove that all diagnostically relevant information has been preserved. Evaluation should include the acquisition pattern, coils, scanner field strength, anatomy, and abnormalities expected in deployment.</p>
-<div id="fig-mri-reconstruction" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Measured k-space enters reconstruction with a data-consistency check; the resulting image undergoes image-quality and clinical-task assessment.">
+<div id="fig-mri-reconstruction" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Three panels show measured k-space, an aliased undersampled brain image, and a reconstructed diagnostic brain MRI.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mri-reconstruction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch13/reconstruction.svg" class="img-fluid figure-img" alt="Measured k-space enters reconstruction with a data-consistency check; the resulting image undergoes image-quality and clinical-task assessment.">
+<img src="../figures/ch13/reconstruction.png" class="img-fluid figure-img" alt="Three panels show measured k-space, an aliased undersampled brain image, and a reconstructed diagnostic brain MRI.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-reconstruction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.2: MRI reconstruction separates measured k-space from an estimated image and downstream interpretation.
+Figure&nbsp;13.2: MRI reconstruction transforms measured k-space into an image; undersampling can produce aliasing before reconstruction restores a diagnostic representation.
 </figcaption>
 </figure>
 </div>
@@ -706,13 +706,13 @@ Figure&nbsp;13.2: MRI reconstruction separates measured k-space from an estimate
 <section id="align-without-destroying-provenance" class="level3" data-number="13.4.2">
 <h3 data-number="13.4.2" class="anchored" data-anchor-id="align-without-destroying-provenance"><span class="header-section-number">13.4.2</span> Align without destroying provenance</h3>
 <p>Multi-sequence models often require registration, orientation normalization, resampling, and intensity normalization. Their order and parameters are part of the model. Rigid registration may suffice for some within-session brain tasks; deformable registration introduces stronger assumptions and can distort disease-related anatomy. Brain extraction may fail after surgery or with unusual anatomy.</p>
-<div id="fig-mri-alignment" class="quarto-float quarto-figure quarto-figure-center anchored" alt="T1, T2, FLAIR, and diffusion inputs are checked for completeness, aligned to a documented reference, processed, and mapped back to source coordinates.">
+<div id="fig-mri-alignment" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Four source MRI sequences are shown beside a larger aligned reference image with thin anatomical contours.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mri-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch13/alignment.svg" class="img-fluid figure-img" alt="T1, T2, FLAIR, and diffusion inputs are checked for completeness, aligned to a documented reference, processed, and mapped back to source coordinates.">
+<img src="../figures/ch13/alignment.png" class="img-fluid figure-img" alt="Four source MRI sequences are shown beside a larger aligned reference image with thin anatomical contours.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-alignment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.3: A sequence inventory precedes alignment and multi-sequence inference. Outputs are returned to the original reference grid.
+Figure&nbsp;13.3: Multi-sequence analysis requires T1, T2, FLAIR, and diffusion images to be aligned to a documented reference before their information can be combined.
 </figcaption>
 </figure>
 </div>
@@ -831,13 +831,13 @@ Figure&nbsp;13.3: A sequence inventory precedes alignment and multi-sequence inf
 <section id="worked-longitudinal-example" class="level3" data-number="13.6.2">
 <h3 data-number="13.6.2" class="anchored" data-anchor-id="worked-longitudinal-example"><span class="header-section-number">13.6.2</span> Worked longitudinal example</h3>
 <p>Suppose a lesion mask measures 2.0 mL at baseline and 2.3 mL at follow-up. The arithmetic change is 15%. This is an illustrative calculation, not a progression criterion. Before interpreting it, check whether both masks describe the same target, whether contrast timing differs, whether registration aligns the lesion rather than merely the skull, and whether boundary disagreement is large relative to 0.3 mL.</p>
-<div id="fig-mri-longitudinal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Baseline and follow-up studies each pass protocol and quality checks before registration, lesion matching, and a reviewed change estimate.">
+<div id="fig-mri-longitudinal" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Baseline and follow-up post-contrast brain MRI show an enhancing tumor with prior and current contours.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mri-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch13/longitudinal.svg" class="img-fluid figure-img" alt="Baseline and follow-up studies each pass protocol and quality checks before registration, lesion matching, and a reviewed change estimate.">
+<img src="../figures/ch13/longitudinal.png" class="img-fluid figure-img" alt="Baseline and follow-up post-contrast brain MRI show an enhancing tumor with prior and current contours.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mri-longitudinal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13.4: A longitudinal comparison requires consistent acquisition, spatial matching, and uncertainty-aware measurement.
+Figure&nbsp;13.4: Longitudinal tumor assessment requires matched anatomy, compatible acquisitions, and reviewed contours rather than an unqualified percentage change.
 </figcaption>
 </figure>
 </div>
