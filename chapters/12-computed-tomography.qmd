@@ -31,7 +31,7 @@ Water is approximately 0 HU and air approximately −1000 HU. These anchors are 
 
 **Windowing** maps an attenuation interval to a display range. It does not change the underlying CT values. A narrow soft-tissue window displays subtle differences over a smaller interval; lung and bone displays use different ranges. For learning, either use a documented HU transformation or construct defined windows as channels. A screenshot discards much of the quantitative range and may introduce annotations and display-specific processing.
 
-![The same numerical CT signal can be displayed through different windows. These curves are illustrative mappings, not diagnostic presets.](../figures/ch12/windows.svg){#fig-ct-windows fig-alt="Three clipped linear intensity curves illustrate different CT display window widths and centers."}
+![The same numerical CT signal can be displayed through different windows. These views show the same slice in lung, soft-tissue, and bone windows.](../figures/ch12/windows.png){#fig-ct-windows fig-alt="The same axial chest CT slice displayed with lung, soft-tissue, and bone windows."}
 
 ### Dimensions, spacing, and memory
 
@@ -41,7 +41,7 @@ Slice thickness describes reconstruction extent along the slice direction; it is
 
 Resampling is a modeling choice. Isotropic voxels simplify 3D processing but do not restore resolution absent from a thick-slice acquisition. Interpolate continuous images and discrete masks differently. Save the transform back to source geometry, because a result aligned in a model workspace must still overlay the correct patient anatomy in the viewer.
 
-![A physical volume has a voxel grid and a coordinate system. Resampling changes the grid while preserving the intended physical locations.](../figures/ch12/geometry.svg){#fig-ct-geometry fig-alt="An anisotropic source grid and an isotropic model grid share a physical frame, with an explicit inverse mapping for outputs."}
+![Thick source slices produce stair-step multiplanar anatomy; isotropic resampling changes the grid while preserving physical locations.](../figures/ch12/geometry.png){#fig-ct-geometry fig-alt="Matched coronal CT images compare thick anisotropic source slices with a smoother isotropically resampled grid."}
 
 ## Why and when it's ordered
 
@@ -80,7 +80,7 @@ The order is protocolled, patient and contrast considerations are reviewed, the 
 
 An AI router must wait for an adequate input set. “First image arrived” does not mean “series complete.” Conversely, waiting for every optional reconstruction may delay an urgent service. Define task-specific readiness: the required series, expected coverage, geometry checks, and an inactivity or completion event. If a late image changes the input, decide whether the previous result is superseded and reprocessing is required.
 
-![CT routing depends on series eligibility. Different clinical tasks receive different acquisitions; a failed eligibility check returns an explicit exception.](../figures/ch12/routing.svg){#fig-ct-routing fig-alt="A study inventory branches to noncontrast head, angiographic and abdominal analysis only after task-specific eligibility checks."}
+![CT routing depends on series eligibility: noncontrast head CT, angiographic CT, and portal-venous abdominal CT are visibly different inputs for different tasks.](../figures/ch12/routing.png){#fig-ct-routing fig-alt="Three clinical CT examples show a noncontrast head CT, chest CT angiogram, and portal-venous abdominal CT."}
 
 ### An implementable research pipeline
 
@@ -174,7 +174,7 @@ Dose reduction introduces a second ambiguity: an image can look smoother after l
 
 Registration can help align anatomy, but deformation is not proof that two regions represent the same lesion. A lesion can merge, split, disappear, or be resected. Reviewable lesion identity is a separate data object from the spatial transform. Avoid assigning the nearest detected region to the previous lesion without recording uncertainty.
 
-![Lesion identity persists across visits only when supported by evidence. New, resolved and uncertain matches must remain distinguishable.](../figures/ch12/longitudinal.svg){#fig-ct-longitudinal fig-alt="Two visits contain matched, new and unresolved lesion identities rather than a forced one-to-one nearest-neighbor match."}
+![Lesion identity persists across visits only when supported by evidence. The comparison keeps matched, new, and uncertain pulmonary findings distinct.](../figures/ch12/longitudinal.png){#fig-ct-longitudinal fig-alt="Baseline and follow-up lung CT images show a matched nodule, a new nodule, and an uncertain focus with restrained colored circles."}
 
 ### A worked measurement audit
 

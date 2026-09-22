@@ -1,6 +1,6 @@
 # Figures for chapters 12–22
 
-All 38 figures below are original, code-generated educational diagrams created for this book. They contain no patient data, third-party image assets, or generated diagnostic scans. They introduce no third-party image-license dependencies; see the project README for its licensing policy. Rebuild with `python scripts/remaining_figures.py` (Python standard library only). Captions and descriptive alt text are in the corresponding chapter.
+The 38 original code-generated SVG diagrams are archived below. Chapters 12–19 now display 32 synthetic, image-based clinical teaching figures in PNG format instead. These were created with the built-in image generation tool and are not patient studies or validated diagnostic examples. Their prompts and scope are recorded in [clinical-image-replacement-prompts.md](clinical-image-replacement-prompts.md). Chapters 20–22 continue to display the six diagrams about abstract workflows and systems. Rebuild the archived SVGs with `python scripts/remaining_figures.py` (Python standard library only). Captions and descriptive alt text are in the corresponding chapter.
 
 Numeric curves and examples are illustrative unless explicitly defined by an equation in the text. They are not clinical thresholds or diagnostic presets. Clinical and technical source references supporting the concepts are provided in each chapter.
 

@@ -21,7 +21,7 @@ In PET, a positron-emitting tracer produces annihilation photons detected in coi
 
 Different tracers interrogate different processes. FDG is related to glucose metabolism; other tracers target different biological pathways. A model trained on FDG oncology studies should not be assumed to work on another tracer, even if both datasets use PET and have similar array dimensions. The distribution of normal uptake and the clinical target can change substantially.
 
-![A PET examination connects radiopharmaceutical administration, event acquisition, corrections, and reconstruction.](../figures/ch16/acquisition.svg){#fig-pet-acquisition fig-alt="Administration and timing lead to coincidence measurements, correction and reconstruction, and a quantitative image with documented units."}
+![A PET examination connects radiopharmaceutical administration, scanner acquisition, and the reconstructed quantitative image.](../figures/ch16/acquisition.png){#fig-pet-acquisition fig-alt="A clinical sequence shows radiotracer injection, PET/CT scanning, and resulting whole-body and fused PET/CT images."}
 
 The accompanying CT may serve attenuation correction and anatomical localization, or may be a diagnostic examination with its own protocol. These roles matter. A low-dose noncontrast localization CT cannot silently replace a diagnostic contrast-enhanced CT in a downstream model. Respiratory motion and differences in acquisition timing can cause misregistration, particularly near the diaphragm.
 
@@ -35,7 +35,7 @@ where $C(t)$ is activity concentration at an appropriate reference time, $A_{ref
 
 This equation is not an implementation recipe for every DICOM object. Quantitative units, decay-correction status, administration time, residual activity handling, scanner calibration, and metadata conventions must be interpreted correctly. Some images already contain normalized values. Applying a second conversion can produce plausible but wrong measurements.
 
-![Quantitative uptake requires aligned units and timing, not just pixel values.](../figures/ch16/suv.svg){#fig-pet-suv fig-alt="Activity concentration, administered activity and decay reference, body-mass normalization, and unit checks combine into a documented SUV convention."}
+![Quantitative uptake is measured on the fused PET/CT only after injected activity, uptake time, normalization, and units are defined.](../figures/ch16/suv.png){#fig-pet-suv fig-alt="A fused axial chest PET/CT shows a hot pulmonary lesion with a region of interest and a panel listing injected activity, uptake time, body weight, and SUVmax."}
 
 ## Why and when it's ordered
 
@@ -69,7 +69,7 @@ A robust input manifest records tracer, relevant times and time zones, quantitat
 
 Hybrid acquisition improves correspondence but does not eliminate motion. Verify registration before using CT anatomy to classify a PET focus or transferring a PET mask into CT coordinates. Resampling must preserve physical geometry, and interpolation can affect small structures and maximum values. Keep native-resolution measurements where required by the validated method.
 
-![Partial-volume effects can make a small hot structure appear less intense and less sharply bounded.](../figures/ch16/partial-volume.svg){#fig-pet-partial fig-alt="A conceptual narrow source profile becomes broader and lower after limited-resolution imaging; the curves are illustrative, not patient measurements."}
+![Partial-volume effects make smaller hot structures appear less intense and less sharply bounded even when true uptake is unchanged.](../figures/ch16/partial-volume.png){#fig-pet-partial fig-alt="Three fused PET/CT crops show equally avid lesions at 20, 10, and 5 millimeters, with reduced apparent recovery as size decreases."}
 
 Return lesion overlays on both functional and anatomical images, identify the source reconstruction, and expose quality flags. A reviewer should be able to exclude physiologic uptake, correct a boundary, or mark a focus indeterminate. Preserve edits and recompute aggregate measures from the accepted lesion set.
 
@@ -77,7 +77,7 @@ Return lesion overlays on both functional and anatomical images, identify the so
 
 Suppose a lesion has a reported SUV of 8.0 at one visit and 6.0 at another. The arithmetic decrease is 25%. That alone does not establish treatment response. Check the uptake measure, tracer, timing, reconstruction, patient preparation, lesion identity, and the response framework used by the clinical service. A change in which voxel supplies the maximum can affect an extreme-value measure even when the underlying lesion changes little.
 
-![Longitudinal PET comparison requires compatible acquisition and a reviewed lesion inventory.](../figures/ch16/comparison.svg){#fig-pet-comparison fig-alt="Two visits undergo tracer, timing, reconstruction, and registration checks before lesion matching and a clinically interpreted change estimate."}
+![Longitudinal PET comparison requires compatible acquisition and a reviewed matched-lesion inventory.](../figures/ch16/comparison.png){#fig-pet-comparison fig-alt="Baseline and follow-up whole-body PET images and fused axial insets show reduced uptake in the same matched lesion."}
 
 ## The data landscape
 

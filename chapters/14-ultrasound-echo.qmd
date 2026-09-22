@@ -21,7 +21,7 @@ A transducer emits acoustic pulses and receives echoes from tissue interfaces an
 
 B-mode shows anatomy. M-mode displays motion along a selected line over time. Doppler techniques estimate motion-related frequency shifts and support assessment of flow; the measured component depends on beam–flow geometry. Color maps, spectral Doppler traces, and grayscale clips are different input types. Their rendered colors and overlays should not be interpreted as a universal physical scale without metadata and system context.
 
-![The acquisition chain links probe position and acoustic window to the resulting image.](../figures/ch14/acquisition.svg){#fig-us-acquisition fig-alt="Probe and acoustic window feed beam formation, B-mode or Doppler processing, and a quality-reviewed image or clip."}
+![Probe position and acoustic window directly shape the resulting ultrasound image.](../figures/ch14/acquisition.png){#fig-us-acquisition fig-alt="A sonographer acquires an apical cardiac view while the monitor displays a four-chamber echocardiogram and an inset shows probe orientation."}
 
 Speckle is an intrinsic feature of coherent acoustic imaging. Shadowing, reverberation, attenuation, and enhancement can obscure anatomy or provide useful clues. A generic denoiser may remove features relevant to interpretation. Gain, depth, dynamic range, focus, and machine presets influence appearance. Cropping away interface decorations can reduce shortcuts, but must preserve necessary calibration and orientation information elsewhere.
 
@@ -56,7 +56,7 @@ $$EF = \frac{EDV-ESV}{EDV}\times100\%,$$
 
 where EDV and ESV are end-diastolic and end-systolic volumes. If a hypothetical examination yields 120 mL and 50 mL, the calculated EF is about 58%. This arithmetic does not validate the contours, view, cardiac-cycle selection, or clinical interpretation.
 
-![Illustrative ejection-fraction arithmetic separates measured volumes from the derived percentage.](../figures/ch14/ef.svg){#fig-echo-ef fig-alt="End-diastolic volume 120 milliliters and end-systolic volume 50 milliliters produce an illustrative ejection fraction of about 58 percent."}
+![Ejection fraction is derived from traced ventricular volumes at end diastole and end systole.](../figures/ch14/ef.png){#fig-echo-ef fig-alt="Matched echocardiographic frames show end-diastolic and end-systolic left-ventricular contours with illustrative volumes and ejection fraction."}
 
 A two-dimensional area change is not automatically a volume-based EF. If a model directly predicts EF from a clip, explain whether its reference was a clinician's reported value, a particular measurement method, or another modality. These targets have different error and reproducibility properties. Arrhythmia and variable image quality can make one selected beat unrepresentative.
 
@@ -68,7 +68,7 @@ A sonographer, clinician, or other trained operator acquires the examination, st
 
 An acquisition assistant needs a fast local feedback loop. It should recognize the target view, assess quality, and provide bounded guidance without overwhelming the operator. Guidance should be evaluated by the quality and completeness of the resulting examination, not merely by frame classification accuracy. A confusing prompt can worsen acquisition even if its underlying classifier is accurate.
 
-![Quality assessment distinguishes a missing view from an inadequate view and an adequate view ready for measurement.](../figures/ch14/quality.svg){#fig-us-quality fig-alt="View availability branches to missing, inadequate, or adequate; only an adequate supported view proceeds to measurement."}
+![Quality assessment distinguishes a missing view, an inadequate foreshortened view, and an adequate four-chamber view ready for measurement.](../figures/ch14/quality.png){#fig-us-quality fig-alt="Three echocardiographic panels show missing anatomy, an inadequate foreshortened cardiac view, and an adequate apical four-chamber view."}
 
 ### Preserve temporal and spatial calibration
 
@@ -122,7 +122,7 @@ Correlation is not agreement. Predictions can correlate strongly with reference 
 
 Real-time tools also need operational metrics: end-to-end latency, frame-drop rate, stability of prompts, reacquisition frequency, and task completion. A detector that is accurate on retrospectively sampled clips may lag behind the live scene. Evaluate on the hardware, capture pathway, and operator population intended for use.
 
-![The live ultrasound loop has separate acquisition, inference, feedback, and accepted-result paths.](../figures/ch14/live-loop.svg){#fig-us-live fig-alt="Live frames enter a bounded queue and model; current guidance returns to the operator while accepted clips and measurements enter the clinical record."}
+![Live ultrasound guidance must remain current while accepted clips and measurements enter a separate reviewed record.](../figures/ch14/live-loop.png){#fig-us-live fig-alt="A clinician scans a patient while a monitor displays a live cardiac ultrasound, view-quality guidance, and a separate accepted clip."}
 
 ## FDA-cleared AI products
 

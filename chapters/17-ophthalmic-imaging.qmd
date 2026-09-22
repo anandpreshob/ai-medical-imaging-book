@@ -21,7 +21,7 @@ Color fundus photography depicts the retina, optic disc, and visible vessels thr
 
 OCT uses optical interference to estimate depth-resolved reflectivity. A cross-sectional B-scan is assembled from depth profiles; a volume combines many B-scans. Retinal layer boundaries, fluid spaces, and other structural features can be assessed in this geometry. OCT angiography derives motion-related vascular contrast from repeated acquisitions. It is not equivalent to a color photograph or dye angiography.
 
-![Fundus photography, OCT, and OCT angiography represent different views of ocular structure and vasculature.](../figures/ch17/modalities.svg){#fig-eye-modalities fig-alt="Three panels distinguish a surface fundus view, an OCT depth section, and a derived vascular map; these are conceptual illustrations, not clinical scans."}
+![Fundus photography, OCT, and OCT angiography provide complementary clinical views of retinal structure and vasculature.](../figures/ch17/modalities.png){#fig-eye-modalities fig-alt="Three clinical panels show a color fundus photograph, macular OCT B-scan, and OCT angiography vascular map."}
 
 OCT exports may include raw or proprietary volumes, rendered B-scans, segmentation lines, thickness maps, and reports. A screenshot can lose spacing, scan position, signal-quality information, and the relationship between B-scans. Preserve native geometry and the device's acquisition context when developing quantitative tools.
 
@@ -53,7 +53,7 @@ Acquisition may occur in an ophthalmology clinic, screening service, primary-car
 
 A screening pipeline should first check supported camera and field, laterality, and image quality. Reacquisition can resolve some failures. Persistent inability to obtain an adequate image needs a defined clinical pathway. Do not repeatedly select the most favorable score from multiple attempts without a validated aggregation policy.
 
-![A screening pathway treats ungradable images as a separate outcome requiring action.](../figures/ch17/quality.svg){#fig-eye-quality fig-alt="Image acquisition leads to quality assessment; adequate images proceed to a supported screening model, while inadequate images lead to reacquisition or a defined referral pathway."}
+![Gradability is a clinical outcome: adequate images proceed, recoverable capture failures are reacquired, and persistent opacity produces no valid result.](../figures/ch17/quality.png){#fig-eye-quality fig-alt="Three fundus images show an adequate view, a motion-blurred image requiring reacquisition, and a retina obscured by media opacity."}
 
 ### Eye-level inference and patient-level action
 
@@ -61,7 +61,7 @@ A model may operate on one field, one eye, or a complete examination. The servic
 
 For OCT, record scan location, spacing, laterality, and segmentation version. If a follow-up scan does not cover the same region, declare limited comparability. Return masks or layer boundaries on the correct B-scans, and let reviewers inspect failures caused by shadows, motion, poor signal, or unusual anatomy.
 
-![The data hierarchy keeps both eyes and every visit linked to the same patient.](../figures/ch17/grouping.svg){#fig-eye-grouping fig-alt="Patient identity contains visits, each containing right and left eyes with fields or OCT volumes; split assignment is made at the patient level."}
+![The data hierarchy keeps both eyes, their fundus photographs and OCT scans, and every visit linked to the same patient.](../figures/ch17/grouping.png){#fig-eye-grouping fig-alt="A clinical contact sheet groups right- and left-eye fundus and OCT images across two visits for the same patient."}
 
 ## The data landscape
 
@@ -107,7 +107,7 @@ For OCT segmentation, report boundary or compartment errors and their effect on 
 
 An illustrative service might return three states: target condition detected, target condition not detected in an adequate supported examination, or no valid result. Those labels should not be collapsed into a binary database field. The third state is essential for safe follow-up and honest evaluation.
 
-![The patient pathway continues beyond an AI result to communication and completed follow-up.](../figures/ch17/referral.svg){#fig-eye-referral fig-alt="A valid screening result enters patient communication and appropriate follow-up, with completion and unresolved cases tracked separately."}
+![The patient pathway continues from image capture through reviewed screening results to communicated and completed follow-up.](../figures/ch17/referral.png){#fig-eye-referral fig-alt="A retinal screening encounter shows fundus capture, workstation review, and a clinician discussing follow-up with the patient."}
 
 ## FDA-cleared AI products
 

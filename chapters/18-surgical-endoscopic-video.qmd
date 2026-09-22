@@ -21,7 +21,7 @@ Endoscopes and surgical cameras record reflected light from a scene shaped by il
 
 The data are sequences of frames with timing, compression, and sometimes audio or device telemetry. A nominal frame rate does not guarantee constant spacing between decoded frames. Dropped frames, buffering, transcoding, and network transport can all alter timing. Video can also contain patient identifiers, staff speech, and external-room views, making privacy review broader than pixel de-identification alone.
 
-![Video tasks operate at different time scales, from a single frame to an entire procedure.](../figures/ch18/timescales.svg){#fig-video-timescales fig-alt="Frame detection, short temporal events, surgical phases, and complete procedures occupy progressively longer time scales."}
+![Surgical video tasks operate at different time scales, from one annotated frame through an event and phase to the complete procedure.](../figures/ch18/timescales.png){#fig-video-timescales fig-alt="Laparoscopic cholecystectomy frames illustrate the nested scales of one frame, a clip-application event, a dissection phase, and the entire procedure."}
 
 Spatial calibration is often less direct than in CT. Apparent size changes with camera distance and optical distortion. A pixel area should not be reported as a physical area without a validated calibration or reconstruction method. Instrument dimensions can sometimes provide a reference, but that is an additional model with assumptions, not a universal ruler.
 
@@ -54,7 +54,7 @@ A live system connects to a video source, processes frames, and displays assista
 
 Measure latency from the acquisition timestamp to the displayed output, including capture, queueing, preprocessing, inference, postprocessing, and rendering. Report the distribution and worst relevant cases rather than only average neural-network time. If inference falls behind, an unbounded queue can show accurate results for an increasingly old scene.
 
-![End-to-end latency includes queueing and display, not only neural-network inference.](../figures/ch18/latency.svg){#fig-video-latency fig-alt="Capture, queue, preprocessing, inference, and display each contribute to total latency; stale frames trigger a defined drop or suppress policy."}
+![End-to-end latency can make an otherwise accurate overlay stale relative to the current instrument position.](../figures/ch18/latency.png){#fig-video-latency fig-alt="An operating-room monitor and three laparoscopic frames compare camera capture, the current frame, and a stale displayed instrument overlay."}
 
 A bounded queue with a documented frame-dropping policy can preserve freshness, but it changes which events are observed. The system should suppress stale overlays and expose degraded operation. Loss of the AI service must not interrupt the primary clinical video feed. Test disconnection, overload, mode changes, and recovery on the intended hardware.
 
@@ -82,7 +82,7 @@ render_catalog('datasets', ['video'], include_general=False)
 
 Split by patient and procedure, with surgeon or site held out when relevant. Do not put neighboring frames from one operation into both training and test sets. Keep edited clips, alternate encodings, and extracted stills with their source procedure. Record whether the model sees the entire procedure or only a causal prefix.
 
-![Procedure-level splitting keeps correlated frames and derivatives together.](../figures/ch18/splits.svg){#fig-video-splits fig-alt="All clips, stills, and alternate encodings from a procedure remain in one partition; site-level evaluation is a separate generalization test."}
+![Procedure-level splitting keeps every frame, clip, still, and derivative from each operation in one partition.](../figures/ch18/splits.png){#fig-video-splits fig-alt="Three grouped laparoscopic filmstrips place complete procedures and their derivatives in train, validation, or test sets."}
 
 Reference annotations should identify who labeled the event, which context they saw, and how disagreements were resolved. A label assigned with future context may be impossible to determine at the first visible frame. That is not necessarily model failure; it may be a mismatch between retrospective annotation and live decision timing.
 
@@ -102,7 +102,7 @@ render_catalog('models', ['video'], include_general=True)
 
 [TeCNO](https://github.com/tobiascz/TeCNO) is a research example of temporal surgical-phase recognition. A causal architecture uses information available up to the current time; an offline bidirectional method can use future context. Their scores should not be compared as though they answer the same operational question.
 
-![Causal inference uses current and past frames; offline analysis may also use future frames.](../figures/ch18/causality.svg){#fig-video-causality fig-alt="A timeline marks past, current, and future frames, with a causal window ending at the current frame and an offline window extending beyond it."}
+![Causal inference uses current and past endoscopic frames; offline analysis may also use future frames.](../figures/ch18/causality.png){#fig-video-causality fig-alt="Seven sequential endoscopic frames show a real-time context window ending at now and an offline window extending into future frames."}
 
 ### Evaluate events and users
 

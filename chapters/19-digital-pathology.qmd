@@ -21,7 +21,7 @@ A scanner captures a glass slide as a whole-slide image (WSI), often stored as a
 
 Hematoxylin and eosin (H&E), immunohistochemical stains, and special stains provide different information. A model trained on one stain and specimen type is not automatically valid on another. Apparent magnification alone is an incomplete scale descriptor: micrometers per pixel and scanner metadata determine the physical field represented by a tile.
 
-![A whole-slide pyramid supports overview navigation and high-resolution regional analysis.](../figures/ch19/pyramid.svg){#fig-path-pyramid fig-alt="Three resolution levels of a slide pyramid lead to selected high-resolution tiles, each retaining its source coordinates and physical scale."}
+![A whole-slide image supports navigation from slide overview to a tissue region and high-power cellular detail while retaining source coordinates.](../figures/ch19/pyramid.png){#fig-path-pyramid fig-alt="An H-and-E whole-slide image is magnified into a tissue region and then a high-power glandular field."}
 
 Artifacts include folds, tears, chatter, bubbles, pen marks, out-of-focus areas, staining variation, and tissue fragments. Some can be detected automatically, but quality control should be tied to the downstream task. A small focal defect may be tolerable for a broad tissue classifier and unacceptable if it obscures the only suspicious gland.
 
@@ -51,7 +51,7 @@ For a detection aid, the clinical value may be finding a small suspicious region
 
 Specimens enter the laboratory information system, are processed into blocks and slides, and are scanned under a quality process. The pathologist reviews the available material with the clinical record and ancillary studies. Digital image management must maintain accession, specimen, block, slide, stain, and version relationships.
 
-![The specimen hierarchy preserves provenance and keeps correlated material together during evaluation.](../figures/ch19/hierarchy.svg){#fig-path-hierarchy fig-alt="Patient, case, specimen, block, slide, and tile form a nested provenance hierarchy; train-test assignment is made above the tile level."}
+![Pathology provenance connects the gross specimen to its paraffin block, glass slide, whole-slide scan, and extracted image tiles.](../figures/ch19/hierarchy.png){#fig-path-hierarchy fig-alt="A photographic sequence shows a surgical specimen, tissue block, H-and-E glass slide, digital whole-slide image, and high-power tile."}
 
 ### From a slide to model inputs
 
@@ -91,7 +91,7 @@ An endpoint such as survival requires a time origin, follow-up, censoring policy
 
 Patch encoders transform local tissue into features. Slide-level aggregation combines those features. In multiple-instance learning (MIL), a slide or case is treated as a bag of instances with a higher-level label. Attention can weight patches, but an attention map is not automatically a calibrated tumor-probability map or a causal explanation.
 
-![Multiple-instance learning aggregates tile representations under a slide-level label.](../figures/ch19/mil.svg){#fig-path-mil fig-alt="Tiles from one slide enter a shared encoder, producing feature vectors that are aggregated into a slide score; attention weights are distinguished from lesion probabilities."}
+![Multiple-instance learning samples real tissue tiles from a whole slide and aggregates their representations into a slide-level result; attention is not a lesion contour.](../figures/ch19/mil.png){#fig-path-mil fig-alt="A whole-slide H-and-E image supplies four high-power tiles with attention borders before a slide-level result is produced."}
 
 ```{python}
 #| echo: false
@@ -135,7 +135,7 @@ The [Paige Prostate De Novo review](https://www.accessdata.fda.gov/cdrh_docs/rev
 
 Stain and scanner variation are visible sources of domain shift, but specimen processing and patient selection are equally important. Color normalization can reduce some variation while leaving biological and workflow differences untouched. Validate the complete pipeline across the intended sites rather than assuming normalization solves transfer.
 
-![Quality and stain processing are explicit stages whose effects must be checked against the target task.](../figures/ch19/quality.svg){#fig-path-quality fig-alt="Source-slide quality review precedes optional documented stain processing, tile inference, and review on the original image."}
+![Focus, folds, and stain variation are visible source-image problems; accepted model overlays should be reviewed on the original slide.](../figures/ch19/quality.png){#fig-path-quality fig-alt="H-and-E crops demonstrate in-focus tissue, blur, a tissue fold, stain variation, and a larger source image with restrained nucleus overlays."}
 
 Small foci challenge both sampling and aggregation. A slide-level average can dilute a rare malignant region; a maximum score can amplify one artifact. The aggregation rule should reflect the task and be evaluated on low-burden cases. Explainability should support finding and reviewing the relevant tissue, not merely decorate a slide with color.
 

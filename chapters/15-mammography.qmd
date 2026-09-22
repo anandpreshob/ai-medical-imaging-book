@@ -21,13 +21,13 @@ Mammography uses low-energy X-rays and breast compression to depict tissue with 
 
 Routine screening commonly includes craniocaudal (CC) and mediolateral-oblique (MLO) views of each breast, with additional views when needed. Diagnostic examinations may include spot compression, magnification, targeted ultrasound, or other imaging. Implants, prior surgery, and positioning can change the expected image set. Do not define completeness solely as “exactly four files.”
 
-![A conventional four-view examination preserves breast laterality and view identity.](../figures/ch15/views.svg){#fig-mammo-views fig-alt="Four labeled view slots: right CC, left CC, right MLO, and left MLO; each remains linked to its examination and laterality."}
+![A conventional four-view examination preserves breast laterality and view identity.](../figures/ch15/views.png){#fig-mammo-views fig-alt="A clinical hanging protocol shows right and left CC views and right and left MLO mammograms."}
 
 Mammography's fine spatial sampling creates large images. Aggressive downsampling can erase small calcifications. DICOM objects may distinguish images intended for processing from those intended for presentation. Vendor-specific processing and intensity conventions influence appearance, so a model's accepted image type must be explicit. Keep original pixel data and metadata available for review even if inference uses a derived representation.
 
 DBT reduces some superposition but introduces many reconstructed planes and substantial reading and compute workloads. Adjacent planes are correlated. Treating every plane as an independent sample exaggerates dataset size and can leak information across splits.
 
-![DBT reconstructs depth planes from a limited-angle acquisition; its planes are not independent examinations.](../figures/ch15/dbt.svg){#fig-mammo-dbt fig-alt="A limited-angle projection set produces a correlated DBT stack and, optionally, a synthesized two-dimensional image."}
+![DBT reconstructs correlated depth planes in which a lesion may become clearer at one depth, alongside a synthesized two-dimensional image.](../figures/ch15/dbt.png){#fig-mammo-dbt fig-alt="Five sequential tomosynthesis depth planes show a spiculated lesion becoming most visible in the center plane, beside a synthesized 2D mammogram."}
 
 ## Why and when it's ordered
 
@@ -57,7 +57,7 @@ Suppose a hypothetical classifier has 90% sensitivity and 95% specificity in a p
 
 The example shows why prevalence and the chosen operating point matter. It does not imply that every positive result should lead directly to biopsy. Human assessment and the diagnostic pathway mediate the action. A model's value must be measured where it is actually inserted into that pathway.
 
-![Detection and future-risk models answer different questions despite using related images.](../figures/ch15/tasks.svg){#fig-mammo-tasks fig-alt="Current-lesion detection is linked to the present examination; future-risk prediction is linked to an explicitly defined follow-up horizon."}
+![Current-lesion detection and future-risk prediction answer different questions despite using similar mammograms.](../figures/ch15/tasks.png){#fig-mammo-tasks fig-alt="A mammogram with a current outlined finding is compared with a normal-appearing screening mammogram carrying a five-year risk horizon."}
 
 ## How it works in a modern hospital
 
@@ -73,7 +73,7 @@ Display a candidate mark on the correct source image and breast. If inference us
 
 Scores need names and units that match their calibration. A ranking score between zero and one is not necessarily a probability of cancer. If a report incorporates an AI result, identify the version and intended task and preserve the clinician's final assessment. Do not let an unread AI mark silently populate a diagnosis field.
 
-![A screening workflow separates quality review, interpretation, and diagnostic follow-up.](../figures/ch15/workflow.svg){#fig-mammo-workflow fig-alt="Acquisition quality and eligible image assembly precede AI assistance and reader assessment; follow-up and outcome ascertainment close the evaluation loop."}
+![A screening workflow places AI assistance inside a radiologist's review of current and prior examinations, before the reader determines the clinical pathway.](../figures/ch15/workflow.png){#fig-mammo-workflow fig-alt="A radiologist reviews current and prior four-view mammograms with one restrained AI mark and a reader-assessment panel."}
 
 ## The data landscape
 

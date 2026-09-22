@@ -6,10 +6,10 @@ An open, evolving textbook on AI in medical imaging — written for clinicians, 
 
 ## Current edition
 
-All 22 chapters and five appendices have complete first drafts. Chapters 12–22 include 38 reproducible original SVG diagrams with captions and alt text. See [figure provenance](figures/remaining-chapters-provenance.md) and [catalog scope](data/README.md).
+All 22 chapters and five appendices have complete first drafts. Chapters 12–19 use 32 synthetic, image-based clinical teaching figures; Chapters 20–22 retain six reproducible diagrams for abstract workflows and systems. Figures have captions and alt text. See [figure provenance](figures/remaining-chapters-provenance.md), [image replacement prompts](figures/clinical-image-replacement-prompts.md), and [catalog scope](data/README.md).
 
 ```bash
-# Rebuild the diagrams for chapters 12–22
+# Rebuild the conceptual diagrams for chapters 12–22
 python scripts/remaining_figures.py
 ```
 
