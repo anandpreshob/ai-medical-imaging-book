@@ -5,7 +5,7 @@ execute:
 
 # The Dataset Directory {.unnumbered}
 
-This selected directory is generated from `data/datasets.csv`. Counts describe the named release and unit; a frame, image, examination, slide, and patient are not interchangeable. Source-review scope and modality keys are documented in `data/README.md`. Entries reviewed for the remaining chapters on 22 September 2026 complement the earlier chest-radiography entries.
+The first table is the selected, source-reviewed directory generated from `data/datasets.csv`. Counts describe the named release and unit; a frame, image, examination, slide, and patient are not interchangeable. Source-review scope and modality keys are documented in `data/README.md`. Entries reviewed for the remaining chapters on 22 September 2026 complement the earlier chest-radiography entries.
 
 ```{python}
 #| echo: false
@@ -15,6 +15,19 @@ from pathlib import Path
 sys.path.insert(0, str(Path("../scripts").resolve()))
 from book_catalog import render_catalog
 render_catalog('datasets', None, include_general=False)
+```
+
+## Community dataset sources
+
+The larger directory below is a snapshot of the [community medical-image dataset spreadsheet](https://docs.google.com/spreadsheets/d/1QxjFs41eU6JG5KNhP576fc8MotrJ58KCrqH83HG-__E/edit?gid=2057737934#gid=2057737934), captured on 22 September 2026. It combines the organizer and participant dataset tabs, removes duplicate dataset–modality listings and submissions that are not identifiable datasets, and retains worksheet-row provenance. The sheet also has a model tab, which is not a dataset source. A dataset can appear in more than one modality group when the sheet lists different image types or releases.
+
+These links and modality/target descriptions are **as supplied by the spreadsheet**, not an independent review of release contents, current availability, licensing, or suitability. “Paper” means the sheet supplied a publication link but no dataset link. Consult the original source before downloading or using any dataset; the selected directory above remains the more carefully reviewed starting point.
+
+```{python}
+#| echo: false
+#| output: asis
+from book_catalog import render_community_datasets
+render_community_datasets()
 ```
 
 ## Before choosing a dataset

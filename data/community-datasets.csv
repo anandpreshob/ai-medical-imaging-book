@@ -1,0 +1,227 @@
+group,name,anatomy,modality,targets,link,link_type,worksheet,row
+CT,AbdomenAtlas,Abdomen,CT,Abdominal organs,https://huggingface.co/datasets/BodyMaps/AbdomenAtlas1.1MiniMask,Dataset,organizers,30
+CT,AbdomenCT-1K,Abdomen,CT,"Liver, Kidneys, Pancreas, Spleen",https://github.com/JunMa11/AbdomenCT-1K,Dataset,organizers,2
+CT,Adrenal-ACC-Ki67-Seg,Abdomen,CT,Adrenocortical carcinoma,https://doi.org/10.7937/1FPG-VM46,Dataset,organizers,3
+CT,AeroPath,Chest,CT,airways,https://github.com/raidionics/AeroPath?tab=readme-ov-file,Dataset,organizers,155
+CT,AMOS,Abdomen,CT,Abdominal organs,https://amos22.grand-challenge.org/,Dataset,organizers,4
+CT,AortaSeg24,Abdomen,CT,Aorta,https://aortaseg24.grand-challenge.org,Dataset,participants,54
+CT,Aortic-Dissection,Chest,CTA,"true lumina, false lumina",https://figshare.com/articles/dataset/Aortic_Dissection_Dataset_and_Segmentations/22269091,Dataset,organizers,168
+CT,ATM22,Chest,CT,Airway trees,https://atm22.grand-challenge.org/,Dataset,organizers,51
+CT,BTCV,Abdomen,CT,abdominal organs,https://www.synapse.org/#!Synapse:syn3193805/wiki/89480,Dataset,participants,3
+CT,CHAOS,Abdomen,CT,Abdomen organs,https://zenodo.org/records/3431873,Dataset,organizers,62
+CT,Colorectal-Liver_Metastases,Abdomen,CT,"Liver, Colorectal Liver Metastases",https://www.cancerimagingarchive.net/collection/colorectal-liver-metastases/,Dataset,organizers,66
+CT,COVID-19-20,Chest,CT,COVID-19 lesions,https://covid-segmentation.grand-challenge.org/Data/,Dataset,organizers,7
+CT,COVID-19-20-CTSEG,Chest,CT,"COVID-19 Infections, left lung, right lung",https://zenodo.org/records/3757476,Dataset,organizers,8
+CT,COVID-19-CT-Seg-Benchmark,Chest,CT,Lungs,https://github.com/JunMa11/COVID-19-CT-Seg-Benchmark,Dataset,organizers,19
+CT,CT Lymph Nodes,"Chest, Abdomen",CT,lymph nodes,https://doi.org/10.7937/K9/TCIA.2015.AQIIDCNM,Dataset,organizers,20
+CT,CT_ORG,Abdomen,CT,Abdominal organs,https://www.cancerimagingarchive.net/collection/ct-org/,Dataset,participants,4
+CT,CURVAS,Abdomen,CT,"pancrease, kidney, liver",https://zenodo.org/records/13767408,Dataset,organizers,165
+CT,DeepLesion-MedSAM2,Whole-body lesions,CT,Lesion,https://huggingface.co/datasets/wanglab/CT_DeepLesion-MedSAM2,Dataset,organizers,173
+CT,FDG-PET-CT-Lesions (autoPET),whole body,CT,tumor,https://it-portal.med.uni-muenchen.de/autopet/Autopet_v1.1.tgz,Dataset,organizers,27
+CT,GammaKnife-Hippocampal,Brain,CT,brain organ,https://doi.org/10.7937/Q967-X166,Dataset,organizers,76
+CT,HCC-TACE-Seg,Abdomen,CT,Tumor,https://doi.org/10.7937/TCIA.5FNA-0924,Dataset,organizers,12
+CT,INSTANCE22,Head,CT,Intracranial Hemorrhage,https://instance.grand-challenge.org/Instance2022/,Dataset,organizers,10
+CT,Kipa22,Abdomen,CT,"Kidney, Vessel, Tumor",https://kipa22.grand-challenge.org,Dataset,participants,64
+CT,KiTS23,Abdomen,CT,Kidney Lesion,https://kits-challenge.org/kits23/,Dataset,organizers,11
+CT,LCTSC,Chest,CT,"Esophagus, Heart, Lungs, Spinal cord",https://doi.org/10.7937/K9/TCIA.2017.3R3FVZ08,Dataset,organizers,24
+CT,LIDC-IDRI,Chest,CT,Lung cancer,https://doi.org/10.7937/K9/TCIA.2015.LO9QL9SX,Dataset,organizers,88
+CT,LiTS,Abdomen,CT,Liver tumor,https://competitions.codalab.org/competitions/17094#learn_the_details-overview,Dataset,participants,5
+CT,LNDb,Lung,CT,Lung cancer,https://zenodo.org/records/8348419,Dataset,participants,7
+CT,LongCIU,Chest,CT,"ground glass opacities (GGO), consolidations",https://iro.uiowa.edu/esploro/outputs/dataset/9984632558202771,Dataset,organizers,135
+CT,LUNA 16,Chest,CT,Lung nodule,https://luna16.grand-challenge.org/Download/,Dataset,organizers,89
+CT,Mediastinal-Lymph-Node-SEG,Chest,CT,lymph nodes,https://doi.org/10.7937/QVAZ-JA09,Dataset,organizers,21
+CT,MedSeg_IVC,—,CT,—,https://figshare.com/articles/dataset/MedSeg_Inferior_Vena_Cava_Dataset/15180192,Dataset,organizers,171
+CT,MedSeg_Liver-Segments,—,CT,—,https://figshare.com/articles/dataset/MedSeg_Liver_segments_dataset/13643252,Dataset,organizers,170
+CT,MSD-ColonCancer,Abdomen,CT,Colon Cancer Primaries,http://medicaldecathlon.com/#tasks,Dataset,organizers,6
+CT,MSD-HepaticVessels,Vessel,CT,Hepatic vessels and tumour,http://medicaldecathlon.com/#tasks,Dataset,organizers,14
+CT,MSD-LiverTumor,Abdomen,CT,Liver and tumour,http://medicaldecathlon.com/,Dataset,organizers,13
+CT,MSD-LungTumor,Lung,CT,Lung tumor,http://medicaldecathlon.com/,Dataset,organizers,15
+CT,MSD-Pancreastumor,Abdomen,CT,pancreas and tumors,http://medicaldecathlon.com/#tasks,Dataset,organizers,22
+CT,MSD-Spleen,Abdomen,CT,Spleen,http://medicaldecathlon.com/#tasks,Dataset,organizers,95
+CT,MSWAL,Abdomen,CT,"gallstones, kidney stones, liver tumors, kidney tumors, pancreatic cancer, liver cysts, and kidney cysts.",https://huggingface.co/datasets/zhaodongwu/MSWAL,Dataset,participants,74
+CT,NIH-Pancreas,Pancreas,CT,Pancreas,https://www.cancerimagingarchive.net/collection/pancreas-ct/,Dataset,participants,48
+CT,NSCLC Radiogenomics,Chest,CT,tumor,https://doi.org/10.7937/K9/TCIA.2017.7hs46erv,Dataset,organizers,16
+CT,NSCLC-PleuralEffusion,Chest,CT,PleuralEffusion,https://doi.org/10.7937/tcia.2020.6c7y-gq39,Dataset,organizers,17
+CT,NSCLC-Radiomics,Chest,CT,tumor,https://doi.org/10.7937/K9/TCIA.2015.PF0M9REI,Dataset,organizers,18
+CT,OPC-Radiomics,Head and Neck,CT,Oropharynx tumor,https://doi.org/10.7937/tcia.2019.8dho2gls,Dataset,organizers,98
+CT,Pancreatic-CT-CBCT-SEG,Abdomen,CT,Organ at risk,https://doi.org/10.7937/TCIA.ESHQ-4D90,Dataset,organizers,100
+CT,PANORAMA,Abdomen,CT,Pancreas,https://panorama.grand-challenge.org/datasets-imaging-labels/,Dataset,organizers,128
+CT,Parse 2022,Chest,CT,Pulmonary Artery,https://parse2022.grand-challenge.org/Dataset/,Dataset,organizers,103
+CT,Pediatric-CT-SEG,"Chest, Abdomen, Pelvis",CT,"Abdomen, Chest, Pelvic organs",https://doi.org/10.7937/TCIA.X0H0-1706,Dataset,organizers,104
+CT,PENGWIN,Pelvis,CT,Pelvic fracture,https://doi.org/10.5281/zenodo.10927452,Dataset,organizers,160
+CT,Prostate Anatomical Edge Cases,Pelvis,CT,"Prostate, rectum, bladder, and bilateral femoral heads",https://www.cancerimagingarchive.net/collection/prostate-anatomical-edge-cases/,Dataset,organizers,105
+CT,quan,Lung,CT,Lung,https://covid-segmentation.grand-challenge.org/Data/,Dataset,participants,6
+CT,RibSeg,Abdomen,CT,Ribs,https://zenodo.org/records/5336592,Dataset,participants,50
+CT,Seg.A.,Vessel,CTA,Aorta,https://figshare.com/articles/dataset/Aortic_Vessel_Tree_AVT_CTA_Datasets_and_Segmentations/14806362,Dataset,organizers,5
+CT,SegRap,Head,CT,Head-neck cancer,https://drive.google.com/drive/folders/115mzmNlZRIewnSR2QFDwW_-RkNM0LC9D,Dataset,organizers,23
+CT,SegTHOR,Heart,CT,Thoracic organs,https://competitions.codalab.org/competitions/21145#learn_the_details-terms_and_conditions,Dataset,participants,8
+CT,SpineMets,Abdomen,CT,Spine Mets,https://www.cancerimagingarchive.net/collection/spine-mets-ct-seg/,Dataset,participants,60
+CT,StructSeg,Head and Neck,CT,22 OAR Head & Neck Nasopharynx Cancer 6 OAR Lung,https://structseg2019.grand-challenge.org,Dataset,participants,46
+CT,STS-3D-Tooth,Oral,CBCT,tooth,https://zenodo.org/records/10597292,Dataset,organizers,143
+CT,TCGA-HNSC,Head and Neck,CT,Head-neck cancer,https://doi.org/10.7937/K9/TCIA.2016.LXKQ47MS,Dataset,organizers,108
+CT,ToothFairy 2,Head and Neck,CT,Dental Structures,https://ditto.ing.unimore.it/toothfairy2/,Dataset,participants,66
+CT,TopCoW24,Brain,CTA,vessel,https://topcow24.grand-challenge.org/,Dataset,organizers,124
+CT,TotalSegmentator,WholeBody,CT,Whole body organs,https://zenodo.org/records/10047292,Dataset,organizers,25
+CT,USL,"Chest, Abdomen, Pelvis",CT,lesion,https://github.com/MJJdG/ULS23/tree/main,Dataset,organizers,113
+CT,VERSE20,Spine,CT,Vertebrae,https://github.com/anjany/verse?tab=readme-ov-file,Dataset,organizers,115
+CT,VESSEL12,Chest,CT,Lung Vessel,https://www.kaggle.com/datasets/andrewmvd/lung-vessel-segmentation,Dataset,organizers,116
+CT,WAW-TCE,Abdomen,CT,Liver Tumor,https://zenodo.org/records/12741586,Dataset,organizers,158
+CT,WORD,Abdomen,CT,Abdomen organs,https://github.com/HiLab-git/WORD,Dataset,organizers,117
+MRI,ACDC,Chest,MR,"Right Ventricle, Left Ventricle, Myocardium",https://humanheart-project.creatis.insa-lyon.fr/database/#collection/637218c173e9f0047faa00fb,Dataset,organizers,31
+MRI,AMOS,Abdomen,MR,Abdominal organs,https://amos22.grand-challenge.org/,Dataset,organizers,28
+MRI,Aphasia Recovery Cohort (ARC) Dataset,Head and Neck,MR,brain lesion,https://openneuro.org/datasets/ds004884/versions/1.0.1/download,Dataset,participants,23
+MRI,Atlas Bourgogne,Abdomen,MR,"Liver, Tumor",https://atlas-challenge.u-bourgogne.fr,Dataset,participants,61
+MRI,BONBID-HIE,Head,MR,Hypoxic ischemic encephalopathy lesions,https://zenodo.org/records/10602767,Dataset,organizers,147
+MRI,Brain TR-GammakKnife,Brain,MR,brain lesion,https://doi.org/10.7937/xb6d-py67,Dataset,organizers,56
+MRI,BrainMetShare,Head and Neck,MR,Brain tumors,https://aimi.stanford.edu/brainmetshare,Dataset,participants,24
+MRI,BrainPTM,Brain,MR-T1,White matter tracts,https://brainptm-2021.grand-challenge.org/Participation/,Dataset,organizers,57
+MRI,BraTS,Head,"MR-T1, T1Gd, T2, FLAIR",Brain Lesion,http://braintumorsegmentation.org/,Dataset,organizers,29
+MRI,CAP,Heart,MR,Left Ventricle,https://www.cardiacatlas.org/lv-segmentation-challenge/,Dataset,participants,58
+MRI,cDEMRIS,Heart,CMR,Left atrial wall,https://figshare.com/articles/dataset/CDEMRIS_fibrosis_scar_challenge_data_2012/4214532,Dataset,participants,2
+MRI,CHAOS,Abdomen,MR,Abdomen organs,https://zenodo.org/records/3431873,Dataset,organizers,32
+MRI,CrossMoDA,Brain,MR-T1-T2,"Tumor, Cochlea",https://crossmoda-challenge.ml/,Dataset,organizers,33
+MRI,Duke-Liver,Abdomen,MR,Liver,https://zenodo.org/records/7774566,Dataset,organizers,72
+MRI,EMIDEC,Heart,MRI,Left-ventricular-cavity normal-myocardium myocardial infarction no-reflow,https://emidec.com,Dataset,organizers,166
+MRI,FaBiAN v2.0,—,MR,—,https://zenodo.org/records/10940427,Dataset,organizers,164
+MRI,FeTA,Brain,MR,Brain organs,https://www.synapse.org/#!Synapse:syn25649159/wiki/610007,Dataset,organizers,73
+MRI,Figshare Brain Tumor Dataset,Brain,MR-T1ce,meningioma; glioma; pituitary tumor,https://www.kaggle.com/datasets/ashkhagan/figshare-brain-tumor-dataset,Dataset,organizers,75
+MRI,GammaKnife-Hippocampal,Brain,MR,brain organ,https://doi.org/10.7937/Q967-X166,Dataset,organizers,77
+MRI,GBM-Reservoir,Brain,"MR (FLAIR, T1, T1ce, T2)","brain tumor (Enhancing tumor, Tumor core, Complete tumor extent/whole tumor)",https://figshare.com/articles/dataset/GBM-Reservoir_Dataset_and_Segmentations/28001450,Dataset,organizers,167
+MRI,Hippo,hippocampus,MR,"hippocampal formation subfields (ERC, SUB, CA1, DG-CA4, CA2, CA3, the hippocampal tail)",https://plus.figshare.com/articles/dataset/A_paired_dataset_of_multi-modal_MRI_at_3_Tesla_and_7_Tesla_with_manual_hippocampal_subfield_segmentations_on_7T_T2-weighted_images/26075713/1,Dataset,organizers,139
+MRI,HNTSMRG,Head,MR,Tumor,https://zenodo.org/records/11199559,Dataset,organizers,34
+MRI,HVSMR,Heart,MR,"blood pool, ventricular myocardium",https://segchd.csail.mit.edu/data.html,Dataset,organizers,130
+MRI,I2CVB,Pelvis,MR,"Prostate Gland, Peripheral Zone, Central Gland, CaP",https://i2cvb.github.io/,Dataset,organizers,83
+MRI,IBD,Abdomen,MRE,"stomach, duodenum, small intestine, appendix, cecum, ascending colon, transverse colon, descending colon, sigmoid colon, rectum",https://zenodo.org/records/13839321,Dataset,organizers,134
+MRI,ISBILesion2015,Head and Neck,MR,MS Lesions,https://iacl.ece.jhu.edu/index.php/MSChallenge,Dataset,participants,45
+MRI,ISLES,Brain,"MR-DWI-ADC, FLAIR",Ischemic stroke lesion,https://zenodo.org/records/7960856,Dataset,organizers,35
+MRI,LGGFLair,Head and Neck,FLAIR,low-grade glioma brain tumor,https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation,Dataset,participants,13
+MRI,LGGMRISeg,Head and Neck,MR,Tumor,https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation/data,Dataset,participants,57
+MRI,LLD-MMRI-MedSAM2,Abdomen,MRI,Liver lesion,https://huggingface.co/datasets/wanglab/LLD-MMRI-MedSAM2,Dataset,organizers,174
+MRI,MAMA-MIA,breast,MR,Breast Cancer lesions (primary tumors and non-mass-enhanced regions),https://www.synapse.org/Synapse:syn60868042/wiki/628716,Dataset,organizers,133
+MRI,MedSeg_Lateral-Ventricles,—,MR,—,https://figshare.com/articles/dataset/MedSeg_Ventricles_MRI_Dataset/19644636,Dataset,organizers,169
+MRI,Meningioma-SEG-CLASS,Brain,MR,Tumor (Meningioma),https://doi.org/10.7937/0TKV-1A36,Dataset,organizers,91
+MRI,MMs-20-21,Chest,MR,"LV, Myocardium, RV",https://www.ub.edu/mnms/,Dataset,organizers,93
+MRI,MSD-Hippocampus,Head,MR,Hippocampus,http://medicaldecathlon.com/,Dataset,organizers,96
+MRI,MSD-LeftAtrium,Chest,MR,Left Atrium,http://medicaldecathlon.com/#tasks,Dataset,organizers,36
+MRI,MSD-Prostate,Pelvis,"MR (T2, ADC)",Prostate,http://medicaldecathlon.com/#tasks,Dataset,organizers,37
+MRI,NCI-ISBI,Pelvis,MR-T2,Prostate,http://dx.doi.org/10.7937/K9/TCIA.2015.zF0vlOPv,Dataset,organizers,38
+MRI,OASIS,Brain,MR,"cerebral spinal fluid, gray matter, white matter",https://sites.wustl.edu/oasisbrains/home/oasis-1/,Dataset,organizers,131
+MRI,PanSegData,Abdomen,MR,Pancreas,https://osf.io/kysnj/,Dataset,organizers,39
+MRI,PI-CAI,Pelvis,MR,Prostate Cancer,https://zenodo.org/records/6624726,Dataset,organizers,109
+MRI,Pituitary_tumor,Head and neck,MR,"Pituitary Neuroendocrine Tumor, carotid",https://springernature.figshare.com/articles/dataset/Mapping_pituitary_neuroendocrine_tumors_an_annotated_MRI_dataset_profiling_tumor_and_carotid_characteristics/27894084,Dataset,organizers,148
+MRI,PROMISE12,Pelvis,MR-T2,Prostate,https://zenodo.org/records/8026660,Dataset,organizers,40
+MRI,PROSTATE-MRI,Prostate,MRI Histopathology,Prostate tumor,https://www.cancerimagingarchive.net/collection/prostate-mri/,Dataset,participants,69
+MRI,ProstateX,Prostate,MR,Prostate Lesion,https://www.cancerimagingarchive.net/collection/prostatex/,Dataset,participants,49
+MRI,QIN-PROSTATE,Pelvis,MR,Prostate and lesion,http://doi.org/10.7937/K9/TCIA.2018.MR1CKGND,Dataset,organizers,41
+MRI,ReMIND,Head and Neck,MR,Brain Cancer,https://www.cancerimagingarchive.net/collection/remind/,Dataset,participants,67
+MRI,RESECT,Brain,MR,tumor,https://osf.io/jv8bk/,Dataset,organizers,156
+MRI,SCD,Heart,MR,Heart anatomy,https://www.cardiacatlas.org/sunnybrook-cardiac-data/,Dataset,participants,25
+MRI,SegThy,Neck,MRI,"Thyroid, Carotid, Jugular Vein",https://www.cs.cit.tum.de/camp/publications/segthy-dataset/,Dataset,organizers,127
+MRI,SPIDER,Bone,MR,IVD,https://zenodo.org/records/10159290,Dataset,organizers,42
+MRI,SpineMR,Bone,MR,Spine,https://www.cg.informatik.uni-siegen.de/en/spine-segmentation-and-analysis,Dataset,organizers,45
+MRI,Stanford Knee MRI Multi-Task Evaluation (SKM-TEA) Dataset,Knee,MR,Cartilage (Femur-Tibia-Patella) & Meniscus,https://stanfordaimi.azurewebsites.net/datasets/4aaeafb9-c6e6-4e3c-9188-3aaaf0e0a9e7,Dataset,participants,42
+MRI,TCIA_CervicalCancer,Pelvis,MR,Tumor,https://doi.org/10.7937/ERZ5-QZ59,Dataset,organizers,46
+MRI,TOM500,Head,MR,"optic nerve, orbital fat, lacrimal gland, eyeball, superior rectus and levator palpebrae superioris complex, inferior rectus, medial rectus, lateral rectus, superior oblique",https://springernature.figshare.com/articles/dataset/TOM500_A_Multi-Organ_Annotated_Orbital_MRI_Dataset_for_Thyroid_Eye_Disease/27133389?file=49499655,Dataset,organizers,146
+MRI,TopCoW24,Brain,MRA,vessel,https://topcow24.grand-challenge.org/,Dataset,organizers,125
+MRI,TotalSegmentatorMR,WholeBody,MR,Whole body organs,https://zenodo.org/records/14710732,Dataset,organizers,47
+MRI,TrackRAD,Whole-body,MRI,Lesion,https://huggingface.co/datasets/LMUK-RADONC-PHYS-RES/TrackRAD2025,Dataset,organizers,129
+MRI,UCSF-PDGM,Brain,MR,brain lesion,https://doi.org/10.7937/tcia.bdgf-8v37,Dataset,organizers,110
+MRI,WMH,Brain,"MR-T1, FLAIR",White matter hyper-intensities,https://wmh.isi.uu.nl/,Dataset,organizers,48
+Ultrasound,AbdominalUS,Abdomen,Ultrasound,Organs,https://www.kaggle.com/datasets/ignaciorlando/ussimandsegm,Dataset,participants,32
+Ultrasound,ACOUSLIC,Abdomen,US,Abdominal circumference,https://zenodo.org/records/12697994,Dataset,organizers,159
+Ultrasound,BUID,Breast,Ultrasound,Tumors,https://scholar.cu.edu.eg/?q=afahmy/pages/dataset,Dataset,participants,35
+Ultrasound,BUS-UCLM,Breast,Ultrasound,breast lesions,https://data.mendeley.com/datasets/7fvgj4jsp7/3,Dataset,organizers,140
+Ultrasound,BUSI,Chest,US,benign breast cancer malignant breast cancer,https://scholar.cu.edu.eg/?q=afahmy/pages/dataset,Dataset,organizers,59
+Ultrasound,CAMUS,Heart,US,"left ventricle, myocardium, left atrium",https://www.creatis.insa-lyon.fr/Challenge/camus/index.html,Dataset,organizers,50
+Ultrasound,CT2US,Abdomen,Ultrasound,Liver,https://www.kaggle.com/datasets/siatsyx/ct2usforkidneyseg,Dataset,participants,30
+Ultrasound,CT2USforKidneySeg,Abdomen,US,kidney,https://www.kaggle.com/datasets/siatsyx/ct2usforkidneyseg,Dataset,organizers,69
+Ultrasound,DDTI,Head and Neck,Ultrasound,Thyroid,https://www.kaggle.com/datasets/dasmehdixtr/ddti-thyroid-ultrasound-images?select=100_1.jpg,Dataset,participants,33
+Ultrasound,hc18,Head,US,fetal head circumference,https://zenodo.org/record/1327317,Dataset,organizers,79
+Ultrasound,HMC-QU,Chest,US,left ventricle,https://www.kaggle.com/datasets/aysendegerli/hmcqu-dataset,Dataset,organizers,80
+Ultrasound,Leg-3D-US,Low-limb leg,US,"Soleus, Gastrocnemius Medialis, Gastrocnemius Lateralis",https://www.cs.cit.tum.de/camp/publications/leg-3d-us-dataset/,Dataset,organizers,49
+Ultrasound,Micro-Ultrasound-Prostate,Prostate,Micro-Ultrasound,Prostate,https://zenodo.org/records/10475293,Dataset,participants,17
+Ultrasound,MMOTU,Pelvic Cavity,Ultrasound,Tumors,https://github.com/cv516Buaa/MMOTU_DS2Net,Dataset,participants,34
+Ultrasound,MuscleUS,"Leg, Biceps",Ultrasound,Muscles,https://data.mendeley.com/datasets/3jykz7wz8d/1,Dataset,participants,31
+Ultrasound,ps-fh-aop-2023,Pelvis,Ultrasound,Pubic symphysis Fetal head,https://zenodo.org/record/7851339#.ZEH6eHZBztU,Dataset,organizers,106
+Ultrasound,RESECT,Brain,US,tumor,https://osf.io/jv8bk/,Dataset,organizers,157
+Ultrasound,SegThy,Neck,US,"Thyroid, Carotid, Jugular Vein",https://www.cs.cit.tum.de/camp/publications/segthy-dataset/,Dataset,organizers,126
+Ultrasound,US simulation & segmentation,Abdomen,Ultrasound,Abdomen organs,https://www.kaggle.com/datasets/ignaciorlando/ussimandsegm,Dataset,organizers,111
+Ultrasound,US-Nerve,Neck,US,Brachial Plexus (BP),https://www.kaggle.com/competitions/ultrasound-nerve-segmentation/data,Dataset,organizers,112
+Chest radiography,Chest X-Ray Pneumothorax,Chest,CXR,Pneumothorax,https://www.kaggle.com/datasets/vbookshelf/pneumothorax-chest-xray-images-and-masks,Dataset,organizers,63
+Chest radiography,Chest Xray Masks and Labels,Chest,CXR,Lungs,https://www.kaggle.com/datasets/nikhilpandey360/chest-xray-masks-and-labels,Dataset,organizers,64
+Chest radiography,COVID-19 Radiography Database,Chest,CXR,Lungs,https://www.kaggle.com/datasets/tawsifurrahman/covid19-radiography-database,Dataset,organizers,67
+Chest radiography,COVID-QU-Ex,Chest,CXR,Lungs,https://www.kaggle.com/datasets/anasmohammedtahir/covidqu,Dataset,organizers,68
+Radiography,ARCADE,Chest,X-Ray,Vessel,https://doi.org/10.5281/zenodo.10390295,Dataset,organizers,52
+Radiography,ASOCA,Vessel,X-Ray,Coronary Arteries,https://reshare.ukdataservice.ac.uk/855916/,Dataset,organizers,53
+Radiography,BTXRD,Bone,X-Ray,Bone tumors,https://doi.org/10.6084/m9.figshare.27865398,Dataset,organizers,144
+Radiography,DenPAR: Annotated Intra-Oral Periapical Radiographs Dataset for Machine Learning,Tooth,X-ray,Tooth and teeth,https://zenodo.org/records/16645076,Dataset,participants,77
+Radiography,HipXRay,Pelvic Cavity,X-ray,Bones,https://data.mendeley.com/datasets/zm6bxzhmfz/1,Dataset,participants,36
+Radiography,PanDental,Dental,X-ray,"Teeth,Jaw",https://data.mendeley.com/datasets/hxt48yk462/2,Dataset,participants,40
+Radiography,PAXRay++,Lung,X-ray,Thorax,https://github.com/ConstantinSeibold/ChestXRayAnatomySegmentation/,Dataset,participants,41
+Radiography,PENGWIN,Pelvis,X-Ray,Pelvic fracture,https://doi.org/10.5281/zenodo.10913195,Dataset,organizers,161
+Radiography,SCR (images from JSRT),Lung,X-ray,"Lungs, heart, clavicle",https://zenodo.org/record/7056076,Dataset,participants,38
+Radiography,STS-2D-Tooth,Oral,X-Ray,tooth,https://zenodo.org/records/10597292,Dataset,organizers,142
+Radiography,ToothSeg,Head and Neck,X-ray,Teeth,https://humansintheloop.org/resources/datasets/teeth-segmentation-dataset/,Dataset,participants,39
+Mammography,CDD-CESM,Chest,Mammography,lesion,https://doi.org/10.7937/29kw-ae92,Dataset,organizers,61
+PET and nuclear medicine,FDG-PET-CT-Lesions (autoPET),whole body,PET,tumor,https://it-portal.med.uni-muenchen.de/autopet/Autopet_v1.1.tgz,Dataset,organizers,26
+PET and nuclear medicine,HECKTOR,Head and Neck,PET,Head and Neck Tumor,https://hecktor.grand-challenge.org,Dataset,participants,52
+PET and nuclear medicine,Soft Tissue Sarcoma,Abdomen,PET,Soft Tissue Sarcom,https://www.cancerimagingarchive.net/collection/soft-tissue-sarcoma/,Dataset,participants,65
+Ophthalmic imaging,CHASE,Retinal,Fundus photography,Veins,https://blogs.kingston.ac.uk/retinal/chasedb1/,Dataset,participants,16
+Ophthalmic imaging,COph100,Eye,Fundus,Retinal vessel,https://springernature.figshare.com/articles/dataset/COph100_A_Comprehensive_Fundus_Image_Registration_Dataset_from_Infants_constituting_the_RIDIRP_database/27061084?file=51235925,Dataset,organizers,145
+Ophthalmic imaging,Drive,Vessel,Fundus,Fundus Blood vessel,https://www.dropbox.com/sh/z4hbbzqai0ilqht/AAARqnQhjq3wQcSVFNR__6xNa?dl=0,Dataset,organizers,71
+Ophthalmic imaging,EOphtha,Retinal,Retinal,Eye microaneurysms,https://www.adcis.net/en/third-party/e-ophtha/,Dataset,participants,29
+Ophthalmic imaging,FairSeg,Eye,Fundus,Cup-Disc,https://github.com/Harvard-Ophthalmology-AI-Lab/FairSeg,Dataset,participants,76
+Ophthalmic imaging,FIVES,Eyes,Fundus,Vessel,https://figshare.com/articles/figure/FIVES_A_Fundus_Image_Dataset_for_AI-based_Vessel_Segmentation/19688169/1,Dataset,participants,15
+Ophthalmic imaging,IDRiD,Eye,Fundus,Lesions and Optic Disc,https://ieee-dataport.org/open-access/indian-diabetic-retinopathy-image-dataset-idrid,Dataset,organizers,84
+Ophthalmic imaging,Intraretinal Cystoid Fluid,Eye,OCT,Cystoid Macular Edema,https://doi.org/10.1002/ima.22662,Paper,organizers,85
+Ophthalmic imaging,OCTA500,Head and Neck,OCT,Veins,https://ieee-dataport.org/open-access/octa-500,Dataset,participants,28
+Ophthalmic imaging,PAPILA,Eye,Fundus,Optic Disc (OD) Optic Cup (OC),https://figshare.com/articles/dataset/PAPILA/14798004/1,Dataset,organizers,102
+Ophthalmic imaging,RAVIR,Eye,Fundus,Retinal Arteries and Veins,https://drive.google.com/file/d/1ZlZoSStvE9VCRq3bJiGhQH931EF0h3hh/view,Dataset,organizers,107
+Ophthalmic imaging,STARE,Head and Neck,Fundus,Veins,https://cecas.clemson.edu/~ahoover/stare/,Dataset,participants,14
+Pathology,Automated Gleason Grading Challenge 2022,Pelvis,Pathology (H&E stained),Prostate cancer,https://aggc22.grand-challenge.org/AGGC22/,Dataset,organizers,54
+Pathology,Breast Cancer Segmentation,Cell,Pathology (H&E stained),Breast cancer,https://github.com/PathologyDataScience/BCSS,Dataset,organizers,58
+Pathology,GlaS@MICCAI'2015,Abdomen,Pathology (H&E stained),Gland,https://www.kaggle.com/datasets/sani84/glasmiccai2015-gland-segmentation,Dataset,organizers,78
+Pathology,HuBMAP - Hacking the Kidney,Abdomen,Pathology (PAS Stained and H&E stained),glomeruli FTU,https://www.kaggle.com/competitions/hubmap-kidney-segmentation/data?select=test,Dataset,organizers,81
+Pathology,HuBMAP - HPA,Abdomen,Pathology,functional tissue unit (FTU),https://www.kaggle.com/competitions/hubmap-organ-segmentation/,Dataset,organizers,82
+Pathology,MonuSeg,Chest,Pathology (H&E stained),tumor cell nuclei,https://www.kaggle.com/datasets/tuanledinh/monuseg2018,Dataset,organizers,94
+Pathology,PanNuke,Cell,Pathology (H&E stained),nuclei,https://www.kaggle.com/datasets/andrewmvd/cancer-inst-segmentation-and-classification,Dataset,organizers,101
+Pathology,Wsss4luad,Chest,Pathology (H&E stained),Lung adenocarcinoma,https://wsss4luad.grand-challenge.org/License/,Dataset,organizers,118
+Dermatology,ISIC2017,Skin,Dermoscopy,Lesions,https://challenge.isic-archive.com/landing/2017/,Dataset,participants,12
+Dermatology,ISIC2018,Skin,Dermoscopy,full lesion (Melanoma),https://challenge.isic-archive.com/data/#2020,Dataset,organizers,86
+Dermatology,uwaterloo skin cancer,Skin,Dermoscopy,skin lesion (melanoma),https://vip.uwaterloo.ca/skin-cancer-detection/,Dataset,organizers,114
+Endoscopy and surgical video,BKAI-IGH NeoPolyp,Abdomen,Endoscopy,neoplastic polyps non-neoplastic polyps,https://www.kaggle.com/competitions/bkai-igh-neopolyp/data,Dataset,organizers,55
+Endoscopy and surgical video,CholecSeg8k,Abdomen,Endoscopy,Tissues and instruments,https://www.kaggle.com/datasets/newslab/cholecseg8k,Dataset,organizers,65
+Endoscopy and surgical video,DFU,Abdomen,Endoscopy,Liver,https://dfu-challenge.github.io/,Dataset,organizers,70
+Endoscopy and surgical video,Endoscapes2023,Abdomen,Endoscopy,"semantic segmentation (4 anatomical structures, 1 descriptor of surgical dissection, and 1 tool class)",https://github.com/CAMMA-public/Endoscapes,Dataset,organizers,136
+Endoscopy and surgical video,FetoPlac,Vessel,Fetoscopic optical camera,vessel,https://weiss-develop.cs.ucl.ac.uk/fetoscopy-data/fetoscopy-placenta-dataset/fetoscopy-placenta-dataset.zip,Dataset,organizers,74
+Endoscopy and surgical video,Kvasir-SEG,Abdomen,Endoscopy,Polyp,https://www.kaggle.com/datasets/abdallahwagih/kvasir-dataset-for-classification-and-segmentation,Dataset,organizers,87
+Endoscopy and surgical video,m2caiSeg,Abdomen,Endoscopy,Tissues,https://www.kaggle.com/datasets/salmanmaq/m2caiseg,Dataset,organizers,90
+Endoscopy and surgical video,P2ILF,Abdomen,Endoscopy,Liver,https://p2ilf.grand-challenge.org/,Dataset,organizers,99
+Endoscopy and surgical video,SAR-RARP50,Prostate Cancer,laporoscopy,Instruments,https://rdr.ucl.ac.uk/articles/dataset/SAR-RARP50_train_set/24932529,Dataset,participants,72
+Endoscopy and surgical video,SUN-SEG,Abdomen,Endoscopy,Polyp,http://amed8k.sundatabase.org/,Dataset,organizers,132
+Microscopy,AxonEM,Cells,Electron microscopy,Axon,https://axonem.grand-challenge.org/,Dataset,organizers,152
+Microscopy,"BBBC Collection (24,27,32,33,34,46,50)",Cells,Microscopy,Cells,https://bbbc.broadinstitute.org/BBBC024,Dataset,participants,55
+Microscopy,BBC038,Cells,Microscopy,Cells,https://bbbc.broadinstitute.org/BBBC038,Dataset,participants,18
+Microscopy,CellTrackingChallenge (Fluo C3DH/N3DH),Cells,Microscopy,Cell,https://celltrackingchallenge.net/3d-datasets/,Dataset,participants,59
+Microscopy,CREMI,Drosophila brain,Electron microscopy,neuron,https://cremi.org/data/,Dataset,organizers,121
+Microscopy,Drosophila,Drosophila,Microscopy,"Mitochondria, Synapses",https://github.com/unidesigner/groundtruth-drosophila-vnc,Dataset,participants,56
+Microscopy,ISBI_EM,Cells,Microscopy,neurons,https://imagej.net/events/isbi-2012-segmentation-challenge,Dataset,participants,20
+Microscopy,LungVis1.0,Lung,light sheet fluorescence microscopy,Airway,https://zenodo.org/records/7413818,Dataset,organizers,153
+Microscopy,MUCIC_Colon Tissue,Colon Tissue,virtual microscope,Cell nuclei,https://cbia.fi.muni.cz/datasets/,Dataset,organizers,151
+Microscopy,MUCIC_Granulocytes,Cells,virtual microscopy,Cell nuclei,https://cbia.fi.muni.cz/datasets/,Dataset,organizers,150
+Microscopy,MUCIC_HL60,Cells,virtual microscopy,Cell nuclei,https://cbia.fi.muni.cz/datasets/,Dataset,organizers,149
+Microscopy,NeurIPS CellSeg,Cell,Microscopy,cells,https://neurips22-cellseg.grand-challenge.org/,Dataset,organizers,97
+Microscopy,NIS3D,Cells,Light Sheet Microscopy,nuclei,https://zenodo.org/records/11456029,Dataset,organizers,154
+Microscopy,NucMM-Z,zebrafish brain,Electron microscopy,nuclei,https://nucmm.grand-challenge.org/,Dataset,organizers,122
+Microscopy,PCMMD,Cells,Microscopy,"plasma cells, non-plasma cell",https://data.mendeley.com/datasets/3v2nrxpr9s/1,Dataset,organizers,141
+Microscopy,SELMA3D,Brain,Light-sheet Microscopy,neural activity,https://selma3d.grand-challenge.org/,Dataset,organizers,123
+Microscopy,SLiMIA,Cell,Microscopy,spheroid,https://figshare.com/collections/The_Spheroid_Light_Microscopy_Image_Atlas_SLiMIA_for_morphometrical_analysis_of_three_dimensional_cell_cultures/7486311,Dataset,organizers,137
+Microscopy,ssTEM,Cells,Microscopy,cells,https://github.com/unidesigner/groundtruth-drosophila-vnc,Dataset,participants,19
+Microscopy,UroCell,Urinary bladders,Electron microscopy,Endolysosomes and mitochondria,https://github.com/MancaZerovnikMekuc/UroCell,Dataset,organizers,119
+Microscopy,WBC,Cells,Microscopy,"Nuceleus, Cytoplasm",https://github.com/zxaoyou/segmentation_WBC,Dataset,participants,21
+Multimodal,HaN-Seg,Head and Neck,CT + MR,Head,https://zenodo.org/records/7442914,Dataset,organizers,9
+Multimodal,MedSeg,All,CT + MR,"Vasulature, Muscles, Regions",https://www.medseg.ai/database,Dataset,participants,70
+Multimodal,MM-WHS,Chest,"CT, MR",Heart,https://zmiclab.github.io/zxh/0/mmwhs/,Dataset,organizers,92
+Multimodal,Qubiq,Abdomen,"CT,MR","Brain, kidney, pancreas, prostate",https://qubiq21.grand-challenge.org/participation/,Dataset,participants,11
+Multimodal,TRUSTED,—,CT + ultrasound,—,https://springernature.figshare.com/articles/dataset/TRUSTED_The_Paired_3D_Ultrasound_and_CT_Human_Data_for_Kidney_Segmentation_and_Registration_Research/27981050?file=51079133,Dataset,organizers,162
+Ophthalmic imaging,OCT5k,retina,Optical Coherence Tomography,retinal layers,https://rdr.ucl.ac.uk/articles/dataset/OCT5k_A_dataset_of_multi-disease_and_multi-graded_annotations_for_retinal_layers/22128671?file=44436359,Dataset,organizers,138

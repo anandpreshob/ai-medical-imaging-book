@@ -27,3 +27,21 @@ def render_catalog(kind, modalities=None, include_general=False):
     for r in rows:
         print('| '+' | '.join('[Source]('+r[key]+')' if key=='link' else cell(r[key]) for key,_ in cols)+' |')
     print('\n:::\n')
+
+def render_community_datasets():
+    with (ROOT/'data'/'community-datasets.csv').open(encoding='utf-8', newline='') as f:
+        rows = list(csv.DictReader(f))
+    groups = {}
+    for row in rows:
+        groups.setdefault(row['group'], []).append(row)
+    def cell(value):
+        return value.replace('|', '\\|').replace('\n', ' ')
+    for group, entries in groups.items():
+        print(f'### {group} ({len(entries)})\n')
+        print('::: {.table-responsive}\n')
+        print('| Dataset | Anatomy | Modality as listed | Segmentation target | Source |')
+        print('|---|---|---|---|---|')
+        for row in sorted(entries, key=lambda item: item['name'].casefold()):
+            source = f"[{row['link_type']}](<{row['link']}>) ({row['worksheet']} row {row['row']})"
+            print('| ' + ' | '.join(cell(row[key]) for key in ('name', 'anatomy', 'modality', 'targets')) + f' | {source} |')
+        print('\n:::\n')
