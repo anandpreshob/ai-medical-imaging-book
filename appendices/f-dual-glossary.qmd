@@ -1,7 +1,74 @@
 # Dual Glossary {.unnumbered}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
-:::
+The same word can mean different things in clinical practice and machine learning. This glossary pairs a concise definition with the distinction most likely to affect an imaging AI project.
 
-<!-- Clinical terms for engineers / ML terms for clinicians. -->
+## Clinical and imaging terms for engineers
+
+| Term | Meaning and practical distinction |
+|---|---|
+| Screening | Assessment of a defined population without a specific presenting symptom; prevalence and follow-up differ from diagnostic cohorts. |
+| Diagnostic examination | Imaging directed at a clinical question, symptom, or prior finding; not interchangeable with screening. |
+| Indication | The clinical reason for an examination, or the specified authorized use of a device; identify which meaning is intended. |
+| Finding | An observation such as an opacity or lesion; it is not necessarily a diagnosis. |
+| Differential diagnosis | Plausible explanations for findings in context, not a list of independently established diseases. |
+| Reference standard | The method used to establish the evaluation target; it may combine expert review, pathology, follow-up, or other evidence. |
+| Incidental finding | An observation outside the original examination question; it still needs an appropriate review and follow-up pathway. |
+| Triage | Prioritization of attention or workflow; a negative triage result does not automatically rule out disease. |
+| Recall | A request for additional assessment after screening; not synonymous with a cancer diagnosis. |
+| Lesion | A localized abnormality; its definition and boundaries depend on the task. |
+| Longitudinal | Across time for the same person or target; requires correct identity, timing, and comparability. |
+| Acquisition protocol | The settings and sequence of measurements used to obtain an examination. |
+| Series | A grouping of DICOM objects; one study may contain many series with different roles. |
+| Reconstruction | Producing an image from measured signals; distinct from generating a report or classifying disease. |
+| Windowing | Mapping an intensity range to display brightness; generally not a change to the underlying measurement. |
+| Voxel | A sample in a volumetric grid; its physical dimensions may differ along each axis. |
+| Registration | Estimating spatial correspondence between images; registration error can masquerade as biological change. |
+| Partial-volume effect | Mixing of contributions within limited spatial resolution, affecting boundaries and measurements. |
+| Contrast phase | Timing of acquisition relative to contrast administration; different phases are different model inputs. |
+| Hounsfield unit | CT attenuation scale relative to water; not a universal scale for all tomographic imaging. |
+| SUV | A normalized PET uptake measure with a specified convention, units, and timing assumptions. |
+| Ejection fraction | Fraction of end-diastolic ventricular volume ejected; the arithmetic depends on valid source measurements. |
+| Whole-slide image | A digitized tissue section, often a multiresolution pyramid; it is not the complete specimen or case. |
+| Grading | Categorizing severity or morphology under a defined system; integer labels may not be comparable across systems. |
+| Ungradable | Inadequate for the specified assessment; it must not be relabeled as normal. |
+| PACS / RIS / LIS | Picture archive, radiology information system, and laboratory information system; their identities and workflow roles must be integrated. |
+
+## Machine-learning terms for clinicians
+
+| Term | Meaning and practical distinction |
+|---|---|
+| Training / validation / test | Data used to fit a model, select its settings, and estimate held-out performance; repeated tuning on the test set undermines independence. |
+| Data leakage | Information unavailable at the intended decision point enters development or evaluation, inflating apparent performance. |
+| Domain shift | A change in the input or clinical setting between development and use, such as a different scanner or population. |
+| Distribution drift | A change over deployment time; it is a signal for investigation, not automatically proof of clinical harm. |
+| Classification | Assigning a category or score to an input; it does not necessarily localize the evidence. |
+| Detection | Identifying candidate locations or events; a box is not a precise boundary or histological diagnosis. |
+| Segmentation | Assigning labels to pixels or voxels; labels require anatomical and coordinate definitions. |
+| Regression | Predicting a numerical quantity; correlation with a reference does not guarantee agreement. |
+| Embedding | A learned numerical representation; dimensions are not usually directly interpretable clinical measurements. |
+| Foundation model | A broadly pretrained model adapted to downstream tasks; breadth of pretraining is not validation for a specific clinical use. |
+| Fine-tuning | Updating model parameters for a new task or dataset; it can improve specialization and introduce new failure modes. |
+| Checkpoint | A saved parameter state; preprocessing, labels, and dependencies are still needed to reproduce a result. |
+| Calibration | Agreement between predicted probabilities and observed frequencies in a defined setting. |
+| Discrimination | Ability to rank or separate outcomes; good discrimination does not imply good calibration. |
+| Operating point | The selected threshold or policy at which sensitivity, specificity, and workload are evaluated. |
+| Sensitivity / specificity | Positive detection among reference positives and negative detection among reference negatives; specify the unit and population. |
+| Positive predictive value | Fraction of positive outputs that are reference positive; depends on prevalence and operating point. |
+| AUROC | Ranking performance across thresholds; it does not select a clinically acceptable threshold. |
+| AUPRC | Area under the precision–recall curve; its interpretation depends strongly on positive prevalence. |
+| Dice score | Overlap measure for masks; a high average can conceal missed small lesions or important boundary errors. |
+| Uncertainty | Lack of confidence due to data, labels, or model limitations; a score is useful only if its interpretation is validated. |
+| Abstention | An explicit refusal to produce a supported result; requires a defined downstream action. |
+| Weak supervision | Training labels are indirect or coarse, such as report-mined labels or slide-level labels for tiles. |
+| Multiple-instance learning | Learning from groups of instances with a group-level label, common in whole-slide analysis. |
+| Explainability | Methods intended to help understand outputs; a heatmap is not automatically a causal explanation. |
+| Hallucination | Generated content unsupported by the available evidence; fluent wording does not make it factual. |
+| Agent | A system that selects and sequences tools or actions; permissions and stopping conditions are part of its safety. |
+| Latency / throughput | Delay for one task versus tasks processed per unit time; optimizing one may worsen the other. |
+| Idempotency | Repeating the same request does not create unintended duplicate effects. |
+| Provenance | The traceable relationship among source data, transformations, model versions, outputs, and review. |
+| Rollback | Returning to a previously controlled version or workflow after a problematic change. |
+
+## Words to clarify in every project
+
+**Accuracy** may refer to a classification metric, measurement agreement, or general correctness. Name the actual endpoint. **Validation** may mean a development split, technical verification, external clinical evaluation, or an institutional acceptance process. State which one was performed. **Approved** may mean internal permission or a particular regulatory pathway; do not use it as a generic synonym for model availability. **Normal** may mean no target finding in an adequate examination, not the absence of every disease.

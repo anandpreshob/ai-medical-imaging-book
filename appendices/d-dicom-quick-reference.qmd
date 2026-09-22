@@ -1,7 +1,74 @@
 # DICOM Quick Reference for ML Engineers {.unnumbered}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
-:::
+DICOM describes information objects, their relationships, encoding, and exchange. A DICOM file is not simply an image with a header. It may contain multiple frames, derived measurements, segmentation, structured reports, waveforms, or other content. Interpret the SOP Class and the relevant information object definition before assuming a generic pixel pipeline applies.
 
-<!-- Tags that matter, pixel data gotchas, de-identification checklists. -->
+The tables below are a navigation aid. The normative references are the [current DICOM standard](https://www.dicomstandard.org/current), particularly PS3.3 for information objects, PS3.5 for encoding, PS3.6 for the data dictionary, PS3.15 for confidentiality, and PS3.18 for web services.
+
+## Identity and relationships
+
+| Attribute | Tag | Why it matters |
+|---|---|---|
+| SOP Class UID | `(0008,0016)` | Identifies the object type and its rules |
+| SOP Instance UID | `(0008,0018)` | Identifies one information object, not necessarily one frame |
+| Study Instance UID | `(0020,000D)` | Groups the examination's objects |
+| Series Instance UID | `(0020,000E)` | Groups a series; does not alone prove model eligibility |
+| Frame of Reference UID | `(0020,0052)` | Identifies a shared spatial frame when applicable |
+| Modality | `(0008,0060)` | Broad acquisition/object category, insufficient for protocol selection |
+| Image Type | `(0008,0008)` | Helps distinguish original, derived, and other image roles |
+| Patient ID | `(0010,0020)` | Local identifier; interpret with issuer and identity-management policy |
+| Transfer Syntax UID | `(0002,0010)` | Encoding and compression information in the file meta information |
+
+A UID is an identifier, not proof of authorization or correct patient matching. Preserve source references in derived objects. If de-identification remaps UIDs, maintain consistent relationships within the permitted dataset rather than replacing each occurrence independently.
+
+## Geometry
+
+| Attribute | Tag | Interpretation |
+|---|---|---|
+| Rows / Columns | `(0028,0010)` / `(0028,0011)` | Pixel-array dimensions |
+| Pixel Spacing | `(0028,0030)` | Row spacing followed by column spacing, in mm where defined |
+| Image Position (Patient) | `(0020,0032)` | Physical location of the center of the first transmitted voxel |
+| Image Orientation (Patient) | `(0020,0037)` | Direction cosines defining the image-plane axes |
+| Slice Thickness | `(0018,0050)` | Nominal thickness; not a reliable replacement for slice-position spacing |
+| Number of Frames | `(0028,0008)` | Frame count for multiframe objects |
+| Shared / Per-frame Functional Groups | `(5200,9229)` / `(5200,9230)` | Enhanced objects may store geometry and transforms here |
+
+For conventional parallel slices, use position projected onto the slice normal to establish spatial order, and check consistency. Instance Number and filename order are not geometry. Duplicate positions may represent different phases, echoes, or reconstructions; do not merge them blindly.
+
+The [Image Plane Module](https://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.6.2.html) defines the mapping. For a biped patient coordinate system, positive axes point toward the patient's left, posterior, and head. Libraries may expose different array-axis orders or coordinate conventions. Test transformations with known landmarks and preserve the full affine or equivalent mapping.
+
+## Pixel interpretation
+
+| Attribute | Tag | Common pitfall |
+|---|---|---|
+| Bits Allocated / Stored | `(0028,0100)` / `(0028,0101)` | Container width differs from meaningful bits |
+| Pixel Representation | `(0028,0103)` | Signed and unsigned values are not interchangeable |
+| Photometric Interpretation | `(0028,0004)` | Monochrome polarity and color interpretation affect display |
+| Rescale Intercept / Slope | `(0028,1052)` / `(0028,1053)` | Stored values may require a modality transform |
+| Window Center / Width | `(0028,1050)` / `(0028,1051)` | Display parameters, not generally the stored physical measurement |
+| Pixel Padding Value | `(0028,0120)` | Padding should not contaminate tissue statistics |
+| Real World Value Mapping Sequence | `(0040,9096)` | Quantitative mapping may include units and object-specific rules |
+| Pixel Data | `(7FE0,0010)` | May be compressed or multiframe; decoding requires appropriate support |
+
+For many conventional CT objects, a rescale operation converts stored values to HU. Do not apply that rule indiscriminately to every object. Enhanced images can have frame-specific transforms; PET, parametric maps, ultrasound regions, and other quantitative objects need their own interpretation. Display windowing must not silently replace the model's expected intensity preprocessing.
+
+MONOCHROME1 and MONOCHROME2 differ in display polarity. Color data may require a color-space conversion. A decoder returning an array does not establish that the array has the intended physical or display meaning. Verify representative objects from each supported source.
+
+## Derived results and web services
+
+DICOM SEG carries segmentation information with references and segment semantics. Structured reporting can carry coded observations and measurements under appropriate templates. Encapsulated documents and screenshots may be convenient but lose machine-readable meaning if used instead of structured results. Validate the receiving viewer's actual behavior, not only file syntax.
+
+DICOMweb query, retrieval, and storage commonly use QIDO-RS, WADO-RS, and STOW-RS. Availability and supported features vary by implementation. Authentication, authorization, TLS, audit, and retry behavior require an application-level design. A successful HTTP response is not proof that a result was attached to the intended clinical workflow.
+
+## De-identification and validation
+
+Use a documented confidentiality profile and applicable options, then validate the resulting dataset. The [DICOM PS3.15 confidentiality profiles](https://dicom.nema.org/medical/dicom/current/output/chtml/part15/chapter_E.html) are a technical reference, not a universal declaration of legal anonymity.
+
+1. Review standard and private metadata, including free text and identifiers in nested sequences.
+2. Inspect burned-in text, overlays, recognizable anatomy, slide labels, video frames, and audio where applicable.
+3. Remap identifiers consistently while preserving required object relationships.
+4. Apply a documented date policy that preserves needed intervals without retaining disallowed identifiers.
+5. Keep re-identification keys, if permitted, separate and access-controlled.
+6. Verify that geometry, quantitative units, source references, and task-relevant metadata remain usable.
+7. Sample outputs visually and audit automated checks before release under the applicable agreement.
+
+A practical ingestion test includes compressed and uncompressed images, enhanced multiframe objects where supported, missing optional fields, unusual orientation, duplicate sends, and malformed or unsupported inputs. Reject or quarantine unresolved cases explicitly. Silent fallback to guessed geometry is rarely a defensible default.

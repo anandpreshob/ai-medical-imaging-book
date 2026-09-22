@@ -1,21 +1,37 @@
-# FDA-Cleared AI Product Index {.unnumbered}
+---
+execute:
+  freeze: false
+---
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
-:::
+# FDA Product Index {.unnumbered}
 
-<!-- Master living table rendered from data/fda-products.csv. -->
+This selected index is generated from `data/fda-products.csv`. It links to specific historical US authorization records used as teaching examples. It is not a complete current inventory, a purchasing recommendation, or a statement that every version of a named product has the same indication. The non-CXR records were reviewed for this edition on 22 September 2026.
 
 ```{python}
 #| echo: false
 #| output: asis
-import csv
+import sys
 from pathlib import Path
-rows = list(csv.DictReader(open(Path("../data/fda-products.csv"))))
-if rows:
-    headers = rows[0].keys()
-    print("| " + " | ".join(headers) + " |")
-    print("|" + "---|" * len(headers))
-    for r in rows:
-        print("| " + " | ".join(r.values()) + " |")
+sys.path.insert(0, str(Path("../scripts").resolve()))
+from book_catalog import render_catalog
+render_catalog('fda-products', None, include_general=False)
 ```
+
+## Read the record behind the product name
+
+A 510(k) clearance, a De Novo authorization, and premarket approval are distinct regulatory pathways. Use the language appropriate to the actual record. The book's inherited chapter heading “FDA-cleared AI products” is a convenient category heading; individual tables explicitly identify De Novo records rather than calling every authorization a clearance.
+
+Start with the submission number, device name, intended use, indications, compatible inputs and hardware, user population, and limitations. Then determine whether the local workflow matches those conditions. Do not attach a later product-family claim to an earlier submission merely because the names are similar.
+
+| Claimed role | Question to resolve |
+|---|---|
+| Triage or notification | Does it change worklist priority, and what diagnostic review remains required? |
+| Detection assistance | What findings, images, users, and reading configuration are supported? |
+| Acquisition guidance | Which views and hardware are covered, and who judges adequacy? |
+| Quantification | What is measured, in which units, and what diagnosis is not established? |
+| Autonomous screening | Which population, acquisition, target condition, and no-result pathway are specified? |
+| Image enhancement | Which acquisitions and quantitative or diagnostic claims are supported? |
+
+The [FDA AI-enabled device list](https://www.fda.gov/medical-devices/artificial-intelligence-enabled-medical-devices/list-artificial-intelligence-enabled-medical-devices) provides a broader discovery resource and explains that it is not comprehensive. Use its submission links and the applicable current labeling when evaluating a real deployment. Authorization does not eliminate the need to verify interoperability, local workflow, training, monitoring, and change management.
+
+Absence from this appendix means only that no example has been curated here. It is not evidence that a modality lacks authorized devices. Products outside the United States require review under the relevant jurisdiction rather than extrapolation from this index.

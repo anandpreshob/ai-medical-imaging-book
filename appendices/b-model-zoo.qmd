@@ -1,21 +1,45 @@
+---
+execute:
+  freeze: false
+---
+
 # The Model Zoo {.unnumbered}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
-:::
-
-<!-- Master living table rendered from data/models.csv. -->
+This directory is generated from `data/models.csv`. It includes task-specific models, reusable encoders, and development frameworks. These are different kinds of resources. A framework can help train a model without providing a suitable pretrained checkpoint; a foundation checkpoint can provide features without a validated clinical decision rule.
 
 ```{python}
 #| echo: false
 #| output: asis
-import csv
+import sys
 from pathlib import Path
-rows = list(csv.DictReader(open(Path("../data/models.csv"))))
-if rows:
-    headers = rows[0].keys()
-    print("| " + " | ".join(headers) + " |")
-    print("|" + "---|" * len(headers))
-    for r in rows:
-        print("| " + " | ".join(r.values()) + " |")
+sys.path.insert(0, str(Path("../scripts").resolve()))
+from book_catalog import render_catalog
+render_catalog('models', None, include_general=False)
 ```
+
+## A model is more than its weights
+
+A reproducible model package includes architecture, checkpoint checksum, input selection, preprocessing, label map, postprocessing, thresholds, software dependencies, and the inverse mapping to source coordinates. A change in normalization can alter results even when the checkpoint is unchanged.
+
+Treat code, weights, and data licenses separately. Gated access is not itself a license category, and downloadable weights do not imply permission for every commercial or clinical use. Check the exact model card and artifact version. The `any` category means broadly reusable development resources, not universal validated input support.
+
+## Compare models under one task contract
+
+Fix the dataset split, input availability, reference labels, operating point, and evaluation unit before comparing architectures. Include a strong simple baseline. Measure errors that matter to the intended workflow: lesion sensitivity, false-positive review burden, measurement agreement, technical failures, latency, and correction time as applicable.
+
+Record hardware and peak resource use on representative inputs. A model that fits one cropped volume may not fit a full examination with concurrent sessions. Include download and preprocessing in operational timing when they contribute to the user's wait.
+
+## A compact model card for local use
+
+| Field | Required content |
+|---|---|
+| Identity | Name, version, source, checkpoint checksum |
+| Intended use | Population, modality, task, user, clinical role |
+| Inputs | Acquisition requirements, units, geometry, missing-input policy |
+| Outputs | Labels, scores, calibration, coordinate system, failure states |
+| Evidence | Dataset releases, split policy, metrics, intervals, external evaluation |
+| Limitations | Unsupported cases, known failures, abstention and escalation |
+| Operations | Dependencies, hardware, concurrency, monitoring, rollback |
+| Rights | Code, weights, data, redistribution, and use restrictions |
+
+A model-zoo entry is a starting point for investigation. It is not a clinical endorsement or a substitute for validation of the deployed acquisition-to-result chain.

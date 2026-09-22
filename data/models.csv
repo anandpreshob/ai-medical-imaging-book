@@ -2,11 +2,15 @@ modality,task,model,weights,license,link,notes
 cxr,CXR vision-language interpretation,CheXagent 2 (3B),Open,MIT (checkpoint metadata); research-only stated use,https://huggingface.co/StanfordAIMI/CheXagent-2-3b,Stanford AIMI; use checkpoint-specific tasks and interface
 cxr,Classification (multi-label),TorchXRayVision,Open,Apache-2.0 code; inspect selected weights and data terms,https://github.com/mlmed/torchxrayvision,Research baseline; preserve documented intensity normalization
 cxr,VLM (general medical),MedGemma (medical multimodal family),Open (gated),Gemma license,https://developers.google.com/health-ai-developer-foundations/medgemma/model-card,Development starting point; pin version; application-specific validation required
-ct,Segmentation (117 structures),TotalSegmentator,Open,Apache-2.0,https://github.com/wasserth/TotalSegmentator,
-any,Text-prompted segmentation,BiomedParse,Open,Apache-2.0 (weights: MSR terms),https://github.com/microsoft/BiomedParse,
-any,Interactive segmentation,MedSAM2,Open,Apache-2.0,https://github.com/bowang-lab/MedSAM2,
-any,Interactive segmentation,nnInteractive,Open,Apache-2.0,https://github.com/MIC-DKFZ/nnInteractive,DKFZ
-any,Self-configuring segmentation,nnU-Net,Open,Apache-2.0,https://github.com/MIC-DKFZ/nnUNet,The segmentation workhorse
-path,Slide-level foundation model,UNI / UNI2,Open (gated),CC BY-NC 4.0,https://huggingface.co/MahmoodLab/UNI,Mahmood Lab
-path,Slide-level foundation model,Prov-GigaPath,Open (gated),Research,https://github.com/prov-gigapath/prov-gigapath,Microsoft/Providence
-mri,Reconstruction,fastMRI baselines,Open,MIT,https://github.com/facebookresearch/fastMRI,Reference implementations
+ct,Anatomical segmentation,TotalSegmentator,Default task weights available,Apache-2.0 default model; other tasks may have separate terms,https://github.com/wasserth/TotalSegmentator,Default CT task has 117 structures; inspect task-specific input and license
+mri,Reconstruction,fastMRI baselines,Reference implementations and release-specific checkpoints,MIT code; dataset agreement separate,https://github.com/facebookresearch/fastMRI,Research reconstruction baseline; pin sampling and coil setup
+us,Video function estimation and segmentation,EchoNet-Dynamic,Reference code and documented model resources,Inspect repository and data/checkpoint terms separately,https://github.com/echonet/dynamic,Apical four-chamber research; not complete echo interpretation
+mammo,Future breast-cancer risk,Mirai,Released research model,MIT; authors specify research rather than clinical use,https://github.com/yala/Mirai,Future-risk task; original code requires supported four-view presentation images
+ophtho,Retinal representation learning,RETFound,Checkpoint-specific access,Checkpoint-specific terms; inspect model card,https://github.com/rmaphoh/RETFound,Adapt and validate a task head; not an autonomous screening device
+video,Surgical phase recognition,TeCNO,Reference implementation and linked resources,Repository and checkpoint terms apply,https://github.com/tobiascz/TeCNO,Causal temporal research model; phase labels do not assess surgical safety
+path,Pathology representation learning,UNI family,Gated checkpoints,Checkpoint-specific noncommercial/research terms,https://github.com/mahmoodlab/UNI,Pin model generation; patch representations need downstream task validation
+path,Pathology representation learning,Prov-GigaPath,Gated model resources,Research terms; inspect selected artifacts,https://github.com/prov-gigapath/prov-gigapath,Tile and slide representations; validate tissue and stain scope
+any,Self-configuring segmentation,nnU-Net,Framework; train or obtain task-specific weights,Apache-2.0 code; task weights and data terms separate,https://github.com/MIC-DKFZ/nnUNet,Framework availability does not establish a validated modality checkpoint
+any,Interactive segmentation,nnInteractive,Released model resources,Inspect pinned code and model license,https://github.com/MIC-DKFZ/nnInteractive,Prompt and input-domain validation required
+any,Prompted biomedical segmentation,BiomedParse,Released model resources,Code and checkpoint terms differ; inspect model release,https://github.com/microsoft/BiomedParse,Only use supported representations; not universal modality validation
+any,Interactive segmentation,MedSAM2,Released model resources,Inspect pinned code and checkpoint terms,https://github.com/bowang-lab/MedSAM2,Task-specific prompts and evaluation required

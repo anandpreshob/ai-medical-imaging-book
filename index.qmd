@@ -24,6 +24,6 @@ The dataset directories, model zoos, and FDA-cleared product indexes in this boo
 
 ## Status {.unnumbered}
 
-::: {.callout-warning}
-This book is a work in progress, published as it is written. Chapters marked *draft* are incomplete.
+::: {.callout-note}
+All 22 chapters and five reference appendices now contain a complete first draft. The book remains a living educational resource: dataset releases, model terms, and device labeling should be checked at their linked sources. Chapters 12–22 include 38 original diagrams, documented in the repository’s figure provenance index.
 :::

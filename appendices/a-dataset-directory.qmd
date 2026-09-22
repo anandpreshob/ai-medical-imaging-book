@@ -1,21 +1,41 @@
+---
+execute:
+  freeze: false
+---
+
 # The Dataset Directory {.unnumbered}
 
-::: {.callout-note}
-*Draft chapter — outline only. Content coming soon.*
-:::
-
-<!-- Master living table rendered from data/datasets.csv. -->
+This selected directory is generated from `data/datasets.csv`. Counts describe the named release and unit; a frame, image, examination, slide, and patient are not interchangeable. Source-review scope and modality keys are documented in `data/README.md`. Entries reviewed for the remaining chapters on 22 September 2026 complement the earlier chest-radiography entries.
 
 ```{python}
 #| echo: false
 #| output: asis
-import csv
+import sys
 from pathlib import Path
-rows = list(csv.DictReader(open(Path("../data/datasets.csv"))))
-if rows:
-    headers = rows[0].keys()
-    print("| " + " | ".join(headers) + " |")
-    print("|" + "---|" * len(headers))
-    for r in rows:
-        print("| " + " | ".join(r.values()) + " |")
+sys.path.insert(0, str(Path("../scripts").resolve()))
+from book_catalog import render_catalog
+render_catalog('datasets', None, include_general=False)
 ```
+
+## Before choosing a dataset
+
+Write down the target population, acquisition, task, and clinical unit of evaluation. Then check whether the collection actually supplies the required inputs and reference labels. A challenge release may contain preprocessed volumes that conceal the work needed to accept routine hospital data. A selected-image dataset may exclude the technical failures that dominate a live service.
+
+Record the exact release, download date, license or agreement, file checksums, label dictionary, split manifest, and preprocessing. Keep patient and source-examination identifiers in a protected linkage system when permitted, while using appropriate research identifiers in analysis. Never assume two differently named datasets are independent; derivatives and repeated releases can overlap.
+
+| Question | What to record |
+|---|---|
+| Who is represented? | Sites, inclusion criteria, population, exclusions, missingness |
+| What was acquired? | Modality, device, protocol, image type, geometry, timing |
+| What is the reference? | Annotators, adjudication, clinical outcome, information available to labelers |
+| What is independent? | Patient, examination, procedure, specimen, and derivative relationships |
+| What use is permitted? | Access agreement, redistribution, commercial use, retention obligations |
+| What does the test set establish? | Target population, fixed operating point, external validity, uncertainty |
+
+## A minimal research manifest
+
+Use one row per defined source unit, with separate linked tables if the hierarchy is complex. Useful fields include a research patient key, examination key, source file or object identifiers, acquisition type, label version, split assignment, and exclusion reason. Do not put identifying clinical information into a public manifest.
+
+Patient-level splitting is a starting point, not a complete validation strategy. Site-held-out, temporal, device-held-out, or prospective evaluation may be needed for the intended claim. Keep the final test set untouched while selecting models and thresholds. Report technical exclusions with denominators instead of quietly removing them.
+
+A dataset absent from this directory may still be useful. Add it only after documenting the release, task, access terms, and primary source. Avoid aggregate counts that mix incompatible editions or count correlated derivatives as independent cases.
