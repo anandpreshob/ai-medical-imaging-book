@@ -128,7 +128,9 @@ At the top of the market sit regulated enterprise platforms — **MIM** ([mimsof
 
 ## The comparison table
 
-The living version of this table is `data/viewers.csv` in the book's repository — corrections welcome as pull requests.
+The living version of this table is `data/viewers.csv` in the book's repository — corrections welcome as pull requests. Scroll horizontally within the table to see all columns.
+
+::: {.table-scroll role="region" aria-label="Medical image viewer comparison" tabindex="0"}
 
 ```{python}
 #| echo: false
@@ -143,6 +145,8 @@ if rows:
     for r in rows:
         print("| " + " | ".join(r.values()) + " |")
 ```
+
+:::
 
 ## Choosing a viewer
 
