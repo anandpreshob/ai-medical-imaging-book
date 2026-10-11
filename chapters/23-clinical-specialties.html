@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>23&nbsp; Imaging Across Clinical Specialties – AI in Medical Imaging</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/24-challenges-and-starter-projects.html" rel="next">
+<link href="../chapters/22-ethics-bias-future.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c147491df33f366bd77748f93457c5b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/23-clinical-specialties.html">VI — Clinical Applications &amp; Research Practice</a></li><li class="breadcrumb-item"><a href="../chapters/23-clinical-specialties.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">AI in Medical Imaging</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/anandpreshob/ai-medical-imaging-book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">I — The Landscape of Medical Imaging</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction: Why AI in Medical Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-universe-of-medical-images.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Universe of Medical Images</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-images-in-the-hospital.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">How Images Live in a Hospital</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-medical-image-viewers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Medical Image Viewers</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">II — Foundations: Machine Learning &amp; Computer Vision</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-machine-learning-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Machine Learning: The Concepts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-what-computer-vision-can-do.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">What Computer Vision Can Do</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/07-deep-learning-architectures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Deep Learning Architectures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/08-generative-and-frontier-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Generative &amp; Frontier Models</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/09-agentic-ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Agentic AI in Medical Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/10-from-model-to-product.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">From Model to Product: Evaluation, Regulation, Deployment</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">III — Diagnostic Imaging, Modality by Modality</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/11-chest-xray.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Chest X-ray</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/12-computed-tomography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Computed Tomography (CT)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/13-mri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Magnetic Resonance Imaging (MRI)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/14-ultrasound-echo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Ultrasound &amp; Echocardiography</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/15-mammography.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Mammography &amp; Breast Imaging</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/16-nuclear-medicine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Nuclear Medicine: PET &amp; SPECT</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/17-ophthalmic-imaging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Ophthalmic Imaging</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">IV — Interventional, Lab-Based &amp; Video</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/18-surgical-endoscopic-video.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Surgical &amp; Endoscopic Video</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/19-digital-pathology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Digital Pathology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/20-the-remaining-map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">The Remaining Map</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">V — Systems &amp; The Road Ahead</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/21-building-an-imaging-ai-platform.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Building an Imaging AI Platform</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/22-ethics-bias-future.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">VI — Clinical Applications &amp; Research Practice</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/23-clinical-specialties.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/24-challenges-and-starter-projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Challenges, Benchmarks &amp; Your First Research Project</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/a-dataset-directory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Dataset Directory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/b-model-zoo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The Model Zoo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/c-fda-product-index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FDA Product Index</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/d-dicom-quick-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DICOM Quick Reference for ML Engineers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../appendices/f-dual-glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dual Glossary</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#read-a-suite-as-a-task-contract" id="toc-read-a-suite-as-a-task-contract" class="nav-link active" data-scroll-target="#read-a-suite-as-a-task-contract"><span class="header-section-number">23.1</span> Read a suite as a task contract</a></li>
+  <li><a href="#oncology-a-lesion-is-an-identity-over-time" id="toc-oncology-a-lesion-is-an-identity-over-time" class="nav-link" data-scroll-target="#oncology-a-lesion-is-an-identity-over-time"><span class="header-section-number">23.2</span> Oncology: a lesion is an identity over time</a></li>
+  <li><a href="#radiation-therapy-contouring-is-part-of-planning" id="toc-radiation-therapy-contouring-is-part-of-planning" class="nav-link" data-scroll-target="#radiation-therapy-contouring-is-part-of-planning"><span class="header-section-number">23.3</span> Radiation therapy: contouring is part of planning</a></li>
+  <li><a href="#sec-rpt-workflow" id="toc-sec-rpt-workflow" class="nav-link" data-scroll-target="#sec-rpt-workflow"><span class="header-section-number">23.4</span> Radiopharmaceutical therapy: quantify activity over time</a></li>
+  <li><a href="#sec-drug-discovery-imaging" id="toc-sec-drug-discovery-imaging" class="nav-link" data-scroll-target="#sec-drug-discovery-imaging"><span class="header-section-number">23.5</span> Drug discovery and development: images as experimental phenotypes</a></li>
+  <li><a href="#sec-trial-imaging" id="toc-sec-trial-imaging" class="nav-link" data-scroll-target="#sec-trial-imaging"><span class="header-section-number">23.6</span> Imaging in clinical trials: the endpoint has an operational pipeline</a></li>
+  <li><a href="#neurology-sequence-anatomy-and-visit-all-matter" id="toc-neurology-sequence-anatomy-and-visit-all-matter" class="nav-link" data-scroll-target="#neurology-sequence-anatomy-and-visit-all-matter"><span class="header-section-number">23.7</span> Neurology: sequence, anatomy, and visit all matter</a></li>
+  <li><a href="#cardiology-function-requires-time-and-a-method" id="toc-cardiology-function-requires-time-and-a-method" class="nav-link" data-scroll-target="#cardiology-function-requires-time-and-a-method"><span class="header-section-number">23.8</span> Cardiology: function requires time and a method</a></li>
+  <li><a href="#surgical-planning-a-useful-surface-retains-its-source" id="toc-surgical-planning-a-useful-surface-retains-its-source" class="nav-link" data-scroll-target="#surgical-planning-a-useful-surface-retains-its-source"><span class="header-section-number">23.9</span> Surgical planning: a useful surface retains its source</a></li>
+  <li><a href="#chest-x-ray-integrate-review-and-communication" id="toc-chest-x-ray-integrate-review-and-communication" class="nav-link" data-scroll-target="#chest-x-ray-integrate-review-and-communication"><span class="header-section-number">23.10</span> Chest X-ray: integrate review and communication</a></li>
+  <li><a href="#medical-annotation-the-dataset-is-a-product-of-decisions" id="toc-medical-annotation-the-dataset-is-a-product-of-decisions" class="nav-link" data-scroll-target="#medical-annotation-the-dataset-is-a-product-of-decisions"><span class="header-section-number">23.11</span> Medical annotation: the dataset is a product of decisions</a></li>
+  <li><a href="#general-viewing-and-the-areas-beyond-the-suites" id="toc-general-viewing-and-the-areas-beyond-the-suites" class="nav-link" data-scroll-target="#general-viewing-and-the-areas-beyond-the-suites"><span class="header-section-number">23.12</span> General viewing and the areas beyond the suites</a></li>
+  <li><a href="#doing-this-in-medai-os" id="toc-doing-this-in-medai-os" class="nav-link" data-scroll-target="#doing-this-in-medai-os"><span class="header-section-number">23.13</span> Doing this in MedAI OS</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/23-clinical-specialties.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/23-clinical-specialties.html">VI — Clinical Applications &amp; Research Practice</a></li><li class="breadcrumb-item"><a href="../chapters/23-clinical-specialties.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-specialties" class="quarto-section-identifier"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A modality describes how an image is made. A specialty workflow describes what someone needs to do with it. The same abdominal CT may support cancer staging, a surgical plan, a radiation treatment contour, and an annotation project. Those uses require different inputs, reference standards, measurements, reviewers, and exports. The modality chapters explain the image; this chapter explains the work around it, including radiopharmaceutical therapy, drug discovery and development, and clinical-trial imaging.</p>
+<p>The organizing example is the <a href="https://github.com/anandpreshob/medai-os/blob/7446b887cc22a8d1be5b17b87ed6f85478a391f2/medai-viewer/packages/core/src/suites/registry.ts">medai-os suite registry</a>, inspected at commit <code>7446b88</code> on 2026-10-11. It defines eight modes: Auto, Oncology, Radiation Therapy, Neurology, Cardiology, Surgical Planning, Chest X-Ray, and Medical Annotation. These are workflow configurations, not eight independently validated medical products. The repository’s <a href="https://github.com/anandpreshob/medai-os/blob/7446b887cc22a8d1be5b17b87ed6f85478a391f2/README.md">README at the same revision</a> distinguishes the newer basic viewer from the frozen previous application containing the suite and AI panels. A configured tool or preferred model does not prove that it runs end to end in the newer viewer.</p>
+<section id="read-a-suite-as-a-task-contract" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="read-a-suite-as-a-task-contract"><span class="header-section-number">23.1</span> Read a suite as a task contract</h2>
+<p>For each use, ask: which decision is being supported; which images and metadata are required; what constitutes an acceptable reference; who reviews the output; and where does it go? A useful research result includes the source image, its geometry, the task definition, model version, edits, and review state. A screenshot alone cannot carry that contract.</p>
+<div class="table-scroll" role="region" aria-label="Clinical specialty workflow map" tabindex="0">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Suite or mode</th>
+<th>Main work</th>
+<th>Image and context requirements</th>
+<th>Output to inspect</th>
+<th>Relevant reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Oncology</td>
+<td>Find, measure, and match lesions over visits</td>
+<td>Compatible CT/MR/PET protocols, dates, target identity, treatment context</td>
+<td>Lesion table, contours, unresolved matches</td>
+<td><a href="12-computed-tomography.html" class="quarto-xref"><span>Chapter 12</span></a>, <a href="13-mri.html" class="quarto-xref"><span>Chapter 13</span></a>, <a href="16-nuclear-medicine.html" class="quarto-xref"><span>Chapter 16</span></a></td>
+</tr>
+<tr class="even">
+<td>Radiation Therapy</td>
+<td>Contour anatomy and support planning</td>
+<td>Planning images, registration, structure definitions, frame of reference</td>
+<td>Reviewed structures and interoperable exports</td>
+<td><a href="12-computed-tomography.html" class="quarto-xref"><span>Chapter 12</span></a>, <a href="21-building-an-imaging-ai-platform.html" class="quarto-xref"><span>Chapter 21</span></a></td>
+</tr>
+<tr class="odd">
+<td>Neurology</td>
+<td>Characterize lesions and regional change</td>
+<td>Required MRI sequences or CT, quality, alignment, visit identity</td>
+<td>Lesion maps, regional volumes, quality flags</td>
+<td><a href="13-mri.html" class="quarto-xref"><span>Chapter 13</span></a></td>
+</tr>
+<tr class="even">
+<td>Cardiology</td>
+<td>Measure anatomy and function</td>
+<td>Cine timing, cardiac phases, acquisition-specific calibration</td>
+<td>Chamber contours, volumes, reviewed measurements</td>
+<td><a href="14-ultrasound-echo.html" class="quarto-xref"><span>Chapter 14</span></a>, <a href="13-mri.html" class="quarto-xref"><span>Chapter 13</span></a></td>
+</tr>
+<tr class="odd">
+<td>Surgical Planning</td>
+<td>Relate anatomy to a proposed approach</td>
+<td>Physical geometry, relevant vessels/bone/organs, reviewed boundaries</td>
+<td>Distances, surfaces, mesh and source overlays</td>
+<td><a href="12-computed-tomography.html" class="quarto-xref"><span>Chapter 12</span></a>, <a href="18-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 18</span></a></td>
+</tr>
+<tr class="even">
+<td>Chest X-Ray</td>
+<td>Localize candidates and prepare reviewed findings</td>
+<td>Projection, quality, prior studies, intended population</td>
+<td>Source-linked candidates and draft report</td>
+<td><a href="11-chest-xray.html" class="quarto-xref"><span>Chapter 11</span></a></td>
+</tr>
+<tr class="odd">
+<td>Medical Annotation</td>
+<td>Build a reproducible reference dataset</td>
+<td>Label protocol, patient grouping, adjudication, image rights</td>
+<td>Versioned annotations and disagreement record</td>
+<td><a href="06-what-computer-vision-can-do.html" class="quarto-xref"><span>Chapter 6</span></a>, <a href="21-building-an-imaging-ai-platform.html" class="quarto-xref"><span>Chapter 21</span></a></td>
+</tr>
+<tr class="even">
+<td>Auto</td>
+<td>Navigate a study and suggest a workflow</td>
+<td>Identity, modality, anatomy, acquisition metadata</td>
+<td>Suggested mode with supporting evidence</td>
+<td><a href="04-medical-image-viewers.html" class="quarto-xref"><span>Chapter 4</span></a>, <a href="21-building-an-imaging-ai-platform.html" class="quarto-xref"><span>Chapter 21</span></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The registry describes intended bundles. The task contracts below explain what each bundle must establish before its outputs can be meaningfully evaluated.</p>
+</section>
+<section id="oncology-a-lesion-is-an-identity-over-time" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="oncology-a-lesion-is-an-identity-over-time"><span class="header-section-number">23.2</span> Oncology: a lesion is an identity over time</h2>
+<p>An oncology workflow combines lesion detection, segmentation, measurements, matching to priors, and an assessment under a specified response framework. Detection asks where a candidate is. Segmentation asks which voxels belong to a defined region. Longitudinal assessment asks whether observations represent the same target and whether the measurements are comparable. These are separate tasks.</p>
+<p>A practical workflow inventories baseline and follow-up examinations, verifies compatible acquisitions, identifies targets, records measurements in source coordinates, and asks a reviewer to resolve ambiguous matches. New, disappeared, and noncomparable lesions need explicit states. Assigning every follow-up lesion to its nearest baseline neighbor can produce plausible percentages for the wrong target.</p>
+<p>The oncology configuration lists volume, diameter, RECIST, radiomics, and lesion counts. That does not mean an arbitrary segmentation implements a response framework. <a href="https://recist.eortc.org/recist-1-1/">RECIST 1.1</a> defines a particular solid-tumor assessment approach; target selection, non-target findings, and new lesions matter alongside size. A research volume change or PET uptake change must be labeled as that measurement unless the applicable framework has actually been implemented and reviewed.</p>
+<p><strong>Starter project.</strong> Use a documented kidney or tumor segmentation benchmark to reproduce a mask baseline, then build a reviewer-facing measurement table with physical units and source overlays. Treat this as segmentation and measurement work. A cross-sectional benchmark cannot validate longitudinal lesion identity or treatment response. Evaluate matching on a separate, appropriately referenced longitudinal cohort.</p>
+</section>
+<section id="radiation-therapy-contouring-is-part-of-planning" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="radiation-therapy-contouring-is-part-of-planning"><span class="header-section-number">23.3</span> Radiation therapy: contouring is part of planning</h2>
+<p>Radiotherapy uses images to define treatment targets and organs at risk and to relate those structures to dose and delivery. Anatomical contours, target definitions, dose prediction, and deliverable treatment plans are different outputs. A high overlap score does not establish that a contour is safe for planning or that a predicted dose can be delivered.</p>
+<p>The RT suite configuration includes organ-at-risk and target-contouring tasks and RTSTRUCT export. A research workflow must preserve structure names, physical coordinates, source references, and any registration used to combine planning CT with MR or PET. Inspect boundaries where errors affect a downstream decision, rather than relying only on whole-organ Dice.</p>
+<p>Registration requires its own validation. <a href="https://www.aapm.org/pubs/reports/detail.asp?docid=164">AAPM Task Group 132</a> addresses image registration and fusion in radiotherapy. A visually attractive fusion is not sufficient evidence that a deformation is appropriate for contour propagation or dose-related calculations.</p>
+<p><strong>Starter project.</strong> Build an organ-contouring review exercise: import a public research case, predict structures, preserve manual corrections, export, and reload into an independent viewer. Check label semantics and physical alignment after the round trip. Do not extend the exercise into treatment prescription. For a later dose-prediction project, use an explicitly defined benchmark and evaluate the predicted dose separately from plan deliverability.</p>
+</section>
+<section id="sec-rpt-workflow" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="sec-rpt-workflow"><span class="header-section-number">23.4</span> Radiopharmaceutical therapy: quantify activity over time</h2>
+<p>Radiopharmaceutical therapy (RPT) delivers radiation through an administered radiopharmaceutical. Its imaging workflow connects target characterization, post-therapy distribution, patient-specific dosimetry, and response assessment. Examples include somatostatin-receptor and PSMA-targeted therapies. This needs a distinct task contract alongside the external-beam RT suite: a planning contour is not a complete internal-dosimetry pipeline.</p>
+<p>For lutetium-177 therapies, the <a href="https://pubmed.ncbi.nlm.nih.gov/35284969/">EANM dosimetry recommendations</a> discuss organ and tumor dosimetry and dose–effect evidence. A quantitative workflow must retain acquisition times relative to administration, image calibration, reconstruction and correction methods, registered anatomy, region definitions, and the method used to estimate time-integrated activity. Administered activity in becquerels and absorbed dose in grays are different quantities; a segmentation or uptake measurement cannot be relabeled as dose. A single-time-point approximation requires its own assumptions and validation rather than silently substituting for a longitudinal measurement.</p>
+<p>AI can assist organ and lesion delineation, registration across acquisitions, image reconstruction, and kinetic estimation. Evaluate the consequences of each step separately. The <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12079728/">SNMMI Dosimetry Challenge</a> deliberately varied the information provided across tasks to study sources of dosimetry variability. The study examines variability rather than absolute dosimetric accuracy. That makes it a useful engineering model: compare contours, activity estimates, curve integration, and final dose instead of treating one plausible dose map as proof that the whole pipeline works.</p>
+<p><strong>Starter project.</strong> Reproduce one documented Lu-177 challenge task under its data terms. Begin by plotting the supplied activity measurements against elapsed time and verifying units. Compare two prespecified integration methods on the same cases; document sampling and extrapolation assumptions. Report disagreement and uncertainty, preserve the source masks and transformations, and obtain domain review of the dosimetry interpretation. This is a research reproduction exercise; a small historical dataset cannot establish a patient-specific prescription policy.</p>
+<p>In MedAI OS, RPT would need explicit administration and acquisition metadata, quantitative-image handling, timepoint management, organ/lesion review, and a dosimetry provenance export. Those are extension requirements, not capabilities established by the current RT configuration. <a href="16-nuclear-medicine.html" class="quarto-xref"><span>Chapter 16</span></a> explains the underlying emission images.</p>
+</section>
+<section id="sec-drug-discovery-imaging" class="level2" data-number="23.5">
+<h2 data-number="23.5" class="anchored" data-anchor-id="sec-drug-discovery-imaging"><span class="header-section-number">23.5</span> Drug discovery and development: images as experimental phenotypes</h2>
+<p>Imaging begins much earlier than a patient’s scan in a drug trial. In discovery, high-content microscopy can measure how cells respond to chemical or genetic perturbations. Tissue imaging and pathology can characterize model systems and treatment-associated changes. During development, quantitative patient imaging can support a protocol-defined question about pharmacodynamic activity or response. These stages use different prediction units and reference evidence.</p>
+<p>The <a href="https://jump-cellpainting.broadinstitute.org/">JUMP-Cell Painting consortium</a> provides public resources for image-based morphological profiling. Cell Painting converts multiplexed cellular images into measurements or learned representations that can support comparison of perturbations and generation of biological hypotheses. A workflow includes acquisition quality checks, cell/object handling, feature extraction, control-based normalization, replicate comparison, and follow-up experiments. Similar morphology can suggest a relationship; it does not independently prove a drug target, mechanism, clinical efficacy, or safety.</p>
+<p><strong>An engineering pitfall.</strong> A random split of fields from the same wells can put closely related observations on both sides of evaluation. A representation may recognize plate, microscope, or laboratory effects instead of the perturbation of interest. Define the generalization question first: held-out wells, compounds, chemical families, plates, or sites test different claims. Keep technical replicates together when independence requires it; inspect controls and batch structure before attributing a pattern to biology.</p>
+<p><strong>Starter project.</strong> Start with a small subset of the <a href="https://bbbc.broadinstitute.org/BBBC047">BBBC047 Cell Painting dataset</a>, which links images, derived morphological profiles, quality-control information, and chemical annotations. Reproduce a profile-retrieval baseline and compare replicate consistency with retrieval across perturbations. State what metadata or annotations supply the reference; inspect a nuisance-only baseline and held-out batches. Published profiles can make a first experiment tractable, but they do not validate a newly trained image encoder.</p>
+<p>For translational patient imaging, measure technical repeatability before interpreting a change as a drug effect. <a href="https://qibawiki.rsna.org/index.php/QIBA_for_Statisticians">QIBA’s statistical framework</a> distinguishes bias, repeatability, reproducibility, and other performance characteristics. Define the biomarker and applicable acquisition conditions. A responsive image measurement and an established surrogate for clinical benefit require different evidence.</p>
+<p>A discovery workspace also needs plate/well identifiers, perturbation metadata, microscopy channels, and batch-aware analysis. The patient-study suites in the inspected MedAI OS registry do not establish that laboratory workflow. Define it explicitly rather than putting microscopy through a generic radiology task.</p>
+</section>
+<section id="sec-trial-imaging" class="level2" data-number="23.6">
+<h2 data-number="23.6" class="anchored" data-anchor-id="sec-trial-imaging"><span class="header-section-number">23.6</span> Imaging in clinical trials: the endpoint has an operational pipeline</h2>
+<p>Trial imaging can establish eligibility, characterize baseline disease, measure response or progression, support safety assessments, or serve as an exploratory biomarker. The trial protocol determines its role. Not every imaging measurement is a primary endpoint, and a useful biomarker is not automatically an accepted surrogate for clinical benefit.</p>
+<p>The FDA’s <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-trial-imaging-endpoint-process-standards-guidance-industry">Clinical Trial Imaging Endpoint Process Standards guidance</a> addresses acquisition, display, archiving, and interpretation when imaging contributes to an endpoint in drug or biological-product trials. It describes trial-specific standardization, potentially documented in an imaging charter: acquisition and transfer procedures, site qualification, reader methods, quality review, and alignment with the clinical protocol and statistical analysis plan. Central review is a design choice, not a universal requirement. Blinding and access to clinical information must follow the specified reading design; primary-endpoint readers in randomized trials are generally expected to be blinded to treatment assignment.</p>
+<p>An illustrative trial-imaging pipeline is:</p>
+<ol type="1">
+<li><strong>Specify and qualify.</strong> Define the endpoint, acquisition requirements, visit windows, allowed contextual information, and reader training.</li>
+<li><strong>Receive and verify.</strong> Match participant and visit identifiers; check completeness and technical adequacy; preserve de-identification and provenance.</li>
+<li><strong>Resolve queries.</strong> Record acquisition or transfer problems, their resolution, and examinations that remain missing or nonevaluable.</li>
+<li><strong>Read under the charter.</strong> Preserve reader-specific measurements and any independent review or adjudication specified by the design.</li>
+<li><strong>Lock and transfer.</strong> Retain revisions and their reasons; export the protocol-defined result with traceable source evidence.</li>
+</ol>
+<p>For AI assistance, freeze the model, preprocessing, and interface behavior used in the reading procedure, and record exactly which suggestions readers saw and edited. A segmentation score alone does not test endpoint agreement or reader bias. Separate participant care, site reads, central reads, and exploratory analysis according to their actual roles. Never infer a missing examination’s outcome from an empty model result.</p>
+<p><strong>Starter project.</strong> Use the <a href="https://www.cancerimagingarchive.net/collection/qin-prostate-repeatability/">QIN-PROSTATE-REPEATABILITY collection</a> to study paired MRI measurements and source-referenced annotations. Build a repeatability report before making any treatment-response claim; the test–retest collection is not a randomized treatment trial. A second project can simulate receipt, query resolution, independent reads, adjudication, and locked export on permitted research images. Keep the simulation labeled as such. For actual trial-derived cohorts, the <a href="https://wiki.cancerimagingarchive.net/display/Public/QIN+ECOG-ACRIN+Data+Sharing">TCIA ECOG-ACRIN resource</a> links collections and their study context; use the selected trial’s protocol, outcomes, and access conditions rather than assuming all TCIA images carry trial endpoints.</p>
+<p>These uses would require additional roles, reading-state controls, audit history, and protocol-specific exports in MedAI OS. The existing oncology measurement tools provide a possible component, not evidence of a validated trial-imaging system.</p>
+</section>
+<section id="neurology-sequence-anatomy-and-visit-all-matter" class="level2" data-number="23.7">
+<h2 data-number="23.7" class="anchored" data-anchor-id="neurology-sequence-anatomy-and-visit-all-matter"><span class="header-section-number">23.7</span> Neurology: sequence, anatomy, and visit all matter</h2>
+<p>Neuroimaging workflows include brain-tumor segmentation, white-matter lesion analysis, stroke-related image assessment, and regional volumetry. The neurology registry also contains modes for MS protocols, dementia, and stroke. Those names identify intended workflows; they are not evidence that one generic segmentation model supports every neurological diagnosis.</p>
+<p>For a multi-sequence MRI task, inventory the required sequences, verify alignment and coverage, and preserve the reference space. A new bright focus on a follow-up image can reflect acquisition, alignment, or disease-related change. Longitudinal review must represent uncertainty and distinguish new lesions from registration failures. Intracranial-volume normalization and left–right comparisons need a documented measurement definition and quality review; neither is a standalone diagnosis.</p>
+<p>The <a href="https://bids-specification.readthedocs.io/en/stable/longitudinal-and-multi-site-studies.html">BIDS longitudinal organization</a> provides a useful research pattern for retaining sessions and their relationship to participants. Naming a visit correctly is only the beginning: transforms, derivatives, sequence identity, and processing versions also need provenance.</p>
+<p><strong>Starter project.</strong> Reproduce one precisely named BraTS segmentation task, inspect overlays in the source space, and implement an explicit missing-sequence result. For longitudinal MS or regional atrophy work, obtain a task-specific reference and repeated examinations; a brain-tumor benchmark does not validate those uses. Report small-lesion failures and rejected examinations as well as average overlap.</p>
+</section>
+<section id="cardiology-function-requires-time-and-a-method" class="level2" data-number="23.8">
+<h2 data-number="23.8" class="anchored" data-anchor-id="cardiology-function-requires-time-and-a-method"><span class="header-section-number">23.8</span> Cardiology: function requires time and a method</h2>
+<p>Cardiac imaging spans echocardiography, cine MRI, coronary CT, and other acquisition-specific tasks. The cardiology configuration lists chambers, myocardial and coronary structures, calcium-related tasks, and function metrics. A static image mask cannot by itself establish ejection fraction, strain, valve regurgitation, or motion over a cardiac cycle.</p>
+<p>For cine-based ventricular measurement, keep phase and slice identity, contour conventions, physical sampling, and the method of calculating volumes. Inspect whether the same chamber is tracked consistently across frames. Acquisition artifacts and incomplete coverage should remain visible as failure states. Coronary visualization and calcium scoring need their own acquisition and measurement contracts rather than inheriting eligibility from any CT study.</p>
+<p>The <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7066763/">SCMR post-processing recommendations</a> describe standardized interpretation and measurement for cardiovascular MR. They support the central engineering lesson: the image, contour convention, and measurement method must be assessed together. A benchmark label protocol may not match a local clinical convention.</p>
+<p><strong>Starter project.</strong> Begin with ACDC ventricular segmentation at the documented phases. Review contours and errors before deriving volumes; report the convention used. ACDC is an archived benchmark, not proof of readiness for arbitrary cardiac acquisitions or an assessment of every cardiac disease. Compare repeatability and measurement agreement in addition to segmentation scores.</p>
+</section>
+<section id="surgical-planning-a-useful-surface-retains-its-source" class="level2" data-number="23.9">
+<h2 data-number="23.9" class="anchored" data-anchor-id="surgical-planning-a-useful-surface-retains-its-source"><span class="header-section-number">23.9</span> Surgical planning: a useful surface retains its source</h2>
+<p>Preoperative planning connects structures in CT or MR to spatial questions: where are critical vessels, what is the relationship to a lesion, and what geometry is being exported? The surgical suite describes bone, vessels, spine and organ-related segmentation, distances, angles, and mesh export. These planning uses complement the intraoperative video tasks in <a href="18-surgical-endoscopic-video.html" class="quarto-xref"><span>Chapter 18</span></a>.</p>
+<p>A surface model can hide a segmentation error. Smoothing may remove a narrow vessel or change a boundary; resampling can alter distances; an export can lose units or coordinate conventions. Every mesh must remain linked to the original image and reviewed contours. The system should disclose incomplete coverage and uncertain anatomy rather than fill gaps with persuasive-looking geometry.</p>
+<p><strong>Starter project.</strong> Create a research segmentation-to-mesh pipeline for one documented structure. Confirm scale using known image spacing, inspect the mesh against source slices, and verify that export/reimport preserves orientation and units. Quantify boundary and distance errors appropriate to the experiment. This validates a geometry pipeline, not a patient-specific surgical recommendation.</p>
+</section>
+<section id="chest-x-ray-integrate-review-and-communication" class="level2" data-number="23.10">
+<h2 data-number="23.10" class="anchored" data-anchor-id="chest-x-ray-integrate-review-and-communication"><span class="header-section-number">23.10</span> Chest X-ray: integrate review and communication</h2>
+<p>Chest radiography supports candidate localization, prioritization, comparison with priors, and drafting structured findings. The dedicated suite gives these tasks a two-dimensional workspace. <a href="11-chest-xray.html" class="quarto-xref"><span>Chapter 11</span></a> describes how projection, label design, prevalence, and acquisition setting influence evaluation.</p>
+<p>A box, a disease probability, and a report sentence express different claims. Preserve which source image supports each finding and who accepted or corrected it. If an eligible study produces a draft, that draft still requires responsible review. Unsupported studies follow the ordinary reading pathway; an empty result should never silently become a normal report.</p>
+<p><strong>Starter project.</strong> Reproduce a documented pulmonary-opacity localization baseline and audit its errors by projection and image quality. The RSNA pneumonia benchmark’s labels are not a microbiological diagnosis. Build a source-linked review interface and measure localization and review burden separately from report quality.</p>
+</section>
+<section id="medical-annotation-the-dataset-is-a-product-of-decisions" class="level2" data-number="23.11">
+<h2 data-number="23.11" class="anchored" data-anchor-id="medical-annotation-the-dataset-is-a-product-of-decisions"><span class="header-section-number">23.11</span> Medical annotation: the dataset is a product of decisions</h2>
+<p>Annotation is an imaging use in its own right. Researchers, annotation teams, and imaging research organizations need instructions, label dictionaries, expert review, disagreement resolution, and versioned exports. The annotation suite lists interactive segmentation, editing, batch work, and several export formats. Each format preserves different information; exporting a PNG is not equivalent to exporting a source-referenced volume mask.</p>
+<p>Write the protocol before labeling: which region is included, which cases are uncertain, which context is available, and who adjudicates disagreements? Keep original model suggestions separate from accepted labels. Otherwise a model can be trained and evaluated against copies of its own output, making automation look like independent ground truth.</p>
+<p><strong>Starter project.</strong> Annotate a small consented or appropriately licensed research subset twice under a fixed protocol, measure agreement, record adjudication, and freeze a dataset version. Compare correction time and final reference quality with manual annotation. An interactive method should be evaluated under a specified click or editing budget, including cases where assistance makes the work worse.</p>
+</section>
+<section id="general-viewing-and-the-areas-beyond-the-suites" class="level2" data-number="23.12">
+<h2 data-number="23.12" class="anchored" data-anchor-id="general-viewing-and-the-areas-beyond-the-suites"><span class="header-section-number">23.12</span> General viewing and the areas beyond the suites</h2>
+<p>Auto mode is a navigation and workflow suggestion layer. Modality and study-description hints can propose a suite, but a user or eligibility policy must confirm the intended task. A metadata keyword does not authorize an algorithm or establish a diagnosis.</p>
+<p>These eight configurations are also not a complete map of medicine. Emergency and trauma imaging, musculoskeletal work, obstetric and fetal imaging, pediatrics, dentistry, dermatology, ophthalmology, pathology, nuclear medicine, and population screening can have distinct image requirements and outcomes. Some appear in the modality chapters and <a href="20-the-remaining-map.html" class="quarto-xref"><span>Chapter 20</span></a>; others deserve task-specific study. Clinical trials add another dimension: blinded review, consistent timepoints, auditable corrections, and a protocol-defined endpoint can matter more than a new model architecture.</p>
+<p>When extending the book or a suite, define a concrete workflow rather than adding a specialty name to a menu. Start with the clinical question, relevant modality chapter, and a reference task. <a href="24-challenges-and-starter-projects.html" class="quarto-xref"><span>Chapter 24</span></a> offers structured research starting points. <a href="21-building-an-imaging-ai-platform.html" class="quarto-xref"><span>Chapter 21</span></a> explains how to preserve that contract through retrieval, inference, review, and export.</p>
+</section>
+<section id="doing-this-in-medai-os" class="level2" data-number="23.13">
+<h2 data-number="23.13" class="anchored" data-anchor-id="doing-this-in-medai-os"><span class="header-section-number">23.13</span> Doing this in MedAI OS</h2>
+<p>Inspect the pinned registry and identify the suite’s declared tasks, tools, metrics, exports, and feature requirements. Check the README and verification matrix for the application version you will actually run. Begin with viewing an appropriately licensed research case and verifying orientation and scale. Then add one optional task and trace its source, output, edits, and export.</p>
+<p>Record what you observed running and what remains configured or planned. Neither a panel label nor a model name establishes a supported clinical task. The useful deliverable is a reproducible research walkthrough with explicit prerequisites, limitations, and evidence—not a claim that every declared suite capability is complete.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/anandpreshob\.github\.io\/ai-medical-imaging-book\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/22-ethics-bias-future.html" class="pagination-link" aria-label="Ethics, Bias, Safety &amp; The Future">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Ethics, Bias, Safety &amp; The Future</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/24-challenges-and-starter-projects.html" class="pagination-link" aria-label="Challenges, Benchmarks &amp; Your First Research Project">
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Challenges, Benchmarks &amp; Your First Research Project</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Anand Kadumberi · Apache-2.0</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/edit/main/chapters/23-clinical-specialties.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anandpreshob/ai-medical-imaging-book/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p><a href="https://www.anandpreshob.com">anandpreshob.com</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

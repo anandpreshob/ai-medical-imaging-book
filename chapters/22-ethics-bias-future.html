@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../appendices/a-dataset-directory.html" rel="next">
+<link href="../chapters/23-clinical-specialties.html" rel="next">
 <link href="../chapters/21-building-an-imaging-ai-platform.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -52,6 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-c147491df33f366bd77748f93457c5b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -508,12 +511,35 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">VI — Clinical Applications &amp; Research Practice</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/23-clinical-specialties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/24-challenges-and-starter-projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Challenges, Benchmarks &amp; Your First Research Project</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/a-dataset-directory.html" class="sidebar-item-text sidebar-link">
@@ -609,10 +635,10 @@ window.Quarto = {
 <p>Fairness is not one universal scalar. Relevant outcomes can include missed disease, false-positive investigations, delays, technical failure, time to specialist care, and patient costs. Similar area under the ROC curve across groups does not imply similar sensitivity at the deployed threshold or equal access to follow-up.</p>
 <p>Select subgroup analyses based on the clinical task and plausible mechanisms, including acquisition site and device as well as patient characteristics where appropriate and lawfully available. Explain how attributes were measured, what is missing, and how small samples limit conclusions. Do not infer a person’s race or other sensitive characteristics from an image to fill a convenient evaluation column.</p>
 <p>Intersectional analysis can reveal problems hidden in broad averages, but rapidly creates small groups and uncertain estimates. Report denominators and intervals. A lack of statistical significance is not proof of equivalence; a noisy apparent difference is not automatically evidence of a stable disparity. Use findings to direct further data collection and investigation.</p>
-<div id="fig-ethics-fairness" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm.">
+<div id="fig-ethics-fairness" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ethics-fairness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch22/fairness.svg" class="img-fluid figure-img" alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm.">
+<a href="../figures/ch22/fairness.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;22.1: Fairness assessment follows the patient pathway, including failures before and after inference."><img src="../figures/ch22/fairness.png" class="img-fluid figure-img" alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ethics-fairness-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22.1: Fairness assessment follows the patient pathway, including failures before and after inference.
@@ -701,10 +727,10 @@ Figure&nbsp;22.1: Fairness assessment follows the patient pathway, including fai
 <p>Foundation models can reduce the need to train every representation from scratch. They may support multiple tasks, modalities, and interactions through a common interface. That convenience can also concentrate dependency on a small number of checkpoints, providers, data sources, and licensing terms.</p>
 <p>A general model’s breadth does not establish equal competence across tasks. Evaluate each intended use, including rare and unsupported inputs. Benchmark contamination, incomplete training-data disclosure, and changing hosted versions can make evidence difficult to interpret. Prefer versioned interfaces, recorded configuration, and an evaluation set that reflects the actual workflow.</p>
 <p>Agents add tool selection and sequencing. This can make failures compositional: a correct model is called on the wrong series, a unit conversion is omitted, or a valid measurement is attached to an incorrect report. The agent needs constrained permissions, typed inputs and outputs, provenance, and explicit stopping conditions. Tool success is not the same as clinical success.</p>
-<div id="fig-ethics-lifecycle" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation.">
+<div id="fig-ethics-lifecycle" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ethics-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch22/lifecycle.svg" class="img-fluid figure-img" alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation.">
+<a href="../figures/ch22/lifecycle.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;22.2: Change control connects a proposed update to evaluation, controlled release, monitoring, and rollback."><img src="../figures/ch22/lifecycle.png" class="img-fluid figure-img" alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ethics-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;22.2: Change control connects a proposed update to evaluation, controlled release, monitoring, and rollback.
@@ -1150,8 +1176,8 @@ Figure&nbsp;22.2: Change control connects a proposed update to evaluation, contr
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../appendices/a-dataset-directory.html" class="pagination-link" aria-label="The Dataset Directory">
-        <span class="nav-page-text">The Dataset Directory</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../chapters/23-clinical-specialties.html" class="pagination-link" aria-label="Imaging Across Clinical Specialties">
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1169,6 +1195,38 @@ Figure&nbsp;22.2: Change control connects a proposed update to evaluation, contr
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

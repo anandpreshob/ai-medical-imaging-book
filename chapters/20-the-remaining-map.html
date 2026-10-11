@@ -52,6 +52,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-c147491df33f366bd77748f93457c5b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -479,12 +482,35 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">VI — Clinical Applications &amp; Research Practice</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/23-clinical-specialties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/24-challenges-and-starter-projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Challenges, Benchmarks &amp; Your First Research Project</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/a-dataset-directory.html" class="sidebar-item-text sidebar-link">
@@ -614,10 +640,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Dual-energy X-ray absorptiometry, often abbreviated DXA or DEXA, uses measurements at different X-ray energies to estimate quantities such as areal bone mineral density under a calibrated acquisition and analysis method. A report image is only a rendered summary of that process. Extracting a displayed number with OCR is different from independently measuring bone density.</p>
 <p>Clinical interpretation depends on the measured site, reference population, quality, artifacts, and relevant patient factors. AI can support positioning or region analysis, quality checks, structured extraction, and comparison. A change in device, analysis region, or excluded vertebrae can affect longitudinal interpretation. Preserve units and the exact reported measure; a T-score and a Z-score are not interchangeable labels.</p>
 <p>Opportunistic screening uses an examination acquired for another purpose, such as CT, to estimate an additional risk marker or anatomical quantity. This can expand use of existing data but introduces protocol variation and selection bias. A CT-derived bone attenuation measure is not automatically a DXA-equivalent diagnosis. Contrast, reconstruction, vertebral selection, and calibration can influence the estimate.</p>
-<div id="fig-longtail-measurement" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation.">
+<div id="fig-longtail-measurement" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-longtail-measurement-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch20/measurement.svg" class="img-fluid figure-img" alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation.">
+<a href="../figures/ch20/measurement.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;20.1: Acquisition-derived measurements and extracted report values require different validation paths."><img src="../figures/ch20/measurement.png" class="img-fluid figure-img" alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-longtail-measurement-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20.1: Acquisition-derived measurements and extracted report values require different validation paths.
@@ -684,10 +710,10 @@ Figure&nbsp;20.1: Acquisition-derived measurements and extracted report values r
 <section id="the-agentic-outlook" class="level2" data-number="20.6">
 <h2 data-number="20.6" class="anchored" data-anchor-id="the-agentic-outlook"><span class="header-section-number">20.6</span> The agentic outlook</h2>
 <p>The long tail benefits from reusable orchestration: identify the representation, verify prerequisites, choose a supported tool, preserve provenance, and route uncertainty. General orchestration does not imply general diagnostic competence. Each tool still needs its own task definition, validation, and authorization where applicable.</p>
-<div id="fig-longtail-router" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state.">
+<div id="fig-longtail-router" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-longtail-router-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch20/router.svg" class="img-fluid figure-img" alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state.">
+<a href="../figures/ch20/router.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;20.2: A cross-modality router chooses tools from verified representation and task metadata, with an explicit unsupported path."><img src="../figures/ch20/router.png" class="img-fluid figure-img" alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-longtail-router-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;20.2: A cross-modality router chooses tools from verified representation and task metadata, with an explicit unsupported path.
@@ -1146,6 +1172,38 @@ Figure&nbsp;20.2: A cross-modality router chooses tools from verified representa
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

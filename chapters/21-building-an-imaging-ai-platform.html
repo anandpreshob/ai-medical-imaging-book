@@ -87,6 +87,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-c147491df33f366bd77748f93457c5b4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-61fbc12e24432ac72222c7024fe3a370.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -543,12 +546,35 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">VI — Clinical Applications &amp; Research Practice</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/23-clinical-specialties.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Imaging Across Clinical Specialties</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/24-challenges-and-starter-projects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Challenges, Benchmarks &amp; Your First Research Project</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendices/a-dataset-directory.html" class="sidebar-item-text sidebar-link">
@@ -651,10 +677,10 @@ window.Quarto = {
 <p>The image layer owns decoded pixels, geometry, windowing, camera position, and segmentation representation. The application layer owns identity, permissions, task eligibility, job status, result versions, and review state. A segmentation should be keyed to its source series and frame of reference, not merely to a viewport index such as “left panel.”</p>
 <p>A volume’s origin, spacing, and orientation define its relationship to physical space. Browser rendering conventions, NIfTI conventions, and DICOM patient coordinates may differ. Centralize transformations and verify them with known landmarks. A correct mask displayed with a left–right flip is a failed system regardless of model accuracy.</p>
 <p>Large images require progressive loading and cache limits. Keep interactive navigation responsive while background downloads continue, but distinguish a partially loaded volume from a complete inference input. Browser memory, GPU texture limits, and transfer syntax support can constrain the experience. Unsupported decoding should produce a clear error rather than a black image interpreted as normal anatomy.</p>
-<div id="fig-platform-architecture" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export.">
+<div id="fig-platform-architecture" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-platform-architecture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch21/architecture.svg" class="img-fluid figure-img" alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export.">
+<a href="../figures/ch21/architecture.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;21.1: A reference architecture separates viewing, orchestration, model execution, and reviewed result export."><img src="../figures/ch21/architecture.png" class="img-fluid figure-img" alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-platform-architecture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21.1: A reference architecture separates viewing, orchestration, model execution, and reviewed result export.
@@ -665,6 +691,7 @@ Figure&nbsp;21.1: A reference architecture separates viewing, orchestration, mod
 </section>
 <section id="feature-flags-and-suites" class="level2" data-number="21.2">
 <h2 data-number="21.2" class="anchored" data-anchor-id="feature-flags-and-suites"><span class="header-section-number">21.2</span> Feature flags and suites</h2>
+<p><a href="23-clinical-specialties.html" class="quarto-xref"><span>Chapter 23</span></a> maps the eight MedAI OS suite/mode configurations to their clinical and research task contracts, with a pinned source revision and implementation-status limits.</p>
 <p>A suite is a collection of tasks and tools appropriate to a workflow, such as CT segmentation or echo measurement. A feature flag controls availability; it does not establish clinical eligibility. Keep deployment configuration, user authorization, input compatibility, and validation status as separate checks.</p>
 <p>A boot-time registry can describe tasks using a stable internal schema:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Illustrative application configuration, not a library-specific API.</span></span>
@@ -709,10 +736,10 @@ Figure&nbsp;21.1: A reference architecture separates viewing, orchestration, mod
 <h3 data-number="21.4.1" class="anchored" data-anchor-id="single-container-or-separate-services"><span class="header-section-number">21.4.1</span> Single container or separate services?</h3>
 <p>A single-container research deployment simplifies setup and can be suitable for a bounded demonstration. It also couples dependencies, resource use, and failure domains. Separate services support independent scaling and versioning but add network, authentication, queueing, and observability complexity. Choose the smallest architecture that meets actual isolation, reliability, and workload requirements.</p>
 <p>A queue should distinguish accepted, running, succeeded, failed, canceled, and expired jobs. Make retries safe. A useful idempotency key includes source selection, model version, and configuration. A timeout does not prove the worker stopped; cancellation needs cooperative checks and cleanup. Do not start duplicate expensive work merely because the browser refreshed.</p>
-<div id="fig-platform-lifecycle" class="quarto-float quarto-figure quarto-figure-center anchored" alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail.">
+<div id="fig-platform-lifecycle" class="lightbox quarto-float quarto-figure quarto-figure-center anchored" alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-platform-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="../figures/ch21/lifecycle.svg" class="img-fluid figure-img" alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail.">
+<a href="../figures/ch21/lifecycle.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;21.2: A result lifecycle distinguishes computation from clinical acceptance and export."><img src="../figures/ch21/lifecycle.png" class="img-fluid figure-img" alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-platform-lifecycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;21.2: A result lifecycle distinguishes computation from clinical acceptance and export.
@@ -1215,6 +1242,38 @@ Figure&nbsp;21.2: A result lifecycle distinguishes computation from clinical acc
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
