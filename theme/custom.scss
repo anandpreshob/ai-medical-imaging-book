@@ -14,3 +14,25 @@ h1, h2, h3 {
 .sidebar-title {
   font-family: "Space Grotesk", sans-serif;
 }
+
+// Keep wide comparison tables inside the reading column.
+.table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.table-scroll > table {
+  min-width: 60rem;
+}
+
+@media print {
+  .table-scroll {
+    overflow: visible;
+  }
+
+  .table-scroll > table {
+    min-width: 0;
+  }
+}
