@@ -137,6 +137,8 @@ The [Transpara 2.1.0 summary](https://www.accessdata.fda.gov/cdrh_docs/pdf24/K24
 
 ## Open challenges
 
+For named competitions, archived benchmarks, and a reproducible first project, see @sec-challenges. @sec-specialties connects these image tasks to specialty workflows.
+
 The hardest endpoints often emerge after the initial examination. Interval cancers and missed disease require reliable follow-up, while false-positive recalls impose immediate burden. A deployment evaluation needs both near-term workflow measures and a plan for delayed outcomes. Otherwise, early operational success may conceal a clinically important tradeoff.
 
 AI can also change reader behavior. Frequent low-value marks can create alert fatigue; highly persuasive scores can produce anchoring. Interface design, training, and the order in which AI is shown should be evaluated as part of the system. Readers need a clear way to disagree and document the accepted interpretation.

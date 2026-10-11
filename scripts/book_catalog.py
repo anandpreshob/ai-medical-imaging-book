@@ -3,6 +3,26 @@ import csv
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+def render_challenges():
+    """Render the selected challenge snapshot without implying live registration."""
+    with (ROOT / 'data' / 'challenges.csv').open(encoding='utf-8', newline='') as f:
+        rows = list(csv.DictReader(f))
+    def cell(value):
+        return value.replace('|', '\\|').replace('\n', ' ')
+    print('::: {.table-scroll role="region" aria-label="Challenge starting-point directory" tabindex="0"}\n')
+    print('| Challenge or resource / scope | Task and evaluation focus | Access and status | Starter exercise and pitfall |')
+    print('|---|---|---|---|')
+    for row in rows:
+        values = [
+            f"[{row['name']}]({row['source']}) — {row['edition']} ({row['modality']})",
+            f"{row['task']}. Evaluation: {row['evaluation_focus']}.",
+            f"{row['status']}. Access: {row['access_action']}. Reviewed {row['reviewed_on']}.",
+            f"{row['starter_project']}. Pitfall: {row['pitfall']}.",
+        ]
+        print('| ' + ' | '.join(cell(value) for value in values) + ' |')
+    print('\n:::\n')
+
 COLUMNS = {
     'datasets': [('name','Dataset'),('size','Size / release'),('labels','Supervision'),('license/access','Access / terms'),('notes','Caveats'),('link','Source')],
     'models': [('model','Model / framework'),('task','Task'),('weights','Weights'),('license','Terms'),('notes','Scope'),('link','Source')],

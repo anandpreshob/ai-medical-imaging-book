@@ -1,0 +1,150 @@
+# Imaging Across Clinical Specialties {#sec-specialties}
+
+A modality describes how an image is made. A specialty workflow describes what someone needs to do with it. The same abdominal CT may support cancer staging, a surgical plan, a radiation treatment contour, and an annotation project. Those uses require different inputs, reference standards, measurements, reviewers, and exports. The modality chapters explain the image; this chapter explains the work around it, including radiopharmaceutical therapy, drug discovery and development, and clinical-trial imaging.
+
+The organizing example is the [medai-os suite registry](https://github.com/anandpreshob/medai-os/blob/7446b887cc22a8d1be5b17b87ed6f85478a391f2/medai-viewer/packages/core/src/suites/registry.ts), inspected at commit `7446b88` on 2026-10-11. It defines eight modes: Auto, Oncology, Radiation Therapy, Neurology, Cardiology, Surgical Planning, Chest X-Ray, and Medical Annotation. These are workflow configurations, not eight independently validated medical products. The repository's [README at the same revision](https://github.com/anandpreshob/medai-os/blob/7446b887cc22a8d1be5b17b87ed6f85478a391f2/README.md) distinguishes the newer basic viewer from the frozen previous application containing the suite and AI panels. A configured tool or preferred model does not prove that it runs end to end in the newer viewer.
+
+## Read a suite as a task contract
+
+For each use, ask: which decision is being supported; which images and metadata are required; what constitutes an acceptable reference; who reviews the output; and where does it go? A useful research result includes the source image, its geometry, the task definition, model version, edits, and review state. A screenshot alone cannot carry that contract.
+
+::: {.table-scroll role="region" aria-label="Clinical specialty workflow map" tabindex="0"}
+
+| Suite or mode | Main work | Image and context requirements | Output to inspect | Relevant reading |
+|---|---|---|---|---|
+| Oncology | Find, measure, and match lesions over visits | Compatible CT/MR/PET protocols, dates, target identity, treatment context | Lesion table, contours, unresolved matches | @sec-computed-tomography, @sec-mri, @sec-nuclear-medicine |
+| Radiation Therapy | Contour anatomy and support planning | Planning images, registration, structure definitions, frame of reference | Reviewed structures and interoperable exports | @sec-computed-tomography, @sec-platform |
+| Neurology | Characterize lesions and regional change | Required MRI sequences or CT, quality, alignment, visit identity | Lesion maps, regional volumes, quality flags | @sec-mri |
+| Cardiology | Measure anatomy and function | Cine timing, cardiac phases, acquisition-specific calibration | Chamber contours, volumes, reviewed measurements | @sec-ultrasound-echo, @sec-mri |
+| Surgical Planning | Relate anatomy to a proposed approach | Physical geometry, relevant vessels/bone/organs, reviewed boundaries | Distances, surfaces, mesh and source overlays | @sec-computed-tomography, @sec-surgical-video |
+| Chest X-Ray | Localize candidates and prepare reviewed findings | Projection, quality, prior studies, intended population | Source-linked candidates and draft report | @sec-chest-xray |
+| Medical Annotation | Build a reproducible reference dataset | Label protocol, patient grouping, adjudication, image rights | Versioned annotations and disagreement record | @sec-cv-tasks, @sec-platform |
+| Auto | Navigate a study and suggest a workflow | Identity, modality, anatomy, acquisition metadata | Suggested mode with supporting evidence | @sec-viewers, @sec-platform |
+
+:::
+
+The registry describes intended bundles. The task contracts below explain what each bundle must establish before its outputs can be meaningfully evaluated.
+
+## Oncology: a lesion is an identity over time
+
+An oncology workflow combines lesion detection, segmentation, measurements, matching to priors, and an assessment under a specified response framework. Detection asks where a candidate is. Segmentation asks which voxels belong to a defined region. Longitudinal assessment asks whether observations represent the same target and whether the measurements are comparable. These are separate tasks.
+
+A practical workflow inventories baseline and follow-up examinations, verifies compatible acquisitions, identifies targets, records measurements in source coordinates, and asks a reviewer to resolve ambiguous matches. New, disappeared, and noncomparable lesions need explicit states. Assigning every follow-up lesion to its nearest baseline neighbor can produce plausible percentages for the wrong target.
+
+The oncology configuration lists volume, diameter, RECIST, radiomics, and lesion counts. That does not mean an arbitrary segmentation implements a response framework. [RECIST 1.1](https://recist.eortc.org/recist-1-1/) defines a particular solid-tumor assessment approach; target selection, non-target findings, and new lesions matter alongside size. A research volume change or PET uptake change must be labeled as that measurement unless the applicable framework has actually been implemented and reviewed.
+
+**Starter project.** Use a documented kidney or tumor segmentation benchmark to reproduce a mask baseline, then build a reviewer-facing measurement table with physical units and source overlays. Treat this as segmentation and measurement work. A cross-sectional benchmark cannot validate longitudinal lesion identity or treatment response. Evaluate matching on a separate, appropriately referenced longitudinal cohort.
+
+## Radiation therapy: contouring is part of planning
+
+Radiotherapy uses images to define treatment targets and organs at risk and to relate those structures to dose and delivery. Anatomical contours, target definitions, dose prediction, and deliverable treatment plans are different outputs. A high overlap score does not establish that a contour is safe for planning or that a predicted dose can be delivered.
+
+The RT suite configuration includes organ-at-risk and target-contouring tasks and RTSTRUCT export. A research workflow must preserve structure names, physical coordinates, source references, and any registration used to combine planning CT with MR or PET. Inspect boundaries where errors affect a downstream decision, rather than relying only on whole-organ Dice.
+
+Registration requires its own validation. [AAPM Task Group 132](https://www.aapm.org/pubs/reports/detail.asp?docid=164) addresses image registration and fusion in radiotherapy. A visually attractive fusion is not sufficient evidence that a deformation is appropriate for contour propagation or dose-related calculations.
+
+**Starter project.** Build an organ-contouring review exercise: import a public research case, predict structures, preserve manual corrections, export, and reload into an independent viewer. Check label semantics and physical alignment after the round trip. Do not extend the exercise into treatment prescription. For a later dose-prediction project, use an explicitly defined benchmark and evaluate the predicted dose separately from plan deliverability.
+
+## Radiopharmaceutical therapy: quantify activity over time {#sec-rpt-workflow}
+
+Radiopharmaceutical therapy (RPT) delivers radiation through an administered radiopharmaceutical. Its imaging workflow connects target characterization, post-therapy distribution, patient-specific dosimetry, and response assessment. Examples include somatostatin-receptor and PSMA-targeted therapies. This needs a distinct task contract alongside the external-beam RT suite: a planning contour is not a complete internal-dosimetry pipeline.
+
+For lutetium-177 therapies, the [EANM dosimetry recommendations](https://pubmed.ncbi.nlm.nih.gov/35284969/) discuss organ and tumor dosimetry and dose–effect evidence. A quantitative workflow must retain acquisition times relative to administration, image calibration, reconstruction and correction methods, registered anatomy, region definitions, and the method used to estimate time-integrated activity. Administered activity in becquerels and absorbed dose in grays are different quantities; a segmentation or uptake measurement cannot be relabeled as dose. A single-time-point approximation requires its own assumptions and validation rather than silently substituting for a longitudinal measurement.
+
+AI can assist organ and lesion delineation, registration across acquisitions, image reconstruction, and kinetic estimation. Evaluate the consequences of each step separately. The [SNMMI Dosimetry Challenge](https://pmc.ncbi.nlm.nih.gov/articles/PMC12079728/) deliberately varied the information provided across tasks to study sources of dosimetry variability. The study examines variability rather than absolute dosimetric accuracy. That makes it a useful engineering model: compare contours, activity estimates, curve integration, and final dose instead of treating one plausible dose map as proof that the whole pipeline works.
+
+**Starter project.** Reproduce one documented Lu-177 challenge task under its data terms. Begin by plotting the supplied activity measurements against elapsed time and verifying units. Compare two prespecified integration methods on the same cases; document sampling and extrapolation assumptions. Report disagreement and uncertainty, preserve the source masks and transformations, and obtain domain review of the dosimetry interpretation. This is a research reproduction exercise; a small historical dataset cannot establish a patient-specific prescription policy.
+
+In MedAI OS, RPT would need explicit administration and acquisition metadata, quantitative-image handling, timepoint management, organ/lesion review, and a dosimetry provenance export. Those are extension requirements, not capabilities established by the current RT configuration. @sec-nuclear-medicine explains the underlying emission images.
+
+## Drug discovery and development: images as experimental phenotypes {#sec-drug-discovery-imaging}
+
+Imaging begins much earlier than a patient's scan in a drug trial. In discovery, high-content microscopy can measure how cells respond to chemical or genetic perturbations. Tissue imaging and pathology can characterize model systems and treatment-associated changes. During development, quantitative patient imaging can support a protocol-defined question about pharmacodynamic activity or response. These stages use different prediction units and reference evidence.
+
+The [JUMP-Cell Painting consortium](https://jump-cellpainting.broadinstitute.org/) provides public resources for image-based morphological profiling. Cell Painting converts multiplexed cellular images into measurements or learned representations that can support comparison of perturbations and generation of biological hypotheses. A workflow includes acquisition quality checks, cell/object handling, feature extraction, control-based normalization, replicate comparison, and follow-up experiments. Similar morphology can suggest a relationship; it does not independently prove a drug target, mechanism, clinical efficacy, or safety.
+
+**An engineering pitfall.** A random split of fields from the same wells can put closely related observations on both sides of evaluation. A representation may recognize plate, microscope, or laboratory effects instead of the perturbation of interest. Define the generalization question first: held-out wells, compounds, chemical families, plates, or sites test different claims. Keep technical replicates together when independence requires it; inspect controls and batch structure before attributing a pattern to biology.
+
+**Starter project.** Start with a small subset of the [BBBC047 Cell Painting dataset](https://bbbc.broadinstitute.org/BBBC047), which links images, derived morphological profiles, quality-control information, and chemical annotations. Reproduce a profile-retrieval baseline and compare replicate consistency with retrieval across perturbations. State what metadata or annotations supply the reference; inspect a nuisance-only baseline and held-out batches. Published profiles can make a first experiment tractable, but they do not validate a newly trained image encoder.
+
+For translational patient imaging, measure technical repeatability before interpreting a change as a drug effect. [QIBA's statistical framework](https://qibawiki.rsna.org/index.php/QIBA_for_Statisticians) distinguishes bias, repeatability, reproducibility, and other performance characteristics. Define the biomarker and applicable acquisition conditions. A responsive image measurement and an established surrogate for clinical benefit require different evidence.
+
+A discovery workspace also needs plate/well identifiers, perturbation metadata, microscopy channels, and batch-aware analysis. The patient-study suites in the inspected MedAI OS registry do not establish that laboratory workflow. Define it explicitly rather than putting microscopy through a generic radiology task.
+
+## Imaging in clinical trials: the endpoint has an operational pipeline {#sec-trial-imaging}
+
+Trial imaging can establish eligibility, characterize baseline disease, measure response or progression, support safety assessments, or serve as an exploratory biomarker. The trial protocol determines its role. Not every imaging measurement is a primary endpoint, and a useful biomarker is not automatically an accepted surrogate for clinical benefit.
+
+The FDA's [Clinical Trial Imaging Endpoint Process Standards guidance](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/clinical-trial-imaging-endpoint-process-standards-guidance-industry) addresses acquisition, display, archiving, and interpretation when imaging contributes to an endpoint in drug or biological-product trials. It describes trial-specific standardization, potentially documented in an imaging charter: acquisition and transfer procedures, site qualification, reader methods, quality review, and alignment with the clinical protocol and statistical analysis plan. Central review is a design choice, not a universal requirement. Blinding and access to clinical information must follow the specified reading design; primary-endpoint readers in randomized trials are generally expected to be blinded to treatment assignment.
+
+An illustrative trial-imaging pipeline is:
+
+1. **Specify and qualify.** Define the endpoint, acquisition requirements, visit windows, allowed contextual information, and reader training.
+2. **Receive and verify.** Match participant and visit identifiers; check completeness and technical adequacy; preserve de-identification and provenance.
+3. **Resolve queries.** Record acquisition or transfer problems, their resolution, and examinations that remain missing or nonevaluable.
+4. **Read under the charter.** Preserve reader-specific measurements and any independent review or adjudication specified by the design.
+5. **Lock and transfer.** Retain revisions and their reasons; export the protocol-defined result with traceable source evidence.
+
+For AI assistance, freeze the model, preprocessing, and interface behavior used in the reading procedure, and record exactly which suggestions readers saw and edited. A segmentation score alone does not test endpoint agreement or reader bias. Separate participant care, site reads, central reads, and exploratory analysis according to their actual roles. Never infer a missing examination's outcome from an empty model result.
+
+**Starter project.** Use the [QIN-PROSTATE-REPEATABILITY collection](https://www.cancerimagingarchive.net/collection/qin-prostate-repeatability/) to study paired MRI measurements and source-referenced annotations. Build a repeatability report before making any treatment-response claim; the test–retest collection is not a randomized treatment trial. A second project can simulate receipt, query resolution, independent reads, adjudication, and locked export on permitted research images. Keep the simulation labeled as such. For actual trial-derived cohorts, the [TCIA ECOG-ACRIN resource](https://wiki.cancerimagingarchive.net/display/Public/QIN+ECOG-ACRIN+Data+Sharing) links collections and their study context; use the selected trial's protocol, outcomes, and access conditions rather than assuming all TCIA images carry trial endpoints.
+
+These uses would require additional roles, reading-state controls, audit history, and protocol-specific exports in MedAI OS. The existing oncology measurement tools provide a possible component, not evidence of a validated trial-imaging system.
+
+## Neurology: sequence, anatomy, and visit all matter
+
+Neuroimaging workflows include brain-tumor segmentation, white-matter lesion analysis, stroke-related image assessment, and regional volumetry. The neurology registry also contains modes for MS protocols, dementia, and stroke. Those names identify intended workflows; they are not evidence that one generic segmentation model supports every neurological diagnosis.
+
+For a multi-sequence MRI task, inventory the required sequences, verify alignment and coverage, and preserve the reference space. A new bright focus on a follow-up image can reflect acquisition, alignment, or disease-related change. Longitudinal review must represent uncertainty and distinguish new lesions from registration failures. Intracranial-volume normalization and left–right comparisons need a documented measurement definition and quality review; neither is a standalone diagnosis.
+
+The [BIDS longitudinal organization](https://bids-specification.readthedocs.io/en/stable/longitudinal-and-multi-site-studies.html) provides a useful research pattern for retaining sessions and their relationship to participants. Naming a visit correctly is only the beginning: transforms, derivatives, sequence identity, and processing versions also need provenance.
+
+**Starter project.** Reproduce one precisely named BraTS segmentation task, inspect overlays in the source space, and implement an explicit missing-sequence result. For longitudinal MS or regional atrophy work, obtain a task-specific reference and repeated examinations; a brain-tumor benchmark does not validate those uses. Report small-lesion failures and rejected examinations as well as average overlap.
+
+## Cardiology: function requires time and a method
+
+Cardiac imaging spans echocardiography, cine MRI, coronary CT, and other acquisition-specific tasks. The cardiology configuration lists chambers, myocardial and coronary structures, calcium-related tasks, and function metrics. A static image mask cannot by itself establish ejection fraction, strain, valve regurgitation, or motion over a cardiac cycle.
+
+For cine-based ventricular measurement, keep phase and slice identity, contour conventions, physical sampling, and the method of calculating volumes. Inspect whether the same chamber is tracked consistently across frames. Acquisition artifacts and incomplete coverage should remain visible as failure states. Coronary visualization and calcium scoring need their own acquisition and measurement contracts rather than inheriting eligibility from any CT study.
+
+The [SCMR post-processing recommendations](https://pmc.ncbi.nlm.nih.gov/articles/PMC7066763/) describe standardized interpretation and measurement for cardiovascular MR. They support the central engineering lesson: the image, contour convention, and measurement method must be assessed together. A benchmark label protocol may not match a local clinical convention.
+
+**Starter project.** Begin with ACDC ventricular segmentation at the documented phases. Review contours and errors before deriving volumes; report the convention used. ACDC is an archived benchmark, not proof of readiness for arbitrary cardiac acquisitions or an assessment of every cardiac disease. Compare repeatability and measurement agreement in addition to segmentation scores.
+
+## Surgical planning: a useful surface retains its source
+
+Preoperative planning connects structures in CT or MR to spatial questions: where are critical vessels, what is the relationship to a lesion, and what geometry is being exported? The surgical suite describes bone, vessels, spine and organ-related segmentation, distances, angles, and mesh export. These planning uses complement the intraoperative video tasks in @sec-surgical-video.
+
+A surface model can hide a segmentation error. Smoothing may remove a narrow vessel or change a boundary; resampling can alter distances; an export can lose units or coordinate conventions. Every mesh must remain linked to the original image and reviewed contours. The system should disclose incomplete coverage and uncertain anatomy rather than fill gaps with persuasive-looking geometry.
+
+**Starter project.** Create a research segmentation-to-mesh pipeline for one documented structure. Confirm scale using known image spacing, inspect the mesh against source slices, and verify that export/reimport preserves orientation and units. Quantify boundary and distance errors appropriate to the experiment. This validates a geometry pipeline, not a patient-specific surgical recommendation.
+
+## Chest X-ray: integrate review and communication
+
+Chest radiography supports candidate localization, prioritization, comparison with priors, and drafting structured findings. The dedicated suite gives these tasks a two-dimensional workspace. @sec-chest-xray describes how projection, label design, prevalence, and acquisition setting influence evaluation.
+
+A box, a disease probability, and a report sentence express different claims. Preserve which source image supports each finding and who accepted or corrected it. If an eligible study produces a draft, that draft still requires responsible review. Unsupported studies follow the ordinary reading pathway; an empty result should never silently become a normal report.
+
+**Starter project.** Reproduce a documented pulmonary-opacity localization baseline and audit its errors by projection and image quality. The RSNA pneumonia benchmark's labels are not a microbiological diagnosis. Build a source-linked review interface and measure localization and review burden separately from report quality.
+
+## Medical annotation: the dataset is a product of decisions
+
+Annotation is an imaging use in its own right. Researchers, annotation teams, and imaging research organizations need instructions, label dictionaries, expert review, disagreement resolution, and versioned exports. The annotation suite lists interactive segmentation, editing, batch work, and several export formats. Each format preserves different information; exporting a PNG is not equivalent to exporting a source-referenced volume mask.
+
+Write the protocol before labeling: which region is included, which cases are uncertain, which context is available, and who adjudicates disagreements? Keep original model suggestions separate from accepted labels. Otherwise a model can be trained and evaluated against copies of its own output, making automation look like independent ground truth.
+
+**Starter project.** Annotate a small consented or appropriately licensed research subset twice under a fixed protocol, measure agreement, record adjudication, and freeze a dataset version. Compare correction time and final reference quality with manual annotation. An interactive method should be evaluated under a specified click or editing budget, including cases where assistance makes the work worse.
+
+## General viewing and the areas beyond the suites
+
+Auto mode is a navigation and workflow suggestion layer. Modality and study-description hints can propose a suite, but a user or eligibility policy must confirm the intended task. A metadata keyword does not authorize an algorithm or establish a diagnosis.
+
+These eight configurations are also not a complete map of medicine. Emergency and trauma imaging, musculoskeletal work, obstetric and fetal imaging, pediatrics, dentistry, dermatology, ophthalmology, pathology, nuclear medicine, and population screening can have distinct image requirements and outcomes. Some appear in the modality chapters and @sec-remaining-map; others deserve task-specific study. Clinical trials add another dimension: blinded review, consistent timepoints, auditable corrections, and a protocol-defined endpoint can matter more than a new model architecture.
+
+When extending the book or a suite, define a concrete workflow rather than adding a specialty name to a menu. Start with the clinical question, relevant modality chapter, and a reference task. @sec-challenges offers structured research starting points. @sec-platform explains how to preserve that contract through retrieval, inference, review, and export.
+
+## Doing this in MedAI OS
+
+Inspect the pinned registry and identify the suite's declared tasks, tools, metrics, exports, and feature requirements. Check the README and verification matrix for the application version you will actually run. Begin with viewing an appropriately licensed research case and verifying orientation and scale. Then add one optional task and trace its source, output, edits, and export.
+
+Record what you observed running and what remains configured or planned. Neither a panel label nor a model name establishes a supported clinical task. The useful deliverable is a reproducible research walkthrough with explicit prerequisites, limitations, and evidence—not a claim that every declared suite capability is complete.

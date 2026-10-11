@@ -127,6 +127,8 @@ The original [IDx-DR De Novo review](https://www.accessdata.fda.gov/cdrh_docs/re
 
 ## Open challenges
 
+For named competitions, archived benchmarks, and a reproducible first project, see @sec-challenges. @sec-specialties connects these image tasks to specialty workflows.
+
 Acquisition access and referral access are separate problems. A program may expand screening while leaving patients unable to obtain specialist care. Evaluate the distribution of technical failures, referrals, and completed care across sites and populations, not just model accuracy among usable images.
 
 OCT interoperability remains difficult because acquisition, processing, and exports differ across devices. A layer measurement may depend on a vendor's segmentation convention. Harmonization needs a clearly defined target and validation against that target; it should not hide the original measurement method.

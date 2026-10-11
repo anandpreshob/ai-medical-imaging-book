@@ -152,6 +152,8 @@ The original NeuroQuant record describes automated labeling, visualization, and 
 
 ## Open challenges
 
+For named competitions, archived benchmarks, and a reproducible first project, see @sec-challenges. @sec-specialties connects these image tasks to specialty workflows.
+
 MRI domain shift is multidimensional: field strength, coils, sequences, reconstruction software, motion, and patient anatomy can all change simultaneously. Intensity harmonization may improve robustness but can also suppress meaningful information. A harmonization method belongs in validation, not in an unrecorded deployment patch.
 
 Missing sequences create another challenge. Training with simulated missing inputs can improve tolerance, but cannot establish that a clinically essential contrast is dispensable. Report which input combinations were evaluated and which require abstention. A model that accepts all tensors syntactically may still be semantically unsupported.
