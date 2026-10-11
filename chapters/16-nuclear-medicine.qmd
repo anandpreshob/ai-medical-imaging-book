@@ -135,6 +135,8 @@ The original [SubtlePET summary](https://www.accessdata.fda.gov/cdrh_docs/pdf18/
 
 ## Open challenges
 
+For named competitions, archived benchmarks, and a reproducible first project, see @sec-challenges. @sec-specialties connects these image tasks to specialty workflows.
+
 Small lesions are difficult because image resolution and partial-volume effects blur boundaries and reduce apparent uptake. Reconstruction changes can alter both lesion visibility and quantitative summaries. Consistency across time is therefore an acquisition and software problem as well as a segmentation problem.
 
 Multitracer generalization is another frontier. A useful system should identify the tracer and either select an appropriately validated model or abstain. Training a general model on mixed tracers requires enough examples and labels to distinguish normal biodistribution from disease for each setting; a modality tag alone is insufficient.

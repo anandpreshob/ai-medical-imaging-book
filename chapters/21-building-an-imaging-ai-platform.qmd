@@ -18,9 +18,11 @@ A volume's origin, spacing, and orientation define its relationship to physical 
 
 Large images require progressive loading and cache limits. Keep interactive navigation responsive while background downloads continue, but distinguish a partially loaded volume from a complete inference input. Browser memory, GPU texture limits, and transfer syntax support can constrain the experience. Unsupported decoding should produce a clear error rather than a black image interpreted as normal anatomy.
 
-![A reference architecture separates viewing, orchestration, model execution, and reviewed result export.](../figures/ch21/architecture.svg){#fig-platform-architecture fig-alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export."}
+![A reference architecture separates viewing, orchestration, model execution, and reviewed result export.](../figures/ch21/architecture.png){.lightbox #fig-platform-architecture fig-alt="A browser viewer connects through an authenticated gateway to PACS retrieval and an orchestrator; model workers return versioned results for review before export."}
 
 ## Feature flags and suites
+
+@sec-specialties maps the eight MedAI OS suite/mode configurations to their clinical and research task contracts, with a pinned source revision and implementation-status limits.
 
 A suite is a collection of tasks and tools appropriate to a workflow, such as CT segmentation or echo measurement. A feature flag controls availability; it does not establish clinical eligibility. Keep deployment configuration, user authorization, input compatibility, and validation status as separate checks.
 
@@ -78,7 +80,7 @@ A single-container research deployment simplifies setup and can be suitable for 
 
 A queue should distinguish accepted, running, succeeded, failed, canceled, and expired jobs. Make retries safe. A useful idempotency key includes source selection, model version, and configuration. A timeout does not prove the worker stopped; cancellation needs cooperative checks and cleanup. Do not start duplicate expensive work merely because the browser refreshed.
 
-![A result lifecycle distinguishes computation from clinical acceptance and export.](../figures/ch21/lifecycle.svg){#fig-platform-lifecycle fig-alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail."}
+![A result lifecycle distinguishes computation from clinical acceptance and export.](../figures/ch21/lifecycle.png){.lightbox #fig-platform-lifecycle fig-alt="An eligible job moves through queued, running, draft result, reviewed result, and export states, with failure and cancellation paths retained in the audit trail."}
 
 ### Interactive sessions and GPU memory
 

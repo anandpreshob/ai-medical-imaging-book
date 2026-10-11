@@ -46,7 +46,7 @@ Clinical interpretation depends on the measured site, reference population, qual
 
 Opportunistic screening uses an examination acquired for another purpose, such as CT, to estimate an additional risk marker or anatomical quantity. This can expand use of existing data but introduces protocol variation and selection bias. A CT-derived bone attenuation measure is not automatically a DXA-equivalent diagnosis. Contrast, reconstruction, vertebral selection, and calibration can influence the estimate.
 
-![Acquisition-derived measurements and extracted report values require different validation paths.](../figures/ch20/measurement.svg){#fig-longtail-measurement fig-alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation."}
+![Acquisition-derived measurements and extracted report values require different validation paths.](../figures/ch20/measurement.png){.lightbox #fig-longtail-measurement fig-alt="Native calibrated measurements, measurements inferred from another modality, and OCR-extracted report values remain distinct and require separate validation."}
 
 Research data should include the reference examination, timing, measurement method, and patient grouping. A model trained against paired DXA values must account for the interval and population that received both tests. Evaluate measurement agreement and clinical-pathway consequences, not only correlation. This directory does not assert a specific authorized opportunistic-screening indication; review any proposed product's actual labeling.
 
@@ -82,7 +82,7 @@ A small research collection can establish feasibility without establishing gener
 
 The long tail benefits from reusable orchestration: identify the representation, verify prerequisites, choose a supported tool, preserve provenance, and route uncertainty. General orchestration does not imply general diagnostic competence. Each tool still needs its own task definition, validation, and authorization where applicable.
 
-![A cross-modality router chooses tools from verified representation and task metadata, with an explicit unsupported path.](../figures/ch20/router.svg){#fig-longtail-router fig-alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state."}
+![A cross-modality router chooses tools from verified representation and task metadata, with an explicit unsupported path.](../figures/ch20/router.png){.lightbox #fig-longtail-router fig-alt="Verified acquisition type and clinical task enter an eligibility router; supported tools proceed while missing or unsupported inputs return an explicit no-result state."}
 
 A practical agent should ask three questions before inference: is this the original measurement or a rendered derivative; are the required units and identity available; and is there a validated tool for this exact task? If any answer is unresolved, the agent can still organize the evidence without fabricating a clinical result.
 

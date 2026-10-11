@@ -1,0 +1,114 @@
+# Challenges, Benchmarks & Your First Research Project {#sec-challenges}
+
+A medical-imaging challenge gives a newcomer a bounded task: specified inputs, a reference standard, an evaluation protocol, and often a baseline. It can teach image geometry, data curation, model development, and reproducibility in one experiment. It also makes shortcuts easier to expose because the question and scoring procedure are written down.
+
+The phrase **open challenges** in earlier chapters refers mainly to unsolved research problems. This chapter names organized competitions, benchmarks, and dataset exercises you can use to begin working on those problems. The directory is a selected, source-linked snapshot reviewed on **2026-10-11**; it is not a list of competitions guaranteed to accept submissions today.
+
+## Three different ways a challenge can remain useful
+
+An **active competition** has a current timeline and submission phase. A **continuous benchmark** may accept new evaluations after the original event. An **archived challenge** can still offer training data, reference labels, evaluation code, and papers for local reproduction. These states are not interchangeable. A functioning homepage or an old registration link does not establish that submissions are open.
+
+For example, the [ACDC organizers](https://www.creatis.insa-lyon.fr/Challenge/acdc/) explicitly say the challenge is closed while the data and ground truth remain available. The [PANDA homepage](https://panda.grand-challenge.org/) also marks its competition closed. Both can still motivate carefully scoped learning projects, subject to current data access. In contrast, [SynthRAD2025](https://synthrad2025.grand-challenge.org/) describes a post-event leaderboard continuing through 2030. Confirm the actual submission interface and rules before planning an entry.
+
+Challenge families change. [Learn2Reg](https://learn2reg.grand-challenge.org/) describes 2026 PSMA PET/CT and breathing-related registration tasks; earlier editions have different inputs and references. [autoPET V](https://autopet-v.grand-challenge.org/) emphasizes interactive clinician-in-the-loop PET/CT lesion segmentation. A paper saying only “Learn2Reg” or “autoPET” is not a sufficiently reproducible dataset specification.
+
+## Choose the project before choosing the model
+
+Begin with one output you can inspect. Two-dimensional lesion segmentation or a single-organ volume task is often easier to debug than whole-slide grading, multimodal longitudinal analysis, or real-time video. This is a starting-scope recommendation, not a ranking of clinical importance.
+
+Ask five practical questions:
+
+1. **Can I access the data under its terms?** Read registration, institutional requirements, permitted use, redistribution, and citation rules. “Downloadable” does not mean unrestricted. [fastMRI](https://fastmri.med.nyu.edu/) requires an access application and a data-sharing agreement.
+2. **What is the prediction unit?** A pixel, lesion, image, volume, slide, patient, or procedure changes splitting and evaluation. Keep patients and their derivatives together.
+3. **What does the reference actually mean?** A contour, radiologist-marked opacity, grade, or survival outcome supports a different claim. Benchmark labels do not automatically represent a diagnosis or a treatment decision.
+4. **Can I afford a complete baseline?** Estimate download size, decompression, preprocessing, GPU memory, and training time. A reduced local experiment must be labeled as such rather than compared as if it used the official full protocol.
+5. **Can I reproduce the score?** Identify the official implementation, version, aggregation rules, missing-output policy, label conventions, and submission format before optimizing anything.
+
+## A directory of starting points
+
+The machine-readable directory is `data/challenges.csv`. Each entry records the edition or scope, task, access action, evaluation focus, beginner exercise, major pitfall, source, and status qualification. **Evaluation focus** is a learning aid; the linked organizers' code defines the actual ranking. Status text deliberately says when a current submission window was not established.
+
+```{python}
+#| echo: false
+#| output: asis
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path("../scripts").resolve()))
+from book_catalog import render_challenges
+render_challenges()
+```
+
+### Start small: annotation, cardiac contours, or opacity localization
+
+An archived ISIC lesion-boundary task provides a two-dimensional mask problem, ACDC provides a phase-specific cardiac segmentation problem, and the RSNA 2018 challenge provides a chest-radiograph localization problem. These make different learning exercises: preserve lesion grouping for skin images, phase and physical geometry for cardiac volumes, and image coordinates for detection boxes. Do not compare their metrics as if they measure the same capability.
+
+For a first experiment, inspect a small permitted sample, render source and reference overlays, reproduce the simplest documented baseline, and produce an error report. For ACDC, evaluate contours before calculating downstream cardiac quantities. For chest radiography, keep the distinction between pulmonary-opacity annotations and a confirmed pneumonia diagnosis. [RSNA's dataset documentation](https://atlas.rsna.org/cards/74777c92-9b0b-4f06-a788-71a8a12c4e93) explains the annotation setting.
+
+### Move to volumes: anatomy and tumor segmentation
+
+[Medical Segmentation Decathlon](https://medicaldecathlon.com/) offers multiple segmentation tasks; choose one named task and keep its units and labels explicit. [KiTS23](https://kits-challenge.org/kits23/) distinguishes kidney, tumor, and cyst labels and uses hierarchical evaluation classes. Replacing the official class unions with a familiar three-class average changes the benchmark.
+
+BraTS provides a multi-sequence tumor setting, but editions and tasks have different label definitions and rules. Keep a label dictionary, evaluate each defined region, and inspect small or absent regions. A model that produces a good average mask can still fail on a clinically important focus. A new clinical claim requires an appropriate reference and validation beyond the leaderboard.
+
+### Then tackle the pipeline: registration, reconstruction, pathology, and video
+
+Registration requires transform conventions and spatial validation, not just an image similarity loss. Start with an identity transform and known landmarks, then reproduce the selected Learn2Reg task's checks. MRI reconstruction needs raw-data and sampling conventions; start from a documented fastMRI baseline and do not equate pixel fidelity with diagnostic fidelity.
+
+Whole-slide pathology needs physical scale, tile coordinates, slide/case grouping, and an aggregation rule. CAMELYON17 and PANDA concern different endpoints. Video challenges need procedure-level splits and an explicit temporal context: a method using future frames cannot be described as real-time merely because inference is fast.
+
+For radiotherapy, separate contour quality, synthetic-CT fidelity, dose prediction, and deliverable planning. SynthRAD and OpenKBP address different outputs. Dental CBCT projects such as ToothFairy require label definitions and careful inspection of thin anatomy; do not infer that a later edition has the first edition's target set.
+
+### RPT, discovery, and trials: choose a quantitative research question
+
+The [SNMMI Lu-177 Dosimetry Challenge](https://pmc.ncbi.nlm.nih.gov/articles/PMC12079728/) studied variability across internal-dosimetry steps. Its paper links the data repository at the University of Michigan. It is a historical comparison exercise, not an established current entry window or an absolute dose-accuracy reference. Retain acquisition times, units, region definitions, curve assumptions, and intermediate outputs. Agreement between software packages is not sufficient proof that either estimate is accurate.
+
+[BBBC047](https://bbbc.broadinstitute.org/BBBC047) and [JUMP](https://github.com/broadinstitute/jump_hub) provide discovery-oriented Cell Painting resources rather than a single live competition. Begin with quality checks and replicate/profile comparison. Define whether your test holds out compounds, plates, or laboratories; the independence unit differs from a patient-based clinical-imaging split.
+
+For trial-oriented biomarker work, the [QIN-PROSTATE-REPEATABILITY collection](https://www.cancerimagingarchive.net/collection/qin-prostate-repeatability/) offers a test–retest setting. A repeatability exercise asks whether measurements remain consistent, not whether a treatment works. Use a separate, appropriately designed study for treatment-effect questions. An imaging-charter and audit-workflow simulation can be a useful engineering project even without a leaderboard.
+
+See @sec-rpt-workflow, @sec-drug-discovery-imaging, and @sec-trial-imaging for the clinical or experimental contracts behind these exercises.
+
+## A four-week research exercise
+
+This is an illustrative schedule for a small local project, not a guarantee of competition readiness.
+
+| Week | Work | Reviewable deliverable |
+|---|---|---|
+| 1 | Read task and terms; inventory data; inspect overlays; freeze grouped split | Data card, label dictionary, source citations, split manifest |
+| 2 | Reproduce a baseline; verify metric code and inverse mapping | Versioned configuration, checkpoint provenance, source-space predictions |
+| 3 | Examine failures; try one justified change; record compute cost | Baseline-versus-change comparison on the same validation cases |
+| 4 | Freeze the method; run untouched local test or permitted official submission | Reproduction instructions, metrics with denominators, error gallery, limitations |
+
+Use a tiny subset for loader and geometry checks, then decide whether to run the full experiment. An initial smoke test should detect swapped axes, label interpolation, incorrect units, empty outputs, and accidental training/test overlap before an expensive run.
+
+## Evaluate what the task actually asks
+
+**Segmentation.** Overlap and boundary measures answer different questions. Small structures, absent classes, disconnected predictions, and spacing can affect interpretation. Use the official empty-class and aggregation rules. KiTS23's documented Dice and surface-Dice ranking is not interchangeable with a custom metric summary.
+
+**Detection.** A box or candidate is evaluated under a matching rule. [LUNA16](https://luna16.grand-challenge.org/Evaluation/) measures sensitivity against false positives per scan with a defined nodule-hit criterion. Image-level AUROC cannot replace that localization evaluation.
+
+**Classification and grading.** Ranking, thresholded performance, calibration, and ordinal agreement are different views of a model. Match the official endpoint, then add clearly labeled analysis relevant to your research question. A high challenge score does not identify a usable clinical threshold.
+
+**Registration and reconstruction.** Inspect geometry, plausibility, runtime, and task consequences alongside numerical metrics. A transform can align one structure while damaging another; a reconstruction can look smooth while deleting a feature.
+
+**Interactive methods.** Specify who supplies prompts, what information they see, and the click or editing budget. A simulated oracle prompt and a real user's action are different evaluation conditions. Preserve failed and abandoned cases in the denominator.
+
+## Avoid turning the leaderboard into a training set
+
+Choose hyperparameters on training and validation material, freeze decisions, and use the test set for the stated final comparison. Repeated leaderboard submissions provide feedback about the hidden test set, even without revealing its labels. Respect submission limits and disclose how many variants you evaluated.
+
+Watch for repeated patients, lesions, eyes, visits, slides, adjacent frames, and reformatted volumes across partitions. New filenames do not create independent observations. Public data used for pretraining can overlap a benchmark; report known overlap and uncertainty instead of assuming “foundation model” means a clean test.
+
+A benchmark result should state edition, task, data split, permissible extra data, preprocessing, model and checkpoint versions, metric implementation, inference budget, missing-output count, and submission history. Distinguish reproduced official scores from local scores on a custom split. Keep uncertainty and error review alongside the average.
+
+## Find the next challenge without relying on stale dates
+
+Use the [Grand Challenge directory](https://grand-challenge.org/challenges/), [RSNA challenge hub](https://www.rsna.org/artificial-intelligence/ai-image-challenge), and the named organizer portals to locate tasks. Read the current edition's rules, access instructions, compute constraints, external-data policy, and submission phase. Some portals retain old “ongoing” labels; verify the dated timeline and working submission page.
+
+The directory deliberately omits prize promises and unverified deadline dates. Update its `reviewed_on` and status evidence when rechecking an entry. Data-access and submission availability are separate fields: a closed competition can have accessible data, while an announced task can require approval before any download.
+
+## Connect the exercise to a specialty workflow
+
+Use @sec-specialties to identify who will inspect the result and how it might be used. A segmentation challenge is a strong place to learn source-space overlays and annotation review. It is not, by itself, an evaluation of longitudinal response, radiation treatment safety, a surgical plan, or an autonomous report.
+
+In MedAI OS, use the currently verified viewer features to inspect research images and reference outputs. Add optional inference or annotation only after checking the application version and prerequisites. A successful challenge submission and a successful viewer round trip are complementary pieces of engineering evidence; neither constitutes clinical authorization.

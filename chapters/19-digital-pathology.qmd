@@ -133,6 +133,8 @@ The [Paige Prostate De Novo review](https://www.accessdata.fda.gov/cdrh_docs/rev
 
 ## Open challenges
 
+For named competitions, archived benchmarks, and a reproducible first project, see @sec-challenges. @sec-specialties connects these image tasks to specialty workflows.
+
 Stain and scanner variation are visible sources of domain shift, but specimen processing and patient selection are equally important. Color normalization can reduce some variation while leaving biological and workflow differences untouched. Validate the complete pipeline across the intended sites rather than assuming normalization solves transfer.
 
 ![Focus, folds, and stain variation are visible source-image problems; accepted model overlays should be reviewed on the original slide.](../figures/ch19/quality.png){#fig-path-quality fig-alt="H-and-E crops demonstrate in-focus tissue, blur, a tissue fold, stain variation, and a larger source image with restrained nucleus overlays."}

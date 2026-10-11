@@ -6,7 +6,9 @@ An open, evolving textbook on AI in medical imaging — written for clinicians, 
 
 ## Current edition
 
-All 22 chapters and five appendices have complete first drafts. Chapters 12–19 use 32 synthetic, image-based clinical teaching figures; Chapters 20–22 retain six reproducible diagrams for abstract workflows and systems. Figures have captions and alt text. See [figure provenance](figures/remaining-chapters-provenance.md), [image replacement prompts](figures/clinical-image-replacement-prompts.md), and [catalog scope](data/README.md).
+All 24 chapters and five appendices have complete first drafts. Chapters 12–19 display 32 synthetic clinical teaching figures; Chapters 11 and 20–22 display ten generated workflow and evaluation figures. Original SVGs remain archived. Captions and alt text accompany the figures. See [workflow image prompts](figures/workflow-imagegen-prompts.md), [clinical image prompts](figures/clinical-image-replacement-prompts.md), [figure provenance](figures/remaining-chapters-provenance.md), and [catalog scope](data/README.md).
+
+New chapters cover [clinical specialties, RPT, drug discovery, trial imaging, and MedAI OS suite contracts](chapters/23-clinical-specialties.qmd) and [challenges and starter projects](chapters/24-challenges-and-starter-projects.qmd). The latter renders 22 selected entries from data/challenges.csv, reviewed 2026-10-11, with historical benchmarks distinguished from confirmed or unconfirmed submission availability.
 
 ```bash
 # Rebuild the conceptual diagrams for chapters 12–22

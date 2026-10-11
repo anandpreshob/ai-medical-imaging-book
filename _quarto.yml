@@ -49,6 +49,10 @@ book:
       chapters:
         - chapters/21-building-an-imaging-ai-platform.qmd
         - chapters/22-ethics-bias-future.qmd
+    - part: "VI — Clinical Applications & Research Practice"
+      chapters:
+        - chapters/23-clinical-specialties.qmd
+        - chapters/24-challenges-and-starter-projects.qmd
   appendices:
     - appendices/a-dataset-directory.qmd
     - appendices/b-model-zoo.qmd

@@ -16,7 +16,7 @@ Select subgroup analyses based on the clinical task and plausible mechanisms, in
 
 Intersectional analysis can reveal problems hidden in broad averages, but rapidly creates small groups and uncertain estimates. Report denominators and intervals. A lack of statistical significance is not proof of equivalence; a noisy apparent difference is not automatically evidence of a stable disparity. Use findings to direct further data collection and investigation.
 
-![Fairness assessment follows the patient pathway, including failures before and after inference.](../figures/ch22/fairness.svg){#fig-ethics-fairness fig-alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm."}
+![Fairness assessment follows the patient pathway, including failures before and after inference.](../figures/ch22/fairness.png){.lightbox #fig-ethics-fairness fig-alt="Access, acquisition quality, valid model results, clinical action, and completed follow-up each contribute to the distribution of benefit and harm."}
 
 ### Avoid easy statistical fixes to structural problems
 
@@ -88,7 +88,7 @@ A general model's breadth does not establish equal competence across tasks. Eval
 
 Agents add tool selection and sequencing. This can make failures compositional: a correct model is called on the wrong series, a unit conversion is omitted, or a valid measurement is attached to an incorrect report. The agent needs constrained permissions, typed inputs and outputs, provenance, and explicit stopping conditions. Tool success is not the same as clinical success.
 
-![Change control connects a proposed update to evaluation, controlled release, monitoring, and rollback.](../figures/ch22/lifecycle.svg){#fig-ethics-lifecycle fig-alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation."}
+![Change control connects a proposed update to evaluation, controlled release, monitoring, and rollback.](../figures/ch22/lifecycle.png){.lightbox #fig-ethics-lifecycle fig-alt="A proposed model or workflow change passes evidence review and controlled release, then monitoring; adverse signals can trigger rollback and investigation."}
 
 Claims about future autonomous practice should remain conditional. A system that reliably gathers priors and detects unsupported inputs may provide substantial benefit before a system can safely complete an entire diagnostic workflow. Progress should be judged by demonstrated improvements in defined tasks and patient pathways.
 

@@ -164,6 +164,8 @@ Anatomical quantification, acute triage, and reconstruction are different intend
 
 ## Open challenges
 
+For named competitions, archived benchmarks, and a reproducible first project, see @sec-challenges. @sec-specialties connects these image tasks to specialty workflows.
+
 ### Reconstruction shift and artifact
 
 Sharper kernels increase apparent edge detail and noise; smoother kernels alter texture. Metal streak, motion, beam hardening, and incomplete coverage can create systematic errors. An algorithm may be robust to scanner variation in its training distribution yet fail on an acquisition deliberately optimized for another task. Compare performance by relevant protocol groups, not just scanner manufacturer.

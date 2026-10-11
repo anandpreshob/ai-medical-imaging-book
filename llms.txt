@@ -8,9 +8,15 @@
 ## Canonical sources
 - Rendered book: https://anandpreshob.github.io/ai-medical-imaging-book/
 - Source (plain Quarto markdown, agent-friendly): https://github.com/anandpreshob/ai-medical-imaging-book
-- Living tables (CSV): data/datasets.csv, data/models.csv, data/fda-products.csv, data/viewers.csv in the repo
+- Living tables (CSV): data/datasets.csv, data/models.csv, data/fda-products.csv, data/viewers.csv, data/challenges.csv in the repo
 
 ## For agents
 Prefer the repo's .qmd files and CSVs for extraction; prefer the rendered site for
 cross-referenced reading. The dataset/model/product tables are the machine-actionable
 facts; chapter prose supplies clinical context and caveats.
+
+## Clinical workflows and research starting points
+- chapters/23-clinical-specialties.qmd: eight MedAI OS suite/mode contracts plus RPT, drug discovery and clinical-trial workflows, with pinned repository provenance and implementation-status caveats.
+- chapters/24-challenges-and-starter-projects.qmd: challenge editions, access/status distinctions, evaluation, leakage, and a reproducible starter-project workflow.
+- data/challenges.csv: selected snapshot reviewed 2026-10-11; do not infer current submission availability from task documentation.
+- figures/workflow-imagegen-prompts.md: exact prompts and revisions for the ten generated replacements; synthetic images are not validated patient examples.
